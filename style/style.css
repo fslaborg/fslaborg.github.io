@@ -1,67 +1,275 @@
-html,body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    background: #F0F2F4;
+.is-darkmagenta {
+  color: #A00975;
+}
+
+.is-darkblue {
+  color: #2D3E50;
+}
+
+.is-darklime {
+  color: #80B602;
+}
+
+.is-pastelorange {
+  color: #CB793A;
+}
+
+.is-petrol {
+  color: #005F69;
+}
+
+html, body {
+  font-family: "Nunito Sans";
+  font-size: 14px;
+  background: #F0F2F4;
+}
+
+.button {
+  font-family: "Nunito Sans";
+}
+
+.input {
+  font-family: "Nunito Sans";
+}
+
+.main-Container {
+  padding-bottom: 2rem;
+}
+
+.has-background-darkmagenta {
+  background: #fa9ee0;
+  background: linear-gradient(0deg, #fa9ee0 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.has-background-darkmagenta .main-TextField {
+  background-color: #A00975;
+}
+@media only screen and (max-width: 500px) {
+  .has-background-darkmagenta {
+    background: linear-gradient(0deg, #fa9ee0 80%, #F0F2F4 80%);
   }
-  .navbar.is-white {
-    background: #F0F2F4;
+}
+@media only screen and (max-width: 400px) {
+  .has-background-darkmagenta {
+    background: linear-gradient(0deg, #fa9ee0 85%, #F0F2F4 85%);
   }
-  .navbar-brand .brand-text {
-    font-size: 1.11rem;
-    font-weight: bold;
+}
+
+.has-background-darkBlue {
+  background: #beccda;
+  background: linear-gradient(0deg, #beccda 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.has-background-darkBlue .main-TextField {
+  background-color: #2D3E50;
+}
+@media only screen and (max-width: 500px) {
+  .has-background-darkBlue {
+    background: linear-gradient(0deg, #beccda 80%, #F0F2F4 80%);
   }
-  .hero-body
-  {background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Plum_trees_Kitano_Tenmangu.jpg/1200px-Plum_trees_Kitano_Tenmangu.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 500px;
+}
+@media only screen and (max-width: 400px) {
+  .has-background-darkBlue {
+    background: linear-gradient(0deg, #beccda 85%, #F0F2F4 85%);
   }
-  .articles {
-    margin: 5rem 0;
-    margin-top: -200px;
+}
+
+.has-background-petrol {
+  background: #99f5ff;
+  background: linear-gradient(0deg, #99f5ff 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.has-background-petrol .main-TextField {
+  background-color: #005F69;
+}
+@media only screen and (max-width: 500px) {
+  .has-background-petrol {
+    background: linear-gradient(0deg, #99f5ff 80%, #F0F2F4 80%);
   }
-  .articles .content p {
-      line-height: 1.9;
-      margin: 15px 0;
+}
+@media only screen and (max-width: 400px) {
+  .has-background-petrol {
+    background: linear-gradient(0deg, #99f5ff 85%, #F0F2F4 85%);
   }
-  .author-image {
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      width: 60px;
-      height: 60px;
-      margin-left: -30px;
-      border: 3px solid #ccc;
-      border-radius: 50%;
+}
+
+.has-background-pastelorange {
+  background: #eac8ae;
+  background: linear-gradient(0deg, #eac8ae 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.has-background-pastelorange .main-TextField {
+  background-color: #CB793A;
+}
+@media only screen and (max-width: 500px) {
+  .has-background-pastelorange {
+    background: linear-gradient(0deg, #eac8ae 80%, #F0F2F4 80%);
   }
-  .media-center {
-    display: block;
-    margin-bottom: 1rem;
+}
+@media only screen and (max-width: 400px) {
+  .has-background-pastelorange {
+    background: linear-gradient(0deg, #eac8ae 85%, #F0F2F4 85%);
   }
-  .media-content {
-    margin-top: 3rem;
+}
+
+.has-background-darklime {
+  background: #e0fe9a;
+  background: linear-gradient(0deg, #e0fe9a 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.has-background-darklime .main-TextField {
+  background-color: #80B602;
+}
+@media only screen and (max-width: 500px) {
+  .has-background-darklime {
+    background: linear-gradient(0deg, #e0fe9a 80%, #F0F2F4 80%);
   }
-  .article, .promo-block {
-    margin-top: 6rem;
+}
+@media only screen and (max-width: 400px) {
+  .has-background-darklime {
+    background: linear-gradient(0deg, #e0fe9a 85%, #F0F2F4 85%);
   }
-  div.column.is-8:first-child {
-    padding-top: 0;
-    margin-top: 0;
+}
+
+.main-ImageContainer {
+  padding: 2rem;
+  max-width: 50%;
+  margin: auto;
+}
+.main-ImageContainer img {
+  transition: 0.5s ease;
+}
+.main-ImageContainer img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.3);
+  transition: 0.5s ease;
+  box-shadow: 0px 0px 6px white;
+}
+
+.is-emphasized-half-darkblue {
+  background: linear-gradient(0deg, #2D3E50 50%, transparent 50%);
+}
+
+.is-emphasized-half-darkmagenta {
+  background: linear-gradient(0deg, #A00975 50%, transparent 50%);
+}
+
+.is-emphasized-half-darklime {
+  background: linear-gradient(0deg, #80B602 50%, transparent 50%);
+}
+
+.is-emphasized-half-pastelorange {
+  background: linear-gradient(0deg, #CB793A 50%, transparent 50%);
+}
+
+.is-emphasized-half-petrol {
+  background: linear-gradient(0deg, #005F69 50%, transparent 50%);
+}
+
+.is-emphasized-one-third, .is-emphasized-one-third-petrol, .is-emphasized-one-third-pastelorange, .is-emphasized-one-third-darklime, .is-emphasized-one-third-darkmagenta, .is-emphasized-one-third-darkblue {
+  letter-spacing: 0.1em;
+}
+
+.is-emphasized-one-third-darkblue {
+  background: linear-gradient(0deg, #2D3E50 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-darkmagenta {
+  background: linear-gradient(0deg, #A00975 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-darklime {
+  background: linear-gradient(0deg, #80B602 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-pastelorange {
+  background: linear-gradient(0deg, #CB793A 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-petrol {
+  background: linear-gradient(0deg, #005F69 20%, transparent 20%);
+}
+
+.main-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+  letter-spacing: 0.2em;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.main-TextField {
+  padding: 1.5rem 3rem;
+  max-width: 100%;
+  margin: auto;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.main-TextField .main-text {
+  text-align: justify;
+}
+
+.is-skewed-right {
+  transform: skew(-6deg);
+}
+.is-skewed-right .main-text {
+  transform: skew(6deg);
+}
+.is-skewed-right .main-title {
+  transform: skew(1deg);
+}
+.is-skewed-right .main-text {
+  margin-left: 0.75rem;
+}
+
+.is-skewed-left {
+  transform: skew(6deg);
+}
+.is-skewed-left .main-text {
+  transform: skew(-6deg);
+}
+.is-skewed-left .main-title {
+  transform: skew(-11deg);
+}
+.is-skewed-left .main-text {
+  margin-right: 0.75rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-TextField {
+    max-width: 85%;
   }
-  .article-title {
-    font-size: 2rem;
-    font-weight: lighter;
-    line-height: 2;
+
+  .is-skewed-right {
+    transform: skew(-2deg);
   }
-  .article-subtitle {
-    color: #909AA0;
-    margin-bottom: 3rem;
+  .is-skewed-right .main-text {
+    transform: skew(2deg);
   }
-  .article-body {
-    line-height: 1.4;
-    margin: 0 6rem;
+  .is-skewed-right .main-title {
+    transform: skew(-3deg);
   }
-  .promo-block .container {
-    margin: 1rem 5rem;
+  .is-skewed-right .main-text {
+    margin-left: 1rem;
   }
+
+  .is-skewed-left {
+    transform: skew(2deg);
+  }
+  .is-skewed-left .main-text {
+    transform: skew(-2deg);
+  }
+  .is-skewed-left .main-title {
+    transform: skew(-7deg);
+  }
+  .is-skewed-left .main-text {
+    margin-right: 1rem;
+  }
+
+  .is-reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
