@@ -31,12 +31,9 @@ let staticPredicate (projectRoot: string, page: string) =
 
 let config = {
     Generators = [
-        {Script = "less.fsx"; Trigger = OnFileExt ".less"; OutputFile = ChangeExtension "css" }
+        //{Script = "less.fsx"; Trigger = OnFileExt ".less"; OutputFile = ChangeExtension "css" }
         {Script = "sass.fsx"; Trigger = OnFileExt ".scss"; OutputFile = ChangeExtension "css" }
-        {Script = "post.fsx"; Trigger = OnFilePredicate postPredicate; OutputFile = ChangeExtension "html" }
         {Script = "staticfile.fsx"; Trigger = OnFilePredicate staticPredicate; OutputFile = SameFileName }
-        {Script = "index.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
-        {Script = "about.fsx"; Trigger = Once; OutputFile = NewFileName "about.html" }
-        {Script = "contact.fsx"; Trigger = Once; OutputFile = NewFileName "contact.html" }
+        {Script = "card.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
     ]
 }
