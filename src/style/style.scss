@@ -1,16 +1,5 @@
 @charset "utf-8";
 
-//bulma extensions
-
-.section {
-    margin-bottom:5rem
-}
-
-// install sass (https://sass-lang.com/)
-// powershell as admin: 'npm install -g sass'
-// go to css folder and 'sass watch style.scss:style.css' to live convert scss file to css onChange.
-// might be needed to give exception to computer 'set-executionpolicy remotesigned'
-
 // OpenSans
 $FontPathOpenSans: "~open-sans-fonts/open-sans";
 $family-primary: 'Open Sans';
@@ -23,6 +12,22 @@ $fslabDarkBlue: #2D3E50;
 $fslabPetrol: #005F69;
 $fslabDarkLime: #80B602;
 $fslabPastelOrange: #CB793A;
+
+//bulma extensions
+
+nav {
+    border-bottom: 1px solid $fslabDarkMagenta;
+}
+
+.section {
+    margin-bottom:5rem
+}
+
+// install sass (https://sass-lang.com/)
+// powershell as admin: 'npm install -g sass'
+// go to css folder and 'sass watch style.scss:style.css' to live convert scss file to css onChange.
+// might be needed to give exception to computer 'set-executionpolicy remotesigned'
+
 
 .is-darkmagenta {
     color: $fslabDarkMagenta
@@ -39,7 +44,6 @@ $fslabPastelOrange: #CB793A;
 .is-petrol {
     color: $fslabPetrol
 }
-
 .has-bg-darkmagenta {
     background-color: $fslabDarkMagenta;
     color: $colorWhite;
