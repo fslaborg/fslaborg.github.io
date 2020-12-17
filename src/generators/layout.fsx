@@ -5,6 +5,13 @@
 #load "../loaders/cardloader.fsx"
 #endif
 
+let urlPrefix = 
+#if WATCH
+  ""
+#endif
+  "/fslabsite/"
+
+
 open Html
 
 let injectWebsocketCode (webpage:string) =
@@ -54,8 +61,8 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "stylesheet"; Href "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"]
             link [Rel "stylesheet"; Href "https://fonts.googleapis.com/css?family=Nunito+Sans"]
             link [Rel "stylesheet"; Href "https://unpkg.com/bulma@0.9.1/css/bulma.min.css"]
-            link [Rel "stylesheet"; Type "text/css"; Href "/style/style.css"]
-            script [ Defer true; Type "text/javascript"; Src "/js/prism.js" ] []
+            link [Rel "stylesheet"; Type "text/css"; Href (urlPrefix + "/style/style.css")]
+            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/prism.js") ] []
 
         ]
         body [] [
@@ -63,7 +70,7 @@ let layout (ctx : SiteContents) active bodyCnt =
             div [Class "container"] [
               div [Class "navbar-brand"] [
                 a [Class "navbar-item"; Href "/"] [
-                  img [Src "/images/testlogo.png"; Alt "Logo"]
+                  img [Src (urlPrefix + "/images/testlogo.png"); Alt "Logo"]
                 ]
                 span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
                   span [] []
