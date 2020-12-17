@@ -134,6 +134,12 @@ nav {
   margin-bottom: 5rem;
 }
 
+.image-scroll-container {
+  min-width: 70%;
+  min-height: 40%;
+  border: 1px solid #2D3E50;
+}
+
 .is-darkmagenta {
   color: #A00975;
 }
@@ -489,4 +495,4 @@ html, body {
   }
 }
 
-/*# sourceMappingURL=tmp09inPE.tmp.map */
+/*# sourceMappingURL=tmp8QhGCI.tmp.map */
