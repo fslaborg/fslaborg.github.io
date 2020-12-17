@@ -1,8 +1,10 @@
 ---
-title: test4
-color: purple
+title: Build your skills
+color: rose
 emphasis: darkblue
-image: https://picsum.photos/400?grayscale
+type: secondary
+index: 2
+image: https://picsum.photos/2403?grayscale
 ---
 
 # Test

@@ -3,14 +3,35 @@
 
 open Markdig
 
+type CardType =
+    | Main
+    | Secondary
+
+    static member ofString (str:string) =
+        match str with
+        |"main"|"Main" -> Main
+        |"secondary"| "Secondary" -> Secondary
+        | _ -> failwithf "%s is not a valid card type" str 
+        
 type MainPageCard = {
     CardTitle:string
     CardBody:string
     CardColor:string
     CardEmphasisColor:string
-    CardImage:string
+    CardImages:string []
+    CardIndex: int
+    CardType:CardType
 } with
-    static member create title body color emphasisColor image = {CardTitle = title; CardBody=body; CardColor=color; CardEmphasisColor=emphasisColor; CardImage = image}
+    static member create title body color emphasisColor images index ctype = 
+        {
+            CardTitle = title
+            CardBody = body
+            CardColor = color
+            CardEmphasisColor = emphasisColor 
+            CardImages = images
+            CardIndex = index
+            CardType = ctype
+        }
 
 let contentDir = "cards"
 
@@ -81,11 +102,13 @@ let loadFile (cardMarkdownPath:string) =
     let body = content
     let color = config |> Map.find "color" |> trimString
     let emphasisColor = config |> Map.find "emphasis" |> trimString
-    let image = config |> Map.find "image" |> trimString
+    let images = config |> Map.find "image" |> trimString |> fun s -> s.Split(',')
+    let index = config |> Map.find "index" |> trimString |> int
+    let ctype = config |> Map.find "type" |> trimString |> CardType.ofString
 
     printfn "%A" title
 
-    MainPageCard.create title body color emphasisColor image
+    MainPageCard.create title body color emphasisColor images index ctype
 
 let loader (projectRoot: string) (siteContent: SiteContents) =
     let cardsPath = System.IO.Path.Combine(projectRoot, contentDir)

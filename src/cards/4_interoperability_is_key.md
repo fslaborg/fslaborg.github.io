@@ -1,7 +1,9 @@
 ---
-title: test4
+title: Interoperability is key
 color: darkblue
-emphasis: purple
+emphasis: darkmagenta
+type: secondary
+index: 3
 image: https://picsum.photos/400?grayscale
 ---
 

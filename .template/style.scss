@@ -136,7 +136,24 @@ html, body {
     background: linear-gradient(0deg, $color $degree, transparent $degree);
 }
 
-.is-emphasized-half-darkblue {
+
+.is-emphasized-darkblue {
+    @include is-emphasized(100%,$fslabDarkBlue)
+}
+.is-emphasized-darkmagenta {
+    @include is-emphasized(100%,$fslabDarkMagenta)
+}
+.is-emphasized-darklime {
+    @include is-emphasized(100%,$fslabDarkLime)
+}
+.is-emphasized-pastelorange {
+    @include is-emphasized(100%,$fslabPastelOrange)
+}
+.is-emphasized-petrol {
+    @include is-emphasized(100%,$fslabPetrol)
+}
+
+.is-emphasized-darkblue {
     @include is-emphasized(50%,$fslabDarkBlue)
 }
 .is-emphasized-half-darkmagenta {

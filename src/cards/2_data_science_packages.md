@@ -1,7 +1,9 @@
 ---
-title: test2
+title: F#-first data science packages
 color: darkblue
 emphasis: rose
+type: secondary
+index: 1
 image: https://picsum.photos/402?grayscale
 ---
 

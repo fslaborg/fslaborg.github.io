@@ -2,6 +2,8 @@
 title: Our mission
 color: darkmagenta
 emphasis: darkblue
+type: main
+index: 0
 image: https://picsum.photos/401?grayscale
 ---
 
