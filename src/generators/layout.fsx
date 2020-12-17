@@ -5,11 +5,13 @@
 #load "../loaders/cardloader.fsx"
 #endif
 
-let urlPrefix = 
 #if WATCH
+let urlPrefix = 
   ""
-#endif
+#else
+let urlPrefix = 
   "/fslabsite"
+#endif
 
 
 open Html
