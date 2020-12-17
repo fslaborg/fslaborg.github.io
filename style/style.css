@@ -1,0 +1,492 @@
+/* PrismJS 1.21.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+csharp+fsharp+python+r+typescript */
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+code[class*=language-],
+pre[class*=language-] {
+  color: #ccc;
+  background: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*=language-] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*=language-],
+pre[class*=language-] {
+  background: #2d2d2d;
+}
+
+/* Inline code */
+:not(pre) > code[class*=language-] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999;
+}
+
+.token.punctuation {
+  color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: #e2777a;
+}
+
+.token.function-name {
+  color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+nav {
+  border-bottom: 2px solid #A00975;
+}
+
+.is-active-link {
+  background-color: #A00975;
+  color: #F0F2F4;
+  font-weight: bold;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.is-darkmagenta {
+  color: #A00975;
+}
+
+.is-darkblue {
+  color: #2D3E50;
+}
+
+.is-rose {
+  color: #D12F67;
+}
+
+.is-sapphire {
+  color: #19657B;
+}
+
+.is-purple {
+  color: #AE6DAB;
+}
+
+.is-darkgreen {
+  color: #0D5E52;
+}
+
+.has-bg-darkmagenta {
+  background-color: #A00975;
+  color: #F0F2F4;
+}
+
+.has-bg-darkblue {
+  background-color: #2D3E50;
+  color: #F0F2F4;
+}
+
+.has-bg-rose {
+  background-color: #D12F67;
+  color: #F0F2F4;
+}
+
+.has-bg-sapphire {
+  background-color: #AE6DAB;
+  color: #F0F2F4;
+}
+
+.has-bg-purple {
+  background-color: #AE6DAB;
+  color: #F0F2F4;
+}
+
+.has-bg-darkgreen {
+  background-color: #0D5E52;
+  color: #F0F2F4;
+}
+
+html, body {
+  font-family: "Nunito Sans";
+  font-size: 14px;
+  background: #F0F2F4;
+}
+
+.button {
+  font-family: "Nunito Sans";
+}
+
+.input {
+  font-family: "Nunito Sans";
+}
+
+.main-Container {
+  padding-bottom: 3rem;
+  margin: 7rem 5rem;
+}
+
+.card-is-darkmagenta {
+  background: #fa9ee0;
+  background: linear-gradient(0deg, #fa9ee0 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.card-is-darkmagenta .main-TextField {
+  background-color: #A00975;
+}
+@media only screen and (max-width: 500px) {
+  .card-is-darkmagenta {
+    background: linear-gradient(0deg, #fa9ee0 80%, #F0F2F4 80%);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-is-darkmagenta {
+    background: linear-gradient(0deg, #fa9ee0 85%, #F0F2F4 85%);
+  }
+}
+
+.card-is-darkBlue {
+  background: #beccda;
+  background: linear-gradient(0deg, #beccda 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.card-is-darkBlue .main-TextField {
+  background-color: #2D3E50;
+}
+@media only screen and (max-width: 500px) {
+  .card-is-darkBlue {
+    background: linear-gradient(0deg, #beccda 80%, #F0F2F4 80%);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-is-darkBlue {
+    background: linear-gradient(0deg, #beccda 85%, #F0F2F4 85%);
+  }
+}
+
+.card-is-rose {
+  background: #edabc2;
+  background: linear-gradient(0deg, #edabc2 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.card-is-rose .main-TextField {
+  background-color: #D12F67;
+}
+@media only screen and (max-width: 500px) {
+  .card-is-rose {
+    background: linear-gradient(0deg, #edabc2 80%, #F0F2F4 80%);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-is-rose {
+    background: linear-gradient(0deg, #edabc2 85%, #F0F2F4 85%);
+  }
+}
+
+.card-is-sapphire {
+  background: #aadfee;
+  background: linear-gradient(0deg, #aadfee 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.card-is-sapphire .main-TextField {
+  background-color: #19657B;
+}
+@media only screen and (max-width: 500px) {
+  .card-is-sapphire {
+    background: linear-gradient(0deg, #aadfee 80%, #F0F2F4 80%);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-is-sapphire {
+    background: linear-gradient(0deg, #aadfee 85%, #F0F2F4 85%);
+  }
+}
+
+.card-is-purple {
+  background: #dbbdd9;
+  background: linear-gradient(0deg, #dbbdd9 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.card-is-purple .main-TextField {
+  background-color: #AE6DAB;
+}
+@media only screen and (max-width: 500px) {
+  .card-is-purple {
+    background: linear-gradient(0deg, #dbbdd9 80%, #F0F2F4 80%);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-is-purple {
+    background: linear-gradient(0deg, #dbbdd9 85%, #F0F2F4 85%);
+  }
+}
+
+.card-is-darkgreen {
+  background: #a5f3e7;
+  background: linear-gradient(0deg, #a5f3e7 75%, #F0F2F4 75%);
+  color: #F0F2F4;
+}
+.card-is-darkgreen .main-TextField {
+  background-color: #0D5E52;
+}
+@media only screen and (max-width: 500px) {
+  .card-is-darkgreen {
+    background: linear-gradient(0deg, #a5f3e7 80%, #F0F2F4 80%);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-is-darkgreen {
+    background: linear-gradient(0deg, #a5f3e7 85%, #F0F2F4 85%);
+  }
+}
+
+.main-ImageContainer {
+  padding: 2rem;
+  max-width: 50%;
+  margin: auto;
+}
+.main-ImageContainer img {
+  transition: 0.5s ease;
+}
+.main-ImageContainer img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.3);
+  transition: 0.5s ease;
+  box-shadow: 0px 0px 6px white;
+}
+
+.is-emphasized-half-darkblue {
+  background: linear-gradient(0deg, #2D3E50 50%, transparent 50%);
+}
+
+.is-emphasized-half-darkmagenta {
+  background: linear-gradient(0deg, #A00975 50%, transparent 50%);
+}
+
+.is-emphasized-half-rose {
+  background: linear-gradient(0deg, #D12F67 50%, transparent 50%);
+}
+
+.is-emphasized-half-sapphire {
+  background: linear-gradient(0deg, #19657B 50%, transparent 50%);
+}
+
+.is-emphasized-half-purple {
+  background: linear-gradient(0deg, #AE6DAB 50%, transparent 50%);
+}
+
+.is-emphasized-half-darkgreen {
+  background: linear-gradient(0deg, #0D5E52 50%, transparent 50%);
+}
+
+.is-emphasized-one-third, .is-emphasized-one-third-darkgreen, .is-emphasized-one-third-purple, .is-emphasized-one-third-sapphire, .is-emphasized-one-third-rose, .is-emphasized-one-third-darkblue, .is-emphasized-one-third-darkmagenta {
+  letter-spacing: 0.1em;
+  color: #F0F2F4;
+}
+
+.is-emphasized-one-third-darkmagenta {
+  background: linear-gradient(0deg, #A00975 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-darkblue {
+  background: linear-gradient(0deg, #2D3E50 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-rose {
+  background: linear-gradient(0deg, #D12F67 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-sapphire {
+  background: linear-gradient(0deg, #19657B 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-purple {
+  background: linear-gradient(0deg, #AE6DAB 20%, transparent 20%);
+}
+
+.is-emphasized-one-third-darkgreen {
+  background: linear-gradient(0deg, #0D5E52 20%, transparent 20%);
+}
+
+.main-title, .main-subtitle {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+  letter-spacing: 0.2em;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.main-subtitle {
+  font-size: 1.5rem;
+}
+
+.main-TextField {
+  padding: 1.5rem 3rem;
+  max-width: 100%;
+  margin: auto;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.main-TextField .main-text {
+  text-align: justify;
+}
+
+.is-skewed-right {
+  transform: skew(-6deg);
+}
+.is-skewed-right .main-text {
+  transform: skew(6deg);
+}
+.is-skewed-right .main-title, .is-skewed-right .main-subtitle {
+  transform: skew(1deg);
+}
+.is-skewed-right .main-subtitle {
+  transform: skew(1deg);
+}
+.is-skewed-right .main-text {
+  margin-left: 0.75rem;
+}
+
+.is-skewed-left {
+  transform: skew(6deg);
+}
+.is-skewed-left .main-text {
+  transform: skew(-6deg);
+}
+.is-skewed-left .main-title, .is-skewed-left .main-subtitle {
+  transform: skew(-11deg);
+}
+.is-skewed-left .main-subtitle {
+  transform: skew(-11deg);
+}
+.is-skewed-left .main-text {
+  margin-right: 0.75rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-TextField {
+    max-width: 85%;
+  }
+
+  .is-skewed-right {
+    transform: skew(-2deg);
+  }
+  .is-skewed-right .main-text {
+    transform: skew(2deg);
+  }
+  .is-skewed-right .main-title, .is-skewed-right .main-subtitle {
+    transform: skew(-3deg);
+  }
+  .is-skewed-right .main-subtitle {
+    transform: skew(-3deg);
+  }
+  .is-skewed-right .main-text {
+    margin-left: 1rem;
+  }
+
+  .is-skewed-left {
+    transform: skew(2deg);
+  }
+  .is-skewed-left .main-text {
+    transform: skew(-2deg);
+  }
+  .is-skewed-left .main-title, .is-skewed-left .main-subtitle {
+    transform: skew(-7deg);
+  }
+  .is-skewed-left .main-subtitle {
+    transform: skew(-7deg);
+  }
+  .is-skewed-left .main-text {
+    margin-right: 1rem;
+  }
+
+  .is-reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
+
+/*# sourceMappingURL=tmp09inPE.tmp.map */
