@@ -3,6 +3,11 @@
 
 open Html
 
+let getProcessedCardBody (card:Cardloader.MainPageCard) =
+    card.CardBody
+        .Replace("<strong>",(sprintf "<strong class='is-emphasized-one-third-%s'>" card.CardEmphasisColor))
+        .Replace("<h3>","<h3 class='main-subtitle'>")
+                                    
 let generate' (ctx : SiteContents) (_: string) =
     
     let cards : Cardloader.MainPageCard list= 
@@ -21,7 +26,7 @@ let generate' (ctx : SiteContents) (_: string) =
                                 div [Class "main-TextField is-skewed-left"] [
                                     h2 [Class (sprintf "main-title is-emphasized-half-%s" card.CardEmphasisColor )] [!! card.CardTitle]
                                     div [Class "main-text"] [
-                                        !! card.CardBody.Replace("<strong>",(sprintf "<strong class='is-emphasized-one-third-%s'>" card.CardEmphasisColor))
+                                        !! (getProcessedCardBody card)
                                     ]
                                 ]
                             ]
@@ -53,7 +58,7 @@ let generate' (ctx : SiteContents) (_: string) =
                                 div [Class "main-TextField is-skewed-right"] [
                                     h2 [Class (sprintf "main-title is-emphasized-half-%s" card.CardEmphasisColor )] [!! card.CardTitle]
                                     div [Class "main-text"] [
-                                        !! card.CardBody.Replace("<strong>",(sprintf "<strong class='is-emphasized-one-third-%s'>" card.CardEmphasisColor))
+                                        !! (getProcessedCardBody card)
                                     ]
                                 ]
                             ]

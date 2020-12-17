@@ -9,19 +9,30 @@ $colorWhite: #F0F2F4;
 
 $fslabDarkMagenta: #A00975;
 $fslabDarkBlue: #2D3E50;
-$fslabPetrol: #005F69;
-$fslabDarkLime: #80B602;
-$fslabPastelOrange: #CB793A;
+$fslabRose: #D12F67;
+$fslabSapphire: #19657B;
+$fslabPurple: #AE6DAB;
+$fslabDarkGreen: #0D5E52;
 
 //bulma extensions
 
 nav {
-    border-bottom: 1px solid $fslabDarkMagenta;
+    border-bottom: 2px solid $fslabDarkMagenta;
+}
+
+.is-active-link {
+    background-color: $fslabDarkMagenta;
+    color: $colorWhite;
+    font-weight: bold;
 }
 
 .section {
     margin-bottom:5rem
 }
+
+// a.navbar-item:hover {
+//     background-color: lighten($fslabDarkMagenta,);
+// }
 
 // install sass (https://sass-lang.com/)
 // powershell as admin: 'npm install -g sass'
@@ -35,35 +46,45 @@ nav {
 .is-darkblue {
     color: $fslabDarkBlue
 }
-.is-darklime {
-    color: $fslabDarkLime
+.is-rose {
+    color: $fslabRose
 }
-.is-pastelorange {
-    color: $fslabPastelOrange
+.is-sapphire {
+    color: $fslabSapphire
 }
-.is-petrol {
-    color: $fslabPetrol
+.is-purple {
+    color: $fslabPurple
 }
+.is-darkgreen {
+    color: $fslabDarkGreen
+}
+
 .has-bg-darkmagenta {
     background-color: $fslabDarkMagenta;
     color: $colorWhite;
 }
 .has-bg-darkblue {
-    color: $fslabDarkBlue;
+    background-color: $fslabDarkBlue;
     color: $colorWhite;
 }
-.has-bg-darklime {
-    color: $fslabDarkLime;
+.has-bg-rose {
+    background-color: $fslabRose;
     color: $colorWhite;
 }
-.has-bg-pastelorange {
-    color: $fslabPastelOrange;
+.has-bg-sapphire {
+    background-color: $fslabPurple;
     color: $colorWhite;
 }
-.has-bg-petrol {
-    color: $fslabPetrol;
+.has-bg-purple {
+    background-color: $fslabPurple;
     color: $colorWhite;
 }
+
+.has-bg-darkgreen {
+    background-color: $fslabDarkGreen;
+    color: $colorWhite;
+}
+
 // set font 
 html, body {
     font-family: "Nunito Sans";
@@ -114,14 +135,17 @@ html, body {
 .card-is-darkBlue {
     @include color-container($fslabDarkBlue)
 }
-.card-is-petrol {
-    @include color-container($fslabPetrol)
+.card-is-rose {
+    @include color-container($fslabRose)
 }
-.card-is-pastelorange {
-    @include color-container($fslabPastelOrange)
+.card-is-sapphire {
+    @include color-container($fslabSapphire)
 }
-.card-is-darklime {
-    @include color-container($fslabDarkLime)
+.card-is-purple {
+    @include color-container($fslabPurple)
+}
+.card-is-darkgreen {
+    @include color-container($fslabDarkGreen)
 }
 
 
@@ -161,6 +185,10 @@ html, body {
     .main-title {
         transform: skew($newSkew);
     }
+
+    .main-subtitle {
+        transform: skew($newSkew);
+    }
 }
 
 
@@ -174,40 +202,49 @@ html, body {
 .is-emphasized-half-darkmagenta {
     @include is-emphasized(50%,$fslabDarkMagenta)
 }
-.is-emphasized-half-darklime {
-    @include is-emphasized(50%,$fslabDarkLime)
+.is-emphasized-half-rose {
+    @include is-emphasized(50%,$fslabRose)
 }
-.is-emphasized-half-pastelorange {
-    @include is-emphasized(50%,$fslabPastelOrange)
+.is-emphasized-half-sapphire {
+    @include is-emphasized(50%,$fslabSapphire)
 }
-.is-emphasized-half-petrol {
-    @include is-emphasized(50%,$fslabPetrol)
+.is-emphasized-half-purple {
+    @include is-emphasized(50%,$fslabPurple)
 }
+.is-emphasized-half-darkgreen {
+    @include is-emphasized(50%,$fslabDarkGreen)
+}
+
+
 
 .is-emphasized-one-third {
     letter-spacing: 0.1em;
     color:$colorWhite;
 }
 
-.is-emphasized-one-third-darkblue {
-    @extend .is-emphasized-one-third;
-    @include is-emphasized(20%,$fslabDarkBlue);
-}
 .is-emphasized-one-third-darkmagenta {
     @extend .is-emphasized-one-third;
     @include is-emphasized(20%,$fslabDarkMagenta)
 }
-.is-emphasized-one-third-darklime {
+.is-emphasized-one-third-darkblue {
     @extend .is-emphasized-one-third;
-    @include is-emphasized(20%,$fslabDarkLime)
+    @include is-emphasized(20%,$fslabDarkBlue);
 }
-.is-emphasized-one-third-pastelorange {
+.is-emphasized-one-third-rose {
     @extend .is-emphasized-one-third;
-    @include is-emphasized(20%,$fslabPastelOrange)
+    @include is-emphasized(20%,$fslabRose)
 }
-.is-emphasized-one-third-petrol {
+.is-emphasized-one-third-sapphire {
     @extend .is-emphasized-one-third;
-    @include is-emphasized(20%,$fslabPetrol)
+    @include is-emphasized(20%,$fslabSapphire)
+}
+.is-emphasized-one-third-purple {
+    @extend .is-emphasized-one-third;
+    @include is-emphasized(20%,$fslabPurple)
+}
+.is-emphasized-one-third-darkgreen {
+    @extend .is-emphasized-one-third;
+    @include is-emphasized(20%,$fslabDarkGreen)
 }
 
 // text title
@@ -219,6 +256,12 @@ html, body {
     letter-spacing: 0.2em;
     display: inline-block;
     text-transform: uppercase;
+}
+
+.main-subtitle {
+    // font-family: 'Raleway',sans-serif;
+    @extend .main-title; 
+    font-size: 1.5rem;
 }
 
 // text field

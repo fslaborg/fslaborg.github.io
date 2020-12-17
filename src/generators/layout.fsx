@@ -41,7 +41,7 @@ let layout (ctx : SiteContents) active bodyCnt =
     let menuEntries =
       pages
       |> Seq.map (fun p ->
-        let cls = if p.title = active then "navbar-item is-active" else "navbar-item"
+        let cls = if p.title = active then "navbar-item is-active-link" else "navbar-item"
         a [Class cls; Href p.link] [!! p.title ])
       |> Seq.toList
 
@@ -58,7 +58,7 @@ let layout (ctx : SiteContents) active bodyCnt =
 
         ]
         body [] [
-          nav [Class "navbar is-fixed-top"] [
+          nav [Class "navbar is-fixed-top is-spaced"] [
             div [Class "container"] [
               div [Class "navbar-brand"] [
                 a [Class "navbar-item"; Href "/"] [

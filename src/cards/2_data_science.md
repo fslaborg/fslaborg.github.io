@@ -1,7 +1,7 @@
 ---
 title: test2
 color: darkblue
-emphasis: petrol
+emphasis: rose
 image: https://picsum.photos/402?grayscale
 ---
 

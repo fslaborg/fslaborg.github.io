@@ -1,7 +1,7 @@
 ---
 title: test4
 color: darkblue
-emphasis: purple
+emphasis: darkmagenta
 image: https://picsum.photos/400?grayscale
 ---
 
