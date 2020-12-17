@@ -21,6 +21,12 @@ let markdownPipeline =
     MarkdownPipelineBuilder()
         .UsePipeTables()
         .UseGridTables()
+        .UseGenericAttributes()
+        .UseEmphasisExtras()
+        .UseListExtras()
+        .UseCitations()
+        .UseCustomContainers()
+        .UseFigures()
         .Build()
 
 ///`fileContent` - content of page to parse. Usually whole content of `.md` file

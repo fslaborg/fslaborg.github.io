@@ -55,6 +55,7 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "stylesheet"; Href "https://fonts.googleapis.com/css?family=Nunito+Sans"]
             link [Rel "stylesheet"; Href "https://unpkg.com/bulma@0.9.1/css/bulma.min.css"]
             link [Rel "stylesheet"; Type "text/css"; Href "/style/style.css"]
+            script [ Defer true; Type "text/javascript"; Src "/js/prism.js" ] []
 
         ]
         body [] [
