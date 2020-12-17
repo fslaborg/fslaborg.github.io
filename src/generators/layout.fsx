@@ -81,5 +81,7 @@ let layout (ctx : SiteContents) active bodyCnt =
 let render (ctx : SiteContents) cnt =
   cnt
   |> HtmlElement.ToString
+#if WATCH
   |> injectWebsocketCode 
+#endif
 
