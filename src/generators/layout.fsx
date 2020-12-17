@@ -9,7 +9,7 @@ let urlPrefix =
 #if WATCH
   ""
 #endif
-  "/fslabsite/"
+  "/fslabsite"
 
 
 open Html
