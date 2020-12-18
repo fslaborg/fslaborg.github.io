@@ -19,16 +19,18 @@ type MainPageCard = {
     CardTitle:string
     CardBody:string
     CardColor:string
+    CardBGColor:string
     CardEmphasisColor:string
     CardImages:string []
     CardIndex: int
     CardType:CardType
 } with
-    static member create title body color emphasisColor images index ctype = 
+    static member create title body color bgcolor emphasisColor images index ctype = 
         {
             CardTitle = title
             CardBody = body
             CardColor = color
+            CardBGColor = bgcolor
             CardEmphasisColor = emphasisColor 
             CardImages = images
             CardIndex = index
@@ -49,6 +51,7 @@ let loadFile (cardMarkdownPath:string) =
     let title = config |> Map.find "title" |> trimString
     let body = content
     let color = config |> Map.find "color" |> trimString
+    let bgcolor = config |> Map.find "bg-color" |> trimString
     let emphasisColor = config |> Map.find "emphasis" |> trimString
     let images = config |> Map.find "image" |> trimString |> fun s -> s.Split(',')
     let index = config |> Map.find "index" |> trimString |> int
@@ -56,7 +59,7 @@ let loadFile (cardMarkdownPath:string) =
 
     printfn "%A" title
 
-    MainPageCard.create title body color emphasisColor images index ctype
+    MainPageCard.create title body color bgcolor emphasisColor images index ctype
 
 let loader (projectRoot: string) (siteContent: SiteContents) =
     let cardsPath = System.IO.Path.Combine(projectRoot, contentDir)

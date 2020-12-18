@@ -34,7 +34,7 @@ let config = {
         //{Script = "less.fsx"; Trigger = OnFileExt ".less"; OutputFile = ChangeExtension "css" }
         {Script = "sass.fsx"; Trigger = OnFileExt ".scss"; OutputFile = ChangeExtension "css" }
         {Script = "staticfile.fsx"; Trigger = OnFilePredicate staticPredicate; OutputFile = SameFileName }
-        {Script = "card.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
+        {Script = "cards.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
         {Script = "material.fsx"; Trigger = Once; OutputFile = NewFileName "material.html" }
         {Script = "projects.fsx"; Trigger = Once; OutputFile = NewFileName "projects.html" }
         {Script = "contact.fsx"; Trigger = Once; OutputFile = NewFileName "contact.html" }

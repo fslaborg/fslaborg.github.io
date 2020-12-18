@@ -4,13 +4,29 @@
 open Html
 
 let getProcessedCardBody (card:Cardloader.MainPageCard) =
+    printfn "%A" card.CardBody
     card.CardBody
-        .Replace("<strong>",(sprintf "<strong class='is-emphasized-one-third-%s'>" card.CardEmphasisColor))
+        .Replace("<strong>",(sprintf "<strong class='has-bg-one-fourth-%s'>" card.CardEmphasisColor))
         .Replace("<h3>","<h3 class='main-subtitle'>")
 
+let splitPrimaryContent (s:string) =
+    
+    printfn "%A" s
+    let header,columns =
+       s.Split("<!---C1-->").[0],s.Split("<!---C1-->").[1]
+    let col1,col2 =
+        columns.Split("<!---C2-->").[0],columns.Split("<!---C2-->").[1]
+    header,col1,col2
+
 let renderPrimaryCard (card:Cardloader.MainPageCard) =
-    div [Class (sprintf "card-is-%s main-Container" card.CardColor)] [
-        div [Class "main-TextField is-skewed-right"] [
+
+    let header, c1, c2 =
+        card
+        |> getProcessedCardBody
+        |> splitPrimaryContent
+
+    div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardEmphasisColor)] [
+        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
             h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
             div [Class "container is-centered"] [
                 div [Class "image-scroll-container is-centered has-text-centered"] [
@@ -18,7 +34,11 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
                 ]
             ]
             div [Class "main-text"] [
-                !! (getProcessedCardBody card)
+                !! header
+                div [Class "columns"] [
+                    div [Class "column"] [!! c1]
+                    div [Class "column"] [!! c2]
+                ]
             ]
         ]
     ]
@@ -26,11 +46,11 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
 
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
     if isLeft then 
-        div [Class (sprintf "card-is-%s main-Container" card.CardColor)] [
+        div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
             div [Class "columns"] [
                 div [Class "column"] [
-                    div [Class "main-TextField is-skewed-left"] [
-                        h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
                         div [Class "main-text"] [
                             !! (getProcessedCardBody card)
                         ]
@@ -39,7 +59,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                 div [Class "column"] [
                     div [Class "main-ImageContainer"] [
                         a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                            figure [Class "image is-square"] [
+                            figure [Class "image"] [
                                 img [Src card.CardImages.[0]]
                             ]
                         ]
@@ -49,20 +69,20 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
             ]
         ]
     else
-        div [Class (sprintf "card-is-%s main-Container" card.CardColor)] [
+        div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
             div [Class "columns"] [
                 div [Class "column"] [
                     div [Class "main-ImageContainer"] [
                         a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                            figure [Class "image is-square"] [
+                            figure [Class "image"] [
                                 img [Src card.CardImages.[0]]
                             ]
                         ]
                     ]
                 ]
                 div [Class "column"] [
-                    div [Class "main-TextField is-skewed-right"] [
-                        h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
                         div [Class "main-text"] [
                             !! (getProcessedCardBody card)
                         ]
