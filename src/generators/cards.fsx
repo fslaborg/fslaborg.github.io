@@ -4,14 +4,11 @@
 open Html
 
 let getProcessedCardBody (card:Cardloader.MainPageCard) =
-    printfn "%A" card.CardBody
     card.CardBody
         .Replace("<strong>",(sprintf "<strong class='has-bg-one-fourth-%s'>" card.CardEmphasisColor))
         .Replace("<h3>","<h3 class='main-subtitle'>")
 
 let splitPrimaryContent (s:string) =
-    
-    printfn "%A" s
     let header,columns =
        s.Split("<!---C1-->").[0],s.Split("<!---C1-->").[1]
     let col1,col2 =
@@ -60,7 +57,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                     div [Class "main-ImageContainer"] [
                         a [Href "https://github.com/fslaborg"; Target "_blank"] [
                             figure [Class "image"] [
-                                img [Src card.CardImages.[0]]
+                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
                             ]
                         ]
                     ]
@@ -75,7 +72,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                     div [Class "main-ImageContainer"] [
                         a [Href "https://github.com/fslaborg"; Target "_blank"] [
                             figure [Class "image"] [
-                                img [Src card.CardImages.[0]]
+                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
                             ]
                         ]
                     ]
