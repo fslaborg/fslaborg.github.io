@@ -1,10 +1,11 @@
 ---
 title: Interoperability is key
 color: darkblue
-emphasis: darkmagenta
+bg-color: lightmagenta
+emphasis: aquamarine
 type: secondary
 index: 3
-image: https://picsum.photos/400?grayscale
+image: /images/interoperability.svg
 ---
 
 # Test

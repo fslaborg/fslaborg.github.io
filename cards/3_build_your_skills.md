@@ -1,10 +1,11 @@
 ---
 title: Build your skills
-color: rose
-emphasis: darkblue
+color: darkmagenta
+bg-color: darkblue
+emphasis: aquamarine
 type: secondary
 index: 2
-image: https://picsum.photos/2403?grayscale
+image: /images/Picture2.png
 ---
 
 # Test
