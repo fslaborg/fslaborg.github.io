@@ -2,7 +2,7 @@
 
 Static website generated with :heart: and [fornax](https://github.com/ionide/Fornax)
 
-This [website](https://github.com/fslaborg/fslabsite) demonstrates the aims of the fslab organisation as an incubation space for data science projects in F# and .NET:
+This [website](https://fslab.org/fslabsite) demonstrates the aims of the fslab organisation as an incubation space for data science projects in F# and .NET:
 
 - fslab as a home for community projects to get rejuvenated or to get more traction
 - A endorsement list with both fslab and external projects for data science in .NET, categorized by position in the data science workflow

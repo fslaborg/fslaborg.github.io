@@ -4,7 +4,7 @@ color: darkmagenta
 emphasis: darkblue
 type: main
 index: 0
-image: https://picsum.photos/401?grayscale
+image: https://picsum.photos/401?grayscale, https://picsum.photos/402?grayscale
 ---
 
 ### fslab : because F# ❤️ data science
