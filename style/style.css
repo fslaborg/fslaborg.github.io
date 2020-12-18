@@ -135,8 +135,8 @@ nav {
 }
 
 .image-scroll-container {
-  min-width: 70%;
-  min-height: 40%;
+  max-width: 50%;
+  margin: auto;
   border: 1px solid #2D3E50;
 }
 
@@ -495,4 +495,4 @@ html, body {
   }
 }
 
-/*# sourceMappingURL=tmpJi0MiM.tmp.map */
+/*# sourceMappingURL=tmp2FHTmF.tmp.map */
