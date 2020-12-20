@@ -27,10 +27,6 @@ nav {
     font-weight: bold;
 }
 
-.section {
-    margin-bottom:5rem
-}
-
 .image-scroll-container {
     max-width: 50%;
     margin:auto;
@@ -68,28 +64,38 @@ nav {
     color: $fslabDarkGreen
 }
 
+@mixin has-bg {
+    padding: 5px
+}
+
 .has-bg-darkmagenta {
+    @include has-bg;
     background-color: $fslabDarkMagenta;
     color: $colorWhite;
 }
 .has-bg-darkblue {
+    @include has-bg;
     background-color: $fslabDarkBlue;
     color: $colorWhite;
 }
 .has-bg-rose {
+    @include has-bg;
     background-color: $fslabRose;
     color: $colorWhite;
 }
 .has-bg-sapphire {
+    @include has-bg;
     background-color: $fslabPurple;
     color: $colorWhite;
 }
 .has-bg-purple {
+    @include has-bg;
     background-color: $fslabPurple;
     color: $colorWhite;
 }
 
 .has-bg-darkgreen {
+    @include has-bg;
     background-color: $fslabDarkGreen;
     color: $colorWhite;
 }
@@ -114,7 +120,12 @@ html, body {
 
 .main-Container {
     padding-bottom: 3rem;
-    margin: 7rem 5rem
+    margin: 5% auto;
+
+    @media only screen and (max-width: 400px) {
+        margin: 10px auto;
+        padding-bottom: 10px;
+    }
 }
 
 @mixin color-container($custom-color) {
@@ -129,7 +140,7 @@ html, body {
         background-color: $custom-color
     }
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 550px) {
         background: linear-gradient(0deg, $lighter 80%, $colorWhite 80%);
     }
 
@@ -165,8 +176,26 @@ html, body {
     // max-width: 164px;
     margin: auto;
 
+    @media only screen and (max-width: 1214px) {
+        max-width: 80%;
+    }
+
+    @media only screen and (max-width: 845px) {
+        max-width: 100%;
+    }
+
+    @media only screen and (max-width: 768px) {
+        max-width: 40%;
+        min-width: 120px;
+    }
+
+    @media only screen and (max-width: 450px) {
+        max-width: 70%;
+    }
+
     img {
-        transition: .5s ease;
+        transition: transform .5s ease;
+        z-index: 2;
     }
 
     img:hover{
@@ -178,6 +207,7 @@ html, body {
         // -webkit-filter: brightness(110%);
         box-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
         }
+
 }
 //
 
@@ -197,6 +227,23 @@ html, body {
 
     .main-subtitle {
         transform: skew($newSkew);
+    }
+
+    @media only screen and (max-width: 400px) {
+        max-width: 95%;
+        transform: skew(0deg);
+
+        .main-text {
+            transform: skew(0deg);
+        }
+    
+        .main-title {
+            transform: skew(-3deg);
+        }
+    
+        .main-subtitle {
+            transform: skew(0deg);
+        }
     }
 }
 
@@ -259,18 +306,43 @@ html, body {
 // text title
 .main-title {
     // font-family: 'Raleway',sans-serif;
-    font-size: 2.5rem;
+    font-size: 34px;
     margin-bottom: 1rem;
     font-weight: bolder;
     letter-spacing: 0.2em;
     display: inline-block;
     text-transform: uppercase;
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 30px;
+    }
+
+    @media only screen and (max-width: 845px) {
+        font-size: 26px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 20px;
+    }
+
 }
 
 .main-subtitle {
     // font-family: 'Raleway',sans-serif;
     @extend .main-title; 
-    font-size: 1.5rem;
+    font-size: 28px;
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 24px;
+    }
+
+    @media only screen and (max-width: 845px) {
+        font-size: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px;
+    }
 }
 
 // text field
@@ -283,6 +355,24 @@ html, body {
 
     .main-text {
         text-align: justify;
+    }
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 17px;
+    }
+
+    @media only screen and (max-width: 845px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 13px;
+        padding: 8px 10px;
     }
 }
 
@@ -327,4 +417,34 @@ html, body {
         flex-direction: column-reverse;
         display: flex;
     }
+}
+
+/// Slider
+
+// Found problem that all slider-container have min-height 100% which looks awful
+
+.slider-container {
+    @extend .slider-container;
+    min-height: unset;
+}
+
+.slider-item {
+    @extend .slider-item;
+    // height: 300px;
+}
+
+.slider-navigation-previous {
+    @extend .slider-navigation-previous;
+    color: darkgrey
+}
+
+.slider-navigation-next {
+    @extend .slider-navigation-next;
+    color: darkgrey
+}
+
+.carousel {
+    @extend .carousel;
+    overflow: hidden;
+    margin: 0px auto 1rem auto;
 }

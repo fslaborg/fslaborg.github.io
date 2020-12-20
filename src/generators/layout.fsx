@@ -62,9 +62,12 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "icon"; Type "image/png"; Sizes "32x32"; Href "/images/favicon.png"]
             link [Rel "stylesheet"; Href "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"]
             link [Rel "stylesheet"; Href "https://fonts.googleapis.com/css?family=Nunito+Sans"]
-            link [Rel "stylesheet"; Href "https://unpkg.com/bulma@0.9.1/css/bulma.min.css"]
+            link [Rel "stylesheet"; Href "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"]
+            link [Rel "stylesheet"; Href "https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"]
             link [Rel "stylesheet"; Type "text/css"; Href (urlPrefix + "/style/style.css")]
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/prism.js") ] []
+            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js") ] []
+            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/slider.js") ] []
 
         ]
         body [] [

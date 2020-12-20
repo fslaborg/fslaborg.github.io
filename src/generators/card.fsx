@@ -9,68 +9,101 @@ let getProcessedCardBody (card:Cardloader.MainPageCard) =
         .Replace("<h3>","<h3 class='main-subtitle'>")
 
 let renderPrimaryCard (card:Cardloader.MainPageCard) =
-    div [Class (sprintf "card-is-%s main-Container" card.CardColor)] [
-        div [Class "main-TextField is-skewed-right"] [
+    section [Class "section"] [ 
+        div [Class (sprintf "container card-is-%s main-Container" card.CardColor)] [
             h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-            div [Class "container is-centered"] [
-                div [Class "image-scroll-container is-centered has-text-centered"] [
-                    !! "images will scroll here"
+            div [Class "container"] [
+                div [Class "main-TextField is-skewed-right"; HtmlProperties.Style [CSSProperties.MaxWidth "80%"]  ] [
+                    div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [CSSProperties.MaxWidth "80%"] ] [
+                        div [Class "item-1"] [
+                            figure [Class "image is-16by9 has-ratio"] [
+                                img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                            ]
+                        ]
+                        div [Class "item-2" ] [
+                            figure [Class "image is-16by9 has-ratio"] [
+                                img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                            ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-16by9 has-ratio"] [
+                                img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                            ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-16by9 has-ratio"] [
+                                img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                            ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-16by9 has-ratio"] [
+                                img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                            ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-16by9 has-ratio"] [
+                                img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                            ]
+                        ]
+                    ]
+                    div [Class "main-text"] [
+                        !! (getProcessedCardBody card)
+                    ]
                 ]
-            ]
-            div [Class "main-text"] [
-                !! (getProcessedCardBody card)
             ]
         ]
     ]
 
 
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
-    if isLeft then 
-        div [Class (sprintf "card-is-%s main-Container" card.CardColor)] [
-            div [Class "columns"] [
-                div [Class "column"] [
-                    div [Class "main-TextField is-skewed-left"] [
-                        h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
-                        ]
-                    ]
-                ]
-                div [Class "column"] [
-                    div [Class "main-ImageContainer"] [
-                        a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                            figure [Class "image is-square"] [
-                                img [Src card.CardImages.[0]]
+    div [Class "section"] [
+        if isLeft then 
+            div [Class (sprintf "container card-is-%s main-Container" card.CardColor)] [
+                div [Class "columns is-reverse-columns"] [
+                    div [Class "column"] [
+                        div [Class "main-TextField is-skewed-left"] [
+                            h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "main-text"] [
+                                !! (getProcessedCardBody card)
                             ]
                         ]
                     ]
-                ]
-            
-            ]
-        ]
-    else
-        div [Class (sprintf "card-is-%s main-Container" card.CardColor)] [
-            div [Class "columns"] [
-                div [Class "column"] [
-                    div [Class "main-ImageContainer"] [
-                        a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                            figure [Class "image is-square"] [
-                                img [Src card.CardImages.[0]]
+                    div [Class "column"] [
+                        div [Class "main-ImageContainer"] [
+                            a [Href "https://github.com/fslaborg"; Target "_blank"] [
+                                figure [Class "image is-square"] [
+                                    img [Src card.CardImages.[0]]
+                                ]
                             ]
                         ]
                     ]
+                
                 ]
-                div [Class "column"] [
-                    div [Class "main-TextField is-skewed-right"] [
-                        h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
+            ]
+        else
+            div [Class (sprintf "container card-is-%s main-Container" card.CardColor)] [
+                div [Class "columns"] [
+                    div [Class "column"] [
+                        div [Class "main-ImageContainer"] [
+                            a [Href "https://github.com/fslaborg"; Target "_blank"] [
+                                figure [Class "image is-square"] [
+                                    img [Src card.CardImages.[0]]
+                                ]
+                            ]
                         ]
                     ]
+                    div [Class "column"] [
+                        div [Class "main-TextField is-skewed-right"] [
+                            h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "main-text"] [
+                                !! (getProcessedCardBody card)
+                            ]
+                        ]
+                    ]
+                
                 ]
-            
             ]
-        ]
+    ]
 let generate' (ctx : SiteContents) (_: string) =
     
     let cards : Cardloader.MainPageCard list= 
@@ -79,7 +112,7 @@ let generate' (ctx : SiteContents) (_: string) =
         |> Seq.toList
 
     Layout.layout ctx "Home" [
-        section [Class "section"] (
+        div [] (
             cards
             |> List.sortBy (fun c -> c.CardIndex)
             |> List.mapi (fun i card ->
