@@ -26,10 +26,6 @@ nav {
     font-weight: bold;
 }
 
-.section {
-    margin-bottom:5rem
-}
-
 .image-scroll-container {
     max-width: 50%;
     margin:auto;
@@ -72,6 +68,10 @@ nav {
         background-color: $bg-color1;
         color: $colorWhite;
     }
+}
+
+@mixin has-bg {
+    padding: 5px
 }
 
 .has-bg-darkmagenta {
@@ -161,8 +161,54 @@ html, body {
 
 .main-Container {
     padding-bottom: 3rem;
-    margin: 7rem 5rem
+    margin: 5% auto;
+
+    @media only screen and (max-width: 400px) {
+        margin: 10px auto;
+        padding-bottom: 10px;
+    }
 }
+
+// @mixin color-container($custom-color) {
+//     $r1: lightness($custom-color);
+//     $r: abs($r1 - 80%);
+//     $lighter: lighten($custom-color, $r);
+//     background: $lighter;
+//     background: linear-gradient(0deg, $lighter 75%, $colorWhite 75%);
+//     color: $colorWhite;
+
+//     .main-TextField {
+//         background-color: $custom-color
+//     }
+
+//     @media only screen and (max-width: 550px) {
+//         background: linear-gradient(0deg, $lighter 80%, $colorWhite 80%);
+//     }
+
+//     @media only screen and (max-width: 400px) {
+//         background: linear-gradient(0deg, $lighter 85%, $colorWhite 85%);
+//     }
+// }
+
+// .card-is-darkmagenta {
+//     @include color-container($fslabDarkMagenta)
+// }
+// .card-is-darkBlue {
+//     @include color-container($fslabDarkBlue)
+// }
+// .card-is-rose {
+//     @include color-container($fslabRose)
+// }
+// .card-is-sapphire {
+//     @include color-container($fslabSapphire)
+// }
+// .card-is-purple {
+//     @include color-container($fslabPurple)
+// }
+// .card-is-darkgreen {
+//     @include color-container($fslabDarkGreen)
+// }
+
 
 // image column
 .main-ImageContainer {
@@ -171,8 +217,26 @@ html, body {
     // max-width: 164px;
     margin: auto;
 
+    @media only screen and (max-width: 1214px) {
+        max-width: 80%;
+    }
+
+    @media only screen and (max-width: 845px) {
+        max-width: 100%;
+    }
+
+    @media only screen and (max-width: 768px) {
+        max-width: 40%;
+        min-width: 120px;
+    }
+
+    @media only screen and (max-width: 450px) {
+        max-width: 70%;
+    }
+
     img {
-        transition: .5s ease;
+        transition: transform .5s ease;
+        z-index: 2;
     }
 
     img:hover{
@@ -184,24 +248,142 @@ html, body {
         // -webkit-filter: brightness(110%);
         box-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
         }
+
 }
+
+// // ## text column
+// @mixin skew-only-container($skewBy: 10deg) {
+
+//     $newSkew: $skewBy - 5deg;
+//     transform: skew(-$skewBy);
+
+//     .main-text {
+//         transform: skew($skewBy);
+//     }
+
+//     .main-title {
+//         transform: skew($newSkew);
+//     }
+
+//     .main-subtitle {
+//         transform: skew($newSkew);
+//     }
+
+//     @media only screen and (max-width: 400px) {
+//         max-width: 95%;
+//         transform: skew(0deg);
+
+//         .main-text {
+//             transform: skew(0deg);
+//         }
+    
+//         .main-title {
+//             transform: skew(-3deg);
+//         }
+    
+//         .main-subtitle {
+//             transform: skew(0deg);
+//         }
+//     }
+// }
+
+
+// @mixin is-emphasized($degree:30%, $color) {
+//     background: linear-gradient(0deg, $color $degree, transparent $degree);
+// }
+
+// .is-emphasized-half-darkblue {
+//     @include is-emphasized(50%,$fslabDarkBlue)
+// }
+// .is-emphasized-half-darkmagenta {
+//     @include is-emphasized(50%,$fslabDarkMagenta)
+// }
+// .is-emphasized-half-rose {
+//     @include is-emphasized(50%,$fslabRose)
+// }
+// .is-emphasized-half-sapphire {
+//     @include is-emphasized(50%,$fslabSapphire)
+// }
+// .is-emphasized-half-purple {
+//     @include is-emphasized(50%,$fslabPurple)
+// }
+// .is-emphasized-half-darkgreen {
+//     @include is-emphasized(50%,$fslabDarkGreen)
+// }
+
+
+
+// .is-emphasized-one-third {
+//     letter-spacing: 0.1em;
+//     color:$colorWhite;
+// }
+
+// .is-emphasized-one-third-darkmagenta {
+//     @extend .is-emphasized-one-third;
+//     @include is-emphasized(20%,$fslabDarkMagenta)
+// }
+// .is-emphasized-one-third-darkblue {
+//     @extend .is-emphasized-one-third;
+//     @include is-emphasized(20%,$fslabDarkBlue);
+// }
+// .is-emphasized-one-third-rose {
+//     @extend .is-emphasized-one-third;
+//     @include is-emphasized(20%,$fslabRose)
+// }
+// .is-emphasized-one-third-sapphire {
+//     @extend .is-emphasized-one-third;
+//     @include is-emphasized(20%,$fslabSapphire)
+// }
+// .is-emphasized-one-third-purple {
+//     @extend .is-emphasized-one-third;
+//     @include is-emphasized(20%,$fslabPurple)
+// }
+// .is-emphasized-one-third-darkgreen {
+//     @extend .is-emphasized-one-third;
+//     @include is-emphasized(20%,$fslabDarkGreen)
+// }
 
 // text title
 .main-title {
     // font-family: 'Raleway',sans-serif;
-    font-size: 2.5rem;
+    font-size: 34px;
     margin-bottom: 1rem;
     font-weight: bolder;
     letter-spacing: 0.2em;
     display: inline-block;
     text-transform: uppercase;
     margin:auto;
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 30px;
+    }
+
+    @media only screen and (max-width: 845px) {
+        font-size: 26px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 20px;
+    }
+
 }
 
 .main-subtitle {
     // font-family: 'Raleway',sans-serif;
     @extend .main-title; 
-    font-size: 1.5rem;
+    font-size: 28px;
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 24px;
+    }
+
+    @media only screen and (max-width: 845px) {
+        font-size: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px;
+    }
 }
 
 // text field
@@ -215,6 +397,24 @@ html, body {
     margin-right: 5%;
     .main-text {
         text-align: justify;
+    }
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 17px;
+    }
+
+    @media only screen and (max-width: 845px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 13px;
+        padding: 8px 10px;
     }
 }
 
@@ -235,4 +435,34 @@ html, body {
         flex-direction: column-reverse;
         display: flex;
     }
+}
+
+/// Slider
+
+// Found problem that all slider-container have min-height 100% which looks awful
+
+.slider-container {
+    @extend .slider-container;
+    min-height: unset;
+}
+
+.slider-item {
+    @extend .slider-item;
+    // height: 300px;
+}
+
+.slider-navigation-previous {
+    @extend .slider-navigation-previous;
+    color: darkgrey
+}
+
+.slider-navigation-next {
+    @extend .slider-navigation-next;
+    color: darkgrey
+}
+
+.carousel {
+    @extend .carousel;
+    overflow: hidden;
+    margin: 0px auto 1rem auto;
 }
