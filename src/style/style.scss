@@ -74,71 +74,40 @@ nav {
     padding: 5px
 }
 
-.has-bg-darkmagenta {
-    @include has-bg(100%,$fslabDarkMagenta,$fslabDarkMagenta)
+@mixin has-bg {
+    padding: 5px
 }
-.has-bg-lightmagenta {
-    @include has-bg(100%,$fslabLightMagenta,$fslabLightMagenta)
+
+.has-bg-darkmagenta {
+    @include has-bg;
+    background-color: $fslabDarkMagenta;
+    color: $colorWhite;
 }
 .has-bg-darkblue {
-    @include has-bg(100%,$fslabDarkBlue,$fslabDarkBlue)
+    @include has-bg;
+    background-color: $fslabDarkBlue;
+    color: $colorWhite;
+}
+.has-bg-rose {
+    @include has-bg;
+    background-color: $fslabRose;
+    color: $colorWhite;
 }
 .has-bg-sapphire {
-    @include has-bg(100%,$fslabSapphire,$fslabSapphire)
+    @include has-bg;
+    background-color: $fslabPurple;
+    color: $colorWhite;
 }
-.has-bg-aquamarine {
-    @include has-bg(100%,$fslabAquamarine,$fslabAquamarine)
-}
-
-.has-bg-three-fourths-darkmagenta {
-    @include has-bg(75%,$fslabDarkMagenta,$transparent)
-}
-.has-bg-three-fourths-lightmagenta {
-    @include has-bg(75%,$fslabLightMagenta,$transparent)
-}
-.has-bg-three-fourths-darkblue {
-    @include has-bg(75%,$fslabDarkBlue,$transparent)
-}
-.has-bg-three-fourths-sapphire {
-    @include has-bg(75%,$fslabSapphire,$transparent)
-}
-.has-bg-three-fourths-aquamarine {
-    @include has-bg(75%,$fslabAquamarine,$transparent)
+.has-bg-purple {
+    @include has-bg;
+    background-color: $fslabPurple;
+    color: $colorWhite;
 }
 
-.has-bg-one-fourth-darkmagenta {
-    @include has-bg(25%,$fslabDarkMagenta,$transparent)
-}
-.has-bg-one-fourth-lightmagenta {
-    @include has-bg(25%,$fslabLightMagenta,$transparent)
-}
-.has-bg-one-fourth-darkblue {
-    @include has-bg(25%,$fslabDarkBlue,$transparent)
-}
-.has-bg-one-fourth-sapphire {
-    @include has-bg(25%,$fslabSapphire,$transparent)
-}
-.has-bg-one-fourth-aquamarine {
-    @include has-bg(25%,$fslabAquamarine,$transparent)
-}
-
-@mixin is-emphasized($color) {
-    border-bottom: 5px solid $color
-}
-.is-emphasized-darkblue {
-    @include is-emphasized($fslabDarkBlue)
-}
-.is-emphasized-darkmagenta {
-    @include is-emphasized($fslabDarkMagenta)
-}
-.is-emphasized-lightmagenta {
-    @include is-emphasized($fslabLightMagenta)
-}
-.is-emphasized-sapphire {
-    @include is-emphasized($fslabSapphire)
-}
-.is-emphasized-aquamarine {
-    @include is-emphasized($fslabAquamarine)
+.has-bg-darkgreen {
+    @include has-bg;
+    background-color: $fslabDarkGreen;
+    color: $colorWhite;
 }
 
 // set font 
@@ -395,6 +364,7 @@ html, body {
     font-weight: bolder;
     margin-left: 5%;
     margin-right: 5%;
+
     .main-text {
         text-align: justify;
     }
