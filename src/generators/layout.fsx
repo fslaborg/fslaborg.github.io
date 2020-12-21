@@ -66,7 +66,7 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "stylesheet"; Href "https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"]
             link [Rel "stylesheet"; Type "text/css"; Href (urlPrefix + "/style/style.css")]
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/prism.js") ] []
-            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js") ] []
+            script [ Defer true; Type "text/javascript"; Src ("https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js") ] []
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/slider.js") ] []
 
         ]
