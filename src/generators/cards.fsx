@@ -28,7 +28,7 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
                 h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
                 div [Class "container"] [
                     div [ ] [
-                        div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [CSSProperties.MaxWidth "80%"] ] [
+                        div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [CSSProperties.MaxWidth "50%"] ] [
                             div [Class "item-1"] [
                                 figure [Class "image is-16by9 has-ratio"] [
                                     img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
@@ -59,9 +59,6 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
                                     img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
                                 ]
                             ]
-                        ]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
                         ]
                     ]
                 ]
