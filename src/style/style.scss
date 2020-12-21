@@ -61,53 +61,93 @@ nav {
 
 @mixin has-bg($fillPercentage,$bg-color1,$bg-color2) {
     @if ($fillPercentage < 100%) {
-        background: $bg-color1;
+        // background: $bg-color1;
         background:  linear-gradient(0deg, $bg-color1 $fillPercentage, $bg-color2 $fillPercentage);
         color: $colorWhite;
     } @else {
         background-color: $bg-color1;
         color: $colorWhite;
     }
-}
 
-@mixin has-bg {
-    padding: 5px
-}
+    @media only screen and (max-width: 400px) {
 
-@mixin has-bg {
-    padding: 5px
+        @if ($fillPercentage < 100%) {
+            $newPercentage: $fillPercentage + 5%;
+            // background: $bg-color1;
+            background:  linear-gradient(0deg, $bg-color1 $newPercentage, $bg-color2 $newPercentage);
+            color: $colorWhite;
+        } @else {
+            background-color: $bg-color1;
+            color: $colorWhite;
+        }
+    }
 }
 
 .has-bg-darkmagenta {
-    @include has-bg;
-    background-color: $fslabDarkMagenta;
-    color: $colorWhite;
+    @include has-bg(100%,$fslabDarkMagenta,$fslabDarkMagenta)
+}
+.has-bg-lightmagenta {
+    @include has-bg(100%,$fslabLightMagenta,$fslabLightMagenta)
 }
 .has-bg-darkblue {
-    @include has-bg;
-    background-color: $fslabDarkBlue;
-    color: $colorWhite;
-}
-.has-bg-rose {
-    @include has-bg;
-    background-color: $fslabRose;
-    color: $colorWhite;
+    @include has-bg(100%,$fslabDarkBlue,$fslabDarkBlue)
 }
 .has-bg-sapphire {
-    @include has-bg;
-    background-color: $fslabPurple;
-    color: $colorWhite;
+    @include has-bg(100%,$fslabSapphire,$fslabSapphire)
 }
-.has-bg-purple {
-    @include has-bg;
-    background-color: $fslabPurple;
-    color: $colorWhite;
+.has-bg-aquamarine {
+    @include has-bg(100%,$fslabAquamarine,$fslabAquamarine)
 }
 
-.has-bg-darkgreen {
-    @include has-bg;
-    background-color: $fslabDarkGreen;
-    color: $colorWhite;
+.has-bg-three-fourths-darkmagenta {
+    @include has-bg(75%,$fslabDarkMagenta,$transparent)
+}
+.has-bg-three-fourths-lightmagenta {
+    @include has-bg(75%,$fslabLightMagenta,$transparent)
+}
+.has-bg-three-fourths-darkblue {
+    @include has-bg(75%,$fslabDarkBlue,$transparent)
+}
+.has-bg-three-fourths-sapphire {
+    @include has-bg(75%,$fslabSapphire,$transparent)
+}
+.has-bg-three-fourths-aquamarine {
+    @include has-bg(75%,$fslabAquamarine,$transparent)
+}
+
+.has-bg-one-fourth-darkmagenta {
+    @include has-bg(25%,$fslabDarkMagenta,$transparent)
+}
+.has-bg-one-fourth-lightmagenta {
+    @include has-bg(25%,$fslabLightMagenta,$transparent)
+}
+.has-bg-one-fourth-darkblue {
+    @include has-bg(25%,$fslabDarkBlue,$transparent)
+}
+.has-bg-one-fourth-sapphire {
+    @include has-bg(25%,$fslabSapphire,$transparent)
+}
+.has-bg-one-fourth-aquamarine {
+    @include has-bg(25%,$fslabAquamarine,$transparent)
+}
+
+@mixin is-emphasized($color) {
+    border-bottom: 5px solid $color
+}
+.is-emphasized-darkblue {
+    @include is-emphasized($fslabDarkBlue)
+}
+.is-emphasized-darkmagenta {
+    @include is-emphasized($fslabDarkMagenta)
+}
+.is-emphasized-lightmagenta {
+    @include is-emphasized($fslabLightMagenta)
+}
+.is-emphasized-sapphire {
+    @include is-emphasized($fslabSapphire)
+}
+.is-emphasized-aquamarine {
+    @include is-emphasized($fslabAquamarine)
 }
 
 // set font 
@@ -138,53 +178,13 @@ html, body {
     }
 }
 
-// @mixin color-container($custom-color) {
-//     $r1: lightness($custom-color);
-//     $r: abs($r1 - 80%);
-//     $lighter: lighten($custom-color, $r);
-//     background: $lighter;
-//     background: linear-gradient(0deg, $lighter 75%, $colorWhite 75%);
-//     color: $colorWhite;
-
-//     .main-TextField {
-//         background-color: $custom-color
-//     }
-
-//     @media only screen and (max-width: 550px) {
-//         background: linear-gradient(0deg, $lighter 80%, $colorWhite 80%);
-//     }
-
-//     @media only screen and (max-width: 400px) {
-//         background: linear-gradient(0deg, $lighter 85%, $colorWhite 85%);
-//     }
-// }
-
-// .card-is-darkmagenta {
-//     @include color-container($fslabDarkMagenta)
-// }
-// .card-is-darkBlue {
-//     @include color-container($fslabDarkBlue)
-// }
-// .card-is-rose {
-//     @include color-container($fslabRose)
-// }
-// .card-is-sapphire {
-//     @include color-container($fslabSapphire)
-// }
-// .card-is-purple {
-//     @include color-container($fslabPurple)
-// }
-// .card-is-darkgreen {
-//     @include color-container($fslabDarkGreen)
-// }
-
 
 // image column
 .main-ImageContainer {
-    padding: 2rem;
-    max-width: 50%;
+    padding: 1rem;
+    max-width: 80%;
     // max-width: 164px;
-    margin: auto;
+    margin: 1rem auto;
 
     @media only screen and (max-width: 1214px) {
         max-width: 80%;
@@ -195,12 +195,17 @@ html, body {
     }
 
     @media only screen and (max-width: 768px) {
-        max-width: 40%;
+        max-width: 60%;
         min-width: 120px;
+        margin: auto
+    }
+
+    @media only screen and (max-width: 600px) {
+        max-width: 70%;
     }
 
     @media only screen and (max-width: 450px) {
-        max-width: 70%;
+        max-width: 80%;
     }
 
     img {
@@ -219,98 +224,6 @@ html, body {
         }
 
 }
-
-// // ## text column
-// @mixin skew-only-container($skewBy: 10deg) {
-
-//     $newSkew: $skewBy - 5deg;
-//     transform: skew(-$skewBy);
-
-//     .main-text {
-//         transform: skew($skewBy);
-//     }
-
-//     .main-title {
-//         transform: skew($newSkew);
-//     }
-
-//     .main-subtitle {
-//         transform: skew($newSkew);
-//     }
-
-//     @media only screen and (max-width: 400px) {
-//         max-width: 95%;
-//         transform: skew(0deg);
-
-//         .main-text {
-//             transform: skew(0deg);
-//         }
-    
-//         .main-title {
-//             transform: skew(-3deg);
-//         }
-    
-//         .main-subtitle {
-//             transform: skew(0deg);
-//         }
-//     }
-// }
-
-
-// @mixin is-emphasized($degree:30%, $color) {
-//     background: linear-gradient(0deg, $color $degree, transparent $degree);
-// }
-
-// .is-emphasized-half-darkblue {
-//     @include is-emphasized(50%,$fslabDarkBlue)
-// }
-// .is-emphasized-half-darkmagenta {
-//     @include is-emphasized(50%,$fslabDarkMagenta)
-// }
-// .is-emphasized-half-rose {
-//     @include is-emphasized(50%,$fslabRose)
-// }
-// .is-emphasized-half-sapphire {
-//     @include is-emphasized(50%,$fslabSapphire)
-// }
-// .is-emphasized-half-purple {
-//     @include is-emphasized(50%,$fslabPurple)
-// }
-// .is-emphasized-half-darkgreen {
-//     @include is-emphasized(50%,$fslabDarkGreen)
-// }
-
-
-
-// .is-emphasized-one-third {
-//     letter-spacing: 0.1em;
-//     color:$colorWhite;
-// }
-
-// .is-emphasized-one-third-darkmagenta {
-//     @extend .is-emphasized-one-third;
-//     @include is-emphasized(20%,$fslabDarkMagenta)
-// }
-// .is-emphasized-one-third-darkblue {
-//     @extend .is-emphasized-one-third;
-//     @include is-emphasized(20%,$fslabDarkBlue);
-// }
-// .is-emphasized-one-third-rose {
-//     @extend .is-emphasized-one-third;
-//     @include is-emphasized(20%,$fslabRose)
-// }
-// .is-emphasized-one-third-sapphire {
-//     @extend .is-emphasized-one-third;
-//     @include is-emphasized(20%,$fslabSapphire)
-// }
-// .is-emphasized-one-third-purple {
-//     @extend .is-emphasized-one-third;
-//     @include is-emphasized(20%,$fslabPurple)
-// }
-// .is-emphasized-one-third-darkgreen {
-//     @extend .is-emphasized-one-third;
-//     @include is-emphasized(20%,$fslabDarkGreen)
-// }
 
 // text title
 .main-title {
@@ -362,8 +275,8 @@ html, body {
     margin: auto;
     font-size: 18px;
     font-weight: bolder;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 0px 5%;
+    border-radius: 10px;
 
     .main-text {
         text-align: justify;
@@ -384,7 +297,8 @@ html, body {
 
     @media only screen and (max-width: 400px) {
         font-size: 13px;
-        padding: 8px 10px;
+        margin: 0px 4%;
+        // padding: 8px 10px;
     }
 }
 
@@ -397,9 +311,6 @@ html, body {
 
 
 @media only screen and (max-width: 768px) {
-    .main-TextField {
-        max-width: 85%;
-    }
 
     .is-reverse-columns {
         flex-direction: column-reverse;
@@ -418,21 +329,20 @@ html, body {
 
 .slider-item {
     @extend .slider-item;
-    // height: 300px;
 }
 
 .slider-navigation-previous {
     @extend .slider-navigation-previous;
-    color: darkgrey
+    color: black
 }
 
 .slider-navigation-next {
     @extend .slider-navigation-next;
-    color: darkgrey
+    color: black
 }
 
 .carousel {
     @extend .carousel;
     overflow: hidden;
-    margin: 0px auto 1rem auto;
+    margin: 1rem auto 1rem auto;
 }

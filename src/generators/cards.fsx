@@ -27,7 +27,7 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
             div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
                 h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
                 div [Class "container"] [
-                    div [Class "main-TextField is-skewed-right"; HtmlProperties.Style [CSSProperties.MaxWidth "80%"]  ] [
+                    div [ ] [
                         div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [CSSProperties.MaxWidth "80%"] ] [
                             div [Class "item-1"] [
                                 figure [Class "image is-16by9 has-ratio"] [
@@ -36,7 +36,7 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
                             ]
                             div [Class "item-2" ] [
                                 figure [Class "image is-16by9 has-ratio"] [
-                                    img [Src "https://www.technocrazed.com/wp-content/uploads/2015/12/Windows-XP-wallpaper-21-640x360.jpg"]
+                                    img [Src "https://picsum.photos/400/200"]
                                 ]
                             ]
                             div [Class "item-3" ] [
@@ -80,7 +80,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
     div [Class "section"] [
         if isLeft then 
             div [Class (sprintf "container main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-                div [Class "columns"] [
+                div [Class "columns is-reverse-columns"] [
                     div [Class "column"] [
                         div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
                             h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
@@ -102,7 +102,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                 ]
             ]
         else
-            div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
+            div [Class (sprintf "container main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
                 div [Class "columns"] [
                     div [Class "column"] [
                         div [Class "main-ImageContainer"] [
