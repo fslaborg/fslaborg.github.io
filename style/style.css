@@ -516,5 +516,10 @@ html, body {
   overflow: hidden;
   margin: 1rem auto 1rem auto;
 }
+@media only screen and (max-width: 768px) {
+  .carousel {
+    display: none;
+  }
+}
 
-/*# sourceMappingURL=tmpvJIezO.tmp.map */
+/*# sourceMappingURL=tmp0KKnav.tmp.map */
