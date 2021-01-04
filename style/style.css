@@ -121,11 +121,11 @@ pre[class*=language-] {
 }
 
 nav {
-  border-bottom: 2px solid #A00975;
+  border-bottom: 2px solid #3D1244;
 }
 
 .is-active-link {
-  background-color: #A00975;
+  background-color: #3D1244;
   color: #F0F2F4;
   font-weight: bold;
 }
@@ -136,7 +136,7 @@ nav {
   border: 1px solid #2D3E50;
 }
 
-.is-darkmagenta {
+.is-magenta {
   color: #A00975;
 }
 
@@ -144,8 +144,8 @@ nav {
   color: #F99BDE;
 }
 
-.is-darkblue {
-  color: #2D3E50;
+.is-darkmagenta {
+  color: #3D1244;
 }
 
 .is-sapphire {
@@ -156,12 +156,12 @@ nav {
   color: #438AFE;
 }
 
-.has-bg-darkmagenta {
+.has-bg-magenta {
   background-color: #A00975;
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-darkmagenta {
+  .has-bg-magenta {
     background-color: #A00975;
     color: #F0F2F4;
   }
@@ -178,13 +178,13 @@ nav {
   }
 }
 
-.has-bg-darkblue {
-  background-color: #2D3E50;
+.has-bg-darkmagenta {
+  background-color: #3D1244;
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-darkblue {
-    background-color: #2D3E50;
+  .has-bg-darkmagenta {
+    background-color: #3D1244;
     color: #F0F2F4;
   }
 }
@@ -211,12 +211,12 @@ nav {
   }
 }
 
-.has-bg-three-fourths-darkmagenta {
+.has-bg-three-fourths-magenta {
   background: linear-gradient(0deg, #A00975 75%, rgba(0, 0, 0, 0) 75%);
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-three-fourths-darkmagenta {
+  .has-bg-three-fourths-magenta {
     background: linear-gradient(0deg, #A00975 80%, rgba(0, 0, 0, 0) 80%);
     color: #F0F2F4;
   }
@@ -233,13 +233,13 @@ nav {
   }
 }
 
-.has-bg-three-fourths-darkblue {
-  background: linear-gradient(0deg, #2D3E50 75%, rgba(0, 0, 0, 0) 75%);
+.has-bg-three-fourths-darkmagenta {
+  background: linear-gradient(0deg, #3D1244 75%, rgba(0, 0, 0, 0) 75%);
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-three-fourths-darkblue {
-    background: linear-gradient(0deg, #2D3E50 80%, rgba(0, 0, 0, 0) 80%);
+  .has-bg-three-fourths-darkmagenta {
+    background: linear-gradient(0deg, #3D1244 80%, rgba(0, 0, 0, 0) 80%);
     color: #F0F2F4;
   }
 }
@@ -266,12 +266,12 @@ nav {
   }
 }
 
-.has-bg-one-fourth-darkmagenta {
+.has-bg-one-fourth-magenta {
   background: linear-gradient(0deg, #A00975 25%, rgba(0, 0, 0, 0) 25%);
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-one-fourth-darkmagenta {
+  .has-bg-one-fourth-magenta {
     background: linear-gradient(0deg, #A00975 30%, rgba(0, 0, 0, 0) 30%);
     color: #F0F2F4;
   }
@@ -288,13 +288,13 @@ nav {
   }
 }
 
-.has-bg-one-fourth-darkblue {
-  background: linear-gradient(0deg, #2D3E50 25%, rgba(0, 0, 0, 0) 25%);
+.has-bg-one-fourth-darkmagenta {
+  background: linear-gradient(0deg, #3D1244 25%, rgba(0, 0, 0, 0) 25%);
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-one-fourth-darkblue {
-    background: linear-gradient(0deg, #2D3E50 30%, rgba(0, 0, 0, 0) 30%);
+  .has-bg-one-fourth-darkmagenta {
+    background: linear-gradient(0deg, #3D1244 30%, rgba(0, 0, 0, 0) 30%);
     color: #F0F2F4;
   }
 }
@@ -321,11 +321,11 @@ nav {
   }
 }
 
-.is-emphasized-darkblue {
-  border-bottom: 5px solid #2D3E50;
+.is-emphasized-darkmagenta {
+  border-bottom: 5px solid #3D1244;
 }
 
-.is-emphasized-darkmagenta {
+.is-emphasized-magenta {
   border-bottom: 5px solid #A00975;
 }
 
@@ -522,4 +522,4 @@ html, body {
   }
 }
 
-/*# sourceMappingURL=tmp0KKnav.tmp.map */
+/*# sourceMappingURL=tmpkCSVpV.tmp.map */

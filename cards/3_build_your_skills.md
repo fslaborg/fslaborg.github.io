@@ -1,7 +1,7 @@
 ---
 title: Build your skills
-color: darkmagenta
-bg-color: darkblue
+color: magenta
+bg-color: darkmagenta
 emphasis: aquamarine
 type: secondary
 index: 2
