@@ -1,6 +1,6 @@
 ---
 title: Interoperability is key
-color: darkblue
+color: darkmagenta
 bg-color: lightmagenta
 emphasis: aquamarine
 type: secondary

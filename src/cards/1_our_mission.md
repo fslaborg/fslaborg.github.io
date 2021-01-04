@@ -1,8 +1,8 @@
 ---
 title: Our mission
-color: darkmagenta
-bg-color: darkblue
-emphasis: darkblue
+color: magenta
+bg-color: darkmagenta
+emphasis: darkmagenta
 type: main
 index: 0
 image: https://picsum.photos/1600/900?grayscale, https://picsum.photos/402?grayscale
@@ -29,6 +29,6 @@ fslab is a **F#-first** community project incubation space for **all things data
 <br>
 <br>
 
-fslab aims to be **the resource** for data science in F#. Wether you never wrote a line of code before, or you are a data science veteran trying out things in .NET, we strive to have you covered with up-to-date, curated **tutorials, documentation, and package recommendations**.
+fslab aims to be **the resource** for data science in F#. Wether you never wrote a line of code before, or you already are a skilled data scientist trying out things in .NET, we strive to have you covered with up-to-date, curated **tutorials, documentation, and package recommendations**.
 
 <br>

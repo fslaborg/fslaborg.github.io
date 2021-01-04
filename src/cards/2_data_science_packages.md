@@ -1,6 +1,6 @@
 ---
 title: F#-first data science packages
-color: darkblue
+color: darkmagenta
 bg-color: lightmagenta
 emphasis: aquamarine
 type: secondary
