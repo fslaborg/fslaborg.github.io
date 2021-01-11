@@ -1,0 +1,34 @@
+name: deploy-gh-pages
+
+on: [workflow_dispatch]
+
+jobs:
+  build-and-deploy:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Setup node & sass
+      uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+    - name: install sass
+      run: npm install -g sass
+    - name: Restore tools
+      run: dotnet tool restore
+    - name: Build
+      working-directory: ./src
+      run: dotnet fornax build
+    - name: deploy
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: ./src/_public # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
