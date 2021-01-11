@@ -460,7 +460,7 @@ html, body {
   margin: auto;
   font-size: 18px;
   font-weight: bolder;
-  margin: 0px 5%;
+  margin: 0px 15%;
   border-radius: 10px;
 }
 .main-TextField .main-text {
@@ -469,17 +469,20 @@ html, body {
 @media only screen and (max-width: 1214px) {
   .main-TextField {
     font-size: 17px;
+    margin: 0px 5%;
   }
 }
 @media only screen and (max-width: 845px) {
   .main-TextField {
     font-size: 15px;
+    margin: 0px 5%;
   }
 }
 @media only screen and (max-width: 768px) {
   .main-TextField {
     font-size: 14px;
     padding: 10px 20px;
+    margin: 0px 5%;
   }
 }
 @media only screen and (max-width: 400px) {
@@ -522,4 +525,4 @@ html, body {
   }
 }
 
-/*# sourceMappingURL=tmpiUJIVQ.tmp.map */
+/*# sourceMappingURL=tmpbLb8xJ.tmp.map */
