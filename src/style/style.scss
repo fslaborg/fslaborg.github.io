@@ -275,7 +275,7 @@ html, body {
     margin: auto;
     font-size: 18px;
     font-weight: bolder;
-    margin: 0px 5%;
+    margin: 0px 15%;
     border-radius: 10px;
 
     .main-text {
@@ -284,15 +284,18 @@ html, body {
 
     @media only screen and (max-width: 1214px) {
         font-size: 17px;
+        margin: 0px 5%;
     }
 
     @media only screen and (max-width: 845px) {
         font-size: 15px;
+        margin: 0px 5%;
     }
 
     @media only screen and (max-width: 768px) {
         font-size: 14px;
         padding: 10px 20px;
+        margin: 0px 5%;
     }
 
     @media only screen and (max-width: 400px) {

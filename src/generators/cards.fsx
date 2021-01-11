@@ -22,106 +22,104 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
         |> getProcessedCardBody
         |> splitPrimaryContent
 
-    section [Class "section"] [ 
-        div [Class (sprintf "container main-Container has-bg-three-fourths-%s" card.CardEmphasisColor)] [
-            div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                div [Class "container"] [
-                    div [ ] [
-                        div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [] ] [
-                            div [Class "item-1"] [
-                                figure [Class "image is-3y1 has-ratio"] [
-                                    img [Src "https://picsum.photos/1500/500?grayscale"]
-                                ]
+    div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardEmphasisColor)] [
+        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+            h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+            div [Class "container"] [
+                div [ ] [
+                    div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [] ] [
+                        div [Class "item-1"] [
+                            figure [Class "image is-3y1 has-ratio"] [
+                                img [Src "https://picsum.photos/1500/500?grayscale"]
                             ]
-                            div [Class "item-2" ] [
-                                figure [Class "image is-3by1 has-ratio"] [
-                                    img [Src "https://picsum.photos/1500/500?grayscale"]
-                                ]
+                        ]
+                        div [Class "item-2" ] [
+                            figure [Class "image is-3by1 has-ratio"] [
+                                img [Src "https://picsum.photos/1500/500?grayscale"]
                             ]
-                            div [Class "item-3" ] [
-                                figure [Class "image is-3by1 has-ratio"] [
-                                    img [Src "https://picsum.photos/1500/500?grayscale"]
-                                ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-3by1 has-ratio"] [
+                                img [Src "https://picsum.photos/1500/500?grayscale"]
                             ]
-                            div [Class "item-3" ] [
-                                figure [Class "image is-3by1 has-ratio"] [
-                                    img [Src "https://picsum.photos/1500/500?grayscale"]
-                                ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-3by1 has-ratio"] [
+                                img [Src "https://picsum.photos/1500/500?grayscale"]
                             ]
-                            div [Class "item-3" ] [
-                                figure [Class "image is-3by1 has-ratio"] [
-                                    img [Src "https://picsum.photos/1500/500?grayscale"]
-                                ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-3by1 has-ratio"] [
+                                img [Src "https://picsum.photos/1500/500?grayscale"]
                             ]
-                            div [Class "item-3" ] [
-                                figure [Class "image is-3by1 has-ratio"] [
-                                    img [Src "https://picsum.photos/1500/500?grayscale"]
-                                ]
+                        ]
+                        div [Class "item-3" ] [
+                            figure [Class "image is-3by1 has-ratio"] [
+                                img [Src "https://picsum.photos/1500/500?grayscale"]
                             ]
                         ]
                     ]
                 ]
-                div [Class "main-text"] [
-                    !! header
-                    div [Class "columns"] [
-                        div [Class "column"] [!! c1]
-                        div [Class "column"] [!! c2]
-                    ]
+            ]
+            div [Class "main-text"] [
+                !! header
+                div [Class "columns"] [
+                    div [Class "column"] [!! c1]
+                    div [Class "column"] [!! c2]
                 ]
             ]
         ]
     ]
+    
 
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
-    div [Class "section"] [
-        if isLeft then 
-            div [Class (sprintf "container main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-                div [Class "columns is-reverse-columns"] [
-                    div [Class "column"] [
-                        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                            h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                            div [Class "main-text"] [
-                                !! (getProcessedCardBody card)
-                            ]
+    if isLeft then 
+        div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
+            div [Class "columns is-reverse-columns"] [
+                div [Class "column"] [
+                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                        div [Class "main-text"] [
+                            !! (getProcessedCardBody card)
                         ]
-                    ]
-                    div [Class "column"] [
-                        div [Class "main-ImageContainer"] [
-                            a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                                figure [Class "image"] [
-                                    img [Src (Layout.urlPrefix + card.CardImages.[0])]
-                                ]
-                            ]
-                        ]
-                    
                     ]
                 ]
-            ]
-        else
-            div [Class (sprintf "container main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-                div [Class "columns"] [
-                    div [Class "column"] [
-                        div [Class "main-ImageContainer"] [
-                            a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                                figure [Class "image"] [
-                                    img [Src (Layout.urlPrefix + card.CardImages.[0])]
-                                ]
+                div [Class "column"] [
+                    div [Class "main-ImageContainer"] [
+                        a [Href "https://github.com/fslaborg"; Target "_blank"] [
+                            figure [Class "image"] [
+                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
                             ]
                         ]
                     ]
-                    div [Class "column"] [
-                        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                            h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                            div [Class "main-text"] [
-                                !! (getProcessedCardBody card)
-                            ]
-                        ]
-                    
-                    ]
+                
                 ]
             ]
-    ]
+        ]
+    else
+        div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
+            div [Class "columns"] [
+                div [Class "column"] [
+                    div [Class "main-ImageContainer"] [
+                        a [Href "https://github.com/fslaborg"; Target "_blank"] [
+                            figure [Class "image"] [
+                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                            ]
+                        ]
+                    ]
+                ]
+                div [Class "column"] [
+                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                        div [Class "main-text"] [
+                            !! (getProcessedCardBody card)
+                        ]
+                    ]
+                
+                ]
+            ]
+        ]
+    
     
 let generate' (ctx : SiteContents) (_: string) =
     
