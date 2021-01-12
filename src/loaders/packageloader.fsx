@@ -12,10 +12,11 @@ type DataSciencePackage = {
     PackageGithubLink : string
     PackageDocumentationLink : string
     PackageDescription: string
+    PackageTags: (string []) option
     PackageMore: string option
     PackagePostsLink: string option
 } with
-    static member create pName pLogo pNuget pGithub pDocs pDesc pMore pPosts = 
+    static member create pName pLogo pNuget pGithub pDocs pDesc pTags pMore pPosts = 
         {
             PackageName = pName
             PackageLogoLink = pLogo
@@ -23,6 +24,7 @@ type DataSciencePackage = {
             PackageGithubLink = pGithub
             PackageDocumentationLink = pDocs
             PackageDescription = pDesc
+            PackageTags = pTags
             PackageMore = pMore
             PackagePostsLink = pPosts
         }
@@ -42,9 +44,11 @@ let loadFile (packageMarkdownPath:string) =
     let github = config |> Map.find "package-github-link"
     let docs = config |> Map.find "package-documentation-link"
     let desc = config |> Map.find "package-description"
-    let posts = config |> Map.tryFind "package-posts-link"
 
-    DataSciencePackage.create name logo nuget github docs desc (if content = "" then None else Some content) posts
+    let posts = config |> Map.tryFind "package-posts-link"
+    let tags = config |> Map.tryFind "package-tags" |> Option.map (fun tags -> tags.Split(",") |> Array.map MarkdownProcessing.trimString)
+
+    DataSciencePackage.create name logo nuget github docs desc tags (if content = "" then None else Some content) posts
 
 
 let loader (projectRoot: string) (siteContent: SiteContents) =

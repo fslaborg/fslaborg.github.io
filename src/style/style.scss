@@ -402,6 +402,22 @@ html, body {
     color: $fslabMagenta;
 }
 
+.package-container code {
+    @extend .has-bg-darkmagenta;
+    display: block;
+    padding: 1rem;
+    min-width: 33%;
+    max-width: 50%;
+}
+
 .package-container a:hover {
     color: $fslabDarkMagenta;
+}
+.package-container .tags {
+    margin-top: 1rem;
+}
+.package-container .tag {
+    @extend .has-bg-lightmagenta;
+    color:$fslabDarkMagenta;
+    font-weight: bold;
 }

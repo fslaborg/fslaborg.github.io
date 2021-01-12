@@ -49,6 +49,12 @@ let generate' (ctx : SiteContents) (_: string) =
                                 ]
                             ]
                             codeBlock package.PackageNugetLink
+                            if package.PackageTags.IsSome then
+                                div [Class"tags"] (
+                                    package.PackageTags.Value
+                                    |> Array.map (fun tag -> span [Class "has-bg-magenta tag"] [!!tag])
+                                    |> Array.toList
+                                )
                         ]
                         div [Class "card-footer"] [
                             a [Class "card-footer-item"; Href package.PackageGithubLink] [!!"Github"]
