@@ -29,7 +29,7 @@ type DataSciencePackage = {
             PackagePostsLink = pPosts
         }
 
-let contentDir = "content/packages"
+let contentDir = "content/datascience-packages"
 
 let loadFile (packageMarkdownPath:string) =
 
