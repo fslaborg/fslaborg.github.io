@@ -123,7 +123,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
     
 let generate' (ctx : SiteContents) (_: string) =
     
-    let cards : Cardloader.MainPageCard list= 
+    let cards : Cardloader.MainPageCard list = 
         ctx.TryGetValues<Cardloader.MainPageCard>()
         |> Option.defaultValue Seq.empty
         |> Seq.toList
@@ -145,5 +145,6 @@ let generate' (ctx : SiteContents) (_: string) =
 
 
 let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
-  generate' ctx page
-  |> Layout.render ctx
+    printfn "[Cards-Generator] Starting generate function ..."
+    generate' ctx page
+    |> Layout.render ctx

@@ -66,9 +66,10 @@ let loader (projectRoot: string) (siteContent: SiteContents) =
     |> Array.filter (Predicates.isMarkdownFile)
     |> Array.iter (fun path ->
         try 
-            printfn "[LOADER]: Adding card at %s" path
+            printfn "[Card-Loader]: Adding card at %s" path
             siteContent.Add (loadFile path)
         with _ -> 
             siteContent.AddError {Path = path; Message = (sprintf "Uable to load card %s" path); Phase = Loading}
     )
+    printfn "[Card-Loader]: Done loading cards"
     siteContent

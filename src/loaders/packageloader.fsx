@@ -50,16 +50,16 @@ let loadFile (packageMarkdownPath:string) =
 
     DataSciencePackage.create name logo nuget github docs desc tags (if content = "" then None else Some content) posts
 
-
 let loader (projectRoot: string) (siteContent: SiteContents) =
-    let cardsPath = System.IO.Path.Combine(projectRoot, contentDir)
-    System.IO.Directory.GetFiles cardsPath
+    let packagesPath = System.IO.Path.Combine(projectRoot, contentDir)
+    System.IO.Directory.GetFiles packagesPath
     |> Array.filter Predicates.isMarkdownFile
     |> Array.iter (fun path ->
         try 
-            printfn "[LOADER]: Adding package at %s" path
+            printfn "[Package-Loader]: Adding package at %s" path
             siteContent.Add (loadFile path)
         with _ -> 
             siteContent.AddError {Path = path; Message = (sprintf "Uable to load card %s" path); Phase = Loading}
     )
+    printfn "[Package-Loader]: Done loading packages"
     siteContent
