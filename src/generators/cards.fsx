@@ -127,7 +127,7 @@ let generate' (ctx : SiteContents) (_: string) =
         ctx.TryGetValues<Cardloader.MainPageCard>()
         |> Option.defaultValue Seq.empty
         |> Seq.toList
-
+        
     Layout.layout ctx "Home" [
         div [] (
             cards

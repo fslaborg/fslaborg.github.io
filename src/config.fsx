@@ -1,40 +1,16 @@
 #r "_lib/Fornax.Core.dll"
+#load "globals.fsx"
 
 open Config
-open System.IO
-
-let postPredicate (projectRoot: string, page: string) =
-    let fileName = Path.Combine(projectRoot,page)
-    let ext = Path.GetExtension page
-    if ext = ".md" then
-        let ctn = File.ReadAllText fileName
-        ctn.Contains("layout: post")
-    else
-        false
-
-let staticPredicate (projectRoot: string, page: string) =
-    let ext = Path.GetExtension page
-    if page.Contains "_public" ||
-       page.Contains "_bin" ||
-       page.Contains "_lib" ||
-       page.Contains "_data" ||
-       page.Contains "_settings" ||
-       page.Contains "_config.yml" ||
-       page.Contains ".sass-cache" ||
-       page.Contains ".git" ||
-       page.Contains ".ionide" ||
-       ext = ".fsx"
-    then
-        false
-    else
-        true
+open Globals
 
 let config = {
     Generators = [
         //{Script = "less.fsx"; Trigger = OnFileExt ".less"; OutputFile = ChangeExtension "css" }
-        {Script = "sass.fsx"; Trigger = OnFileExt ".scss"; OutputFile = ChangeExtension "css" }
-        {Script = "staticfile.fsx"; Trigger = OnFilePredicate staticPredicate; OutputFile = SameFileName }
         {Script = "cards.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
+        {Script = "packages.fsx"; Trigger = Once; OutputFile = NewFileName "packages.html"}
+        {Script = "sass.fsx"; Trigger = OnFileExt ".scss"; OutputFile = ChangeExtension "css" }
+        {Script = "staticfile.fsx"; Trigger = OnFilePredicate Predicates.staticPredicate; OutputFile = SameFileName }
         {Script = "material.fsx"; Trigger = Once; OutputFile = NewFileName "material.html" }
         {Script = "projects.fsx"; Trigger = Once; OutputFile = NewFileName "projects.html" }
         {Script = "contact.fsx"; Trigger = Once; OutputFile = NewFileName "contact.html" }

@@ -354,3 +354,54 @@ html, body {
     }
 
 }
+
+// packages
+
+#package-header-img {
+    border: 2px solid $fslabMagenta;
+}
+
+#package-title-container h1 {
+    font-size: 5rem;
+    @media only screen and (max-width: 1214px){
+        font-size: 3rem;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 1.5rem;
+    }
+}
+
+#package-title-container h3 {
+    font-size: 2rem;
+    @media only screen and (max-width: 1214px){
+        font-size: 1.5rem;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 1rem;
+    }
+}
+
+.package-container {
+    margin-bottom: 2rem ;
+    border-left: 5px solid $fslabMagenta;
+}
+
+.package-container .card {
+    margin: auto;
+    border: unset;
+    border-color: unset;
+    border-radius: unset;
+    box-shadow: unset;
+}
+
+.package-container .card-content{
+    color: $fslabDarkMagenta
+}
+
+.package-container a {
+    color: $fslabMagenta;
+}
+
+.package-container a:hover {
+    color: $fslabDarkMagenta;
+}

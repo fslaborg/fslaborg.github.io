@@ -1,6 +1,7 @@
 #r "_lib/Fornax.Core.dll"
 #r "_lib/Markdig.dll"
 
+open System.IO
 open Markdig
 module MarkdownProcessing =
 
@@ -19,6 +20,9 @@ module MarkdownProcessing =
     let isFrontMatterSeparator (input : string) =
         input.StartsWith "---"
 
+    let trimString (str : string) =
+        str.Trim().TrimEnd('"').TrimStart('"')
+
     ///`fileContent` - content of page to parse. Usually whole content of `.md` file
     ///returns content of config that should be used for the page
     let getFrontMatter (fileContent : string) =
@@ -33,7 +37,7 @@ module MarkdownProcessing =
             if seperatorIndex > 0 then
                 let key = line.[.. seperatorIndex - 1].Trim().ToLower()
                 let value = line.[seperatorIndex + 1 ..].Trim() 
-                Some(key, value)
+                Some(key, trimString value)
             else 
                 None
 
@@ -58,3 +62,30 @@ module MarkdownProcessing =
             |> String.concat "\n"
 
         Markdown.ToHtml(content, markdownPipeline)
+
+module Predicates =
+        
+    let markdownPredicate (projectRoot: string, page: string) =
+        let ext = Path.GetExtension page
+        let fileName = Path.GetFileNameWithoutExtension page
+        fileName.ToUpperInvariant() <> "README"
+        && ext = ".md"
+
+    let isMarkdownFile f = markdownPredicate ("",f)
+
+    let staticPredicate (projectRoot: string, page: string) =
+        let ext = Path.GetExtension page
+        if page.Contains "_public" ||
+           page.Contains "_bin" ||
+           page.Contains "_lib" ||
+           page.Contains "_data" ||
+           page.Contains "_settings" ||
+           page.Contains "_config.yml" ||
+           page.Contains ".sass-cache" ||
+           page.Contains ".git" ||
+           page.Contains ".ionide" ||
+           ext = ".fsx"
+        then
+            false
+        else
+            true

@@ -37,7 +37,7 @@ type MainPageCard = {
             CardType = ctype
         }
 
-let contentDir = "cards"
+let contentDir = "content/cards"
 
 let trimString (str : string) =
     str.Trim().TrimEnd('"').TrimStart('"')
@@ -57,17 +57,18 @@ let loadFile (cardMarkdownPath:string) =
     let index = config |> Map.find "index" |> trimString |> int
     let ctype = config |> Map.find "type" |> trimString |> CardType.ofString
 
-    printfn "%A" title
-
     MainPageCard.create title body color bgcolor emphasisColor images index ctype
+
 
 let loader (projectRoot: string) (siteContent: SiteContents) =
     let cardsPath = System.IO.Path.Combine(projectRoot, contentDir)
     System.IO.Directory.GetFiles cardsPath
-    |> Array.filter (fun n -> n.EndsWith ".md")
-    |> Array.map loadFile
-    |> Array.iter (fun card -> 
-        printfn "%A" card.CardTitle
-        siteContent.Add(card))
-
+    |> Array.filter (Predicates.isMarkdownFile)
+    |> Array.iter (fun path ->
+        try 
+            printfn "[LOADER]: Adding card at %s" path
+            siteContent.Add (loadFile path)
+        with _ -> 
+            siteContent.AddError {Path = path; Message = (sprintf "Uable to load card %s" path); Phase = Loading}
+    )
     siteContent

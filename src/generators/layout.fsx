@@ -3,6 +3,7 @@
 #load "../loaders/pageloader.fsx"
 #load "../loaders/globalloader.fsx"
 #load "../loaders/cardloader.fsx"
+#load "../loaders/packageloader.fsx"
 #endif
 
 #if WATCH
