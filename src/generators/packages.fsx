@@ -24,7 +24,7 @@ let generate' (ctx : SiteContents) (_: string) =
                         ]
                         div [Id "package-title-container"; Class "media-content"] [
                             h1 [Class "title is-darkmagenta"] [!!"Data science packages"]
-                            h3 [Class "subtitle is-magenta"] [!!"Data science packages"]
+                            h3 [Class "subtitle is-magenta"] [!!""]
                         ]
                     ]
                 ]
@@ -60,6 +60,7 @@ let generate' (ctx : SiteContents) (_: string) =
                                     Href (sprintf "#%s-collapse" package.PackageName)
                                     Custom("data-action","collapse")
                                     Custom("aria-label","more")
+                                    Class "collapsible-trigger"
                                 ] [
                                     !! "Read More"
                                     span [Class "icon"] [
@@ -67,17 +68,36 @@ let generate' (ctx : SiteContents) (_: string) =
                                     ]
                                 ]
                                 div [Id (sprintf "%s-collapse" package.PackageName); Class "is-collapsible"] [
+                                    hr []
                                     !!package.PackageMore.Value
                                 ]
-                                
-                                
                         ]
                         div [Class "card-footer"] [
-                            a [Class "card-footer-item"; Href package.PackageGithubLink] [!!"Github"]
-                            a [Class "card-footer-item"; Href package.PackageDocumentationLink] [!!"Docs"]
-                            a [Class "card-footer-item"; Href package.PackageNugetLink] [!!"Nuget"]
+                            a [Class "card-footer-item"; Href package.PackageGithubLink] [
+                                span [Class "icon"] [
+                                        i [Class "fas fa-code-branch"] []
+                                    ]
+                                !!"Github"
+                            ]
+                            a [Class "card-footer-item"; Href package.PackageDocumentationLink] [
+                                span [Class "icon"] [
+                                        i [Class "fas fa-book"] []
+                                    ]
+                                !!"Docs"
+                            ]
+                            a [Class "card-footer-item"; Href package.PackageNugetLink] [
+                                span [Class "icon"] [
+                                        i [Class "fas fa-cubes"] []
+                                    ]
+                                !!"Nuget"
+                            ]
                             if package.PackagePostsLink.IsSome then
-                                a [Class "card-footer-item"; Href package.PackagePostsLink.Value] [!!"Posts"]
+                                a [Class "card-footer-item"; Href package.PackagePostsLink.Value] [
+                                    span [Class "icon"] [
+                                        i [Class "fas fa-blog"] []
+                                    ]
+                                    !!"Posts"
+                                ]
                         ]
 
                     ]

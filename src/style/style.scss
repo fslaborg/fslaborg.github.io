@@ -358,7 +358,8 @@ html, body {
 // packages
 
 #package-header-img {
-    border: 2px solid $fslabMagenta;
+    border: 4px solid $fslabMagenta;
+    background-color: $colorWhite;
 }
 
 #package-title-container h1 {
@@ -414,6 +415,7 @@ html, body {
 
 .package-container a:hover {
     color: $fslabDarkMagenta;
+    @extend .has-bg-one-fourth-lightmagenta;
 }
 .package-container .tags {
     margin-top: 1rem;
@@ -422,4 +424,8 @@ html, body {
     @extend .has-bg-lightmagenta;
     color:$fslabDarkMagenta;
     font-weight: bold;
+}
+
+.package-container .collapsible-trigger {
+    border-bottom: 2px solid $fslabDarkMagenta;
 }
