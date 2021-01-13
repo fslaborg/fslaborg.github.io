@@ -17,7 +17,7 @@ It will be rendered as a collapsible 'Read more' section in the package card.
 
 You can use [links](google.com), `code tags`, 
 
-```F#
+```fsharp
 //Code blocks
 let a = 42
 ```
