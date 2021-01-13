@@ -178,12 +178,12 @@ nav {
   }
 }
 
-.has-bg-darkmagenta, .package-container code {
+.has-bg-darkmagenta, .package-container code.package-reference {
   background-color: #3D1244;
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-darkmagenta, .package-container code {
+  .has-bg-darkmagenta, .package-container code.package-reference {
     background-color: #3D1244;
     color: #F0F2F4;
   }
@@ -277,12 +277,12 @@ nav {
   }
 }
 
-.has-bg-one-fourth-lightmagenta {
+.has-bg-one-fourth-lightmagenta, .package-container a:hover {
   background: linear-gradient(0deg, #F99BDE 25%, rgba(0, 0, 0, 0) 25%);
   color: #F0F2F4;
 }
 @media only screen and (max-width: 400px) {
-  .has-bg-one-fourth-lightmagenta {
+  .has-bg-one-fourth-lightmagenta, .package-container a:hover {
     background: linear-gradient(0deg, #F99BDE 30%, rgba(0, 0, 0, 0) 30%);
     color: #F0F2F4;
   }
@@ -526,7 +526,8 @@ html, body {
 }
 
 #package-header-img {
-  border: 2px solid #A00975;
+  border: 4px solid #A00975;
+  background-color: #F0F2F4;
 }
 
 #package-title-container h1 {
@@ -578,11 +579,15 @@ html, body {
   color: #A00975;
 }
 
-.package-container code {
+.package-container code.package-reference {
   display: block;
   padding: 1rem;
-  min-width: 33%;
-  max-width: 50%;
+  width: 50%;
+}
+@media only screen and (max-width: 768px) {
+  .package-container code.package-reference {
+    width: 100%;
+  }
 }
 
 .package-container a:hover {
@@ -598,4 +603,8 @@ html, body {
   font-weight: bold;
 }
 
-/*# sourceMappingURL=tmpFWwdw9.tmp.map */
+.package-container .collapsible-trigger {
+  border-bottom: 2px solid #3D1244;
+}
+
+/*# sourceMappingURL=tmpPP60CC.tmp.map */

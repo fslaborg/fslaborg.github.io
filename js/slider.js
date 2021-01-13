@@ -6,3 +6,5 @@ bulmaCarousel.attach('#carousel-demo', {
         autoplay: true,
         autoplaySpeed: 4000
 })
+
+bulmaCollapsible.attach('.is-collapsible');
