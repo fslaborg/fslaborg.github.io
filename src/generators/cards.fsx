@@ -27,38 +27,38 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
             h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
             div [Class "container"] [
                 figure [Class "image is-3by1 has-ratio"] [
-                                img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                                img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                             ]
                 // div [ ] [
                 //     div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [] ] [
                 //         div [Class "item-1"] [
                 //             figure [Class "image is-3y1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                 //             ]
                 //         ]
                 //         div [Class "item-2" ] [
                 //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                 //             ]
                 //         ]
                 //         div [Class "item-3" ] [
                 //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                 //             ]
                 //         ]
                 //         div [Class "item-3" ] [
                 //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                 //             ]
                 //         ]
                 //         div [Class "item-3" ] [
                 //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                 //             ]
                 //         ]
                 //         div [Class "item-3" ] [
                 //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "images/landing_test.png")]
+                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
                 //             ]
                 //         ]
                 //     ]
