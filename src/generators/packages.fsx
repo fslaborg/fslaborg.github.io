@@ -3,7 +3,9 @@
 
 open Html
 
-let referenceCodeBlock content = code [Class "package-reference"] [!!content]
+let referenceCodeBlock packageNugetName = code [Class "package-reference"] [
+    !! (sprintf "#r \"nuget: %s\"" packageNugetName)
+]
 
 let generate' (ctx : SiteContents) (_: string) =
     
@@ -24,7 +26,14 @@ let generate' (ctx : SiteContents) (_: string) =
                         ]
                         div [Id "package-title-container"; Class "media-content"] [
                             h1 [Class "title is-darkmagenta"] [!!"Data science packages"]
-                            h3 [Class "subtitle is-magenta"] [!!""]
+                            h3 [Class "subtitle is-magenta"] [!!"Use these packages to fuel your data science journey in F# and .NET! 🚀"]
+                            h3 [Class "subtitle is-magenta"] [
+                                !!"Want to add a package to the curated list?"
+                                a [] [
+                                    !!"File a PR"
+                                    span [Class "icon"] [i [Class "fa fa-code-branch"] []]
+                                ]
+                            ]
                         ]
                     ]
                 ]
@@ -48,7 +57,7 @@ let generate' (ctx : SiteContents) (_: string) =
                                     p [Class "subtitle is-6"] [!! package.PackageDescription]
                                 ]
                             ]
-                            referenceCodeBlock package.PackageNugetLink
+                            referenceCodeBlock package.PackageName
                             if package.PackageTags.IsSome then
                                 div [Class"tags"] (
                                     package.PackageTags.Value
@@ -74,28 +83,20 @@ let generate' (ctx : SiteContents) (_: string) =
                         ]
                         div [Class "card-footer"] [
                             a [Class "card-footer-item"; Href package.PackageGithubLink] [
-                                span [Class "icon"] [
-                                        i [Class "fas fa-code-branch"] []
-                                    ]
+                                span [Class "icon"] [i [Class "fas fa-code-branch"] []]
                                 !!"Github"
                             ]
                             a [Class "card-footer-item"; Href package.PackageDocumentationLink] [
-                                span [Class "icon"] [
-                                        i [Class "fas fa-book"] []
-                                    ]
+                                span [Class "icon"] [i [Class "fas fa-book"] []]
                                 !!"Docs"
                             ]
                             a [Class "card-footer-item"; Href package.PackageNugetLink] [
-                                span [Class "icon"] [
-                                        i [Class "fas fa-cubes"] []
-                                    ]
+                                span [Class "icon"] [i [Class "fas fa-cubes"] []]
                                 !!"Nuget"
                             ]
                             if package.PackagePostsLink.IsSome then
                                 a [Class "card-footer-item"; Href package.PackagePostsLink.Value] [
-                                    span [Class "icon"] [
-                                        i [Class "fas fa-blog"] []
-                                    ]
+                                    span [Class "icon"] [i [Class "fas fa-blog"] [] ]
                                     !!"Posts"
                                 ]
                         ]

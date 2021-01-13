@@ -6,7 +6,7 @@ package-github-link: https://www.github.com/plotly/Plotly.NET
 package-documentation-link: https://plotly.github.io/Plotly.NET/
 package-description: .NET interface for plotly.js written in F#
 #package-posts-link: optional
-package-tags: dataframe, data exploration, data access
+package-tags: visualization, data exploration, charting
 ---
 
 More here soon
