@@ -402,12 +402,14 @@ html, body {
     color: $fslabMagenta;
 }
 
-.package-container code {
+.package-container code.package-reference {
     @extend .has-bg-darkmagenta;
     display: block;
     padding: 1rem;
-    min-width: 33%;
-    max-width: 50%;
+    width: 50%;
+    @media only screen and (max-width: 768px) {
+        width:100%
+    }
 }
 
 .package-container a:hover {

@@ -9,4 +9,17 @@ package-description: statistical testing, linear algebra, machine learning, fitt
 package-tags: statistics, linear algebra, machine learning, fitting, signal processing
 ---
 
-More info here soon
+# You can use markdown here
+
+## to tell more about your project
+
+It will be rendered as a collapsible 'Read more' section in the package card.
+
+You can use [links](google.com), `code tags`, 
+
+```F#
+//Code blocks
+let a = 42
+```
+
+and **all** _the_ ~markdown~ goodness. 

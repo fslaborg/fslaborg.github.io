@@ -66,10 +66,15 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "stylesheet"; Href "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"]
             link [Rel "stylesheet"; Href "https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"]
             link [Rel "stylesheet"; Type "text/css"; Href (urlPrefix + "/style/style.css")]
-            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/prism.js") ] []
+            link [Rel "stylesheet"; Type "text/css"; Href "https://cdn.jsdelivr.net/npm/@creativebulma/bulma-collapsible@1.0.4/dist/css/bulma-collapsible.min.css"]
+            
+            script [ Defer true; Src "https://kit.fontawesome.com/0d3e0ea7a6.js"; CrossOrigin "anonymous"][]
+            
+            script [ Defer true; Type "text/javascript"; Src "https://cdn.jsdelivr.net/npm/@creativebulma/bulma-collapsible@1.0.4/dist/js/bulma-collapsible.min.js"][]
             script [ Defer true; Type "text/javascript"; Src ("https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js") ] []
+            
+            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/prism.js") ] []
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/slider.js") ] []
-
         ]
         body [] [
           nav [Class "navbar is-fixed-top is-spaced"] [

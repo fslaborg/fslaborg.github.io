@@ -3,7 +3,7 @@
 
 open Html
 
-let codeBlock content = code [] [!!content]
+let referenceCodeBlock content = code [Class "package-reference"] [!!content]
 
 let generate' (ctx : SiteContents) (_: string) =
     
@@ -44,17 +44,33 @@ let generate' (ctx : SiteContents) (_: string) =
                                     ]
                                 ]
                                 div [Class "media-content"] [
-                                    p [Class "title"] [a [] [!! package.PackageName]]
+                                    p [Class "title"] [a [Href package.PackageGithubLink] [!! package.PackageName]]
                                     p [Class "subtitle is-6"] [!! package.PackageDescription]
                                 ]
                             ]
-                            codeBlock package.PackageNugetLink
+                            referenceCodeBlock package.PackageNugetLink
                             if package.PackageTags.IsSome then
                                 div [Class"tags"] (
                                     package.PackageTags.Value
                                     |> Array.map (fun tag -> span [Class "has-bg-magenta tag"] [!!tag])
                                     |> Array.toList
                                 )
+                            if package.PackageMore.IsSome then 
+                                a [
+                                    Href (sprintf "#%s-collapse" package.PackageName)
+                                    Custom("data-action","collapse")
+                                    Custom("aria-label","more")
+                                ] [
+                                    !! "Read More"
+                                    span [Class "icon"] [
+                                        i [Class "fas fa-angle-down"] []
+                                    ]
+                                ]
+                                div [Id (sprintf "%s-collapse" package.PackageName); Class "is-collapsible"] [
+                                    !!package.PackageMore.Value
+                                ]
+                                
+                                
                         ]
                         div [Class "card-footer"] [
                             a [Class "card-footer-item"; Href package.PackageGithubLink] [!!"Github"]
