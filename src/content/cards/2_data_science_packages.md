@@ -8,8 +8,11 @@ index: 1
 image: /images/packages.svg
 ---
 
-# Test
+<br>
+<br>
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Here you find our recommended collection of open source F# packages for your data analysis toolchain. Together with your editor or notebook these packages allow you to rapidly develop scalable, high-performance analytics and visualizations using succinct, type-safe, production-ready code. 
 
-**saas**
+<br>
+
+ - Just pick and play. 

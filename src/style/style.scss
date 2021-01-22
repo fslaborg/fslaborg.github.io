@@ -153,7 +153,8 @@ nav {
 // set font 
 html, body {
     font-family: "Nunito Sans";
-    font-size: 14px;
+    font-size: 22px;
+    line-height: 1.5;
     background: $colorWhite;
 }
 
@@ -182,7 +183,7 @@ html, body {
 // image column
 .main-ImageContainer {
     padding: 1rem;
-    max-width: 80%;
+    max-width: 90%;
     // max-width: 164px;
     margin: 1rem auto;
 
@@ -220,7 +221,7 @@ html, body {
         transition: .5s ease;
         // make it shine a bit (https://www.webnots.com/11-image-hovering-effects-for-weebly/)
         // -webkit-filter: brightness(110%);
-        box-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+        //box-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
         }
 
 }
@@ -273,7 +274,7 @@ html, body {
     padding: 1.5rem 3rem;
     max-width: 100%;
     margin: auto;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bolder;
     margin: 0px 15%;
     border-radius: 10px;
