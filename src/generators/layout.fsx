@@ -51,7 +51,7 @@ let layout (ctx : SiteContents) active bodyCnt =
     let menuEntries =
       pages
       |> Seq.map (fun p ->
-        let cls = if p.title = active then "navbar-item is-active-link" else "navbar-item"
+        let cls = if p.title = active then "navbar-item is-active-link smooth-hover" else "navbar-item"
         a [Class cls; Href p.link] [!! p.title ])
       |> Seq.toList
 
@@ -77,20 +77,18 @@ let layout (ctx : SiteContents) active bodyCnt =
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/slider.js") ] []
         ]
         body [] [
-          nav [Class "navbar is-fixed-top is-spaced"] [
-            div [Class "container"] [
-              div [Class "navbar-brand"] [
-                a [Class "navbar-item"; Href "/"] [
-                  img [Src (urlPrefix + "/images/testlogo.png"); Alt "Logo"]
-                ]
-                span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
-                  span [] []
-                  span [] []
-                  span [] []
-                ]
-              ]
-              div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
+          nav [Class "navbar is-fixed-top"] [
+            div [Class "navbar-brand"] [
+            a [Class "navbar-item"; Href "/"] [
+                img [Src (urlPrefix + "/images/testlogo.png"); Alt "Logo"]
             ]
+            span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
+                span [] []
+                span [] []
+                span [] []
+            ]
+            ]
+            div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
           ]
           yield! bodyCnt
         ]

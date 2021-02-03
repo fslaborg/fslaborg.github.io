@@ -23,53 +23,55 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
         |> getProcessedCardBody
         |> splitPrimaryContent
 
-    div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardEmphasisColor); HtmlProperties.Style [CSSProperties.MarginTop "4rem"] ] [
-        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-            h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-            div [Class "container"] [
-                figure [Class "image is-3by1 has-ratio"] [
-                    img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+    div [Class (sprintf "has-bg-three-fourths-%s" card.CardEmphasisColor)][
+        div [Class "main-Container"] [
+            div [Class (sprintf "main-TextField has-bg-%s" card.CardColor); HtmlProperties.Style [CSSProperties.MarginTop "4rem"] ] [
+                h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                div [HtmlProperties.Style [CSSProperties.Width "50%"; Margin "0 auto 1rem"]] [
+                    figure [Class "image is-3by1 has-ratio"] [
+                        img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    ]
+                    // div [ ] [
+                    //     div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [] ] [
+                    //         div [Class "item-1"] [
+                    //             figure [Class "image is-3y1 has-ratio"] [
+                    //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    //             ]
+                    //         ]
+                    //         div [Class "item-2" ] [
+                    //             figure [Class "image is-3by1 has-ratio"] [
+                    //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    //             ]
+                    //         ]
+                    //         div [Class "item-3" ] [
+                    //             figure [Class "image is-3by1 has-ratio"] [
+                    //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    //             ]
+                    //         ]
+                    //         div [Class "item-3" ] [
+                    //             figure [Class "image is-3by1 has-ratio"] [
+                    //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    //             ]
+                    //         ]
+                    //         div [Class "item-3" ] [
+                    //             figure [Class "image is-3by1 has-ratio"] [
+                    //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    //             ]
+                    //         ]
+                    //         div [Class "item-3" ] [
+                    //             figure [Class "image is-3by1 has-ratio"] [
+                    //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                    //             ]
+                    //         ]
+                    //     ]
+                    // ]
                 ]
-                // div [ ] [
-                //     div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [] ] [
-                //         div [Class "item-1"] [
-                //             figure [Class "image is-3y1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                //             ]
-                //         ]
-                //         div [Class "item-2" ] [
-                //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                //             ]
-                //         ]
-                //         div [Class "item-3" ] [
-                //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                //             ]
-                //         ]
-                //         div [Class "item-3" ] [
-                //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                //             ]
-                //         ]
-                //         div [Class "item-3" ] [
-                //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                //             ]
-                //         ]
-                //         div [Class "item-3" ] [
-                //             figure [Class "image is-3by1 has-ratio"] [
-                //                 img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                //             ]
-                //         ]
-                //     ]
-                // ]
-            ]
-            div [Class "main-text"] [
-                !! header
-                div [Class "columns is-desktop"] [
-                    div [Class "column"] [!! c1]
-                    div [Class "column"] [!! c2]
+                div [Class "main-text"] [
+                    !! header
+                    div [Class "columns is-desktop"] [
+                        div [Class "column"] [!! c1]
+                        div [Class "column"] [!! c2]
+                    ]
                 ]
             ]
         ]
@@ -77,48 +79,48 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
     
 
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
-    if isLeft then 
-        div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-            div [Class "columns is-reverse-columns is-desktop"] [
-                div [Class "column"] [
-                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
+    div [Class (sprintf "has-bg-three-fourths-%s" card.CardBGColor)][
+        div [Class "main-Container"] [
+            if isLeft then 
+                div [Class "columns is-reverse-columns is-desktop"] [
+                    div [Class "column"] [
+                        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+                            h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "main-text"] [
+                                !! (getProcessedCardBody card)
+                            ]
                         ]
                     ]
-                ]
-                div [Class "column"] [
-                    div [Class "main-ImageContainer"] [
-                        figure [Class "image"] [
-                            img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                    div [Class "column"] [
+                        div [Class "main-ImageContainer"] [
+                            figure [Class "image"] [
+                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                            ]
                         ]
-                    ]
                 
-                ]
-            ]
-        ]
-    else
-        div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-            div [Class "columns is-desktop"] [
-                div [Class "column"] [
-                    div [Class "main-ImageContainer"] [
-                        figure [Class "image"] [
-                            img [Src (Layout.urlPrefix + card.CardImages.[0])]
-                        ]
                     ]
                 ]
-                div [Class "column"] [
-                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
+            else
+                div [Class "columns is-desktop"] [
+                    div [Class "column"] [
+                        div [Class "main-ImageContainer"] [
+                            figure [Class "image"] [
+                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                            ]
                         ]
                     ]
+                    div [Class "column"] [
+                        div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
+                            h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "main-text"] [
+                                !! (getProcessedCardBody card)
+                            ]
+                        ]
                 
+                    ]
                 ]
-            ]
         ]
+    ]
     
     
 let generate' (ctx : SiteContents) (_: string) =
