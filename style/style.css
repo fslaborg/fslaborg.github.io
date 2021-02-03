@@ -343,9 +343,64 @@ nav {
 
 html, body {
   font-family: "Nunito Sans";
-  font-size: 22px;
+  font-size: 52px;
   line-height: 1.5;
   background: #F0F2F4;
+}
+@media only screen and (max-width: 3000px) {
+  html, body {
+    font-size: 40px;
+  }
+}
+@media only screen and (max-width: 2560px) {
+  html, body {
+    font-size: 36px;
+  }
+}
+@media only screen and (max-width: 1930px) {
+  html, body {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 1700px) {
+  html, body {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  html, body {
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 1214px) {
+  html, body {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  html, body {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  html, body {
+    font-size: 17px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  html, body {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  html, body {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  html, body {
+    font-size: 13px;
+  }
 }
 
 .button {
@@ -357,8 +412,15 @@ html, body {
 }
 
 .main-Container {
-  padding-bottom: 3rem;
-  margin: 5% auto;
+  padding-bottom: 1.5rem;
+  margin: 2rem auto;
+  width: 80%;
+  max-width: 3840px;
+}
+@media only screen and (max-width: 1024px) {
+  .main-Container {
+    width: 95%;
+  }
 }
 @media only screen and (max-width: 400px) {
   .main-Container {
@@ -368,136 +430,63 @@ html, body {
 }
 
 .main-ImageContainer {
-  padding: 1rem;
-  max-width: 90%;
-  margin: 1rem auto;
+  /*padding: 1rem;*/
+  max-width: 50%;
+  min-width: 350px;
+  margin: 0.5rem auto;
 }
-@media only screen and (max-width: 1214px) {
+@media only screen and (max-width: 1024px) {
   .main-ImageContainer {
-    max-width: 80%;
+    max-width: 50%;
+    min-width: 250px;
   }
-}
-@media only screen and (max-width: 845px) {
-  .main-ImageContainer {
-    max-width: 100%;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .main-ImageContainer {
-    max-width: 60%;
-    min-width: 120px;
-    margin: auto;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .main-ImageContainer {
-    max-width: 70%;
-  }
-}
-@media only screen and (max-width: 450px) {
-  .main-ImageContainer {
-    max-width: 80%;
-  }
-}
-.main-ImageContainer img {
-  transition: transform 0.5s ease;
-  z-index: 2;
-}
-.main-ImageContainer img:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.3);
-  transition: 0.5s ease;
 }
 
 .main-title, .main-subtitle {
-  font-size: 34px;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
   font-weight: bolder;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.2rem;
   display: inline-block;
   text-transform: uppercase;
-  margin: auto;
-}
-@media only screen and (max-width: 1214px) {
-  .main-title, .main-subtitle {
-    font-size: 30px;
-  }
-}
-@media only screen and (max-width: 845px) {
-  .main-title, .main-subtitle {
-    font-size: 26px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .main-title, .main-subtitle {
-    font-size: 20px;
-  }
 }
 
 .main-subtitle {
-  font-size: 28px;
-}
-@media only screen and (max-width: 1214px) {
-  .main-subtitle {
-    font-size: 24px;
-  }
-}
-@media only screen and (max-width: 845px) {
-  .main-subtitle {
-    font-size: 20px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .main-subtitle {
-    font-size: 16px;
-  }
+  font-size: 1.3rem;
 }
 
 .main-TextField {
   padding: 1.5rem 3rem;
   max-width: 100%;
-  margin: auto;
-  font-size: 20px;
+  font-size: 0.9rem;
   font-weight: bolder;
-  margin: 0px 15%;
+  margin: 1rem 5rem;
   border-radius: 10px;
 }
 .main-TextField .main-text {
   text-align: justify;
 }
-@media only screen and (max-width: 1214px) {
+@media only screen and (max-width: 1500px) {
   .main-TextField {
-    font-size: 17px;
-    margin: 0px 5%;
+    margin: 0 3rem;
   }
 }
-@media only screen and (max-width: 845px) {
+@media only screen and (max-width: 1200px) {
   .main-TextField {
-    font-size: 15px;
-    margin: 0px 5%;
+    margin: 0 2rem;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .main-TextField {
-    font-size: 14px;
-    padding: 10px 20px;
-    margin: 0px 5%;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .main-TextField {
-    font-size: 13px;
-    margin: 0px 4%;
+    margin: 2rem;
   }
 }
 
 .main-text .column {
-  margin-left: 2%;
-  margin-right: 2%;
+  margin: 0 0.5rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .is-reverse-columns {
     flex-direction: column-reverse;
     display: flex;
@@ -607,4 +596,4 @@ html, body {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmp1MILoQ.tmp.map */
+/*# sourceMappingURL=tmpKQ2XEl.tmp.map */
