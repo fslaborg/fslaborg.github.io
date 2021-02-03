@@ -75,20 +75,27 @@ let layout (ctx : SiteContents) active bodyCnt =
             
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/prism.js") ] []
             script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/slider.js") ] []
+            script [ Defer true; Type "text/javascript"; Src (urlPrefix + "/js/navbar.js") ] []
         ]
         body [] [
           nav [Class "navbar is-fixed-top"] [
             div [Class "navbar-brand"] [
-            a [Class "navbar-item"; Href "/"] [
-                img [Src (urlPrefix + "/images/testlogo.png"); Alt "Logo"]
+                a [Class "navbar-item"; Href "/"] [
+                    img [Src (urlPrefix + "/images/testlogo.png"); Alt "Logo"]
+                ]
+                a [
+                    Class "navbar-burger"; 
+                    Custom ("data-target", "navMenu"); 
+                    Custom ("aria-label", "menu"); 
+                    HtmlProperties.Role "button"
+                    Custom ("aria-expanded", "false")
+                ] [
+                    span [HtmlProperties.Custom ("aria-hidden","true")] []
+                    span [HtmlProperties.Custom ("aria-hidden","true")] []
+                    span [HtmlProperties.Custom ("aria-hidden","true")] []
+                ]
             ]
-            span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
-                span [] []
-                span [] []
-                span [] []
-            ]
-            ]
-            div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
+            div [Id "navMenu"; Class "navbar-menu"] menuEntries
           ]
           yield! bodyCnt
         ]
