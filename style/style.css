@@ -156,6 +156,14 @@ nav {
   color: #438AFE;
 }
 
+.myNavbar {
+  font-size: 0.9rem;
+}
+
+.smooth-hover {
+  transition: background-color 0.2s, color 0.2s;
+}
+
 .has-bg-magenta {
   background-color: #A00975;
   color: #F0F2F4;
@@ -343,64 +351,64 @@ nav {
 
 html, body {
   font-family: "Nunito Sans";
-  font-size: 52px;
+  font-size: 2vmin;
   line-height: 1.5;
   background: #F0F2F4;
-}
-@media only screen and (max-width: 3000px) {
-  html, body {
-    font-size: 40px;
+  /*    @media only screen and (max-width: 3000px) {
+      font-size: 40px;
   }
-}
-@media only screen and (max-width: 2560px) {
-  html, body {
-    font-size: 36px;
+
+  @media only screen and (max-width: 2560px) {
+      font-size: 32px;
   }
-}
-@media only screen and (max-width: 1930px) {
-  html, body {
-    font-size: 22px;
+
+  @media only screen and (max-width: 2200px) {
+      font-size: 22px;
   }
-}
-@media only screen and (max-width: 1700px) {
-  html, body {
-    font-size: 22px;
+
+  @media only screen and (max-width: 1500px) {
+      font-size: 19px;
   }
-}
-@media only screen and (max-width: 1500px) {
-  html, body {
-    font-size: 21px;
+
+  @media only screen and (max-width: 1500px) {
+      font-size: 18px;
   }
-}
-@media only screen and (max-width: 1214px) {
-  html, body {
-    font-size: 20px;
+
+  @media only screen and (max-width: 1214px) {
+      font-size: 17px;
   }
-}
-@media only screen and (max-width: 1100px) {
-  html, body {
-    font-size: 18px;
+
+  @media only screen and (max-width: 1100px) {
+      font-size: 16px;
   }
-}
-@media only screen and (max-width: 1000px) {
-  html, body {
-    font-size: 17px;
+
+  @media only screen and (max-width: 1000px) {
+      font-size: 15px;
   }
-}
-@media only screen and (max-width: 900px) {
-  html, body {
-    font-size: 16px;
+
+  @media only screen and (max-width: 900px) {
+      font-size: 14px;
   }
-}
-@media only screen and (max-width: 600px) {
-  html, body {
-    font-size: 14px;
+
+  @media only screen and (max-width: 600px) {
+      font-size: 13px;
   }
-}
-@media only screen and (max-width: 450px) {
-  html, body {
-    font-size: 13px;
+
+  @media only screen and (max-width: 450px) {
+      font-size: 12px;
   }
+
+  @media only screen and (max-width: 400px) {
+      font-size: 11px;
+  }
+
+  @media only screen and (max-width: 350px) {
+      font-size: 10px;
+  }
+
+  @media only screen and (max-width: 300px) {
+      font-size: 9px;
+  }*/
 }
 
 .button {
@@ -415,7 +423,7 @@ html, body {
   padding-bottom: 1.5rem;
   margin: 2rem auto;
   width: 80%;
-  max-width: 3840px;
+  /*max-width: 2000px;*/
 }
 @media only screen and (max-width: 1024px) {
   .main-Container {
@@ -460,25 +468,20 @@ html, body {
   max-width: 100%;
   font-size: 0.9rem;
   font-weight: bolder;
-  margin: 1rem 5rem;
+  margin: 1rem 2rem;
   border-radius: 10px;
 }
 .main-TextField .main-text {
   text-align: justify;
 }
-@media only screen and (max-width: 1500px) {
-  .main-TextField {
-    margin: 0 3rem;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .main-TextField {
-    margin: 0 2rem;
-  }
-}
 @media only screen and (max-width: 1024px) {
   .main-TextField {
     margin: 2rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .main-TextField {
+    margin: 1rem 1.5rem;
   }
 }
 
@@ -596,4 +599,4 @@ html, body {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmpKQ2XEl.tmp.map */
+/*# sourceMappingURL=tmpeWlt0z.tmp.map */

@@ -17,130 +17,137 @@
     <script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
     <script defer="true" type="text/javascript" src="/fslabsite/js/prism.js"></script>
     <script defer="true" type="text/javascript" src="/fslabsite/js/slider.js"></script>
+    <script defer="true" type="text/javascript" src="/fslabsite/js/navbar.js"></script>
   </head>
   <body>
-    <nav class="navbar is-fixed-top is-spaced">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src="/fslabsite/images/testlogo.png" alt="Logo"/>
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenu" class="navbar-menu">
-          <a class="navbar-item is-active-link" href="/fslabsite/">
-            Home
-          </a>
-          <a class="navbar-item" href="/fslabsite/packages.html">
-            Data science packages
-          </a>
-        </div>
+    <nav class="navbar is-fixed-top">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/fslabsite/images/testlogo.png" alt="Logo"/>
+        </a>
+        <a class="navbar-burger" data-target="navMenu" aria-label="menu" role="button" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="navMenu" class="navbar-menu">
+        <a class="navbar-item is-active-link smooth-hover" href="/fslabsite/">
+          Home
+        </a>
+        <a class="navbar-item" href="/fslabsite/packages.html">
+          Data science packages
+        </a>
       </div>
     </nav>
     <div>
-      <div class="main-Container has-bg-three-fourths-darkmagenta" style="margin-top: 4rem;">
-        <div class="main-TextField has-bg-magenta">
-          <h2 class="main-title has-bg-darkmagenta">
-            Our mission
-          </h2>
-          <div class="container">
-            <figure class="image is-3by1 has-ratio">
-              <img src="/fslabsite/images/landing_test.png"/>
-            </figure>
-          </div>
-          <div class="main-text">
-            <h3 class='main-subtitle'><strong class='has-bg-one-fourth-darkmagenta'>what is fslab?</strong></h3>
+      <div class="has-bg-three-fourths-darkmagenta">
+        <div class="main-Container">
+          <div class="main-TextField has-bg-magenta" style="margin-top: 4rem;">
+            <h2 class="main-title has-bg-darkmagenta">
+              Our mission
+            </h2>
+            <div style="width: 50%; margin: 0 auto 1rem;">
+              <figure class="image is-3by1 has-ratio">
+                <img src="/fslabsite/images/landing_test.png"/>
+              </figure>
+            </div>
+            <div class="main-text">
+              <h3 class='main-subtitle'><strong class='has-bg-one-fourth-darkmagenta'>what is fslab?</strong></h3>
 
-            <div class="columns is-desktop">
-              <div class="column">
-                
+              <div class="columns is-desktop">
+                <div class="column">
+                  
 <h3 class='main-subtitle'><strong class='has-bg-one-fourth-darkmagenta'>for developers</strong>:</h3>
 <p>fslab is a <strong class='has-bg-one-fourth-darkmagenta'>F#-first</strong> community project incubation space for <strong class='has-bg-one-fourth-darkmagenta'>all things data science</strong>. We aim to be a safe haven for both projects aiming to gain traction in the data science space and projects to rejuvenate or get new maintainers.</p>
 
-              </div>
-              <div class="column">
-                
+                </div>
+                <div class="column">
+                  
 <h3 class='main-subtitle'><strong class='has-bg-one-fourth-darkmagenta'>for users</strong>:</h3>
 <p>fslab aims to be <strong class='has-bg-one-fourth-darkmagenta'>the resource</strong> for data science in F#. Wether you never wrote a line of code before, or you already are a skilled data scientist trying out things in .NET, we strive to have you covered with up-to-date, curated <strong class='has-bg-one-fourth-darkmagenta'>tutorials, documentation, and package recommendations</strong>.</p>
 <br>
 
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="main-Container has-bg-three-fourths-lightmagenta">
-        <div class="columns is-reverse-columns is-desktop">
-          <div class="column">
-            <div class="main-TextField has-bg-darkmagenta">
-              <h2 class="main-title is-emphasized-aquamarine">
-                F#-first data science packages
-              </h2>
-              <div class="main-text">
-                <p>Here you find our recommended collection of open source F# packages for your data analysis toolchain. Together with your editor or notebook these packages allow you to rapidly develop scalable, high-performance analytics and visualizations using succinct, type-safe, production-ready code.</p>
+      <div class="has-bg-three-fourths-lightmagenta">
+        <div class="main-Container">
+          <div class="columns is-reverse-columns is-desktop">
+            <div class="column">
+              <div class="main-TextField has-bg-darkmagenta">
+                <h2 class="main-title is-emphasized-aquamarine">
+                  F#-first data science packages
+                </h2>
+                <div class="main-text">
+                  <p>Here you find our recommended collection of open source F# packages for your data analysis toolchain. Together with your editor or notebook these packages allow you to rapidly develop scalable, high-performance analytics and visualizations using succinct, type-safe, production-ready code.</p>
 <br>
 <ul>
 <li>Just pick and play.</li>
 </ul>
 
+                </div>
               </div>
             </div>
-          </div>
-          <div class="column">
-            <div class="main-ImageContainer">
-              <figure class="image">
-                <img src="/fslabsite/images/packages.svg"/>
-              </figure>
+            <div class="column">
+              <div class="main-ImageContainer">
+                <figure class="image">
+                  <img src="/fslabsite/images/packages.svg"/>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="main-Container has-bg-three-fourths-darkmagenta">
-        <div class="columns is-desktop">
-          <div class="column">
-            <div class="main-ImageContainer">
-              <figure class="image">
-                <img src="/fslabsite/images/skills.svg"/>
-              </figure>
+      <div class="has-bg-three-fourths-darkmagenta">
+        <div class="main-Container">
+          <div class="columns is-desktop">
+            <div class="column">
+              <div class="main-ImageContainer">
+                <figure class="image">
+                  <img src="/fslabsite/images/skills.svg"/>
+                </figure>
+              </div>
             </div>
-          </div>
-          <div class="column">
-            <div class="main-TextField has-bg-magenta">
-              <h2 class="main-title is-emphasized-aquamarine">
-                Build your skills
-              </h2>
-              <div class="main-text">
-                <p>From zero to hero in data science using F#. FsLab guides you through downloading and setting up F# for data science. We will support you in learning basics of reading and writing F# syntax and solving problems by examples that work with your own environment.</p>
+            <div class="column">
+              <div class="main-TextField has-bg-magenta">
+                <h2 class="main-title is-emphasized-aquamarine">
+                  Build your skills
+                </h2>
+                <div class="main-text">
+                  <p>From zero to hero in data science using F#. FsLab guides you through downloading and setting up F# for data science. We will support you in learning basics of reading and writing F# syntax and solving problems by examples that work with your own environment.</p>
 
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="main-Container has-bg-three-fourths-lightmagenta">
-        <div class="columns is-reverse-columns is-desktop">
-          <div class="column">
-            <div class="main-TextField has-bg-darkmagenta">
-              <h2 class="main-title is-emphasized-aquamarine">
-                Interoperability is key
-              </h2>
-              <div class="main-text">
-                <h1>Test</h1>
+      <div class="has-bg-three-fourths-lightmagenta">
+        <div class="main-Container">
+          <div class="columns is-reverse-columns is-desktop">
+            <div class="column">
+              <div class="main-TextField has-bg-darkmagenta">
+                <h2 class="main-title is-emphasized-aquamarine">
+                  Interoperability is key
+                </h2>
+                <div class="main-text">
+                  <h1>Test</h1>
 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna <strong class='has-bg-one-fourth-aquamarine'>aliquyam</strong> erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 <p><strong class='has-bg-one-fourth-aquamarine'>saas</strong></p>
 
+                </div>
               </div>
             </div>
-          </div>
-          <div class="column">
-            <div class="main-ImageContainer">
-              <figure class="image">
-                <img src="/fslabsite/images/interoperability.svg"/>
-              </figure>
+            <div class="column">
+              <div class="main-ImageContainer">
+                <figure class="image">
+                  <img src="/fslabsite/images/interoperability.svg"/>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
