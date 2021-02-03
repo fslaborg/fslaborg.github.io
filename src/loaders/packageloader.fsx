@@ -46,7 +46,7 @@ let loadFile (packageMarkdownPath:string) =
     let desc = config |> Map.find "package-description"
 
     let posts = config |> Map.tryFind "package-posts-link"
-    let tags = config |> Map.tryFind "package-tags" |> Option.map (fun tags -> tags.Split(",") |> Array.map MarkdownProcessing.trimString)
+    let tags = config |> Map.tryFind "package-tags" |> Option.map (fun tags -> tags.Split([|","|],System.StringSplitOptions.None) |> Array.map MarkdownProcessing.trimString)
 
     DataSciencePackage.create name logo nuget github docs desc tags (if content = "" then None else Some content) posts
 

@@ -1,6 +1,7 @@
 #r "../_lib/Fornax.Core.dll"
 #load "layout.fsx"
 
+open System
 open Html
 
 let getProcessedCardBody (card:Cardloader.MainPageCard) =
@@ -10,9 +11,9 @@ let getProcessedCardBody (card:Cardloader.MainPageCard) =
 
 let splitPrimaryContent (s:string) =
     let header,columns =
-       s.Split("<!---C1-->").[0],s.Split("<!---C1-->").[1]
+       s.Split([|"<!---C1-->"|],StringSplitOptions.None).[0],s.Split([|"<!---C1-->"|],StringSplitOptions.None).[1]
     let col1,col2 =
-        columns.Split("<!---C2-->").[0],columns.Split("<!---C2-->").[1]
+        columns.Split([|"<!---C2-->"|],StringSplitOptions.None).[0],columns.Split([|"<!---C2-->"|],StringSplitOptions.None).[1]
     header,col1,col2
 
 let renderPrimaryCard (card:Cardloader.MainPageCard) =
