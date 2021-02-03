@@ -23,13 +23,13 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
         |> getProcessedCardBody
         |> splitPrimaryContent
 
-    div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardEmphasisColor)] [
+    div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardEmphasisColor); HtmlProperties.Style [CSSProperties.MarginTop "4rem"] ] [
         div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
             h2 [Class (sprintf "main-title has-bg-%s" card.CardEmphasisColor )] [!! card.CardTitle]
             div [Class "container"] [
                 figure [Class "image is-3by1 has-ratio"] [
-                                img [Src (Layout.urlPrefix + "/images/landing_test.png")]
-                            ]
+                    img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                ]
                 // div [ ] [
                 //     div [Id "carousel-demo"; Class "carousel"; HtmlProperties.Style [] ] [
                 //         div [Class "item-1"] [
@@ -67,7 +67,7 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
             ]
             div [Class "main-text"] [
                 !! header
-                div [Class "columns"] [
+                div [Class "columns is-desktop"] [
                     div [Class "column"] [!! c1]
                     div [Class "column"] [!! c2]
                 ]
@@ -79,7 +79,7 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
     if isLeft then 
         div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-            div [Class "columns is-reverse-columns"] [
+            div [Class "columns is-reverse-columns is-desktop"] [
                 div [Class "column"] [
                     div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
                         h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
@@ -90,10 +90,8 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                 ]
                 div [Class "column"] [
                     div [Class "main-ImageContainer"] [
-                        a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                            figure [Class "image"] [
-                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
-                            ]
+                        figure [Class "image"] [
+                            img [Src (Layout.urlPrefix + card.CardImages.[0])]
                         ]
                     ]
                 
@@ -102,13 +100,11 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
         ]
     else
         div [Class (sprintf "main-Container has-bg-three-fourths-%s" card.CardBGColor)] [
-            div [Class "columns"] [
+            div [Class "columns is-desktop"] [
                 div [Class "column"] [
                     div [Class "main-ImageContainer"] [
-                        a [Href "https://github.com/fslaborg"; Target "_blank"] [
-                            figure [Class "image"] [
-                                img [Src (Layout.urlPrefix + card.CardImages.[0])]
-                            ]
+                        figure [Class "image"] [
+                            img [Src (Layout.urlPrefix + card.CardImages.[0])]
                         ]
                     ]
                 ]
