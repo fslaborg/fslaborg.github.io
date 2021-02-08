@@ -19,7 +19,6 @@ let generate' (ctx : SiteContents) (_: string) =
         ctx.TryGetValue<Tutorialloader.TutorialDirectory>()
         |> Option.defaultValue {Path=""}
 
-        
     Layout.layout ctx "Tutorials" [
         div [] [!! tutorialsPath.Path]
         ]
@@ -36,11 +35,11 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
 
         let args = 
             sprintf 
-                "fsdocs build --eval --input %s --output %s --noapidocs --clean --parameters root %s fsdocs-watch-script %s" 
+                "fsdocs build --eval --input %s --output %s --noapidocs --clean --parameters root %s" 
                 tutorialsPath.Path 
                 (tutorialsPath.Path.Replace("_src","")) 
                 (urlPrefix + "/content/tutorials/")
-                ""
+
 
         let psi = ProcessStartInfo()
         psi.FileName <- "dotnet"
