@@ -32,6 +32,17 @@ nav {
     border: 1px solid #2D3E50;
 }
 
+.is-small-text {
+    font-size: 1.5vmin !important; //52px;
+}
+.is-medium-text {
+    font-size: 2vmin !important; //52px;
+}
+.is-large-text {
+    font-size: 2.5vmin !important; //52px;
+}
+
+
 // a.navbar-item:hover {
 //     background-color: lighten($fslabDarkMagenta,);
 // }
@@ -158,7 +169,6 @@ nav {
 // set font
 html, body {
     font-family: "Nunito Sans";
-    font-size: 2vmin; //52px;
     line-height: 1.5;
     background: $colorWhite;
     /*    @media only screen and (max-width: 3000px) {
@@ -245,6 +255,11 @@ html, body {
     }
 }
 
+#landing-page-hero-container.main-Container {
+    @extend .main-Container;
+    margin-top:0;
+    margin-bottom:0;
+}
 
 // image column
 .main-ImageContainer {
@@ -260,12 +275,16 @@ html, body {
 
 }
 
+strong {
+    font-weight: 600;
+}
+
 // text title
 .main-title {
     // font-family: 'Raleway',sans-serif;
     font-size: 1.6rem;
     margin-bottom: 1rem;
-    font-weight: bolder;
+    //font-weight: bolder;
     letter-spacing: 0.2rem;
     display: inline-block;
     text-transform: uppercase;
@@ -281,8 +300,8 @@ html, body {
 .main-TextField {
     padding: 1.5rem 3rem;
     max-width: 100%;
-    font-size: 0.9rem;
-    font-weight: bolder;
+    //font-size: 0.9rem;
+    //font-weight: bolder;
     margin: 1rem 2rem;
     border-radius: 10px;
 
