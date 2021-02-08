@@ -6,22 +6,13 @@ open Html
 open System.IO
 open System.Diagnostics
 
-
-let websocketScript ="""<script type="text/javascript">
-    var wsUri = "ws://localhost:8080/websocket";
-    function init() {
-        websocket = new WebSocket(wsUri);
-        websocket.onclose = function(evt) { onClose(evt) };
-    }
-    function onClose(evt) {
-        console.log('closing');
-        websocket.close();
-        document.location.reload();
-    }
-    window.addEventListener("load", init, false);
-</script>"""
-
-
+#if WATCH
+let urlPrefix = 
+  ""
+#else
+let urlPrefix = 
+  "/fslabsite"
+#endif
 let generate' (ctx : SiteContents) (_: string) =
     
     let tutorialsPath : Tutorialloader.TutorialDirectory = 
@@ -48,8 +39,8 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
                 "fsdocs build --eval --input %s --output %s --noapidocs --clean --parameters root %s fsdocs-watch-script %s" 
                 tutorialsPath.Path 
                 (tutorialsPath.Path.Replace("_src","")) 
-                "/content/tutorials/"
-                websocketScript
+                (urlPrefix + "/content/tutorials/")
+                ""
 
         let psi = ProcessStartInfo()
         psi.FileName <- "dotnet"
