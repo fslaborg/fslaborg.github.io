@@ -81,9 +81,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                 ]
             ]
     ]
-    
-    
-    
+
 let generate' (ctx : SiteContents) (_: string) =
     
     let cards : Cardloader.MainPageCard list = 

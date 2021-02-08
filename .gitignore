@@ -350,3 +350,6 @@ MigrationBackup/
 .ionide/
 
 _public
+src/content/tutorials/
+src/.fsdocs
+src/content/tutorials_src/.fsdocs

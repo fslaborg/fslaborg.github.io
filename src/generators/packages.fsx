@@ -109,6 +109,6 @@ let generate' (ctx : SiteContents) (_: string) =
 
 
 let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
-    printfn "[Cards-Generator] Starting generate function ..."
+    printfn "[Packages-Generator] Starting generate function ..."
     generate' ctx page
     |> Layout.render ctx

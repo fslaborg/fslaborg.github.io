@@ -73,6 +73,12 @@ module Predicates =
 
     let isMarkdownFile f = markdownPredicate ("",f)
 
+    let tutorialPredicate (projectRoot: string, page: string) = 
+        let ext = Path.GetExtension page
+        page.Contains("tutorials")
+        && ext = ".fsx"
+        || ext = ".md"
+
     let staticPredicate (projectRoot: string, page: string) =
         let ext = Path.GetExtension page
         if page.Contains "_public" ||
