@@ -4,7 +4,7 @@
 #load "../loaders/globalloader.fsx"
 #load "../loaders/cardloader.fsx"
 #load "../loaders/packageloader.fsx"
-#load "../loaders/tutorialLoader.fsx"
+#load "../loaders/tutorialloader.fsx"
 #endif
 
 #if WATCH

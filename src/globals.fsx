@@ -79,6 +79,8 @@ module Predicates =
         && ext = ".fsx"
         || ext = ".md"
 
+    let isTutorialFile f = tutorialPredicate("",f)
+
     let staticPredicate (projectRoot: string, page: string) =
         let ext = Path.GetExtension page
         if page.Contains "_public" ||
