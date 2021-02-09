@@ -180,6 +180,17 @@ nav {
   transition: background-color 0.2s, color 0.2s;
 }
 
+.has-bg-white {
+  background-color: #F0F2F4;
+  color: #F0F2F4;
+}
+@media only screen and (max-width: 400px) {
+  .has-bg-white {
+    background-color: #F0F2F4;
+    color: #F0F2F4;
+  }
+}
+
 .has-bg-magenta {
   background-color: #A00975;
   color: #F0F2F4;
@@ -628,4 +639,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmphCFmvb.tmp.map */
+/*# sourceMappingURL=tmpWNDN2v.tmp.map */

@@ -137,29 +137,29 @@ myChart |> GenericChart.toChartHTML
 
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="id">myChart</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">Point</span><span class="pn">(</span><span class="pn">[</span><span class="n">1.</span><span class="pn">,</span><span class="n">2.</span><span class="pn">]</span><span class="pn">)</span>
 </code></pre>
-<div id="ab5e95a2-2fda-4fb5-95e7-df147f814473" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="4fd3d60f-0c24-4b9c-b3d7-6195e4eeb6fa" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_ab5e95a22fda4fb595e7df147f814473 = function() {
+            var renderPlotly_4fd3d60f0c244b9cb3d76195e4eeb6fa = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[1.0],"y":[2.0],"mode":"markers","marker":{}}];
             var layout = {};
             var config = {};
-            Plotly.newPlot('ab5e95a2-2fda-4fb5-95e7-df147f814473', data, layout, config);
+            Plotly.newPlot('4fd3d60f-0c24-4b9c-b3d7-6195e4eeb6fa', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_ab5e95a22fda4fb595e7df147f814473();
+                    renderPlotly_4fd3d60f0c244b9cb3d76195e4eeb6fa();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_ab5e95a22fda4fb595e7df147f814473();
+                renderPlotly_4fd3d60f0c244b9cb3d76195e4eeb6fa();
             }
 </script>
 
