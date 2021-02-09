@@ -52,6 +52,11 @@ nav {
 // go to css folder and 'sass watch style.scss:style.css' to live convert scss file to css onChange.
 // might be needed to give exception to computer 'set-executionpolicy remotesigned'
 
+
+.is-white {
+    color: $colorWhite;
+}
+
 .is-magenta {
     color: $fslabMagenta
 }
@@ -166,6 +171,25 @@ nav {
     @include is-emphasized($fslabAquamarine)
 }
 
+@mixin is-strongly-emphasized($color) {
+    border-bottom: 10px solid $color
+}
+.is-strongly-emphasized-darkmagenta {
+    @include is-strongly-emphasized($fslabDarkMagenta)
+}
+.is-strongly-emphasized-magenta {
+    @include is-strongly-emphasized($fslabMagenta)
+}
+.is-strongly-emphasized-lightmagenta {
+    @include is-strongly-emphasized($fslabLightMagenta)
+}
+.is-strongly-emphasized-sapphire {
+    @include is-strongly-emphasized($fslabSapphire)
+}
+.is-strongly-emphasized-aquamarine {
+    @include is-strongly-emphasized($fslabAquamarine)
+}
+
 // set font
 html, body {
     font-family: "Nunito Sans";
@@ -264,7 +288,7 @@ html, body {
 // image column
 .main-ImageContainer {
     /*padding: 1rem;*/
-    max-width: 50%;
+    max-width: 80%;
     min-width: 350px;
     margin: 0.5rem auto;
 
@@ -277,23 +301,6 @@ html, body {
 
 strong {
     font-weight: 600;
-}
-
-// text title
-.main-title {
-    // font-family: 'Raleway',sans-serif;
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    //font-weight: bolder;
-    letter-spacing: 0.2rem;
-    display: inline-block;
-    text-transform: uppercase;
-}
-
-.main-subtitle {
-    // font-family: 'Raleway',sans-serif;
-    @extend .main-title; 
-    font-size: 1.3rem;
 }
 
 // text field

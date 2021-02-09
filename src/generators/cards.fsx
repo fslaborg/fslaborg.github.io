@@ -16,71 +16,71 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
         card
         |> getProcessedCardBody
 
-    div [Class "hero has-bg-magenta is-medium-text"] [
-        div [Id "landing-page-hero-container"; Class "main-Container"] [
-            div [Class "main-TextField"] [
-                div [HtmlProperties.Style [CSSProperties.Width "50%"; Margin "0 auto 1rem"]] [
-                    figure [Class "image is-3by1 has-ratio mb-4"] [
-                        img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+    section [Class "hero is-medium has-bg-magenta"] [
+        div [(*Id "landing-page-hero-container";*) Class "hero-body"] [
+            div [Class "container has-text-justified"] [
+                div [Class "columns"] [
+                    div [Class "column main-TextField"] [
+                        h1 [Class "title is-size-3 is-capitalized is-white is-block is-strongly-emphasized-darkmagenta"] [!! card.CardTitle]
+                        div [Class "content is-size-4"] [
+                            !!body
+                        ]
                     ]
-                ]
-                div [Class "main-text"] [
-                    div [Class "columns is-desktop"] [
-                        div [Class "column"] [
-                            !! body]
-                        div [Class "column"] [
+                    div [Class "column"] [
+                        div [Class "main-ImageContainer"] [
                             figure [Class "image"] [
-                                img [Src (Layout.urlPrefix + "/images/landing_test.png")]
+                                img [Src (Layout.urlPrefix + "/images/main_loop.svg")]
                             ]
                         ]
                     ]
                 ]
+               
             ]
         ]
     ]
     
 
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
-    div [Class "main-Container is-medium-text"] [
-        if isLeft then 
-            div [Class "columns is-reverse-columns is-desktop"] [
-                div [Class "column"] [
-                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
+    section [Class "hero is-medium"] [
+        div [(*Id "landing-page-hero-container";*) Class "hero-body"] [
+            div [Class "container has-text-justified"] [
+                if isLeft then 
+                    div [Class "columns is-reverse-columns"] [
+                        div [Class (sprintf "column main-TextField has-bg-%s" card.CardColor)] [
+                            h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "content is-size-4 is-white"] [
+                                !! (getProcessedCardBody card)
+                            ]
+                        ]
+                        div [Class "column"] [
+                            div [Class "main-ImageContainer"] [
+                                figure [Class "image"] [
+                                    img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                                ]
+                            ]
+                    
                         ]
                     ]
-                ]
-                div [Class "column"] [
-                    div [Class "main-ImageContainer"] [
-                        figure [Class "image"] [
-                            img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                else
+                    div [Class "columns"] [
+                        div [Class "column"] [
+                            div [Class "main-ImageContainer"] [
+                                figure [Class "image"] [
+                                    img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                                ]
+                            ]
+                        ]
+                        div [Class (sprintf "column main-TextField has-bg-%s" card.CardColor)] [
+                            h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "content is-size-4 is-white"] [
+                                !! (getProcessedCardBody card)
+                            ]
                         ]
                     ]
-            
+    
                 ]
             ]
-        else
-            div [Class "columns is-desktop"] [
-                div [Class "column"] [
-                    div [Class "main-ImageContainer"] [
-                        figure [Class "image"] [
-                            img [Src (Layout.urlPrefix + card.CardImages.[0])]
-                        ]
-                    ]
-                ]
-                div [Class "column"] [
-                    div [Class (sprintf "main-TextField has-bg-%s" card.CardColor)] [
-                        h2 [Class (sprintf "main-title is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                        div [Class "main-text"] [
-                            !! (getProcessedCardBody card)
-                        ]
-                    ]
-            
-                ]
-            ]
-    ]
+        ]
 
 let generate' (ctx : SiteContents) (_: string) =
     
