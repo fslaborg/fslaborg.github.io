@@ -100,7 +100,6 @@ let pricesNotAtRiver : seq<float> =
     
 let h1 = 
     Chart.Histogram(pricesNotAtRiver)
-    |> Chart.withTemplate ChartTemplates.dark
     |> Chart.withX_AxisStyle("median value of owner occupied homes in 1000s")
     |> Chart.withX_AxisStyle("price distribution")
 
@@ -130,7 +129,6 @@ let h2 =
     |> Chart.withTraceName "at river"
     ]
     |> Chart.Combine
-    |> Chart.withTemplate ChartTemplates.dark
     |> Chart.withX_AxisStyle("median value of owner occupied homes in 1000s")
     |> Chart.withX_AxisStyle("Comparison of price distributions")
 
@@ -211,7 +209,6 @@ let modelVis =
     ]
     |> Chart.Combine
     |> Chart.withSize(1200.,700.)
-    |> Chart.withTemplate ChartTemplates.dark
 
 (***hide***)
 modelVis |> GenericChart.toChartHTML
