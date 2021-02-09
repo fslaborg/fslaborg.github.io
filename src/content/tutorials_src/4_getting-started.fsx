@@ -27,9 +27,9 @@ practical data science challenges. Note that every package used througout the tu
 ## Referencing packages
 
 FsLab is a meant to be a project incubation space and can be thought of as a safe heaven for both, package developers and package users by providing guidelines and tutorials. Packages provided by the community can be used on their own, in combination with other FsLab packages but also in combination with any other .netstandard 2.0 compatible package. From F# 5.0 on packages can be referenced using the following notation:
-*)
 
-(***do-not-eval***)
+
+```fsharp
 // Packages hosted by the Fslab community
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
@@ -37,9 +37,10 @@ FsLab is a meant to be a project incubation space and can be thought of as a saf
 #r "nuget: Plotly.NET, 2.0.0-beta5"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-beta5"
 #r "nuget: FSharp.Data"
+```
 
 
-(**
+
 after referencing the packages one can access their namespaces and use provided functions. In the following example we will reference the
 top level namespaces and then use a function provided by the FSharp.Stats package to calculate a factorial:
 *)

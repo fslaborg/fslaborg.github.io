@@ -4,7 +4,7 @@
 With fsdocs 8.0, the tool can roll forward to .net 5, meaning you can use inline package references in the docs scripts:
 *)
 
-#r "nuget: Plotly.NET, 2.0.0-alpha5"
+#r "nuget: Plotly.NET, 2.0.0-beta5"
 
 open Plotly.NET
 
