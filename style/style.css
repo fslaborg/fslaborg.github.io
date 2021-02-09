@@ -148,6 +148,10 @@ nav {
   font-size: 2.5vmin !important;
 }
 
+.is-white {
+  color: #F0F2F4;
+}
+
 .is-magenta {
   color: #A00975;
 }
@@ -361,6 +365,26 @@ nav {
   border-bottom: 5px solid #438AFE;
 }
 
+.is-strongly-emphasized-darkmagenta {
+  border-bottom: 10px solid #3D1244;
+}
+
+.is-strongly-emphasized-magenta {
+  border-bottom: 10px solid #A00975;
+}
+
+.is-strongly-emphasized-lightmagenta {
+  border-bottom: 10px solid #F99BDE;
+}
+
+.is-strongly-emphasized-sapphire {
+  border-bottom: 10px solid #19657B;
+}
+
+.is-strongly-emphasized-aquamarine {
+  border-bottom: 10px solid #438AFE;
+}
+
 html, body {
   font-family: "Nunito Sans";
   line-height: 1.5;
@@ -455,7 +479,7 @@ html, body {
 
 .main-ImageContainer {
   /*padding: 1rem;*/
-  max-width: 50%;
+  max-width: 80%;
   min-width: 350px;
   margin: 0.5rem auto;
 }
@@ -468,18 +492,6 @@ html, body {
 
 strong {
   font-weight: 600;
-}
-
-.main-title, .main-subtitle {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  letter-spacing: 0.2rem;
-  display: inline-block;
-  text-transform: uppercase;
-}
-
-.main-subtitle {
-  font-size: 1.3rem;
 }
 
 .main-TextField {
@@ -616,4 +628,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmpCtmKTn.tmp.map */
+/*# sourceMappingURL=tmp8j0YYB.tmp.map */
