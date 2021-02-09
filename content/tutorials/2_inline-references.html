@@ -98,7 +98,7 @@
                 <div class="container" id="fsdocs-content">
                     <h1><a name="Inline-package-references-and-charting" class="anchor" href="#Inline-package-references-and-charting">Inline package references and charting</a></h1>
 <p>With fsdocs 8.0, the tool can roll forward to .net 5, meaning you can use inline package references in the docs scripts:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#r</span> <span class="s">&quot;nuget: Plotly.NET, 2.0.0-alpha5&quot;</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#r</span> <span class="s">&quot;nuget: Plotly.NET, 2.0.0-beta5&quot;</span>
 
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="id">Plotly</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="id">NET</span>
 
@@ -125,29 +125,29 @@ myChart |> GenericChart.toChartHTML
 </pre>
 
 <p>Here is the rendered chart:</p>
-<div id="fbe98a69-f3a3-4aad-8686-0f6b7ba7751a" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="d387b232-1f16-42af-b69d-54454111daf9" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_fbe98a69f3a34aad86860f6b7ba7751a = function() {
+            var renderPlotly_d387b2321f1642afb69d54454111daf9 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[1.0,5.0,23.0],"y":[1.0,6.0,9.0],"mode":"lines","marker":{}}];
             var layout = {"title":"Hello fsdocs!"};
             var config = {};
-            Plotly.newPlot('fbe98a69-f3a3-4aad-8686-0f6b7ba7751a', data, layout, config);
+            Plotly.newPlot('d387b232-1f16-42af-b69d-54454111daf9', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_fbe98a69f3a34aad86860f6b7ba7751a();
+                    renderPlotly_d387b2321f1642afb69d54454111daf9();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_fbe98a69f3a34aad86860f6b7ba7751a();
+                renderPlotly_d387b2321f1642afb69d54454111daf9();
             }
 </script>
 
