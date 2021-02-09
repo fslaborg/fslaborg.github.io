@@ -9,21 +9,44 @@ let getProcessedCardBody (card:Cardloader.MainPageCard) =
         .Replace("<strong>",(sprintf "<strong class='has-bg-one-fourth-%s'>" card.CardEmphasisColor))
         .Replace("<h3>","<h3 class='main-subtitle'>")
 
+let getContentBlocks (additionalClasses:string) (cardBody:string) =
+    cardBody.Split("<!---->")
+    |> Array.map (fun content ->
+        div [Class (sprintf "block %s" additionalClasses)] [
+            !!content
+        ]
+    )
+    |> Array.toList
 
-let renderPrimaryCard (card:Cardloader.MainPageCard) =
-
-    let body =
-        card
-        |> getProcessedCardBody
-
+//
+let mainHero =
     section [Class "hero is-medium has-bg-magenta"] [
         div [(*Id "landing-page-hero-container";*) Class "hero-body"] [
             div [Class "container has-text-justified"] [
                 div [Class "columns"] [
                     div [Class "column main-TextField"] [
-                        h1 [Class "title is-size-3 is-capitalized is-white is-block is-strongly-emphasized-darkmagenta"] [!! card.CardTitle]
-                        div [Class "content is-size-4"] [
-                            !!body
+                        div [Class "media mb-4"] [
+                            div [Class "media-left"] [
+                                figure [Class "image is-64x64"] [
+                                     img [Class "has-bg-white";  Src "images/logo.svg"]
+                                ]
+                            ]
+                            div [Class "media-content"] [
+                                h1 [Class "title is-size-1 is-capitalized is-white is-inline-block is-strongly-emphasized-darkmagenta mb-4"] [!! "Fslab"]
+                            ]
+                        ]
+                        div [Class "block"] [
+                            h1 [Class "title is-size-3 is-capitalized is-white is-block"] [!! "The F#-first community project incubation space for data science"]
+                        ]
+                        div [Class "content is-white is-size-4"] [
+                            div [Class "block is-white"] [
+                                !! "Whether you never wrote a line of code before, or you already are a skilled data scientist trying out things in .NET, we strive to have you covered with up-to-date"
+                                strong [Class "is-white"] [!!"curated tutorials, documentation, and package recommendations"]
+                            ]
+                            div [Class "block is-white"] [
+                                !!"Additionally, we provide a safe haven for data science projects searching for"
+                                strong [Class "is-white"] [!!"new maintainers and/or contributors"]
+                            ]
                         ]
                     ]
                     div [Class "column"] [
@@ -34,11 +57,9 @@ let renderPrimaryCard (card:Cardloader.MainPageCard) =
                         ]
                     ]
                 ]
-               
             ]
         ]
     ]
-    
 
 let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) = 
     section [Class "hero is-medium"] [
@@ -47,10 +68,11 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                 if isLeft then 
                     div [Class "columns is-reverse-columns"] [
                         div [Class (sprintf "column main-TextField has-bg-%s" card.CardColor)] [
-                            h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                            div [Class "content is-size-4 is-white"] [
-                                !! (getProcessedCardBody card)
-                            ]
+                            h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s is-inline-block" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "content is-size-4 is-white"] (
+                                getProcessedCardBody card
+                                |> getContentBlocks "is-white"
+                            )
                         ]
                         div [Class "column"] [
                             div [Class "main-ImageContainer"] [
@@ -71,10 +93,11 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                             ]
                         ]
                         div [Class (sprintf "column main-TextField has-bg-%s" card.CardColor)] [
-                            h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s" card.CardEmphasisColor )] [!! card.CardTitle]
-                            div [Class "content is-size-4 is-white"] [
-                                !! (getProcessedCardBody card)
-                            ]
+                            h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s is-inline-block" card.CardEmphasisColor )] [!! card.CardTitle]
+                            div [Class "content is-size-4 is-white"] (
+                                getProcessedCardBody card
+                                |> getContentBlocks "is-white"
+                            )
                         ]
                     ]
     
@@ -90,18 +113,16 @@ let generate' (ctx : SiteContents) (_: string) =
         |> Seq.toList
         
     Layout.layout ctx "Home" [
-        div [] (
-            cards
-            |> List.sortBy (fun c -> c.CardIndex)
-            |> List.mapi (fun i card ->
-                let isLeft = (i+1)%2=0
-                match card.CardType with
-                | Cardloader.CardType.Main ->
-                    renderPrimaryCard card
-                | Cardloader.CardType.Secondary ->
+        div [] [
+            yield mainHero
+            yield! 
+                cards
+                |> List.sortBy (fun c -> c.CardIndex)
+                |> List.mapi (fun i card ->
+                    let isLeft = i%2=0
                     renderSecondaryCard isLeft card
-            )
-        )
+                )
+        ]
     ]
 
 

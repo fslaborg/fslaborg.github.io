@@ -82,7 +82,7 @@ let layout (ctx : SiteContents) active bodyCnt =
           nav [Class "navbar is-fixed-top"] [
             div [Class "navbar-brand"] [
                 a [Class "navbar-item"; Href "/"] [
-                    img [Src (urlPrefix + "/images/testlogo.png"); Alt "Logo"]
+                    img [Src (urlPrefix + "/images/favicon.png"); Alt "Logo"]
                 ]
                 a [
                     Class "navbar-burger"; 

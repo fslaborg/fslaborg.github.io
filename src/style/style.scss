@@ -104,6 +104,10 @@ nav {
     }
 }
 
+.has-bg-white {
+    @include has-bg(100%,$colorWhite,$colorWhite)
+}
+
 .has-bg-magenta {
     @include has-bg(100%,$fslabMagenta,$fslabMagenta)
 }
