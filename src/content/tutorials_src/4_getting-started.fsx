@@ -18,6 +18,11 @@
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
+open Deedle
+open FSharp.Stats
+open Plotly.NET
+open FSharp.Data
+
 (**
 # Getting started
 
@@ -27,7 +32,6 @@ practical data science challenges. Note that every package used througout the tu
 ## Referencing packages
 
 FsLab is a meant to be a project incubation space and can be thought of as a safe heaven for both, package developers and package users by providing guidelines and tutorials. Packages provided by the community can be used on their own, in combination with other FsLab packages but also in combination with any other .netstandard 2.0 compatible package. From F# 5.0 on packages can be referenced using the following notation:
-
 
 ```fsharp
 // Packages hosted by the Fslab community
@@ -39,8 +43,6 @@ FsLab is a meant to be a project incubation space and can be thought of as a saf
 #r "nuget: FSharp.Data"
 ```
 
-
-
 after referencing the packages one can access their namespaces and use provided functions. In the following example we will reference the
 top level namespaces and then use a function provided by the FSharp.Stats package to calculate a factorial:
 *)
@@ -49,8 +51,14 @@ open FSharp.Stats
 open Plotly.NET
 open FSharp.Data
 
-SpecialFunctions.Factorial.factorial 3
+let factorialOf3 = SpecialFunctions.Factorial.factorial 3
 
+(*** condition: ipynb ***)
+#if IPYNB
+factorialOf3
+#endif // IPYNB
+
+(***include-value:factorialOf3***)
 
 (**
 ## Data access
@@ -70,6 +78,8 @@ let dataAsFrame = Frame.ReadCsv(dataAsStream,hasHeaders=true,separators="\t")
 // Using the Print() method, we can use the Deedle pretty printer to have a look at the data set.
 dataAsFrame.Print()
 
+(*** include-output ***)
+
 (**
 ## Data crunching
 The data set of choice is the boston housing data set. As you can see from analyzing the printed output, it consists of 506 rows. Each row represents a house in the boston city area and each column encodes a feature/variable, such as the number of rooms per dwelling (RoomsPerDwelling), Median value of owner-occupied homes in $1000's (MedianHomeValue) and even variables indicating if the house is bordering river charles (CharlesRiver, value = 1) or not (CharlesRiver, value = 0). 
@@ -82,8 +92,11 @@ let housesNotAtRiver =
     |> Frame.sliceCols ["RoomsPerDwelling";"MedianHomeValue";"CharlesRiver"]
     |> Frame.filterRowValues (fun s -> s.GetAs<bool>("CharlesRiver") |> not ) 
 
+//sprintf "The new frame does now contain: %i rows and %i columns" housesNotAtRiver.RowCount housesNotAtRiver.ColumnCount
+
 housesNotAtRiver.Print()
-sprintf "The new frame does now contain: %i rows and %i columns" housesNotAtRiver.RowCount housesNotAtRiver.ColumnCount
+
+(*** include-output ***)
 
 (**
 ## Data exploration
@@ -103,6 +116,11 @@ let h1 =
     Chart.Histogram(pricesNotAtRiver)
     |> Chart.withX_AxisStyle("median value of owner occupied homes in 1000s")
     |> Chart.withX_AxisStyle("price distribution")
+
+(*** condition: ipynb ***)
+#if IPYNB
+h1
+#endif // IPYNB
 
 (***hide***)
 h1 |> GenericChart.toChartHTML

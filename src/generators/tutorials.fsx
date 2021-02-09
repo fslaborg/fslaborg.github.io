@@ -47,7 +47,7 @@ let generate' (ctx : SiteContents) (_: string) =
                     ul [] (
                         tutorials.Content
                         |> Seq.map (fun t ->
-                            li [] [a [Href (urlPrefix + t)] [!!t]]
+                            li [] [a [Href (urlPrefix + "/" + t)] [!!t]]
                         )
                         |> List.ofSeq
                     )
