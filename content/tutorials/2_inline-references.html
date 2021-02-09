@@ -60,6 +60,12 @@
   Documentation
 </li>             
 <li class="nav-item">
+  <a class="nav-link" href="/fslabsite/content/tutorials/4_getting-started.html">
+    Getting started
+
+  </a>
+</li>             
+<li class="nav-item">
   <a class="nav-link" href="/fslabsite/content/tutorials/1_fsharp-code-example.html">
     F# code formatting example
 
@@ -119,29 +125,29 @@ myChart |> GenericChart.toChartHTML
 </pre>
 
 <p>Here is the rendered chart:</p>
-<div id="b25360fd-e373-4215-9fb2-3dd9ef41e0c6" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="d6478259-ad51-4e12-9075-284973bd15a0" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_b25360fde37342159fb23dd9ef41e0c6 = function() {
+            var renderPlotly_d6478259ad514e129075284973bd15a0 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[1.0,5.0,23.0],"y":[1.0,6.0,9.0],"mode":"lines","marker":{}}];
             var layout = {"title":"Hello fsdocs!"};
             var config = {};
-            Plotly.newPlot('b25360fd-e373-4215-9fb2-3dd9ef41e0c6', data, layout, config);
+            Plotly.newPlot('d6478259-ad51-4e12-9075-284973bd15a0', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_b25360fde37342159fb23dd9ef41e0c6();
+                    renderPlotly_d6478259ad514e129075284973bd15a0();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_b25360fde37342159fb23dd9ef41e0c6();
+                renderPlotly_d6478259ad514e129075284973bd15a0();
             }
 </script>
 
