@@ -42,15 +42,25 @@ let generate' (ctx : SiteContents) (_: string) =
             ]
         ]
         section [Class "hero is-medium"] [
-            div [Class "container"] [
-                div [Class "content"] [
-                    ul [] (
-                        tutorials.Content
-                        |> Seq.map (fun t ->
-                            li [] [a [Href (urlPrefix + t)] [!!t]]
+            div [Class "columns mt-4"] [
+                div [Class "column has-text-centered"] [
+                    h1 [Class "title is-darkmagenta"] [!!"Getting started with F#"]
+
+                ]
+                div [Class "column has-text-centered"] [
+                    h1 [Class "title is-darkmagenta"] [!!"Getting started with data science in F#"]
+                    div [Class "content"] [
+                        ul [] (
+                            tutorials.Content
+                            |> Seq.map (fun t ->
+                                li [] [a [Href (urlPrefix + t)] [!!t]]
+                            )
+                            |> List.ofSeq
                         )
-                        |> List.ofSeq
-                    )
+                    ]
+                ]
+                div [Class "column has-text-centered"] [
+                    h1 [Class "title is-darkmagenta"] [!!"Advanced tutorials and blogposts"]
                 ]
             ]
         ]
@@ -68,7 +78,7 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
 
         let args = 
             sprintf 
-                "fsdocs build --eval --input %s --output %s --clean --noapidocs --parameters root %s" 
+                "fsdocs build --eval --input %s --output %s --noapidocs --parameters root %s" 
                 tutorials.Path 
                 (tutorials.Path.Replace("_src","")) 
                 (urlPrefix)
