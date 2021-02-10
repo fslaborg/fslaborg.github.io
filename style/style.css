@@ -136,16 +136,27 @@ nav {
   border: 1px solid #2D3E50;
 }
 
-.is-small-text {
-  font-size: 1.5vmin !important;
+@media only screen and (max-width: 1024px) {
+  .hero-body {
+    padding: 0;
+  }
 }
 
-.is-medium-text {
-  font-size: 2vmin !important;
+.media {
+  align-items: center !important;
 }
 
-.is-large-text {
-  font-size: 2.5vmin !important;
+.media-content {
+  overflow: unset;
+}
+
+.main-title {
+  font-size: 5rem;
+}
+@media only screen and (max-width: 1024px) {
+  .main-title {
+    font-size: 3rem;
+  }
 }
 
 .landing-page-link {
@@ -498,12 +509,6 @@ html, body {
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .hero-body {
-    padding: 0;
-  }
-}
-
 #landing-page-hero-container.main-Container {
   margin-top: 0;
   margin-bottom: 0;
@@ -660,4 +665,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmp0th7Sx.tmp.map */
+/*# sourceMappingURL=tmpTfoPVY.tmp.map */
