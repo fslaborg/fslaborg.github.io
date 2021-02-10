@@ -78,193 +78,281 @@ practical data science challenges. Note that every package used througout the tu
 </code></pre>
 <p>after referencing the packages one can access their namespaces and use provided functions. In the following example we will reference the
 top level namespaces and then use a function provided by the FSharp.Stats package to calculate a factorial:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span class="id">Deedle</span>
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 4)" onmouseover="showTip(event, 'fs1', 4)" class="id">FSharp</span><span class="pn">.</span><span class="id">Stats</span>
-<span class="k">open</span> <span class="id">Plotly</span><span class="pn">.</span><span class="id">NET</span>
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 5)" onmouseover="showTip(event, 'fs1', 5)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs2', 6)" onmouseover="showTip(event, 'fs2', 6)" class="id">Data</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 8)" onmouseover="showTip(event, 'fs1', 8)" class="id">Deedle</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 9)" onmouseover="showTip(event, 'fs2', 9)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs3', 10)" onmouseover="showTip(event, 'fs3', 10)" class="id">Stats</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 11)" onmouseover="showTip(event, 'fs4', 11)" class="id">Plotly</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 12)" onmouseover="showTip(event, 'fs5', 12)" class="id">NET</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 13)" onmouseover="showTip(event, 'fs2', 13)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs6', 14)" onmouseover="showTip(event, 'fs6', 14)" class="id">Data</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 7)" onmouseover="showTip(event, 'fs3', 7)" class="id">factorialOf3</span> <span class="o">=</span> <span class="id">SpecialFunctions</span><span class="pn">.</span><span class="id">Factorial</span><span class="pn">.</span><span class="id">factorial</span> <span class="n">3</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 15)" onmouseover="showTip(event, 'fs7', 15)" class="id">factorialOf3</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 16)" onmouseover="showTip(event, 'fs8', 16)" class="id">SpecialFunctions</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs9', 17)" onmouseover="showTip(event, 'fs9', 17)" class="m">Factorial</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs10', 18)" onmouseover="showTip(event, 'fs10', 18)" class="id">factorial</span> <span class="n">3</span>
 </code></pre>
-<table class="pre"><tr><td><pre><code>No value returned by any evaluator</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>6.0</code></pre></td></tr></table>
 <h2><a name="Data-access" class="anchor" href="#Data-access">Data access</a></h2>
 <p>Equipped with these packages we are now ready to tackle promises made in the first paragraph: solving a practical data science problem. We will start by retrieving the data using the FSharp.Data package, subsequently we will use Deedle (link), a powerful data frame library that makes tabular data accessible by data frame programming. (Note that the chosen names give insight on their type, however thanks to FSharp being a strongly typed language and the we can at any time hower over single values to see the assigned type.)</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// Retrieve data using the FSharp.Data package</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="id">rawData</span> <span class="o">=</span> <span class="id">Http</span><span class="pn">.</span><span class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs11', 19)" onmouseover="showTip(event, 'fs11', 19)" class="id">rawData</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs12', 20)" onmouseover="showTip(event, 'fs12', 20)" class="rt">Http</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs13', 21)" onmouseover="showTip(event, 'fs13', 21)" class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;</span>
 
 <span class="c">// Use .net Core functions to convert the retrieved string to a stream</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="d">dataAsStream</span> <span class="o">=</span> <span class="k">new</span> <span onmouseout="hideTip(event, 'fs6', 10)" onmouseover="showTip(event, 'fs6', 10)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs7', 11)" onmouseover="showTip(event, 'fs7', 11)" class="id">IO</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 12)" onmouseover="showTip(event, 'fs8', 12)" class="id">MemoryStream</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs4', 13)" onmouseover="showTip(event, 'fs4', 13)" class="id">rawData</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs6', 14)" onmouseover="showTip(event, 'fs6', 14)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs9', 15)" onmouseover="showTip(event, 'fs9', 15)" class="id">Text</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs10', 16)" onmouseover="showTip(event, 'fs10', 16)" class="rt">Encoding</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 17)" onmouseover="showTip(event, 'fs11', 17)" class="id">UTF8</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs12', 18)" onmouseover="showTip(event, 'fs12', 18)" class="id">GetBytes</span><span class="pn">)</span> 
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 22)" onmouseover="showTip(event, 'fs14', 22)" class="d">dataAsStream</span> <span class="o">=</span> <span class="k">new</span> <span onmouseout="hideTip(event, 'fs15', 23)" onmouseover="showTip(event, 'fs15', 23)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 24)" onmouseover="showTip(event, 'fs16', 24)" class="id">IO</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 25)" onmouseover="showTip(event, 'fs17', 25)" class="id">MemoryStream</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs11', 26)" onmouseover="showTip(event, 'fs11', 26)" class="id">rawData</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs15', 27)" onmouseover="showTip(event, 'fs15', 27)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 28)" onmouseover="showTip(event, 'fs18', 28)" class="id">Text</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs19', 29)" onmouseover="showTip(event, 'fs19', 29)" class="rt">Encoding</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs20', 30)" onmouseover="showTip(event, 'fs20', 30)" class="id">UTF8</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs21', 31)" onmouseover="showTip(event, 'fs21', 31)" class="id">GetBytes</span><span class="pn">)</span> 
 
 <span class="c">// And finally create a data frame object using the ReadCsv method provided by Deedle.</span>
 <span class="c">// Note: Of course you can directly provide the path to a local source.</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="id">dataAsFrame</span> <span class="o">=</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">ReadCsv</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs5', 20)" onmouseover="showTip(event, 'fs5', 20)" class="id">dataAsStream</span><span class="pn">,</span><span class="id">hasHeaders</span><span class="o">=</span><span class="k">true</span><span class="pn">,</span><span class="id">separators</span><span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="pn">)</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs22', 32)" onmouseover="showTip(event, 'fs22', 32)" class="id">dataAsFrame</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs23', 33)" onmouseover="showTip(event, 'fs23', 33)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs24', 34)" onmouseover="showTip(event, 'fs24', 34)" class="id">ReadCsv</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs14', 35)" onmouseover="showTip(event, 'fs14', 35)" class="d">dataAsStream</span><span class="pn">,</span><span class="fn">hasHeaders</span><span class="o">=</span><span class="k">true</span><span class="pn">,</span><span class="fn">separators</span><span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="pn">)</span>
 
 <span class="c">// Using the Print() method, we can use the Deedle pretty printer to have a look at the data set.</span>
-<span onmouseout="hideTip(event, 'fs13', 21)" onmouseover="showTip(event, 'fs13', 21)" class="id">dataAsFrame</span><span class="pn">.</span><span class="id">Print</span><span class="pn">(</span><span class="pn">)</span>
+<span onmouseout="hideTip(event, 'fs22', 36)" onmouseover="showTip(event, 'fs22', 36)" class="id">dataAsFrame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 37)" onmouseover="showTip(event, 'fs25', 37)" class="id">Print</span><span class="pn">(</span><span class="pn">)</span>
 </code></pre>
-<table class="pre"><tr><td><pre><code></code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>MedianHomeValue CrimesPerCapita PercentResidental PercentNonRetail CharlesRiver NitricOxides RoomsPerDwelling PercentPre40s EmploymentDistance HighwayDistance TaxRate TeacherRatio BlackIndex PercentLowIncome 
+0   -&gt; 24.00           0.00632         18.00             2.310            0            0.5380       6.5750           65.20         4.0900             1               296.0   15.30        396.90     4.98             
+1   -&gt; 21.60           0.02731         0.00              7.070            0            0.4690       6.4210           78.90         4.9671             2               242.0   17.80        396.90     9.14             
+2   -&gt; 34.70           0.02729         0.00              7.070            0            0.4690       7.1850           61.10         4.9671             2               242.0   17.80        392.83     4.03             
+3   -&gt; 33.40           0.03237         0.00              2.180            0            0.4580       6.9980           45.80         6.0622             3               222.0   18.70        394.63     2.94             
+4   -&gt; 36.20           0.06905         0.00              2.180            0            0.4580       7.1470           54.20         6.0622             3               222.0   18.70        396.90     5.33             
+5   -&gt; 28.70           0.02985         0.00              2.180            0            0.4580       6.4300           58.70         6.0622             3               222.0   18.70        394.12     5.21             
+6   -&gt; 22.90           0.08829         12.50             7.870            0            0.5240       6.0120           66.60         5.5605             5               311.0   15.20        395.60     12.43            
+7   -&gt; 27.10           0.14455         12.50             7.870            0            0.5240       6.1720           96.10         5.9505             5               311.0   15.20        396.90     19.15            
+8   -&gt; 16.50           0.21124         12.50             7.870            0            0.5240       5.6310           100.00        6.0821             5               311.0   15.20        386.63     29.93            
+9   -&gt; 18.90           0.17004         12.50             7.870            0            0.5240       6.0040           85.90         6.5921             5               311.0   15.20        386.71     17.10            
+10  -&gt; 15.00           0.22489         12.50             7.870            0            0.5240       6.3770           94.30         6.3467             5               311.0   15.20        392.52     20.45            
+11  -&gt; 18.90           0.11747         12.50             7.870            0            0.5240       6.0090           82.90         6.2267             5               311.0   15.20        396.90     13.27            
+12  -&gt; 21.70           0.09378         12.50             7.870            0            0.5240       5.8890           39.00         5.4509             5               311.0   15.20        390.50     15.71            
+13  -&gt; 20.40           0.62976         0.00              8.140            0            0.5380       5.9490           61.80         4.7075             4               307.0   21.00        396.90     8.26             
+14  -&gt; 18.20           0.63796         0.00              8.140            0            0.5380       6.0960           84.50         4.4619             4               307.0   21.00        380.02     10.26            
+:      ...             ...             ...               ...              ...          ...          ...              ...           ...                ...             ...     ...          ...        ...              
+491 -&gt; 13.60           0.10574         0.00              27.740           0            0.6090       5.9830           98.80         1.8681             4               711.0   20.10        390.11     18.07            
+492 -&gt; 20.10           0.11132         0.00              27.740           0            0.6090       5.9830           83.50         2.1099             4               711.0   20.10        396.90     13.35            
+493 -&gt; 21.80           0.17331         0.00              9.690            0            0.5850       5.7070           54.00         2.3817             6               391.0   19.20        396.90     12.01            
+494 -&gt; 24.50           0.27957         0.00              9.690            0            0.5850       5.9260           42.60         2.3817             6               391.0   19.20        396.90     13.59            
+495 -&gt; 23.10           0.17899         0.00              9.690            0            0.5850       5.6700           28.80         2.7986             6               391.0   19.20        393.29     17.60            
+496 -&gt; 19.70           0.28960         0.00              9.690            0            0.5850       5.3900           72.90         2.7986             6               391.0   19.20        396.90     21.14            
+497 -&gt; 18.30           0.26838         0.00              9.690            0            0.5850       5.7940           70.60         2.8927             6               391.0   19.20        396.90     14.10            
+498 -&gt; 21.20           0.23912         0.00              9.690            0            0.5850       6.0190           65.30         2.4091             6               391.0   19.20        396.90     12.92            
+499 -&gt; 17.50           0.17783         0.00              9.690            0            0.5850       5.5690           73.50         2.3999             6               391.0   19.20        395.77     15.10            
+500 -&gt; 16.80           0.22438         0.00              9.690            0            0.5850       6.0270           79.70         2.4982             6               391.0   19.20        396.90     14.33            
+501 -&gt; 22.40           0.06263         0.00              11.930           0            0.5730       6.5930           69.10         2.4786             1               273.0   21.00        391.99     9.67             
+502 -&gt; 20.60           0.04527         0.00              11.930           0            0.5730       6.1200           76.70         2.2875             1               273.0   21.00        396.90     9.08             
+503 -&gt; 23.90           0.06076         0.00              11.930           0            0.5730       6.9760           91.00         2.1675             1               273.0   21.00        396.90     5.64             
+504 -&gt; 22.00           0.10959         0.00              11.930           0            0.5730       6.7940           89.30         2.3889             1               273.0   21.00        393.45     6.48             
+505 -&gt; 11.90           0.04741         0.00              11.930           0            0.5730       6.0300           80.80         2.5050             1               273.0   21.00        396.90     7.88</code></pre></td></tr></table>
 <h2><a name="Data-crunching" class="anchor" href="#Data-crunching">Data crunching</a></h2>
 <p>The data set of choice is the boston housing data set. As you can see from analyzing the printed output, it consists of 506 rows. Each row represents a house in the boston city area and each column encodes a feature/variable, such as the number of rooms per dwelling (RoomsPerDwelling), Median value of owner-occupied homes in $1000's (MedianHomeValue) and even variables indicating if the house is bordering river charles (CharlesRiver, value = 1) or not (CharlesRiver, value = 0).</p>
 <p>Lets say in our analysis we are only interested in the variables just described, furthermore we only want to keep rows where the value of the indicator variable is 0. We can use Deedle to easily create a new frame that fullfills our criteria. In this example we also cast the value of the column "CharlesRiver" to be of type bool, this illustrates how data frame programming can become typesafe using deedle.</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 22)" onmouseover="showTip(event, 'fs14', 22)" class="id">housesNotAtRiver</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs13', 23)" onmouseover="showTip(event, 'fs13', 23)" class="id">dataAsFrame</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">sliceCols</span> <span class="pn">[</span><span class="s">&quot;RoomsPerDwelling&quot;</span><span class="pn">;</span><span class="s">&quot;MedianHomeValue&quot;</span><span class="pn">;</span><span class="s">&quot;CharlesRiver&quot;</span><span class="pn">]</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">filterRowValues</span> <span class="pn">(</span><span class="k">fun</span> <span class="id">s</span> <span class="k">-&gt;</span> <span class="id">s</span><span class="pn">.</span><span class="id">GetAs</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs15', 24)" onmouseover="showTip(event, 'fs15', 24)" class="id">bool</span><span class="pn">&gt;</span><span class="pn">(</span><span class="s">&quot;CharlesRiver&quot;</span><span class="pn">)</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs16', 25)" onmouseover="showTip(event, 'fs16', 25)" class="id">not</span> <span class="pn">)</span> 
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs26', 38)" onmouseover="showTip(event, 'fs26', 38)" class="id">housesNotAtRiver</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs22', 39)" onmouseover="showTip(event, 'fs22', 39)" class="id">dataAsFrame</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs23', 40)" onmouseover="showTip(event, 'fs23', 40)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 41)" onmouseover="showTip(event, 'fs27', 41)" class="id">sliceCols</span> <span class="pn">[</span><span class="s">&quot;RoomsPerDwelling&quot;</span><span class="pn">;</span><span class="s">&quot;MedianHomeValue&quot;</span><span class="pn">;</span><span class="s">&quot;CharlesRiver&quot;</span><span class="pn">]</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs23', 42)" onmouseover="showTip(event, 'fs23', 42)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs28', 43)" onmouseover="showTip(event, 'fs28', 43)" class="id">filterRowValues</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs29', 44)" onmouseover="showTip(event, 'fs29', 44)" class="fn">s</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs29', 45)" onmouseover="showTip(event, 'fs29', 45)" class="fn">s</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs30', 46)" onmouseover="showTip(event, 'fs30', 46)" class="id">GetAs</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs31', 47)" onmouseover="showTip(event, 'fs31', 47)" class="vt">bool</span><span class="pn">&gt;</span><span class="pn">(</span><span class="s">&quot;CharlesRiver&quot;</span><span class="pn">)</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs32', 48)" onmouseover="showTip(event, 'fs32', 48)" class="fn">not</span> <span class="pn">)</span> 
 
 <span class="c">//sprintf &quot;The new frame does now contain: %i rows and %i columns&quot; housesNotAtRiver.RowCount housesNotAtRiver.ColumnCount</span>
 
-<span onmouseout="hideTip(event, 'fs14', 26)" onmouseover="showTip(event, 'fs14', 26)" class="id">housesNotAtRiver</span><span class="pn">.</span><span class="id">Print</span><span class="pn">(</span><span class="pn">)</span>
+<span onmouseout="hideTip(event, 'fs26', 49)" onmouseover="showTip(event, 'fs26', 49)" class="id">housesNotAtRiver</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 50)" onmouseover="showTip(event, 'fs25', 50)" class="id">Print</span><span class="pn">(</span><span class="pn">)</span>
 </code></pre>
-<table class="pre"><tr><td><pre><code></code></pre></td></tr></table>
-<h2><a name="Data-exploration" class="anchor" href="#Data-exploration">Data exploration</a></h2>
-<p>Exploratory data analysis is an approach favored by many - to meet this demand we strongly advertise the use of Plotly.Net. The following snippet illustrates how we can access a column of a data frame and create an interactive chart in no time. Since we might want an idea of the distribution of the house prices a histogram can come in handy:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// Note that we explicitly specify that we want to work with the values as floats. </span>
-<span class="c">// Since the row identity is not needed anymore when plotting the distribution we can</span>
-<span class="c">// directly convert the collection to a FSharp Sequence. </span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs17', 27)" onmouseover="showTip(event, 'fs17', 27)" class="id">pricesNotAtRiver</span> <span class="pn">:</span> <span onmouseout="hideTip(event, 'fs18', 28)" onmouseover="showTip(event, 'fs18', 28)" class="if">seq</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs19', 29)" onmouseover="showTip(event, 'fs19', 29)" class="vt">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs14', 30)" onmouseover="showTip(event, 'fs14', 30)" class="id">housesNotAtRiver</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">getCol</span> <span class="s">&quot;MedianHomeValue&quot;</span>
-    <span class="o">|&gt;</span> <span class="id">Series</span><span class="pn">.</span><span class="id">values</span>
+<table class="pre"><tr><td><pre><code>RoomsPerDwelling MedianHomeValue CharlesRiver 
+0   -&gt; 6.5750           24.00           0            
+1   -&gt; 6.4210           21.60           0            
+2   -&gt; 7.1850           34.70           0            
+3   -&gt; 6.9980           33.40           0            
+4   -&gt; 7.1470           36.20           0            
+5   -&gt; 6.4300           28.70           0            
+6   -&gt; 6.0120           22.90           0            
+7   -&gt; 6.1720           27.10           0            
+8   -&gt; 5.6310           16.50           0            
+9   -&gt; 6.0040           18.90           0            
+10  -&gt; 6.3770           15.00           0            
+11  -&gt; 6.0090           18.90           0            
+12  -&gt; 5.8890           21.70           0            
+13  -&gt; 5.9490           20.40           0            
+14  -&gt; 6.0960           18.20           0            
+:      ...              ...             ...          
+491 -&gt; 5.9830           13.60           0            
+492 -&gt; 5.9830           20.10           0            
+493 -&gt; 5.7070           21.80           0            
+494 -&gt; 5.9260           24.50           0            
+495 -&gt; 5.6700           23.10           0            
+496 -&gt; 5.3900           19.70           0            
+497 -&gt; 5.7940           18.30           0            
+498 -&gt; 6.0190           21.20           0            
+499 -&gt; 5.5690           17.50           0            
+500 -&gt; 6.0270           16.80           0            
+501 -&gt; 6.5930           22.40           0            
+502 -&gt; 6.1200           20.60           0            
+503 -&gt; 6.9760           23.90           0            
+504 -&gt; 6.7940           22.00           0            
+505 -&gt; 6.0300           11.90           0</code></pre></td></tr></table>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// (**</span>
+<span class="c">// ## Data exploration</span>
+
+<span class="c">// Exploratory data analysis is an approach favored by many - to meet this demand we strongly advertise the use of Plotly.Net. The following snippet illustrates how we can access a column of a data frame and create an interactive chart in no time. Since we might want an idea of the distribution of the house prices a histogram can come in handy: </span>
+<span class="c">// *)</span>
+
+<span class="c">// // Note that we explicitly specify that we want to work with the values as floats. </span>
+<span class="c">// // Since the row identity is not needed anymore when plotting the distribution we can</span>
+<span class="c">// // directly convert the collection to a FSharp Sequence. </span>
+<span class="c">// let pricesNotAtRiver : seq&lt;float&gt; = </span>
+<span class="c">//     housesNotAtRiver</span>
+<span class="c">//     |&gt; Frame.getCol &quot;MedianHomeValue&quot;</span>
+<span class="c">//     |&gt; Series.values</span>
     
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs20', 31)" onmouseover="showTip(event, 'fs20', 31)" class="id">h1</span> <span class="o">=</span> 
-    <span class="id">Chart</span><span class="pn">.</span><span class="id">Histogram</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs17', 32)" onmouseover="showTip(event, 'fs17', 32)" class="id">pricesNotAtRiver</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withX_AxisStyle</span><span class="pn">(</span><span class="s">&quot;median value of owner occupied homes in 1000s&quot;</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withX_AxisStyle</span><span class="pn">(</span><span class="s">&quot;price distribution&quot;</span><span class="pn">)</span>
-</code></pre>
-<table class="pre"><tr><td><pre><code>No value returned by any evaluator</code></pre></td></tr></table>
-<p>Since plotly charts are interactive they invite us to combine mutliple charts. Let repeat the filter step and see if houses that are located at the river show a similar distribution:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs21', 34)" onmouseover="showTip(event, 'fs21', 34)" class="id">housesAtRiver</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs13', 35)" onmouseover="showTip(event, 'fs13', 35)" class="id">dataAsFrame</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">sliceCols</span> <span class="pn">[</span><span class="s">&quot;RoomsPerDwelling&quot;</span><span class="pn">;</span><span class="s">&quot;MedianHomeValue&quot;</span><span class="pn">;</span><span class="s">&quot;CharlesRiver&quot;</span><span class="pn">]</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">filterRowValues</span> <span class="pn">(</span><span class="k">fun</span> <span class="id">s</span> <span class="k">-&gt;</span> <span class="id">s</span><span class="pn">.</span><span class="id">GetAs</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs15', 36)" onmouseover="showTip(event, 'fs15', 36)" class="id">bool</span><span class="pn">&gt;</span><span class="pn">(</span><span class="s">&quot;CharlesRiver&quot;</span><span class="pn">)</span><span class="pn">)</span>
+<span class="c">// let h1 = </span>
+<span class="c">//     Chart.Histogram(pricesNotAtRiver)</span>
+<span class="c">//     |&gt; Chart.withX_AxisStyle(&quot;median value of owner occupied homes in 1000s&quot;)</span>
+<span class="c">//     |&gt; Chart.withX_AxisStyle(&quot;price distribution&quot;)</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs22', 37)" onmouseover="showTip(event, 'fs22', 37)" class="id">pricesAtRiver</span> <span class="pn">:</span> <span onmouseout="hideTip(event, 'fs18', 38)" onmouseover="showTip(event, 'fs18', 38)" class="if">seq</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs19', 39)" onmouseover="showTip(event, 'fs19', 39)" class="vt">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs21', 40)" onmouseover="showTip(event, 'fs21', 40)" class="id">housesAtRiver</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">getCol</span> <span class="s">&quot;MedianHomeValue&quot;</span>
-    <span class="o">|&gt;</span> <span class="id">Series</span><span class="pn">.</span><span class="id">values</span>
+<span class="c">// (*** condition: ipynb ***)</span>
+<span class="c">// #if IPYNB</span>
+<span class="c">// h1</span>
+<span class="c">// #endif // IPYNB</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs23', 41)" onmouseover="showTip(event, 'fs23', 41)" class="id">h2</span> <span class="o">=</span>     
-    <span class="pn">[</span>
-    <span class="id">Chart</span><span class="pn">.</span><span class="id">Histogram</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs17', 42)" onmouseover="showTip(event, 'fs17', 42)" class="id">pricesNotAtRiver</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withTraceName</span> <span class="s">&quot;not at river&quot;</span>
-    <span class="id">Chart</span><span class="pn">.</span><span class="id">Histogram</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs22', 43)" onmouseover="showTip(event, 'fs22', 43)" class="id">pricesAtRiver</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withTraceName</span> <span class="s">&quot;at river&quot;</span>
-    <span class="pn">]</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">Combine</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withX_AxisStyle</span><span class="pn">(</span><span class="s">&quot;median value of owner occupied homes in 1000s&quot;</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withX_AxisStyle</span><span class="pn">(</span><span class="s">&quot;Comparison of price distributions&quot;</span><span class="pn">)</span>
-</code></pre>
-<table class="pre"><tr><td><pre><code>No value returned by any evaluator</code></pre></td></tr></table>
-<p>The interactive chart allows us to compare the distributions directly. We can now reconstruct our own idea of the city of boston, the sampled area, just by looking at the data e.g.:</p>
-<p>Assuming that the sampling process was homogenous while observing that there are much more houses sampled that are not located on the riverside could indicate that a spot on the river is a scarce commodity.
-This could also be backed by analyzing the tails of the distribution: it seems that houses located at the river are given a head-start in their assigned value - the distribution of the riverside houses is truncated on the left.</p>
-<p>Suppose we would have a customer that wants two models, one to predict the prices of a house at the riverside and one that predicts the prices if this is not the case, then we can meet this demand by using FSharp.Stats in combination with Deedle. Of course we need a variable that is indicative of the house price, in this we will check if the number of rooms per dwelling correlates with the house value:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs24', 45)" onmouseover="showTip(event, 'fs24', 45)" class="id">pricesAll</span> <span class="pn">:</span><span class="id">Series</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs25', 46)" onmouseover="showTip(event, 'fs25', 46)" class="id">int</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs19', 47)" onmouseover="showTip(event, 'fs19', 47)" class="id">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs13', 48)" onmouseover="showTip(event, 'fs13', 48)" class="id">dataAsFrame</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">getCol</span> <span class="s">&quot;MedianHomeValue&quot;</span>
+<span class="c">// (***hide***)</span>
+<span class="c">// h1 |&gt; GenericChart.toChartHTML</span>
+<span class="c">// (***include-it-raw***)</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs26', 49)" onmouseover="showTip(event, 'fs26', 49)" class="id">roomsPerDwellingAll</span> <span class="pn">:</span><span class="id">Series</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs25', 50)" onmouseover="showTip(event, 'fs25', 50)" class="id">int</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs19', 51)" onmouseover="showTip(event, 'fs19', 51)" class="id">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs13', 52)" onmouseover="showTip(event, 'fs13', 52)" class="id">dataAsFrame</span>
-    <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">getCol</span> <span class="s">&quot;RoomsPerDwelling&quot;</span>   
+<span class="c">// (**</span>
+<span class="c">// Since plotly charts are interactive they invite us to combine mutliple charts. Let repeat the filter step and see if houses that are located at the river show a similar distribution:</span>
+<span class="c">// *)</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs27', 53)" onmouseover="showTip(event, 'fs27', 53)" class="id">correlation</span> <span class="o">=</span> 
-    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs28', 54)" onmouseover="showTip(event, 'fs28', 54)" class="fn">tmpPrices</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs29', 55)" onmouseover="showTip(event, 'fs29', 55)" class="fn">tmpRooms</span> <span class="o">=</span> 
-        <span class="id">Series</span><span class="pn">.</span><span class="id">zipInner</span> <span onmouseout="hideTip(event, 'fs24', 56)" onmouseover="showTip(event, 'fs24', 56)" class="id">pricesAll</span> <span onmouseout="hideTip(event, 'fs26', 57)" onmouseover="showTip(event, 'fs26', 57)" class="id">roomsPerDwellingAll</span>    
-        <span class="o">|&gt;</span> <span class="id">Series</span><span class="pn">.</span><span class="id">values</span> 
-        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs30', 58)" onmouseover="showTip(event, 'fs30', 58)" class="m">Seq</span><span class="pn">.</span><span class="id">unzip</span>
-    <span class="id">Correlation</span><span class="pn">.</span><span class="id">Seq</span><span class="pn">.</span><span class="id">pearson</span> <span onmouseout="hideTip(event, 'fs28', 59)" onmouseover="showTip(event, 'fs28', 59)" class="id">tmpPrices</span> <span onmouseout="hideTip(event, 'fs29', 60)" onmouseover="showTip(event, 'fs29', 60)" class="id">tmpRooms</span>
+<span class="c">// let housesAtRiver = </span>
+<span class="c">//     dataAsFrame</span>
+<span class="c">//     |&gt; Frame.sliceCols [&quot;RoomsPerDwelling&quot;;&quot;MedianHomeValue&quot;;&quot;CharlesRiver&quot;]</span>
+<span class="c">//     |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))</span>
+
+<span class="c">// let pricesAtRiver : seq&lt;float&gt; = </span>
+<span class="c">//     housesAtRiver</span>
+<span class="c">//     |&gt; Frame.getCol &quot;MedianHomeValue&quot;</span>
+<span class="c">//     |&gt; Series.values</span>
+
+<span class="c">// let h2 =     </span>
+<span class="c">//     [</span>
+<span class="c">//     Chart.Histogram(pricesNotAtRiver)</span>
+<span class="c">//     |&gt; Chart.withTraceName &quot;not at river&quot;</span>
+<span class="c">//     Chart.Histogram(pricesAtRiver)</span>
+<span class="c">//     |&gt; Chart.withTraceName &quot;at river&quot;</span>
+<span class="c">//     ]</span>
+<span class="c">//     |&gt; Chart.Combine</span>
+<span class="c">//     |&gt; Chart.withX_AxisStyle(&quot;median value of owner occupied homes in 1000s&quot;)</span>
+<span class="c">//     |&gt; Chart.withX_AxisStyle(&quot;Comparison of price distributions&quot;)</span>
+
+<span class="c">// (***hide***)</span>
+<span class="c">// h2 |&gt; GenericChart.toChartHTML</span>
+<span class="c">// (***include-it-raw***)</span>
+
+<span class="c">// (**</span>
+<span class="c">// The interactive chart allows us to compare the distributions directly. We can now reconstruct our own idea of the city of boston, the sampled area, just by looking at the data e.g.:</span>
+
+<span class="c">// Assuming that the sampling process was homogenous while observing that there are much more houses sampled that are not located on the riverside could indicate that a spot on the river is a scarce commodity.</span>
+<span class="c">// This could also be backed by analyzing the tails of the distribution: it seems that houses located at the river are given a head-start in their assigned value - the distribution of the riverside houses is truncated on the left. </span>
+
+<span class="c">// Suppose we would have a customer that wants two models, one to predict the prices of a house at the riverside and one that predicts the prices if this is not the case, then we can meet this demand by using FSharp.Stats in combination with Deedle. Of course we need a variable that is indicative of the house price, in this we will check if the number of rooms per dwelling correlates with the house value:</span>
+<span class="c">// *)</span>
+
+<span class="c">// let pricesAll :Series&lt;int,float&gt; = </span>
+<span class="c">//     dataAsFrame</span>
+<span class="c">//     |&gt; Frame.getCol &quot;MedianHomeValue&quot;</span>
+
+<span class="c">// let roomsPerDwellingAll :Series&lt;int,float&gt; = </span>
+<span class="c">//     dataAsFrame</span>
+<span class="c">//     |&gt; Frame.getCol &quot;RoomsPerDwelling&quot;   </span>
+
+<span class="c">// let correlation = </span>
+<span class="c">//     let tmpPrices,tmpRooms = </span>
+<span class="c">//         Series.zipInner pricesAll roomsPerDwellingAll    </span>
+<span class="c">//         |&gt; Series.values </span>
+<span class="c">//         |&gt; Seq.unzip</span>
+<span class="c">//     Correlation.Seq.pearson tmpPrices tmpRooms</span>
                                               
-</code></pre>
-<table class="pre"><tr><td><pre><code>No value returned by any evaluator</code></pre></td></tr></table>
-<p>So indeed, the number of rooms per dwelling shows a positiv correlation with the house prices. With a pearson correlation of ~0.7 it does not explain the house prices completely - but this is nothing that really surprises us, as one of our hypothesis is that the location (e.g. riverside) does also have influence on the price -  however, it should be sufficient to create a linear model.</p>
-<p>So now we will use FSharp.Stats to build the two linear models ordered by the hypothetical customer. We start by defining a function that performs the fitting and plots the result:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span class="id">Fitting</span><span class="pn">.</span><span class="id">LinearRegression</span><span class="pn">.</span><span class="id">OrdinaryLeastSquares</span>
+<span class="c">// (***include-value:correlation***)</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs31', 61)" onmouseover="showTip(event, 'fs31', 61)" class="fn">predictPricesByRooms</span> <span onmouseout="hideTip(event, 'fs32', 62)" onmouseover="showTip(event, 'fs32', 62)" class="fn">description</span> <span onmouseout="hideTip(event, 'fs33', 63)" onmouseover="showTip(event, 'fs33', 63)" class="fn">data</span> <span class="o">=</span> 
-    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs24', 64)" onmouseover="showTip(event, 'fs24', 64)" class="fn">pricesAll</span> <span class="pn">:</span><span class="id">Series</span><span class="pn">&lt;</span><span class="id">_</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs19', 65)" onmouseover="showTip(event, 'fs19', 65)" class="id">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
-        <span onmouseout="hideTip(event, 'fs33', 66)" onmouseover="showTip(event, 'fs33', 66)" class="fn">data</span>
-        <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">getCol</span> <span class="s">&quot;MedianHomeValue&quot;</span>
+<span class="c">// (**</span>
+<span class="c">// So indeed, the number of rooms per dwelling shows a positiv correlation with the house prices. With a pearson correlation of ~0.7 it does not explain the house prices completely - but this is nothing that really surprises us, as one of our hypothesis is that the location (e.g. riverside) does also have influence on the price -  however, it should be sufficient to create a linear model. </span>
 
-    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs26', 67)" onmouseover="showTip(event, 'fs26', 67)" class="fn">roomsPerDwellingAll</span> <span class="pn">:</span><span class="id">Series</span><span class="pn">&lt;</span><span class="id">_</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs19', 68)" onmouseover="showTip(event, 'fs19', 68)" class="id">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
-        <span onmouseout="hideTip(event, 'fs33', 69)" onmouseover="showTip(event, 'fs33', 69)" class="fn">data</span>
-        <span class="o">|&gt;</span> <span class="id">Frame</span><span class="pn">.</span><span class="id">getCol</span> <span class="s">&quot;RoomsPerDwelling&quot;</span>   
+<span class="c">// So now we will use FSharp.Stats to build the two linear models ordered by the hypothetical customer. We start by defining a function that performs the fitting and plots the result:</span>
+<span class="c">// *)</span>
 
-    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs34', 70)" onmouseover="showTip(event, 'fs34', 70)" class="fn">fit</span> <span class="o">=</span> 
-        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs35', 71)" onmouseover="showTip(event, 'fs35', 71)" class="fn">tmpRooms</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs28', 72)" onmouseover="showTip(event, 'fs28', 72)" class="fn">tmpPrices</span> <span class="o">=</span> 
-            <span class="id">Series</span><span class="pn">.</span><span class="id">zipInner</span> <span onmouseout="hideTip(event, 'fs26', 73)" onmouseover="showTip(event, 'fs26', 73)" class="id">roomsPerDwellingAll</span> <span onmouseout="hideTip(event, 'fs24', 74)" onmouseover="showTip(event, 'fs24', 74)" class="id">pricesAll</span>    
-            <span class="o">|&gt;</span> <span class="id">Series</span><span class="pn">.</span><span class="id">sortBy</span> <span onmouseout="hideTip(event, 'fs36', 75)" onmouseover="showTip(event, 'fs36', 75)" class="id">fst</span>
-            <span class="o">|&gt;</span> <span class="id">Series</span><span class="pn">.</span><span class="id">values</span> 
-            <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs30', 76)" onmouseover="showTip(event, 'fs30', 76)" class="m">Seq</span><span class="pn">.</span><span class="id">unzip</span>
-        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs37', 77)" onmouseover="showTip(event, 'fs37', 77)" class="fn">coeffs</span> <span class="o">=</span> <span class="id">Linear</span><span class="pn">.</span><span class="id">Univariable</span><span class="pn">.</span><span class="id">coefficient</span> <span class="pn">(</span><span class="id">vector</span> <span onmouseout="hideTip(event, 'fs35', 78)" onmouseover="showTip(event, 'fs35', 78)" class="id">tmpRooms</span><span class="pn">)</span> <span class="pn">(</span><span class="id">vector</span> <span onmouseout="hideTip(event, 'fs28', 79)" onmouseover="showTip(event, 'fs28', 79)" class="id">tmpPrices</span><span class="pn">)</span>
-        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs38', 80)" onmouseover="showTip(event, 'fs38', 80)" class="fn">model</span>  <span class="o">=</span> <span class="id">Linear</span><span class="pn">.</span><span class="id">Univariable</span><span class="pn">.</span><span class="id">fit</span> <span onmouseout="hideTip(event, 'fs37', 81)" onmouseover="showTip(event, 'fs37', 81)" class="id">coeffs</span> 
-        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs39', 82)" onmouseover="showTip(event, 'fs39', 82)" class="fn">predictedPrices</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs35', 83)" onmouseover="showTip(event, 'fs35', 83)" class="fn">tmpRooms</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs30', 84)" onmouseover="showTip(event, 'fs30', 84)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs40', 85)" onmouseover="showTip(event, 'fs40', 85)" class="id">map</span> <span onmouseout="hideTip(event, 'fs38', 86)" onmouseover="showTip(event, 'fs38', 86)" class="fn">model</span>
-        <span class="pn">[</span>
-        <span class="id">Chart</span><span class="pn">.</span><span class="id">Point</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs35', 87)" onmouseover="showTip(event, 'fs35', 87)" class="id">tmpRooms</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs28', 88)" onmouseover="showTip(event, 'fs28', 88)" class="id">tmpPrices</span><span class="pn">)</span>
-        <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withTraceName</span> <span class="pn">(</span><span onmouseout="hideTip(event, 'fs41', 89)" onmouseover="showTip(event, 'fs41', 89)" class="id">sprintf</span> <span class="s">&quot;%s: data&quot;</span> <span onmouseout="hideTip(event, 'fs32', 90)" onmouseover="showTip(event, 'fs32', 90)" class="id">description</span> <span class="pn">)</span>
-        <span class="id">Chart</span><span class="pn">.</span><span class="id">Line</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs35', 91)" onmouseover="showTip(event, 'fs35', 91)" class="id">tmpRooms</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs39', 92)" onmouseover="showTip(event, 'fs39', 92)" class="id">predictedPrices</span><span class="pn">)</span>
-        <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withTraceName</span> <span class="pn">(</span><span onmouseout="hideTip(event, 'fs41', 93)" onmouseover="showTip(event, 'fs41', 93)" class="id">sprintf</span> <span class="s">&quot;%s: coefficients: intercept:%f, slope:%f&quot;</span> <span onmouseout="hideTip(event, 'fs32', 94)" onmouseover="showTip(event, 'fs32', 94)" class="id">description</span> <span onmouseout="hideTip(event, 'fs37', 95)" onmouseover="showTip(event, 'fs37', 95)" class="id">coeffs</span><span class="pn">.</span><span class="pn">[</span><span class="n">0</span><span class="pn">]</span> <span onmouseout="hideTip(event, 'fs37', 96)" onmouseover="showTip(event, 'fs37', 96)" class="id">coeffs</span><span class="pn">.</span><span class="pn">[</span><span class="n">1</span><span class="pn">]</span><span class="pn">)</span>
-        <span class="pn">]</span>                                  
-        <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">Combine</span>
-        <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withX_AxisStyle</span><span class="pn">(</span><span class="s">&quot;rooms per dwelling&quot;</span><span class="pn">)</span>
-        <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withY_AxisStyle</span><span class="pn">(</span><span class="s">&quot;median value&quot;</span><span class="pn">)</span>
-    <span onmouseout="hideTip(event, 'fs34', 97)" onmouseover="showTip(event, 'fs34', 97)" class="fn">fit</span>   
+<span class="c">// open Fitting.LinearRegression.OrdinaryLeastSquares</span>
+
+<span class="c">// let predictPricesByRooms description data = </span>
+<span class="c">//     let pricesAll :Series&lt;_,float&gt; = </span>
+<span class="c">//         data</span>
+<span class="c">//         |&gt; Frame.getCol &quot;MedianHomeValue&quot;</span>
+
+<span class="c">//     let roomsPerDwellingAll :Series&lt;_,float&gt; = </span>
+<span class="c">//         data</span>
+<span class="c">//         |&gt; Frame.getCol &quot;RoomsPerDwelling&quot;   </span>
+
+<span class="c">//     let fit = </span>
+<span class="c">//         let tmpRooms, tmpPrices = </span>
+<span class="c">//             Series.zipInner roomsPerDwellingAll pricesAll    </span>
+<span class="c">//             |&gt; Series.sortBy fst</span>
+<span class="c">//             |&gt; Series.values </span>
+<span class="c">//             |&gt; Seq.unzip</span>
+<span class="c">//         let coeffs = Linear.Univariable.coefficient (vector tmpRooms) (vector tmpPrices)</span>
+<span class="c">//         let model  = Linear.Univariable.fit coeffs </span>
+<span class="c">//         let predictedPrices = tmpRooms |&gt; Seq.map model</span>
+<span class="c">//         [</span>
+<span class="c">//         Chart.Point(tmpRooms,tmpPrices)</span>
+<span class="c">//         |&gt; Chart.withTraceName (sprintf &quot;%s: data&quot; description )</span>
+<span class="c">//         Chart.Line(tmpRooms,predictedPrices)</span>
+<span class="c">//         |&gt; Chart.withTraceName (sprintf &quot;%s: coefficients: intercept:%f, slope:%f&quot; description coeffs.[0] coeffs.[1])</span>
+<span class="c">//         ]                                  </span>
+<span class="c">//         |&gt; Chart.Combine</span>
+<span class="c">//         |&gt; Chart.withX_AxisStyle(&quot;rooms per dwelling&quot;)</span>
+<span class="c">//         |&gt; Chart.withY_AxisStyle(&quot;median value&quot;)</span>
+<span class="c">//     fit   </span>
+
+<span class="c">// (**</span>
+<span class="c">// Afterwards, we can apply the function on our prepared datasets and have a look at the model and especially the model coefficients. </span>
+<span class="c">// *)</span>
+<span class="c">// let modelVis = </span>
+<span class="c">//     [</span>
+<span class="c">//     predictPricesByRooms &quot;not at river&quot; housesNotAtRiver</span>
+<span class="c">//     predictPricesByRooms &quot;at river&quot; housesAtRiver</span>
+<span class="c">//     ]</span>
+<span class="c">//     |&gt; Chart.Combine</span>
+<span class="c">//     |&gt; Chart.withSize(1200.,700.)</span>
+
+<span class="c">// (***hide***)</span>
+<span class="c">// modelVis |&gt; GenericChart.toChartHTML</span>
+<span class="c">// (***include-it-raw***)</span>
+
+
+<span class="c">// (**</span>
+<span class="c">// Both models approximate the data in a reasonable way. When we inspect the coefficients, we see that the models only differ slightly in slope, but have an absolute offset of ~7.5. This observation complements the insights gained by the explorative data analysis approach using the histogram! </span>
+<span class="c">// *)</span>
 </code></pre>
-<p>Afterwards, we can apply the function on our prepared datasets and have a look at the model and especially the model coefficients.</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs42', 98)" onmouseover="showTip(event, 'fs42', 98)" class="id">modelVis</span> <span class="o">=</span> 
-    <span class="pn">[</span>
-    <span onmouseout="hideTip(event, 'fs31', 99)" onmouseover="showTip(event, 'fs31', 99)" class="fn">predictPricesByRooms</span> <span class="s">&quot;not at river&quot;</span> <span onmouseout="hideTip(event, 'fs14', 100)" onmouseover="showTip(event, 'fs14', 100)" class="id">housesNotAtRiver</span>
-    <span onmouseout="hideTip(event, 'fs31', 101)" onmouseover="showTip(event, 'fs31', 101)" class="fn">predictPricesByRooms</span> <span class="s">&quot;at river&quot;</span> <span onmouseout="hideTip(event, 'fs21', 102)" onmouseover="showTip(event, 'fs21', 102)" class="id">housesAtRiver</span>
-    <span class="pn">]</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">Combine</span>
-    <span class="o">|&gt;</span> <span class="id">Chart</span><span class="pn">.</span><span class="id">withSize</span><span class="pn">(</span><span class="n">1200.</span><span class="pn">,</span><span class="n">700.</span><span class="pn">)</span>
-</code></pre>
-<table class="pre"><tr><td><pre><code>No value returned by any evaluator</code></pre></td></tr></table>
-<p>Both models approximate the data in a reasonable way. When we inspect the coefficients, we see that the models only differ slightly in slope, but have an absolute offset of ~7.5. This observation complements the insights gained by the explorative data analysis approach using the histogram!</p>
 
             </div>
         </div>
     </section>
-    <div class="fsdocs-tip" id="fs1">namespace Microsoft.FSharp</div>
-<div class="fsdocs-tip" id="fs2">namespace Microsoft.FSharp.Data</div>
-<div class="fsdocs-tip" id="fs3">val factorialOf3 : obj</div>
-<div class="fsdocs-tip" id="fs4">val rawData : obj</div>
-<div class="fsdocs-tip" id="fs5">val dataAsStream : System.IO.MemoryStream</div>
-<div class="fsdocs-tip" id="fs6">namespace System</div>
-<div class="fsdocs-tip" id="fs7">namespace System.IO</div>
-<div class="fsdocs-tip" id="fs8">Multiple items<br />type MemoryStream =<br />&#160;&#160;inherit Stream<br />&#160;&#160;new : unit -&gt; MemoryStream + 6 overloads<br />&#160;&#160;member BeginRead : buffer:byte[] * offset:int * count:int * callback:AsyncCallback * state:obj -&gt; IAsyncResult<br />&#160;&#160;member BeginWrite : buffer:byte[] * offset:int * count:int * callback:AsyncCallback * state:obj -&gt; IAsyncResult<br />&#160;&#160;member CanRead : bool<br />&#160;&#160;member CanSeek : bool<br />&#160;&#160;member CanWrite : bool<br />&#160;&#160;member Capacity : int with get, set<br />&#160;&#160;member CopyTo : destination:Stream * bufferSize:int -&gt; unit<br />&#160;&#160;member CopyToAsync : destination:Stream * bufferSize:int * cancellationToken:CancellationToken -&gt; Task<br />&#160;&#160;member EndRead : asyncResult:IAsyncResult -&gt; int<br />&#160;&#160;...<br /><br />--------------------<br />System.IO.MemoryStream() : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte []) : System.IO.MemoryStream<br />System.IO.MemoryStream(capacity: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool, publiclyVisible: bool) : System.IO.MemoryStream</div>
-<div class="fsdocs-tip" id="fs9">namespace System.Text</div>
-<div class="fsdocs-tip" id="fs10">type Encoding =<br />&#160;&#160;member BodyName : string<br />&#160;&#160;member Clone : unit -&gt; obj<br />&#160;&#160;member CodePage : int<br />&#160;&#160;member DecoderFallback : DecoderFallback with get, set<br />&#160;&#160;member EncoderFallback : EncoderFallback with get, set<br />&#160;&#160;member EncodingName : string<br />&#160;&#160;member Equals : value:obj -&gt; bool<br />&#160;&#160;member GetByteCount : chars:char[] -&gt; int + 5 overloads<br />&#160;&#160;member GetBytes : chars:char[] -&gt; byte[] + 7 overloads<br />&#160;&#160;member GetCharCount : bytes:byte[] -&gt; int + 3 overloads<br />&#160;&#160;...</div>
-<div class="fsdocs-tip" id="fs11">property System.Text.Encoding.UTF8: System.Text.Encoding with get</div>
-<div class="fsdocs-tip" id="fs12">System.Text.Encoding.GetBytes(s: string) : byte []<br />System.Text.Encoding.GetBytes(chars: char []) : byte []<br />System.Text.Encoding.GetBytes(chars: System.ReadOnlySpan&lt;char&gt;, bytes: System.Span&lt;byte&gt;) : int<br />System.Text.Encoding.GetBytes(s: string, index: int, count: int) : byte []<br />System.Text.Encoding.GetBytes(chars: char [], index: int, count: int) : byte []<br />System.Text.Encoding.GetBytes(chars: nativeptr&lt;char&gt;, charCount: int, bytes: nativeptr&lt;byte&gt;, byteCount: int) : int<br />System.Text.Encoding.GetBytes(s: string, charIndex: int, charCount: int, bytes: byte [], byteIndex: int) : int<br />System.Text.Encoding.GetBytes(chars: char [], charIndex: int, charCount: int, bytes: byte [], byteIndex: int) : int</div>
-<div class="fsdocs-tip" id="fs13">val dataAsFrame : obj</div>
-<div class="fsdocs-tip" id="fs14">val housesNotAtRiver : obj</div>
-<div class="fsdocs-tip" id="fs15">type bool = System.Boolean</div>
-<div class="fsdocs-tip" id="fs16">val not : value:bool -&gt; bool</div>
-<div class="fsdocs-tip" id="fs17">val pricesNotAtRiver : seq&lt;float&gt;</div>
-<div class="fsdocs-tip" id="fs18">Multiple items<br />val seq : sequence:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;T&gt;<br /><br />--------------------<br />type seq&lt;&#39;T&gt; = System.Collections.Generic.IEnumerable&lt;&#39;T&gt;</div>
-<div class="fsdocs-tip" id="fs19">Multiple items<br />val float : value:&#39;T -&gt; float (requires member op_Explicit)<br /><br />--------------------<br />type float = System.Double<br /><br />--------------------<br />type float&lt;&#39;Measure&gt; = float</div>
-<div class="fsdocs-tip" id="fs20">val h1 : obj</div>
-<div class="fsdocs-tip" id="fs21">val housesAtRiver : obj</div>
-<div class="fsdocs-tip" id="fs22">val pricesAtRiver : seq&lt;float&gt;</div>
-<div class="fsdocs-tip" id="fs23">val h2 : obj</div>
-<div class="fsdocs-tip" id="fs24">val pricesAll : obj</div>
-<div class="fsdocs-tip" id="fs25">Multiple items<br />val int : value:&#39;T -&gt; int (requires member op_Explicit)<br /><br />--------------------<br />type int = int32<br /><br />--------------------<br />type int&lt;&#39;Measure&gt; = int</div>
-<div class="fsdocs-tip" id="fs26">val roomsPerDwellingAll : obj</div>
-<div class="fsdocs-tip" id="fs27">val correlation : obj</div>
-<div class="fsdocs-tip" id="fs28">val tmpPrices : obj</div>
-<div class="fsdocs-tip" id="fs29">val tmpRooms : obj</div>
-<div class="fsdocs-tip" id="fs30">module Seq<br /><br />from Microsoft.FSharp.Collections</div>
-<div class="fsdocs-tip" id="fs31">val predictPricesByRooms : description:&#39;a -&gt; data:&#39;b -&gt; &#39;c</div>
-<div class="fsdocs-tip" id="fs32">val description : &#39;a</div>
-<div class="fsdocs-tip" id="fs33">val data : &#39;b</div>
-<div class="fsdocs-tip" id="fs34">val fit : &#39;c</div>
-<div class="fsdocs-tip" id="fs35">val tmpRooms : seq&lt;obj&gt;</div>
-<div class="fsdocs-tip" id="fs36">val fst : tuple:(&#39;T1 * &#39;T2) -&gt; &#39;T1</div>
-<div class="fsdocs-tip" id="fs37">val coeffs : obj</div>
-<div class="fsdocs-tip" id="fs38">val model : (obj -&gt; obj)</div>
-<div class="fsdocs-tip" id="fs39">val predictedPrices : seq&lt;obj&gt;</div>
-<div class="fsdocs-tip" id="fs40">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;</div>
-<div class="fsdocs-tip" id="fs41">val sprintf : format:Printf.StringFormat&lt;&#39;T&gt; -&gt; &#39;T</div>
-<div class="fsdocs-tip" id="fs42">val modelVis : obj</div>
+    <div class="fsdocs-tip" id="fs1">namespace Deedle</div>
+<div class="fsdocs-tip" id="fs2">Multiple items<br />namespace FSharp<br /><br />--------------------<br />namespace Microsoft.FSharp</div>
+<div class="fsdocs-tip" id="fs3">namespace FSharp.Stats</div>
+<div class="fsdocs-tip" id="fs4">namespace Plotly</div>
+<div class="fsdocs-tip" id="fs5">namespace Plotly.NET</div>
+<div class="fsdocs-tip" id="fs6">Multiple items<br />namespace FSharp.Data<br /><br />--------------------<br />namespace Microsoft.FSharp.Data</div>
+<div class="fsdocs-tip" id="fs7">val factorialOf3 : float</div>
+<div class="fsdocs-tip" id="fs8">namespace FSharp.Stats.SpecialFunctions</div>
+<div class="fsdocs-tip" id="fs9">module Factorial<br /><br />from FSharp.Stats.SpecialFunctions</div>
+<div class="fsdocs-tip" id="fs10">val factorial : x:int -&gt; float</div>
+<div class="fsdocs-tip" id="fs11">val rawData : string</div>
+<div class="fsdocs-tip" id="fs12">type Http =<br />&#160;&#160;private new : unit -&gt; Http<br />&#160;&#160;static member private AppendQueryToUrl : url:string * query:(string * string) list -&gt; string<br />&#160;&#160;static member AsyncRequest : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponse&gt;<br />&#160;&#160;static member AsyncRequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponseWithStream&gt;<br />&#160;&#160;static member AsyncRequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;string&gt;<br />&#160;&#160;static member private EncodeFormData : query:string -&gt; string<br />&#160;&#160;static member private EncodeUrlParam : param:string -&gt; string<br />&#160;&#160;static member private InnerRequest : url:string * toHttpResponse:(string -&gt; int -&gt; string -&gt; string -&gt; &#39;a0 option -&gt; Map&lt;string,string&gt; -&gt; Map&lt;string,string&gt; -&gt; Stream -&gt; Async&lt;&#39;a1&gt;) * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:&#39;a0 * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;&#39;a1&gt;<br />&#160;&#160;static member Request : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponse<br />&#160;&#160;static member RequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponseWithStream<br />&#160;&#160;...</div>
+<div class="fsdocs-tip" id="fs13">Multiple items<br />static member Http.RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:System.Net.CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(System.Net.HttpWebRequest -&gt; System.Net.HttpWebRequest) * ?timeout:int -&gt; string<br /><br />--------------------<br />static member Http.RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:System.Net.CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(System.Net.HttpWebRequest -&gt; System.Net.HttpWebRequest) * ?timeout:int -&gt; string</div>
+<div class="fsdocs-tip" id="fs14">val dataAsStream : System.IO.MemoryStream</div>
+<div class="fsdocs-tip" id="fs15">namespace System</div>
+<div class="fsdocs-tip" id="fs16">namespace System.IO</div>
+<div class="fsdocs-tip" id="fs17">Multiple items<br />type MemoryStream =<br />&#160;&#160;inherit Stream<br />&#160;&#160;new : unit -&gt; MemoryStream + 6 overloads<br />&#160;&#160;member BeginRead : buffer:byte[] * offset:int * count:int * callback:AsyncCallback * state:obj -&gt; IAsyncResult<br />&#160;&#160;member BeginWrite : buffer:byte[] * offset:int * count:int * callback:AsyncCallback * state:obj -&gt; IAsyncResult<br />&#160;&#160;member CanRead : bool<br />&#160;&#160;member CanSeek : bool<br />&#160;&#160;member CanWrite : bool<br />&#160;&#160;member Capacity : int with get, set<br />&#160;&#160;member CopyTo : destination:Stream * bufferSize:int -&gt; unit<br />&#160;&#160;member CopyToAsync : destination:Stream * bufferSize:int * cancellationToken:CancellationToken -&gt; Task<br />&#160;&#160;member EndRead : asyncResult:IAsyncResult -&gt; int<br />&#160;&#160;...<br /><br />--------------------<br />System.IO.MemoryStream() : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte []) : System.IO.MemoryStream<br />System.IO.MemoryStream(capacity: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool, publiclyVisible: bool) : System.IO.MemoryStream</div>
+<div class="fsdocs-tip" id="fs18">namespace System.Text</div>
+<div class="fsdocs-tip" id="fs19">type Encoding =<br />&#160;&#160;member BodyName : string<br />&#160;&#160;member Clone : unit -&gt; obj<br />&#160;&#160;member CodePage : int<br />&#160;&#160;member DecoderFallback : DecoderFallback with get, set<br />&#160;&#160;member EncoderFallback : EncoderFallback with get, set<br />&#160;&#160;member EncodingName : string<br />&#160;&#160;member Equals : value:obj -&gt; bool<br />&#160;&#160;member GetByteCount : chars:char[] -&gt; int + 5 overloads<br />&#160;&#160;member GetBytes : chars:char[] -&gt; byte[] + 7 overloads<br />&#160;&#160;member GetCharCount : bytes:byte[] -&gt; int + 3 overloads<br />&#160;&#160;...</div>
+<div class="fsdocs-tip" id="fs20">property System.Text.Encoding.UTF8: System.Text.Encoding with get</div>
+<div class="fsdocs-tip" id="fs21">System.Text.Encoding.GetBytes(s: string) : byte []<br />System.Text.Encoding.GetBytes(chars: char []) : byte []<br />System.Text.Encoding.GetBytes(chars: System.ReadOnlySpan&lt;char&gt;, bytes: System.Span&lt;byte&gt;) : int<br />System.Text.Encoding.GetBytes(s: string, index: int, count: int) : byte []<br />System.Text.Encoding.GetBytes(chars: char [], index: int, count: int) : byte []<br />System.Text.Encoding.GetBytes(chars: nativeptr&lt;char&gt;, charCount: int, bytes: nativeptr&lt;byte&gt;, byteCount: int) : int<br />System.Text.Encoding.GetBytes(s: string, charIndex: int, charCount: int, bytes: byte [], byteIndex: int) : int<br />System.Text.Encoding.GetBytes(chars: char [], charIndex: int, charCount: int, bytes: byte [], byteIndex: int) : int</div>
+<div class="fsdocs-tip" id="fs22">val dataAsFrame : Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs23">Multiple items<br />module Frame<br /><br />from Deedle<br /><br />--------------------<br />type Frame =<br />&#160;&#160;inherit DynamicObj<br />&#160;&#160;new : unit -&gt; Frame<br /><br />--------------------<br />type Frame&lt;&#39;TRowKey,&#39;TColumnKey (requires equality and equality)&gt; =<br />&#160;&#160;interface IDynamicMetaObjectProvider<br />&#160;&#160;interface INotifyCollectionChanged<br />&#160;&#160;interface IFsiFormattable<br />&#160;&#160;interface IFrame<br />&#160;&#160;new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />&#160;&#160;new : rowIndex:IIndex&lt;&#39;TRowKey&gt; * columnIndex:IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:IIndexBuilder * vectorBuilder:IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />&#160;&#160;member AddColumn : column:&#39;TColumnKey * series:ISeries&lt;&#39;TRowKey&gt; -&gt; unit<br />&#160;&#160;member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; -&gt; unit<br />&#160;&#160;member AddColumn : column:&#39;TColumnKey * series:ISeries&lt;&#39;TRowKey&gt; * lookup:Lookup -&gt; unit<br />&#160;&#160;member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; * lookup:Lookup -&gt; unit<br />&#160;&#160;...<br /><br />--------------------<br />new : unit -&gt; Frame<br /><br />--------------------<br />new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />new : rowIndex:Indices.IIndex&lt;&#39;TRowKey&gt; * columnIndex:Indices.IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:Indices.IIndexBuilder * vectorBuilder:Vectors.IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;</div>
+<div class="fsdocs-tip" id="fs24">static member Frame.ReadCsv : path:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : stream:System.IO.Stream * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : reader:System.IO.TextReader * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : stream:System.IO.Stream * hasHeaders:System.Nullable&lt;bool&gt; * inferTypes:System.Nullable&lt;bool&gt; * inferRows:System.Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:System.Nullable&lt;int&gt; * missingValues:string [] * preferOptions:System.Nullable&lt;bool&gt; -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : location:string * hasHeaders:System.Nullable&lt;bool&gt; * inferTypes:System.Nullable&lt;bool&gt; * inferRows:System.Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:System.Nullable&lt;int&gt; * missingValues:string [] * preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : path:string * indexCol:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;&#39;R,string&gt; (requires equality)</div>
+<div class="fsdocs-tip" id="fs25">static member FrameExtensions.Print : frame:Frame&lt;&#39;K,&#39;V&gt; -&gt; unit (requires equality and equality)<br />static member FrameExtensions.Print : frame:Frame&lt;&#39;K,&#39;V&gt; * printTypes:bool -&gt; unit (requires equality and equality)</div>
+<div class="fsdocs-tip" id="fs26">val housesNotAtRiver : Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs27">val sliceCols : columns:seq&lt;&#39;C&gt; -&gt; frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; Frame&lt;&#39;R,&#39;C&gt; (requires equality and equality)</div>
+<div class="fsdocs-tip" id="fs28">val filterRowValues : f:(ObjectSeries&lt;&#39;C&gt; -&gt; bool) -&gt; frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; Frame&lt;&#39;R,&#39;C&gt; (requires equality and equality)</div>
+<div class="fsdocs-tip" id="fs29">val s : ObjectSeries&lt;string&gt;</div>
+<div class="fsdocs-tip" id="fs30">member ObjectSeries.GetAs : column:&#39;K -&gt; &#39;R<br />member ObjectSeries.GetAs : column:&#39;K * fallback:&#39;R -&gt; &#39;R</div>
+<div class="fsdocs-tip" id="fs31">type bool = System.Boolean</div>
+<div class="fsdocs-tip" id="fs32">val not : value:bool -&gt; bool</div>
 
 </body>
 </html> 
