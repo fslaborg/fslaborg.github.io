@@ -44,10 +44,7 @@ FsLab is a meant to be a project incubation space and can be thought of as a saf
 after referencing the packages one can access their namespaces and use provided functions. In the following example we will reference the
 top level namespaces and then use a function provided by the FSharp.Stats package to calculate a factorial:
 *)
-open Deedle
 open FSharp.Stats
-open Plotly.NET
-open FSharp.Data
 
 let factorialOf3 = SpecialFunctions.Factorial.factorial 3
 
@@ -58,25 +55,27 @@ factorialOf3
 
 (***include-value:factorialOf3***)
 
-// (**
-// ## Data access
-// Equipped with these packages we are now ready to tackle promises made in the first paragraph: solving a practical data science problem. We will start by retrieving the data using the FSharp.Data package, subsequently we will use Deedle (link), a powerful data frame library that makes tabular data accessible by data frame programming. (Note that the chosen names give insight on their type, however thanks to FSharp being a strongly typed language and the we can at any time hower over single values to see the assigned type.)
-// *)
+(**
+## Data access
+Equipped with these packages we are now ready to tackle promises made in the first paragraph: solving a practical data science problem. We will start by retrieving the data using the FSharp.Data package, subsequently we will use Deedle (link), a powerful data frame library that makes tabular data accessible by data frame programming. (Note that the chosen names give insight on their type, however thanks to FSharp being a strongly typed language and the we can at any time hower over single values to see the assigned type.)
+*)
+open FSharp.Data
+open Deedle
 
-// // Retrieve data using the FSharp.Data package
-// let rawData = Http.RequestString @"https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt"
+// Retrieve data using the FSharp.Data package
+let rawData = Http.RequestString @"https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt"
 
-// // Use .net Core functions to convert the retrieved string to a stream
-// let dataAsStream = new System.IO.MemoryStream(rawData |> System.Text.Encoding.UTF8.GetBytes) 
+// Use .net Core functions to convert the retrieved string to a stream
+let dataAsStream = new System.IO.MemoryStream(rawData |> System.Text.Encoding.UTF8.GetBytes) 
 
-// // And finally create a data frame object using the ReadCsv method provided by Deedle.
-// // Note: Of course you can directly provide the path to a local source.
-// let dataAsFrame = Frame.ReadCsv(dataAsStream,hasHeaders=true,separators="\t")
+// And finally create a data frame object using the ReadCsv method provided by Deedle.
+// Note: Of course you can directly provide the path to a local source.
+let dataAsFrame = Frame.ReadCsv(dataAsStream,hasHeaders=true,separators="\t")
 
-// // Using the Print() method, we can use the Deedle pretty printer to have a look at the data set.
-// dataAsFrame.Print()
+// Using the Print() method, we can use the Deedle pretty printer to have a look at the data set.
+dataAsFrame.Print()
 
-// (*** include-output ***)
+(*** include-output ***)
 
 // (**
 // ## Data crunching
@@ -102,6 +101,7 @@ factorialOf3
 // Exploratory data analysis is an approach favored by many - to meet this demand we strongly advertise the use of Plotly.Net. The following snippet illustrates how we can access a column of a data frame and create an interactive chart in no time. Since we might want an idea of the distribution of the house prices a histogram can come in handy: 
 // *)
 
+//open Plotly.NET
 // // Note that we explicitly specify that we want to work with the values as floats. 
 // // Since the row identity is not needed anymore when plotting the distribution we can
 // // directly convert the collection to a FSharp Sequence. 

@@ -32,16 +32,26 @@ nav {
     border: 1px solid #2D3E50;
 }
 
-.is-small-text {
-    font-size: 1.5vmin !important; //52px;
-}
-.is-medium-text {
-    font-size: 2vmin !important; //52px;
-}
-.is-large-text {
-    font-size: 2.5vmin !important; //52px;
+.hero-body {
+    @media only screen and (max-width: 1024px) {
+        padding:0;
+    }
 }
 
+.media {
+    align-items: center !important;
+}
+
+.media-content{
+    overflow: unset;
+}
+
+.main-title {
+    font-size: 5rem;
+    @media only screen and (max-width: 1024px) {
+        font-size: 3rem;
+    }
+}
 
 // a.navbar-item:hover {
 //     background-color: lighten($fslabDarkMagenta,);
@@ -295,12 +305,6 @@ html, body {
     @media only screen and (max-width: 400px) {
         margin: 10px auto;
         padding-bottom: 10px;
-    }
-}
-
-.hero-body {
-    @media only screen and (max-width: 1024px) {
-        padding:0;
     }
 }
 

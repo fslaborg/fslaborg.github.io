@@ -24,19 +24,19 @@ let generate' (ctx : SiteContents) (_: string) =
         section [Class "hero is-medium has-bg-darkmagenta"] [
             div [Class "hero-body"] [
                 div [Class "container"] [
-                    div [Class "media"] [
+                    div [Class "media mb-4"] [
                         div [Class "media-left"] [
-                            figure [Class "image"] [
+                            figure [Class "image is-128x128"] [
                                  img [Id "package-header-img"; Class "is-rounded"; Src "images/skills.svg"]
                             ]
                         ]
-                        div [Id "package-title-container"; Class "media-content"] [
-                            h1 [Class "title is-white"] [!!"FsLab tutorials and blogposts"]
-                            h3 [Class "subtitle is-white"] [!!"From zero to hero in data science using F#! 🚀"]
-                            h3 [Class "subtitle is-white"] [
-                                !!"FsLab guides you through downloading and setting up F# for data science. We will support you in learning basics of reading and writing F# syntax and solving problems by examples that work with your own environment."
-                            ]
+                        div [Class "media-content"] [
+                            h1 [Class "main-title is-white"] [!!"FsLab tutorials and blogposts"]
                         ]
+                    ]
+                    h3 [Class "subtitle is-white"] [!!"From zero to hero in data science using F#! 🚀"]
+                    h3 [Class "subtitle is-white"] [
+                        !!"FsLab guides you through downloading and setting up F# for data science. We will support you in learning basics of reading and writing F# syntax and solving problems by examples that work with your own environment."
                     ]
                 ]
             ]

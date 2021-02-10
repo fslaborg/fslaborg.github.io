@@ -32,12 +32,12 @@ let mainHero =
                     div [Class "column main-TextField is-7"] [
                         div [Class "media mb-4"] [
                             div [Class "media-left"] [
-                                figure [Class "image is-64x64"] [
-                                     img [Id "logo-square"; Src "images/logo.svg"]
+                                figure [Class "image is-128x128"] [
+                                     img [Id "logo-square"; Class "is-rounded" ; Src "images/logo-rounded.svg"]
                                 ]
                             ]
                             div [Class "media-content"] [
-                                h1 [Class "title is-size-1 is-capitalized is-white is-inline-block is-strongly-emphasized-darkmagenta mb-4"] [!! "Fslab"]
+                                h1 [Class "main-title is-capitalized is-white is-inline-block is-strongly-emphasized-darkmagenta mb-4"] [!! "Fslab"]
                             ]
                         ]
                         div [Class "block"] [

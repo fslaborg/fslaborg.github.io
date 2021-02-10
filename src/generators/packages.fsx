@@ -18,22 +18,22 @@ let generate' (ctx : SiteContents) (_: string) =
         section [Class "hero is-medium has-bg-lightmagenta"] [
             div [Class "hero-body"] [
                 div [Class "container"] [
-                    div [Class "media"] [
+                    div [Class "media mb-4"] [
                         div [Class "media-left"] [
-                            figure [Class "image"] [
-                                 img [Id "package-header-img"; Class "is-rounded"; Src "images/packages-square.svg"]
+                            figure [Class "image is-128x128"] [
+                                 img [Id "package-header-img"; Class "is-rounded"; Src "images/packages.svg"]
                             ]
                         ]
                         div [Id "package-title-container"; Class "media-content"] [
-                            h1 [Class "title is-darkmagenta"] [!!"Data science packages"]
-                            h3 [Class "subtitle is-magenta"] [!!"Use these packages to fuel your data science journey in F# and .NET! 🚀"]
-                            h3 [Class "subtitle is-magenta"] [
-                                !!"Want to add a package to the curated list?"
-                                a [] [
-                                    !!"File a PR"
-                                    span [Class "icon"] [i [Class "fa fa-code-branch"] []]
-                                ]
-                            ]
+                            h1 [Class "main-title is-darkmagenta"] [!!"Data science packages"]
+                        ]
+                    ]
+                    h3 [Class "subtitle is-magenta"] [!!"Use these packages to fuel your data science journey in F# and .NET! 🚀"]
+                    h3 [Class "subtitle is-magenta"] [
+                        !!"Want to add a package to the curated list?"
+                        a [] [
+                            !!"File a PR"
+                            span [Class "icon"] [i [Class "fa fa-code-branch"] []]
                         ]
                     ]
                 ]
@@ -54,9 +54,9 @@ let generate' (ctx : SiteContents) (_: string) =
                                 ]
                                 div [Class "media-content"] [
                                     p [Class "title"] [a [Href package.PackageGithubLink] [!! package.PackageName]]
-                                    p [Class "subtitle is-6"] [!! package.PackageDescription]
                                 ]
                             ]
+                            p [Class "subtitle is-6"] [!! package.PackageDescription]
                             referenceCodeBlock package.PackageName
                             if package.PackageTags.IsSome then
                                 div [Class"tags"] (
