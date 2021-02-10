@@ -1,82 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{fsdocs-page-title}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="{{fsdocs-authors}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{root}}/img/favicon.ico">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+    <link rel="stylesheet" href="{{root}}style/style.css">
+    <link type="text/css" rel="stylesheet" href="{{root}}content/tutorials/content/fsdocs-default.css" />
+    <link type="text/css" rel="stylesheet" href="{{root}}content/tutorials/content/fsdocs-custom.css" />
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
-
-    <link type="text/css" rel="stylesheet" href="{{root}}content/fsdocs-default.css" />
-    <link type="text/css" rel="stylesheet" href="{{root}}content/fsdocs-custom.css" />
-    <script type="text/javascript" src="{{root}}content/fsdocs-tips.js"></script>
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!-- BEGIN SEARCH BOX: this adds support for the search box -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.css" />
-    <!-- END SEARCH BOX: this adds support for the search box -->
+    
+    <script type="text/javascript" src="{{root}}content/tutorials/content/fsdocs-tips.js"></script>
+    <script type="text/javascript" defer crossorigin="anonymous" src="https://kit.fontawesome.com/0d3e0ea7a6.js"></script>
+    <script type="text/javascript" defer crossorigin="anonymous" src="{{root}}js/prism.js"></script>
+    <script type="text/javascript" defer crossorigin="anonymous" src="{{root}}js/navbar.js"></script>
     {{fsdocs-watch-script}}
-</head> 
-
+</head>
 <body>
-    <div class="columns is-fullheight m-0">
-        <div id="fsdocs-menu" class="column is-2 is-paddingless">
-            <aside class="menu">
-                <div class="container is-paddingless is-marginless has-background-dark">
-                    <a href="{{fsdocs-logo-link}}">
-                        <figure class="image is-128x128 container">
-                            <img src="{{fsdocs-logo-src}}">
-                        </figure>
-                    </a>
-                    <h2 class="title has-text-centered has-text-white pb-4">FsLab tutorials and guides</h2>
-                </div>
-                <div class="content">
-                    <!-- BEGIN SEARCH BOX: this adds support for the search box -->
-                    <div id="header">
-                        <div class="searchbox" id="fsdocs-searchbox">
-                            <label for="search-by">
-                                <i class="fas fa-search"></i>
-                            </label>
-                            <input data-search-input="" id="search-by" type="search" placeholder="Search..." class="input"/>
-                            <span data-search-clear="">
-                                <i class="fas fa-times"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- END SEARCH BOX: this adds support for the search box -->
-                    <ul class="navbar-nav">
-                        <li class="nav-header">Links</li>
-                        <li class="nav-item" id="fsdocs-license-link"><a class="nav-link" href="{{fsdocs-license-link}}">License (MIT)</a></li>
-                        <li class="nav-item" id="fsdocs-release-notes-link"><a class="nav-link" href="{{fsdocs-release-notes-link}}">Release Notes</a></li>
-                        <li class="nav-item" id="fsdocs-repository-link"><a class="nav-link" href="{{fsdocs-repository-link}}">Source Repository</a></li>
-                        {{fsdocs-list-of-documents}}
-                    </ul>
-                </div>
-            </aside>
+    <nav class="navbar is-fixed-top">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="{{root}}images/favicon.png" alt="Logo">
+            </a>
+            <a class="navbar-burger" data-target="navMenu" aria-label="menu" role="button" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-        <div class="column is-10 is-paddingless">
-            <div class="section pt-4">
-                <div class="container" id="fsdocs-content">
-                    {{fsdocs-content}}
+        <div id="navMenu" class="navbar-menu">
+            <a href="/" class="navbar-item">Home</a>
+            <a href="/packages.html" class="navbar-item">Data science packages</a>
+            <a hre="/tutorials.html" class="navbar-item is-active-link-darkmagenta smooth-hover">Tutorials and Blogposts</a>
+        </div>
+    </nav>
+    <section class="hero is-small has-bg-darkmagenta">
+        <div class="hero-body">
+            <div class="container">
+                <div class="media mb-4">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <img id="logo-square" class="is-rounded" src="{{root}}images/logo-rounded.svg">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <h1 class="title is-size-1 is-white">{{fsdocs-page-title}}</h1>
+                    </div>
                 </div>
             </div>
         </div>
-        {{fsdocs-tooltips}}
-    </div>
-
-    <!-- BEGIN SEARCH BOX: this adds support for the search box -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.css" />
-    <script type="text/javascript">var fsdocs_search_baseurl = '{{root}}'</script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.js"></script>
-    <script type="text/javascript" src="{{root}}content/fsdocs-search.js"></script>
-    <!-- END SEARCH BOX: this adds support for the search box -->
+    </section>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container" id="fsdocs-content">
+                <a class="button landing-page-link is-size-4" href="/tutorials.html"><i class="fas fa-long-arrow-alt-left"></i>Back to the index</a>
+                {{fsdocs-content}}
+            </div>
+        </div>
+    </section>
+    {{fsdocs-tooltips}}
 </body>
-
-</html>
+</html> 

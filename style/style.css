@@ -124,10 +124,19 @@ nav {
   border-bottom: 2px solid #3D1244;
 }
 
-.is-active-link {
-  background-color: #3D1244;
-  color: #F0F2F4;
+.is-active-link-darkmagenta, .is-active-link-lightmagenta, .is-active-link-magenta {
+  background-color: #3D1244 !important;
+  color: #F0F2F4 !important;
   font-weight: bold;
+}
+
+.is-active-link-magenta {
+  background-color: #A00975 !important;
+}
+
+.is-active-link-lightmagenta {
+  color: #3D1244 !important;
+  background-color: #F99BDE !important;
 }
 
 .image-scroll-container {
@@ -175,7 +184,7 @@ nav {
 }
 
 .is-white {
-  color: #F0F2F4;
+  color: #F0F2F4 !important;
 }
 
 .is-magenta {
@@ -665,4 +674,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmpTfoPVY.tmp.map */
+/*# sourceMappingURL=tmpVJHceC.tmp.map */
