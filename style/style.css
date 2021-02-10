@@ -148,6 +148,21 @@ nav {
   font-size: 2.5vmin !important;
 }
 
+.landing-page-link {
+  background-color: #438AFE;
+  color: #F0F2F4;
+  border-color: transparent;
+}
+
+.landing-page-link:hover {
+  color: #438AFE;
+  background-color: #F0F2F4;
+}
+
+#logo-square {
+  border: 2px solid #F0F2F4;
+}
+
 .is-white {
   color: #F0F2F4;
 }
@@ -483,6 +498,12 @@ html, body {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .hero-body {
+    padding: 0;
+  }
+}
+
 #landing-page-hero-container.main-Container {
   margin-top: 0;
   margin-bottom: 0;
@@ -639,4 +660,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmpWNDN2v.tmp.map */
+/*# sourceMappingURL=tmp0th7Sx.tmp.map */

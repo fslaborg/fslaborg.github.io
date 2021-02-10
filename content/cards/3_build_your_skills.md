@@ -1,11 +1,13 @@
 ---
 title: Build your skills
-color: magenta
+color: darkmagenta
 bg-color: darkmagenta
 emphasis: aquamarine
 type: secondary
-index: 2
+index: 3
 image: /images/skills.svg
+link: /tutorials.html
+link-text: Get started
 ---
 
 From zero to hero in data science using F#

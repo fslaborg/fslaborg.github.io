@@ -1,14 +1,14 @@
 ---
 title: Interoperability is key
-color: darkmagenta
+color: magenta
 bg-color: lightmagenta
 emphasis: aquamarine
 type: secondary
-index: 3
+index: 4
 image: /images/interoperability.svg
+link: https://scisharp.github.io/SciSharp/
+link-text: Visit SciSharp STACK
 ---
-
-# Test
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna **aliquyam** erat, sed diam voluptua. 
 <!---->

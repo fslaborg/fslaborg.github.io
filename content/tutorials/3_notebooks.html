@@ -60,6 +60,12 @@
   Documentation
 </li>             
 <li class="nav-item">
+  <a class="nav-link" href="/fslabsite/content/tutorials/getting-started.html">
+    Getting started 2
+
+  </a>
+</li>             
+<li class="nav-item">
   <a class="nav-link" href="/fslabsite/content/tutorials/4_getting-started.html">
     Getting started
 
@@ -137,29 +143,29 @@ myChart |> GenericChart.toChartHTML
 
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="id">myChart</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">Point</span><span class="pn">(</span><span class="pn">[</span><span class="n">1.</span><span class="pn">,</span><span class="n">2.</span><span class="pn">]</span><span class="pn">)</span>
 </code></pre>
-<div id="4fd3d60f-0c24-4b9c-b3d7-6195e4eeb6fa" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="f573c28c-aa63-4a85-973e-d0a02d661978" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_4fd3d60f0c244b9cb3d76195e4eeb6fa = function() {
+            var renderPlotly_f573c28caa634a85973ed0a02d661978 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[1.0],"y":[2.0],"mode":"markers","marker":{}}];
             var layout = {};
             var config = {};
-            Plotly.newPlot('4fd3d60f-0c24-4b9c-b3d7-6195e4eeb6fa', data, layout, config);
+            Plotly.newPlot('f573c28c-aa63-4a85-973e-d0a02d661978', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_4fd3d60f0c244b9cb3d76195e4eeb6fa();
+                    renderPlotly_f573c28caa634a85973ed0a02d661978();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_4fd3d60f0c244b9cb3d76195e4eeb6fa();
+                renderPlotly_f573c28caa634a85973ed0a02d661978();
             }
 </script>
 
