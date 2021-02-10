@@ -4,6 +4,11 @@
 open System
 open Html
 
+let createCardLink (card:Cardloader.MainPageCard) =
+    a [Class (sprintf "button landing-page-link is-size-4"); Href card.CardLink] [
+        strong [Class "is-white-color"] [!! card.CardLinkText]
+    ]
+
 let getProcessedCardBody (card:Cardloader.MainPageCard) =
     card.CardBody
         .Replace("<strong>",(sprintf "<strong class='has-bg-one-fourth-%s'>" card.CardEmphasisColor))
@@ -24,11 +29,11 @@ let mainHero =
         div [(*Id "landing-page-hero-container";*) Class "hero-body"] [
             div [Class "container has-text-justified"] [
                 div [Class "columns"] [
-                    div [Class "column main-TextField"] [
+                    div [Class "column main-TextField is-7"] [
                         div [Class "media mb-4"] [
                             div [Class "media-left"] [
                                 figure [Class "image is-64x64"] [
-                                     img [Class "has-bg-white";  Src "images/logo.svg"]
+                                     img [Id "logo-square"; Src "images/logo.svg"]
                                 ]
                             ]
                             div [Class "media-content"] [
@@ -36,20 +41,15 @@ let mainHero =
                             ]
                         ]
                         div [Class "block"] [
-                            h1 [Class "title is-size-3 is-capitalized is-white is-block"] [!! "The F#-first community project incubation space for data science"]
+                            h1 [Class "title is-size-3 is-capitalized is-white is-block"] [!! "The F# community project incubation space for data science"]
                         ]
                         div [Class "content is-white is-size-4"] [
                             div [Class "block is-white"] [
-                                !! "Whether you never wrote a line of code before, or you already are a skilled data scientist trying out things in .NET, we strive to have you covered with up-to-date"
-                                strong [Class "is-white"] [!!"curated tutorials, documentation, and package recommendations"]
-                            ]
-                            div [Class "block is-white"] [
-                                !!"Additionally, we provide a safe haven for data science projects searching for"
-                                strong [Class "is-white"] [!!"new maintainers and/or contributors"]
+                                !! "Perform the whole data science cycle in F#!"
                             ]
                         ]
                     ]
-                    div [Class "column"] [
+                    div [Class "column is-5"] [
                         div [Class "main-ImageContainer"] [
                             figure [Class "image"] [
                                 img [Src (Layout.urlPrefix + "/images/main_loop.svg")]
@@ -67,14 +67,16 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
             div [Class "container has-text-justified"] [
                 if isLeft then 
                     div [Class "columns is-reverse-columns"] [
-                        div [Class (sprintf "column main-TextField has-bg-%s" card.CardColor)] [
+                        div [Class (sprintf "column main-TextField has-bg-%s is-7" card.CardColor)] [
                             h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s is-inline-block" card.CardEmphasisColor )] [!! card.CardTitle]
-                            div [Class "content is-size-4 is-white"] (
-                                getProcessedCardBody card
-                                |> getContentBlocks "is-white"
-                            )
+                            div [Class "content is-size-4 is-white"] [
+                                yield!
+                                    getProcessedCardBody card
+                                    |> getContentBlocks "is-white"
+                                if card.CardLinkText = "NONE" then () else createCardLink card
+                            ]
                         ]
-                        div [Class "column"] [
+                        div [Class "column is-5"] [
                             div [Class "main-ImageContainer"] [
                                 figure [Class "image"] [
                                     img [Src (Layout.urlPrefix + card.CardImages.[0])]
@@ -85,19 +87,21 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                     ]
                 else
                     div [Class "columns"] [
-                        div [Class "column"] [
+                        div [Class "column is-5"] [
                             div [Class "main-ImageContainer"] [
                                 figure [Class "image"] [
                                     img [Src (Layout.urlPrefix + card.CardImages.[0])]
                                 ]
                             ]
                         ]
-                        div [Class (sprintf "column main-TextField has-bg-%s" card.CardColor)] [
+                        div [Class (sprintf "column main-TextField has-bg-%s is-7" card.CardColor)] [
                             h2 [Class (sprintf "title is-size-3 is-capitalized is-white is-emphasized-%s is-inline-block" card.CardEmphasisColor )] [!! card.CardTitle]
-                            div [Class "content is-size-4 is-white"] (
-                                getProcessedCardBody card
-                                |> getContentBlocks "is-white"
-                            )
+                            div [Class "content is-size-4 is-white"] [
+                                yield!
+                                    getProcessedCardBody card
+                                    |> getContentBlocks "is-white"
+                                if card.CardLinkText = "NONE" then () else createCardLink card
+                            ]
                         ]
                     ]
     

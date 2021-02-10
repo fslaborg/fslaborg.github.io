@@ -53,6 +53,21 @@ nav {
 // might be needed to give exception to computer 'set-executionpolicy remotesigned'
 
 
+.landing-page-link {
+    background-color: $fslabAquamarine;
+    color: $colorWhite;
+    border-color: transparent;
+}
+
+.landing-page-link:hover {
+    color: $fslabAquamarine;
+    background-color: $colorWhite;
+}
+
+#logo-square {
+    border: 2px solid $colorWhite;
+}
+
 .is-white {
     color: $colorWhite;
 }
@@ -280,6 +295,12 @@ html, body {
     @media only screen and (max-width: 400px) {
         margin: 10px auto;
         padding-bottom: 10px;
+    }
+}
+
+.hero-body {
+    @media only screen and (max-width: 1024px) {
+        padding:0;
     }
 }
 

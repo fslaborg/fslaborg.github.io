@@ -24,8 +24,10 @@ type MainPageCard = {
     CardImages:string []
     CardIndex: int
     CardType:CardType
+    CardLink:string
+    CardLinkText:string
 } with
-    static member create title body color bgcolor emphasisColor images index ctype = 
+    static member create title body color bgcolor emphasisColor images index ctype clink clinkt = 
         {
             CardTitle = title
             CardBody = body
@@ -35,6 +37,8 @@ type MainPageCard = {
             CardImages = images
             CardIndex = index
             CardType = ctype
+            CardLink = clink
+            CardLinkText = clinkt
         }
 
 let contentDir = "content/cards"
@@ -56,8 +60,9 @@ let loadFile (cardMarkdownPath:string) =
     let images = config |> Map.find "image" |> trimString |> fun s -> s.Split(',')
     let index = config |> Map.find "index" |> trimString |> int
     let ctype = config |> Map.find "type" |> trimString |> CardType.ofString
-
-    MainPageCard.create title body color bgcolor emphasisColor images index ctype
+    let clink = config |> Map.find "link" |> trimString
+    let clinkt = config |> Map.find "link-text" |> trimString
+    MainPageCard.create title body color bgcolor emphasisColor images index ctype clink clinkt
 
 
 let loader (projectRoot: string) (siteContent: SiteContents) =
