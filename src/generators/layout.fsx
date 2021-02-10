@@ -41,6 +41,13 @@ let injectWebsocketCode (webpage:string) =
     let index = webpage.IndexOf head
     webpage.Insert ( (index + head.Length + 1),websocketScript)
 
+let getBgColorForActiveItem (siteTitle:string) =
+  match siteTitle with
+  | "Home" -> "is-active-link-magenta"
+  | "Data science packages" -> "is-active-link-lightmagenta"
+  | "Tutorials and Blogposts" -> "is-active-link-darkmagenta"
+  | _ -> siteTitle
+
 let layout (ctx : SiteContents) active bodyCnt =
     let pages = ctx.TryGetValues<Pageloader.Page> () |> Option.defaultValue Seq.empty
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
@@ -52,7 +59,7 @@ let layout (ctx : SiteContents) active bodyCnt =
     let menuEntries =
       pages
       |> Seq.map (fun p ->
-        let cls = if p.title = active then "navbar-item is-active-link smooth-hover" else "navbar-item"
+        let cls = if p.title = active then (sprintf "navbar-item %s smooth-hover" (getBgColorForActiveItem active)) else "navbar-item"
         a [Class cls; Href p.link] [!! p.title ])
       |> Seq.toList
 

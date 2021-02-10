@@ -20,10 +20,21 @@ nav {
     border-bottom: 2px solid $fslabDarkMagenta;
 }
 
-.is-active-link {
-    background-color: $fslabDarkMagenta;
-    color: $colorWhite;
+.is-active-link-darkmagenta {
+    background-color: $fslabDarkMagenta !important;
+    color: $colorWhite !important;
     font-weight: bold;
+}
+
+.is-active-link-magenta {
+    @extend.is-active-link-darkmagenta;
+    background-color: $fslabMagenta !important;
+}
+
+.is-active-link-lightmagenta {
+    @extend.is-active-link-darkmagenta;
+    color: $fslabDarkMagenta !important;
+    background-color: $fslabLightMagenta !important;
 }
 
 .image-scroll-container {
@@ -79,7 +90,7 @@ nav {
 }
 
 .is-white {
-    color: $colorWhite;
+    color: $colorWhite !important;
 }
 
 .is-magenta {

@@ -8,7 +8,7 @@ open System.Diagnostics
 
 #if WATCH
 let urlPrefix = 
-  ""
+  "http://localhost:8080/"
 #else
 let urlPrefix = 
   "/fslabsite"
@@ -47,7 +47,7 @@ let generate' (ctx : SiteContents) (_: string) =
                     ul [] (
                         tutorials.Content
                         |> Seq.map (fun t ->
-                            li [] [a [Href (urlPrefix + "/" + t)] [!!t]]
+                            li [] [a [Href (urlPrefix + t)] [!!t]]
                         )
                         |> List.ofSeq
                     )
@@ -68,10 +68,10 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
 
         let args = 
             sprintf 
-                "fsdocs build --eval --input %s --output %s --noapidocs --parameters root %s" 
+                "fsdocs build --eval --input %s --output %s --clean --noapidocs --parameters root %s" 
                 tutorials.Path 
                 (tutorials.Path.Replace("_src","")) 
-                (urlPrefix + "/content/tutorials/")
+                (urlPrefix)
 
 
         let psi = ProcessStartInfo()
