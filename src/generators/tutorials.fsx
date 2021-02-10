@@ -11,7 +11,7 @@ let urlPrefix =
   "http://localhost:8080/"
 #else
 let urlPrefix = 
-  "/fslabsite"
+  "/fslabsite/"
 #endif
 
 let generate' (ctx : SiteContents) (_: string) =
