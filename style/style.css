@@ -164,6 +164,14 @@ pre[class*=language-] {
   }
 }
 
+.content-table {
+  margin: 0 auto;
+}
+
+.content-table td, .content-table th {
+  vertical-align: middle;
+}
+
 .landing-page-link {
   background-color: #438AFE;
   color: #F0F2F4;
@@ -173,6 +181,15 @@ pre[class*=language-] {
 .landing-page-link:hover {
   color: #438AFE;
   background-color: #F0F2F4;
+}
+
+.tutorial-link {
+  color: #3D1244;
+}
+
+.tutorial-link:hover {
+  background-color: #438AFE;
+  color: #F0F2F4;
 }
 
 #logo-square {
@@ -670,4 +687,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmpRczLCi.tmp.map */
+/*# sourceMappingURL=tmpla0ktE.tmp.map */
