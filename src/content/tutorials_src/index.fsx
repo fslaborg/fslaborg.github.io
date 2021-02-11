@@ -1,3 +1,15 @@
+(***hide***)
+
+(*
+#frontmatter
+---
+title: -
+category: hidden
+authors: -
+index: 0
+---
+*)
+
 (**
 # The fslab documentation template
 

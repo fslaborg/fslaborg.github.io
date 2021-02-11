@@ -70,6 +70,14 @@ $fslabAquamarine: #438AFE;
 // might be needed to give exception to computer 'set-executionpolicy remotesigned'
 
 
+.content-table{
+    margin: 0 auto;
+}
+
+.content-table td, .content-table th {
+    vertical-align: middle;
+}
+
 .landing-page-link {
     background-color: $fslabAquamarine;
     color: $colorWhite;
@@ -79,6 +87,15 @@ $fslabAquamarine: #438AFE;
 .landing-page-link:hover {
     color: $fslabAquamarine;
     background-color: $colorWhite;
+}
+
+.tutorial-link {
+    color: $fslabDarkMagenta;
+}
+
+.tutorial-link:hover {
+    background-color: $fslabAquamarine;
+    color: $colorWhite;
 }
 
 #logo-square {

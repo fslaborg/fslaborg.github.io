@@ -6,7 +6,7 @@ open Html
 
 let createCardLink (card:Cardloader.MainPageCard) =
     a [Class (sprintf "button landing-page-link is-size-4"); Href card.CardLink] [
-        strong [Class "is-white-color"] [!! card.CardLinkText]
+        strong [Class "is-white"] [!! card.CardLinkText]
     ]
 
 let getProcessedCardBody (card:Cardloader.MainPageCard) =

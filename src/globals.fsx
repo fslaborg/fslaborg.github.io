@@ -3,6 +3,7 @@
 
 open System.IO
 open Markdig
+
 module MarkdownProcessing =
 
     let markdownPipeline =
@@ -62,6 +63,40 @@ module MarkdownProcessing =
             |> String.concat "\n"
 
         Markdown.ToHtml(content, markdownPipeline)
+
+module ScriptProcessing =
+
+    let isFrontMatterIndicator (input : string) =
+        input.StartsWith "#frontmatter"
+
+    let getFrontMatter (fileContent : string) =
+
+        let fileContent = 
+            fileContent.Split '\n'
+       
+        let indexOfFrontmatter = fileContent |> Array.findIndex isFrontMatterIndicator
+
+        let fileContent =
+            fileContent
+            |> Array.skip (indexOfFrontmatter + 2)
+
+        let indexOfSeperator = fileContent |> Array.findIndex MarkdownProcessing.isFrontMatterSeparator
+
+        let splitKey (line: string) = 
+            let seperatorIndex = line.IndexOf(':')
+            if seperatorIndex > 0 then
+                let key = line.[.. seperatorIndex - 1].Trim().ToLower()
+                let value = line.[seperatorIndex + 1 ..].Trim() 
+                Some(key, MarkdownProcessing.trimString value)
+            else 
+                None
+
+        fileContent
+        |> Array.splitAt indexOfSeperator
+        |> fst
+        |> Seq.choose splitKey
+        |> Map.ofSeq        
+
 
 module Predicates =
         

@@ -1,5 +1,15 @@
 (***hide***)
 
+(*
+#frontmatter
+---
+title: -
+category: hidden
+authors: -
+index: 0
+---
+*)
+
 (***condition:prepare***)
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"

@@ -14,11 +14,33 @@ let urlPrefix =
   "/fslabsite/"
 #endif
 
+let renderContentTable (content:Tutorialloader.Tutorial []) =
+    table [Class "table content-table"] [
+        thead [] [
+            th [] [!!"Title"]
+            th [] [!!"Authors"]
+        ]
+        tbody [] (
+            content
+            |> Array.sortBy (fun t -> t.Index)
+            |> Array.map (fun t ->
+                tr [] [
+                    td [] [
+                        a [Class "button tutorial-link"; Href t.LinkPath] [!!t.Title]
+                    ]
+                    td [] [!!t.Authors]
+                ]
+            )
+            |> Array.toList
+        )
+    ]
+
+
 let generate' (ctx : SiteContents) (_: string) =
     
-    let tutorials : Tutorialloader.TutorialDirectory = 
-        ctx.TryGetValue<Tutorialloader.TutorialDirectory>()
-        |> Option.defaultValue {Path="";Content=[||]}
+    let tutorials : Tutorialloader.TutorialContent = 
+        ctx.TryGetValue<Tutorialloader.TutorialContent>()
+        |> Option.defaultValue {Path="";FSharpContent = [||]; DatascienceContent = [||]; AdvancedContent = [||]}
 
     Layout.layout ctx "Tutorials and Blogposts" [
         section [Class "hero is-medium has-bg-darkmagenta"] [
@@ -45,22 +67,15 @@ let generate' (ctx : SiteContents) (_: string) =
             div [Class "columns mt-4"] [
                 div [Class "column has-text-centered"] [
                     h1 [Class "title is-darkmagenta"] [!!"Getting started with F#"]
-
+                    renderContentTable tutorials.FSharpContent
                 ]
                 div [Class "column has-text-centered"] [
                     h1 [Class "title is-darkmagenta"] [!!"Getting started with data science in F#"]
-                    div [Class "content"] [
-                        ul [] (
-                            tutorials.Content
-                            |> Seq.map (fun t ->
-                                li [] [a [Href (urlPrefix + t)] [!!t]]
-                            )
-                            |> List.ofSeq
-                        )
-                    ]
+                    renderContentTable tutorials.DatascienceContent
                 ]
                 div [Class "column has-text-centered"] [
                     h1 [Class "title is-darkmagenta"] [!!"Advanced tutorials and blogposts"]
+                    renderContentTable tutorials.AdvancedContent
                 ]
             ]
         ]
@@ -70,9 +85,9 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
      
     printfn "[Tutorials-Generator] Starting generate function ..."
 
-    let tutorials : Tutorialloader.TutorialDirectory = 
-        ctx.TryGetValue<Tutorialloader.TutorialDirectory>()
-        |> Option.defaultValue {Path="";Content=[||]}
+    let tutorials : Tutorialloader.TutorialContent = 
+        ctx.TryGetValue<Tutorialloader.TutorialContent>()
+        |> Option.defaultValue {Path="";FSharpContent = [||]; DatascienceContent = [||]; AdvancedContent = [||]}
         
     if tutorials.Path <> "" && tutorials.Path.Contains("tutorials_src") then
 
@@ -82,7 +97,6 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
                 tutorials.Path 
                 (tutorials.Path.Replace("_src","")) 
                 (urlPrefix)
-
 
         let psi = ProcessStartInfo()
         psi.FileName <- "dotnet"

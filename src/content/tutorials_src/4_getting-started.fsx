@@ -1,5 +1,15 @@
 (***hide***)
 
+(*
+#frontmatter
+---
+title: Getting started
+category: datascience
+authors: David Zimmer
+index: 0
+---
+*)
+
 (***condition:prepare***)
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
