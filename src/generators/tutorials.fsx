@@ -66,15 +66,18 @@ let generate' (ctx : SiteContents) (_: string) =
         section [Class "hero is-medium"] [
             div [Class "columns mt-4"] [
                 div [Class "column has-text-centered"] [
-                    h1 [Class "title is-darkmagenta"] [!!"Getting started with F#"]
+                    div [Class "block"] [h1 [Class "title is-darkmagenta"] [!!"Getting started with F#"]]
+                    div [Class "block"] [!! "Start here if you are new to F# and/or programming in general. Content of this category will walk you through setting up your F#/.NET environment and teach F# via small, bite-size tutorials"]
                     renderContentTable tutorials.FSharpContent
                 ]
                 div [Class "column has-text-centered"] [
-                    h1 [Class "title is-darkmagenta"] [!!"Getting started with data science in F#"]
+                    div [Class "block"] [h1 [Class "title is-darkmagenta"] [!!"Getting started with data science in F#"]]
+                    div [Class "block"] [!! "Start here if you are already familiar with F# and want to expand those skills with data science."]
                     renderContentTable tutorials.DatascienceContent
                 ]
                 div [Class "column has-text-centered"] [
-                    h1 [Class "title is-darkmagenta"] [!!"Advanced tutorials and blogposts"]
+                    div [Class "block"] [h1 [Class "title is-darkmagenta"] [!!"Advanced tutorials and blogposts"]]
+                    div [Class "block"] [!! "You already are a seasoned F#/.NET data scientist? Maybe you can still find something new/unexpected/interesting in these advanced, more in-depth articles articles!"]
                     renderContentTable tutorials.AdvancedContent
                 ]
             ]
