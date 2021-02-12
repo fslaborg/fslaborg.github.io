@@ -5,8 +5,8 @@ open System
 open Html
 
 let createCardLink (card:Cardloader.MainPageCard) =
-    a [Class (sprintf "button landing-page-link is-size-4"); Href card.CardLink] [
-        strong [] [!! (Layout.urlPrefix + card.CardLinkText)]
+    a [Class (sprintf "button landing-page-link is-size-4"); Href (Layout.urlPrefix + card.CardLink)] [
+        strong [] [!! card.CardLinkText]
     ]
 
 let getProcessedCardBody (card:Cardloader.MainPageCard) =
