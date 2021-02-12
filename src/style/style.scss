@@ -306,6 +306,14 @@ html, body {
     }*/
 }
 
+.footer-link {
+    color: $fslabAquamarine
+}
+
+.footer-link:hover {
+    color: $fslabMagenta
+}
+
 .button {
     @extend .button;
     font-family: "Nunito Sans"
@@ -502,3 +510,4 @@ strong {
 .package-container .collapsible-trigger {
     border-bottom: 2px solid $fslabDarkMagenta;
 }
+

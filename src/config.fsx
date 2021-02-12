@@ -12,8 +12,6 @@ let config = {
         {Script = "packages.fsx"; Trigger = Once; OutputFile = NewFileName "packages.html"}
         {Script = "sass.fsx"; Trigger = OnFileExt ".scss"; OutputFile = ChangeExtension "css" }
         {Script = "staticfile.fsx"; Trigger = OnFilePredicate Predicates.staticPredicate; OutputFile = SameFileName }
-        {Script = "material.fsx"; Trigger = Once; OutputFile = NewFileName "material.html" }
-        {Script = "projects.fsx"; Trigger = Once; OutputFile = NewFileName "projects.html" }
         {Script = "contact.fsx"; Trigger = Once; OutputFile = NewFileName "contact.html" }
     ]
 }
