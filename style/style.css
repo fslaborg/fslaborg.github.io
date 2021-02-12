@@ -506,6 +506,14 @@ html, body {
   }*/
 }
 
+.footer-link {
+  color: #438AFE;
+}
+
+.footer-link:hover {
+  color: #A00975;
+}
+
 .button {
   font-family: "Nunito Sans";
 }
@@ -688,4 +696,4 @@ strong {
   border-bottom: 2px solid #3D1244;
 }
 
-/*# sourceMappingURL=tmpwzGhcS.tmp.map */
+/*# sourceMappingURL=tmpCwtyUc.tmp.map */
