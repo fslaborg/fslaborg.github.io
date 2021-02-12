@@ -1,23 +1,95 @@
 # fslab website
 
-Static website generated with :heart: and [fornax](https://github.com/ionide/Fornax)
+Static website generated with :heart:, [fornax](https://github.com/ionide/Fornax), and [fsdocs](https://github.com/fsprojects/FSharp.Formatting)
 
-This [website](https://fslab.org/fslabsite) demonstrates the aims of the fslab organisation as an incubation space for data science projects in F# and .NET:
+This [website](https://fslab.org/fslabsite) demonstrates the aims of the fslab organisation as an incubation space for data science projects in F# and .NET and acts as a source of high quality learning material for any kind of skill level.
 
-- fslab as a home for community projects to get rejuvenated or to get more traction
-- A endorsement list with both fslab and external projects for data science in .NET, categorized by position in the data science workflow
-- High-quality learning material:
-    - intro to F# for datascience, assuming 0 programming knowledge
-    - high-level advanced tutorials, combining several endorsed tools to a data science stack
+<!-- TOC -->
 
-## Add a project (WIP)
+- [Add a project to the packages site](#add-a-project-to-the-packages-site)
+- [Add a tutorial, guide, or blogpost](#add-a-tutorial-guide-or-blogpost)
+- [Develop](#develop)
+    - [Prerequisites](#prerequisites)
+    - [Technology used](#technology-used)
 
-To add a project, fork this repo and add a `<your-project>.md` file to the respective subfolder in `/projects`:
+<!-- /TOC -->
 
-- `projects/A` for projects concerned with A
-- `projects/B` for projects concerned with B
-- `projects/C` for projects concerned with C
-- `projects/D` for projects concerned with D
+## Add a project to the packages site
+
+The [packages site](https://fslab.org/fslabsite/packages.html) is used to aggregate fslab-endorsed data science packages in one place. 
+
+To add a package to the endorsed list, follow these steps:
+
+1. Create new [add-package issue](https://github.com/fslaborg/fslabsite/issues/new/choose) by filling the issue template
+
+2. Create the `<YOUR-PACKAGE-NAME.md` file in the `src/content/datascience-packages/` folder, which will contain the metadata about the package that is used to generate the card for it on the page.
+
+3. Add the markdown frontmatter (starting on the very first line). Replace the `<>` placeholders with the actual correct information about your package:
+
+    ```
+    ---
+    package-name: <The name of your package>
+    package-logo: <link to your logo>
+    package-nuget-link: <https://www.nuget.org/packages/your-package/ or other nuget source>
+    package-github-link: <https://www.github.com/your-handle/your-project>
+    package-documentation-link: <link to the documentation of your package>
+    package-description: <short and concise description of the package>
+    #package-posts-link: optional
+    package-tags: <(WIP)tags to categorize your package>
+    ---
+    ```
+
+4. below the frontmatter, add any kind of markdown content that will be rendered as an expandable `Read more` section. You can use the full markdown goodness here, and code snippets indicated as fsharp will get some syntax highlighting.
+
+5. File a PR referencing the issue you created in step 1.
+
+## Add a tutorial, guide, or blogpost
+
+The [tutorials page](https://fslab.org/fslabsite/tutorials.html) contains links to a collection of tutorials in the following categories:
+
+- `fsharp`:
+    Introductory articles on F#, assuming no prior knowledge in programming and F#/.NET. There should also be a link collection to other high quality sources on those topics.
+
+- `datascience`:
+    Introduction to datascience in general and using F# for it specifically. Beginner and intermediate content on how to perform common datascience tasks with fslab-endorsed packages.
+
+- `adcvanced`
+    Deep dives on advanced topics, performing complex tasks, insights on how packages perform together, etc. More of a blog-post-style content.
+
+To add tutorial content, follow these steps:
+
+1. Create new [add-tutorial issue](https://github.com/fslaborg/fslabsite/issues/new/choose) by filling the issue template
+
+2. In the `./src/content/tutorials_src` folder, create a new  `<YOUR_CONTENT>.fsx` file. Markdown articles will soon be supported as well.
+
+3. Add the following frontmatter (starting on the very first line). Replace the `<>` placeholders with the actual correct information about your package:
+
+    ```fsharp
+    (***hide***)
+
+    (*
+    #frontmatter
+    ---
+    title: <YOUR TITLE HERE>
+    category: <fsharp, datascience, or advanced>
+    authors: <comma-separated list of authors>
+    index: 0
+    ---
+    *)
+    ```
+
+4. Below the frontmatter, add the content of your article. If you are new to FSharp.Formatting, check the [docs there]() and also the documentation of the [fslab documentation template]().
+
+5. To get a preview of how your page will look like, in `./src` run the following command(s): 
+
+    ```shell
+    dotnet tool restore
+    dotnet fornax watch
+    ```
+
+    And navigate to the tutorials page.
+
+6. File a PR referencing the issue you created in step 1.
 
 ## Develop
 
@@ -36,5 +108,6 @@ This will run a webserver that serves the compiled static page(s) on localhost:8
 ### Technology used
 
 - [Fornax](https://github.com/ionide/Fornax) a F# scriptable static webpage generator
+- [FSharp.Formatting](https://github.com/fsprojects/FSharp.Formatting) for rendering of literate F# tutorials
 - [Markdig](https://github.com/lunet-io/markdig), a markdown processor for .Net
 - [Sass](https://sass-lang.com), a CSS extension language
