@@ -12,7 +12,7 @@ let urlPrefix =
   ""
 #else
 let urlPrefix = 
-  "https://fslaborg.github.io"
+  "https://fslab.org"
 #endif
 
 
