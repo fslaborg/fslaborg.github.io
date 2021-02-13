@@ -4,7 +4,7 @@ let urlPrefix =
   ""
 #else
 let urlPrefix = 
-  "/fslabsite"
+  "/"
 #endif
 
 type Page = {

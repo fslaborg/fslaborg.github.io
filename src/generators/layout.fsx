@@ -12,7 +12,7 @@ let urlPrefix =
   ""
 #else
 let urlPrefix = 
-  "/fslabsite"
+  "/"
 #endif
 
 
@@ -131,7 +131,7 @@ let layout (ctx : SiteContents) active bodyCnt =
                             p [] [!!"This website is created and maintained by individual FsLab open source contributors."]
                         ]
                         div [Class "block"] [
-                            createFooterIconLink "fas fa-code-branch" "website source code" "https://github.com/fslaborg/fslabsite"
+                            createFooterIconLink "fas fa-code-branch" "website source code" "https://github.com/fslaborg/"
                             createFooterIconLink "far fa-handshake" "fslab contributors" "https://github.com/orgs/fslaborg/people"
                         ]
                     ]
@@ -146,12 +146,12 @@ let layout (ctx : SiteContents) active bodyCnt =
                             ]
                             div [Class "block"] [
                                 createFooterIconLink "fas fa-cubes" "endorsed packages" "/packages.html"
-                                createFooterIconLink "fas fa-plus" "add a package to the list" "https://github.com/fslaborg/fslabsite#add-a-project-to-the-packages-site"
+                                createFooterIconLink "fas fa-plus" "add a package to the list" "https://github.com/fslaborg#add-a-project-to-the-packages-site"
                                 
                             ]
                             div [Class "block"] [
                                 createFooterIconLink "fas fa-graduation-cap" "tutorials and learning resources" "/tutorials.html"
-                                createFooterIconLink "fas fa-plus" "add tutorial content" "https://github.com/fslaborg/fslabsite#add-a-tutorial-guide-or-blogpost"
+                                createFooterIconLink "fas fa-plus" "add tutorial content" "https://github.com/fslaborg#add-a-tutorial-guide-or-blogpost"
                             ]
                         ]
                     ]
