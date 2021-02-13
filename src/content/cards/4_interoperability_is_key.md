@@ -10,10 +10,12 @@ link: https://scisharp.github.io/SciSharp/
 link-text: Visit SciSharp STACK
 ---
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna **aliquyam** erat, sed diam voluptua. 
+Connect and collaborate.
 <!---->
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+With Fslab you are part of an amazing .NET Open-Source ecosystem for data science, machine learning and AI. We recommend always using the best tools for your analytic problem at hand. Therefore, FsLab endorses partner projects from the ecosystem. 
 <!---->
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Visit ML.NET, an open source and cross-platform machine learning framework, and SciSharp STACK which brings all major machine learning frameworks from Python to .NET ecosystem.
+<!---->
+Make friends with other communities and projects and give yourself maximum flexibility for the future.
 
 **saas**
