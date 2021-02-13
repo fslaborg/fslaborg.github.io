@@ -11,7 +11,7 @@ let urlPrefix =
   "http://localhost:8080/"
 #else
 let urlPrefix = 
-  "https://fslaborg.github.io"
+  "https://fslaborg.github.io/"
 #endif
 
 let renderContentTable (content:Tutorialloader.Tutorial []) =
