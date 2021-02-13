@@ -131,8 +131,8 @@ let layout (ctx : SiteContents) active bodyCnt =
                             p [] [!!"This website is created and maintained by individual FsLab open source contributors."]
                         ]
                         div [Class "block"] [
-                            createFooterIconLink "fas fa-code-branch" "website source code" "https://fslab.org/"
-                            createFooterIconLink "far fa-handshake" "fslab contributors" "https://fslab.org/people"
+                            createFooterIconLink "fas fa-code-branch" "website source code" "https://github.com/fslaborg/fslabsite"
+                            createFooterIconLink "far fa-handshake" "fslab contributors" "https://github.com/orgs/fslaborg/people"
                         ]
                     ]
                     div [Class "column is-4 m-4"] [
@@ -141,17 +141,17 @@ let layout (ctx : SiteContents) active bodyCnt =
                         ]
                         div [Class "block"] [
                             div [Class "block"] [
-                                createFooterIconLink "fab fa-github" "the fslab organistation on github" "https://fslab.org?type=source"
+                                createFooterIconLink "fab fa-github" "the fslab organistation on github" "https://github.com/fslaborg?type=source"
                                 createFooterIconLink "fab fa-twitter" "fslab on twitter" "https://twitter.com/fslaborg"
                             ]
                             div [Class "block"] [
                                 createFooterIconLink "fas fa-cubes" "endorsed packages" "/packages.html"
-                                createFooterIconLink "fas fa-plus" "add a package to the list" "https://fslab.org#add-a-project-to-the-packages-site"
+                                createFooterIconLink "fas fa-plus" "add a package to the list" "https://github.com/fslaborg/fslabsite#add-a-project-to-the-packages-site"
                                 
                             ]
                             div [Class "block"] [
                                 createFooterIconLink "fas fa-graduation-cap" "tutorials and learning resources" "/tutorials.html"
-                                createFooterIconLink "fas fa-plus" "add tutorial content" "https://fslab.org#add-a-tutorial-guide-or-blogpost"
+                                createFooterIconLink "fas fa-plus" "add tutorial content" "https://github.com/fslaborg/fslabsite#add-a-tutorial-guide-or-blogpost"
                             ]
                         ]
                     ]
