@@ -2,7 +2,7 @@
 
 Static website generated with :heart:, [fornax](https://github.com/ionide/Fornax), and [fsdocs](https://github.com/fsprojects/FSharp.Formatting)
 
-This [website](https://fslab.org/fslabsite) demonstrates the aims of the fslab organisation as an incubation space for data science projects in F# and .NET and acts as a source of high quality learning material for any kind of skill level.
+This [website](https://fslab.org/) demonstrates the aims of the fslab organisation as an incubation space for data science projects in F# and .NET and acts as a source of high quality learning material for any kind of skill level.
 
 <!-- TOC -->
 
@@ -16,11 +16,11 @@ This [website](https://fslab.org/fslabsite) demonstrates the aims of the fslab o
 
 ## Add a project to the packages site
 
-The [packages site](https://fslab.org/fslabsite/packages.html) is used to aggregate fslab-endorsed data science packages in one place. 
+The [packages site](https://fslab.org/packages.html) is used to aggregate fslab-endorsed data science packages in one place. 
 
 To add a package to the endorsed list, follow these steps:
 
-1. Create new [add-package issue](https://github.com/fslaborg/fslabsite/issues/new/choose) by filling the issue template
+1. Create new [add-package issue](https://github.com/fslaborg/issues/new/choose) by filling the issue template
 
 2. Create the `<YOUR-PACKAGE-NAME.md` file in the `src/content/datascience-packages/` folder, which will contain the metadata about the package that is used to generate the card for it on the page.
 
@@ -45,7 +45,7 @@ To add a package to the endorsed list, follow these steps:
 
 ## Add a tutorial, guide, or blogpost
 
-The [tutorials page](https://fslab.org/fslabsite/tutorials.html) contains links to a collection of tutorials in the following categories:
+The [tutorials page](https://fslab.org/tutorials.html) contains links to a collection of tutorials in the following categories:
 
 - `fsharp`:
     Introductory articles on F#, assuming no prior knowledge in programming and F#/.NET. There should also be a link collection to other high quality sources on those topics.
@@ -58,7 +58,7 @@ The [tutorials page](https://fslab.org/fslabsite/tutorials.html) contains links 
 
 To add tutorial content, follow these steps:
 
-1. Create new [add-tutorial issue](https://github.com/fslaborg/fslabsite/issues/new/choose) by filling the issue template
+1. Create new [add-tutorial issue](https://github.com/fslaborg/issues/new/choose) by filling the issue template
 
 2. In the `./src/content/tutorials_src` folder, create a new  `<YOUR_CONTENT>.fsx` file. Markdown articles will soon be supported as well.
 
