@@ -20,7 +20,7 @@ The [packages site](https://fslab.org/packages.html) is used to aggregate fslab-
 
 To add a package to the endorsed list, follow these steps:
 
-1. Create new [add-package issue](https://github.com/fslaborg/issues/new/choose) by filling the issue template
+1. Create new [add-package issue](https://github.com/fslaborg/fslaborg.github.io/issues/new/choose) by filling the issue template
 
 2. Create the `<YOUR-PACKAGE-NAME.md` file in the `src/content/datascience-packages/` folder, which will contain the metadata about the package that is used to generate the card for it on the page.
 
@@ -58,7 +58,7 @@ The [tutorials page](https://fslab.org/tutorials.html) contains links to a colle
 
 To add tutorial content, follow these steps:
 
-1. Create new [add-tutorial issue](https://github.com/fslaborg/issues/new/choose) by filling the issue template
+1. Create new [add-tutorial issue](https://github.com/fslaborg.github.io/fslaborg/issues/new/choose) by filling the issue template
 
 2. In the `./src/content/tutorials_src` folder, create a new  `<YOUR_CONTENT>.fsx` file. Markdown articles will soon be supported as well.
 
