@@ -18,9 +18,23 @@ This [website](https://fslab.org/) demonstrates the aims of the fslab organisati
 
 The [packages site](https://fslab.org/packages.html) is used to aggregate fslab-endorsed data science packages in one place. 
 
+The main goal of fslab is to streamline the datascience environment of F#. 
+
+In a first step we want to collect and foster open source datascience packages and create a save haven for F# open source maintainers and developers
+
+We want to encourage interaction between these libraries to move forward together, 
+as well as prevent fslab from becoming just an address to dump a project url for easy promotion. Therefore, while we don't want to set up strict requirements - especially in this critical first phase of fslab - 
+we kindly ask you to meet at least **one of the following requirements** are with your package:
+
+- 1. Additionally to the package documentation itself, **tutorials and guides** on how to get started with and interact with other fslab packages will be included at the time of joining the list. See the [next chapter](#add-a-tutorial-guide-or-blogpost) on how to do that.
+
+- 2. The github repository that holds the source code of the package will **move to the fslab github organization** (with no changes to repo access besides access for fslab admins). This increases the weight of fslab as a center of gravity for open source F# developers and would be the best choice for projects that are in need for new maintainers.
+
+- 3. The **documentation** of the project will be changed or created in the [**fslab documentation theme**](). This ensures fostering a certain fslab 'brand awareness'
+
 To add a package to the endorsed list, follow these steps:
 
-1. Create new [add-package issue](https://github.com/fslaborg/fslaborg.github.io/issues/new/choose) by filling the issue template
+1. Create new [add-package issue](https://github.com/fslaborg/fslaborg.github.io/issues/new/choose) by filling the issue template. 
 
 2. Create the `<YOUR-PACKAGE-NAME.md` file in the `src/content/datascience-packages/` folder, which will contain the metadata about the package that is used to generate the card for it on the page.
 
