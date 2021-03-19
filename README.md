@@ -72,11 +72,11 @@ The [tutorials page](https://fslab.org/tutorials.html) contains links to a colle
 
 To add tutorial content, follow these steps:
 
-1. Create new [add-tutorial issue](https://github.com/fslaborg.github.io/fslaborg/issues/new/choose) by filling the issue template
+1. Create new [add-tutorial issue](https://github.com/fslaborg/fslaborg.github.io/issues/new/choose) by filling the issue template
 
 2. In the `./src/content/tutorials_src` folder, create a new  `<YOUR_CONTENT>.fsx` file. Markdown articles will soon be supported as well.
 
-3. Add the following frontmatter (starting on the very first line). Replace the `<>` placeholders with the actual correct information about your package:
+3. Add the following frontmatter (starting on the very first line). Replace the `<>` placeholders with the actual correct information about your content:
 
     ```fsharp
     (***hide***)
@@ -92,7 +92,7 @@ To add tutorial content, follow these steps:
     *)
     ```
 
-4. Below the frontmatter, add the content of your article. If you are new to FSharp.Formatting, check the [docs there]() and also the documentation of the [fslab documentation template]().
+4. Below the frontmatter, add the content of your article. If you are new to FSharp.Formatting, check the [docs there](http://fsprojects.github.io/FSharp.Formatting/) and also the documentation of the [fslab documentation template](https://fslab.org/docs-template/).
 
 5. To get a preview of how your page will look like, in `./src` run the following command(s): 
 
