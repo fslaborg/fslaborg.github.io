@@ -48,6 +48,12 @@ let getBgColorForActiveItem (siteTitle:string) =
     | "Tutorials and Blogposts" -> "is-active-link-darkmagenta"
     | _ -> siteTitle
 
+let icon (iconClass:string) =
+    span [Class"icon"] [
+        i [Class iconClass] []
+    ]
+
+
 let createFooterIconLink (iconClass:string) (text:string) (link:string) = 
     div [Class "icon-text is-white"] [
         span [Class"icon"] [
@@ -113,7 +119,13 @@ let layout (ctx : SiteContents) active bodyCnt =
                         span [HtmlProperties.Custom ("aria-hidden","true")] []
                     ]
                 ]
-                div [Id "navMenu"; Class "navbar-menu"] menuEntries
+                div [Id "navMenu"; Class "navbar-menu"] [
+                    div [Class "navbar-start"] menuEntries
+                    div [Class "navbar-end"] [
+                        a [Class "navbar-item is-magenta"; Href "https://twitter.com/fslaborg"] [icon "fab fa-twitter"]
+                        a [Class "navbar-item is-magenta"; Href "https://github.com/fslaborg"] [icon "fab fa-github"]
+                    ]
+                ]
             ]
             yield! bodyCnt
         ]
