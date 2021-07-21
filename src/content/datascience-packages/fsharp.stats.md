@@ -9,17 +9,21 @@ package-description: statistical testing, linear algebra, machine learning, fitt
 package-tags: statistics, linear algebra, machine learning, fitting, signal processing
 ---
 
-# You can use markdown here
+FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.
 
-## to tell more about your project
-
-It will be rendered as a collapsible 'Read more' section in the package card.
-
-You can use [links](google.com), `code tags`, 
+Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:
 
 ```fsharp
-//Code blocks
-let a = 42
-```
+#r "nuget: FSharp.Stats"
+open FSharp.Stats
 
-and **all** _the_ ~markdown~ goodness. 
+// initialize a normal distribution with mean 25 and standard deviation 0.1
+let normalDistribution = Distributions.Continuous.normal 25. 0.1
+
+// draw independently 30 times from the given distribution 
+let sample = Array.init 30 (fun _ -> normalDistribution.Sample())
+
+let mean = Seq.mean sample
+let stDev = Seq.stDev sample
+let cv = Seq.cv sample
+```

@@ -353,3 +353,4 @@ _public
 src/content/tutorials/
 src/.fsdocs
 src/content/tutorials_src/.fsdocs
+.local-chromium/
