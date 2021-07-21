@@ -10,3 +10,32 @@ package-tags: cytoscape, graph visualization
 ---
 
 This package provides a light-weighted layer on top of the famous Cytoscape.js library. It brings all the graph visualization capabilities directly into .NET.
+
+Here is a small snippet that creates a basic styled graph:
+
+```fsharp
+#r "nuget: Cyjs.NET"
+
+open Cyjs.NET
+open Elements
+
+let myFirstStyledGraph =     
+    CyGraph.initEmpty ()
+    |> CyGraph.withElements [
+            node "n1" [ CyParam.label "FsLab"  ]
+            node "n2" [ CyParam.label "ML" ]
+ 
+            edge  "e1" "n1" "n2" []
+        ]
+    |> CyGraph.withStyle "node"     
+            [
+                CyParam.content =. CyParam.label
+                CyParam.color "#A00975"
+            ]
+    |> CyGraph.withSize(800, 400)  
+    |> CyGraph.show // displays the graph in a browser
+```
+
+Here is an image of the rendered graph:
+
+![](/images/cygraph.png)

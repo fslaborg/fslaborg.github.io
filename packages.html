@@ -94,7 +94,7 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-alpha5/icon"/>
+                  <img src="https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.6/icon"/>
                 </figure>
               </div>
               <div class="media-content">
@@ -106,7 +106,7 @@
               </div>
             </div>
             <p class="subtitle is-6">
-              .NET interface for plotly.js written in F#
+              Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.
             </p>
             <code class="package-reference">
               #r "nuget: Plotly.NET"
@@ -130,7 +130,41 @@
             </a>
             <div id="Plotly.NET-collapse" class="is-collapsible">
               <hr/>
-              <p>More here soon</p>
+              <p>Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.</p>
+<p>It can be used to create plotly.js charts in the following environments:</p>
+<p><br></br></p>
+<h2>1. <strong>interactive charts in html pages</strong></h2>
+<h2>2. <strong>interactive charts in dotnet interactive notebooks via the <a href="https://www.nuget.org/packages/Plotly.NET.Interactive/">Plotly.NET.Interactive</a> package</strong></h2>
+<h2>3. <strong>static chart images via <a href="https://www.nuget.org/packages/Plotly.NET.ImageExport/">Plotly.NET.ImageExport</a> package (see more <a href="https://plotly.net/0_1_image-export.html">here</a>)</strong></h2>
+<p><br></br></p>
+<p>here is a basic example snippet that renders a simple point chart, either as html page or static image:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: Plotly.NET, 2.0.0-preview.6&quot;
+#r &quot;nuget: Plotly.NET.ImageExport, 2.0.0-preview.6&quot;
+
+open Plotly.NET
+
+let myChart = 
+    Chart.Point(
+        [
+            (1.,2.)
+            (2.,3.)
+            (3.,4.)
+            (5.,2.)
+        ]
+    )
+    |&gt; Chart.withTitle &quot;Hello from Plotly.NET!&quot;
+    |&gt; Chart.withX_AxisStyle (&quot;X-Axis&quot;,Showline=true,Showgrid=true)
+    |&gt; Chart.withY_AxisStyle (&quot;Y-Axis&quot;,Showline=true,Showgrid=true)
+
+myChart |&gt; Chart.Show //display as html in browser 
+
+//using tatic image export
+open Plotly.NET.ImageExport
+
+myChart |&gt; Chart.savePNG(&quot;myChart&quot;,600,600) //save chart as static png with 600x600 px
+</code></pre>
+<p>Here is an image of the rendered chart:</p>
+<p><img src="/images/myChart.png" alt="" /></p>
 
             </div>
           </div>
@@ -329,6 +363,30 @@
             <div id="Cyjs.NET-collapse" class="is-collapsible">
               <hr/>
               <p>This package provides a light-weighted layer on top of the famous Cytoscape.js library. It brings all the graph visualization capabilities directly into .NET.</p>
+<p>Here is a small snippet that creates a basic styled graph:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: Cyjs.NET&quot;
+
+open Cyjs.NET
+open Elements
+
+let myFirstStyledGraph =     
+    CyGraph.initEmpty ()
+    |&gt; CyGraph.withElements [
+            node &quot;n1&quot; [ CyParam.label &quot;FsLab&quot;  ]
+            node &quot;n2&quot; [ CyParam.label &quot;ML&quot; ]
+ 
+            edge  &quot;e1&quot; &quot;n1&quot; &quot;n2&quot; []
+        ]
+    |&gt; CyGraph.withStyle &quot;node&quot;     
+            [
+                CyParam.content =. CyParam.label
+                CyParam.color &quot;#A00975&quot;
+            ]
+    |&gt; CyGraph.withSize(800, 400)  
+    |&gt; CyGraph.show // displays the graph in a browser
+</code></pre>
+<p>Here is an image of the rendered graph:</p>
+<p><img src="/images/cygraph.png" alt="" /></p>
 
             </div>
           </div>
@@ -402,14 +460,21 @@
             </a>
             <div id="FSharp.Stats-collapse" class="is-collapsible">
               <hr/>
-              <h1>You can use markdown here</h1>
-<h2>to tell more about your project</h2>
-<p>It will be rendered as a collapsible 'Read more' section in the package card.</p>
-<p>You can use <a href="google.com">links</a>, <code>code tags</code>,</p>
-<pre><code class="language-fsharp">//Code blocks
-let a = 42
+              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
+<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
+open FSharp.Stats
+
+// initialize a normal distribution with mean 25 and standard deviation 0.1
+let normalDistribution = Distributions.Continuous.normal 25. 0.1
+
+// draw independently 30 times from the given distribution 
+let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
+
+let mean = Seq.mean sample
+let stDev = Seq.stDev sample
+let cv = Seq.cv sample
 </code></pre>
-<p>and <strong>all</strong> <em>the</em> <sub>markdown</sub> goodness.</p>
 
             </div>
           </div>
