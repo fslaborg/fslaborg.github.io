@@ -96,7 +96,7 @@ let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
 
         let args = 
             sprintf 
-                "fsdocs build --eval --input %s --output %s --noapidocs --parameters root %s" 
+                "fsdocs build --eval --input %s --output %s --noapidocs --parameters root %s --clean" 
                 tutorials.Path 
                 (tutorials.Path.Replace("_src","")) 
                 (urlPrefix)

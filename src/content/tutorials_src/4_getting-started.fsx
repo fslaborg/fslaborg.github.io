@@ -13,19 +13,26 @@ index: 0
 (***condition:prepare***)
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
-#r "nuget: Plotly.NET, 2.0.0-beta5"
+#r "nuget: Newtonsoft.JSON"
+#r "nuget: Plotly.NET, 2.0.0-preview.6"
 #r "nuget: FSharp.Data"
 
 (***condition:ipynb***)
 #if IPYNB
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
-#r "nuget: Plotly.NET, 2.0.0-beta5"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-beta5"
+#r "nuget: Newtonsoft.JSON"
+#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
 (**
+
+[![Binder]({{root}}img/badge-binder.svg)](https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath={{fsdocs-source-basename}}.ipynb)&emsp;
+[![Script]({{root}}img/badge-script.svg)]({{root}}{{fsdocs-source-basename}}.fsx)&emsp;
+[![Notebook]({{root}}img/badge-notebook.svg)]({{root}}{{fsdocs-source-basename}}.ipynb)
+
 # Getting started
 
 Glad to see you here! Now that you found out and learned about FsLab, this section aims to illustrate how FsLab packages synergize and can be used to tackle
@@ -40,8 +47,8 @@ FsLab is a meant to be a project incubation space and can be thought of as a saf
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-beta5"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-beta5"
+#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
 #r "nuget: FSharp.Data"
 ```
 
