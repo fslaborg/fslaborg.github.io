@@ -64,7 +64,7 @@ let generate' (ctx : SiteContents) (_: string) =
             ]
         ]
         section [Class "hero is-medium mb-4"] [
-            div [Class "columns mt-4 mb-4"] [
+            div [Class "columns m-4"] [
                 div [Class "column has-text-centered mb-4"] [
                     div [Class "block"] [h1 [Class "title is-darkmagenta"] [!!"Getting started with F#"]]
                     div [Class "block"] [!! "Start here if you are new to F# and/or programming in general. Content of this category will walk you through setting up your F#/.NET environment and teach F# via small, bite-size tutorials"]
