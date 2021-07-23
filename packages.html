@@ -232,7 +232,26 @@ myChart |&gt; Chart.savePNG(&quot;myChart&quot;,600,600) //save chart as static 
             </a>
             <div id="Deedle-collapse" class="is-collapsible">
               <hr/>
-              <p>Deedle implements an efficient and robust frame and series data structures for manipulating with structured data. It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
+              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
+<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
+<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
+<p>It reads the boston housing data set csv file from an online data source and</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
 
             </div>
           </div>
