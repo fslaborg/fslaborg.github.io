@@ -49,7 +49,7 @@ myChart |> Chart.Show //display as html in browser
 //using tatic image export
 open Plotly.NET.ImageExport
 
-myChart |> Chart.savePNG("myChart",600,600) //save chart as static png with 600x600 px
+myChart |> Chart.savePNG("myChart",Width=600,Height=600)  //save chart as static png with 600x600 px
 ```
 
 Here is an image of the rendered chart:
