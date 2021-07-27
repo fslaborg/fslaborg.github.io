@@ -67,7 +67,7 @@ The [tutorials page](https://fslab.org/tutorials.html) contains links to a colle
 - `datascience`:
     Introduction to datascience in general and using F# for it specifically. Beginner and intermediate content on how to perform common datascience tasks with fslab-endorsed packages.
 
-- `adcvanced`
+- `advanced`
     Deep dives on advanced topics, performing complex tasks, insights on how packages perform together, etc. More of a blog-post-style content.
 
 To add tutorial content, follow these steps:
@@ -101,7 +101,7 @@ To add tutorial content, follow these steps:
     dotnet fornax watch
     ```
 
-    And navigate to the tutorials page.
+    And navigate to the tutorials page on `http://localhost:8080`.
 
 6. File a PR referencing the issue you created in step 1.
 
