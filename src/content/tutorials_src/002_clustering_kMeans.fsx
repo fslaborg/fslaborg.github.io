@@ -33,9 +33,12 @@ index: 1
 [![Script]({{root}}images/badge-script.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.fsx)&emsp;
 [![Notebook]({{root}}images/badge-notebook.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.ipynb)
 
+
+# Clustering with FSharp.Stats I: k-means
+
 _Summary:_ This tutorial demonstrates k means clustering with FSharp.Stats and how to visualize the results with Plotly.NET.
 
-# Introduction
+## Introduction
 
 Clustering methods can be used to group elements of a huge data set based on their similarity. Elements sharing similar properties cluster together and can be reported as coherent group.
 k-means clustering is a frequently used technique, that segregates the given data into k clusters with similar elements grouped in each cluster, but high variation between the clusters.
@@ -78,7 +81,7 @@ For demonstration of k-means clustering, the classic iris data set is used, whic
 *)
 
 (**
-##Loading data
+## Loading data
 *)
 open FSharp.Data
 open Deedle
@@ -319,23 +322,29 @@ bestKChart |> GenericChart.toChartHTML
 
 </center>
 
-# Limitations
+## Limitations
 
   1. Outlier have a strong influence on the positioning of the centroids. 
   2. Determining the correct number of clusters in advance is critical. Often it is chosen according to the number of classes present in the dataset which isn't in the spirit of clustering procedures.
 
-# Notes
+## Notes
 
   - Please note that depending on what data you want to cluster, a column wise z-score normalization may be required. In the presented example differences in sepal width have a reduced influence because
   the absolute variation is low.
 
-# References
+## References
 
   - FSharp.Stats documentation, fslaborg, https://fslab.org/FSharp.Stats/Clustering.html
   - Shraddha and Saganna, A Review On K-means Data Clustering Approach, International Journal of Information & Computation Technology, Vol:4 No:17, 2014
   - Moth'd Belal, A New Algorithm for Cluster Initialization, International Journal of Computer and Information Engineering, Vol:1 No:4, 2007
   - Singh et al., K-means with Three different Distance Metrics, International Journal of Computer Applications, 2013, DOI:10.5120/11430-6785
   - Kodinariya and Makwana, Review on Determining of Cluster in K-means Clustering, International Journal of Advance Research in Computer Science and Management Studies, 2013
+
+## Further reading
+  
+Examples are taken from [FSharp.Stats documentation](https://fslab.org/FSharp.Stats/Clustering.html) that covers various techniques for an optimal cluster number determination.
+  
+The next article in this series covers [hierarchical clustering using FSharp.Stats](https://fslab.org/content/tutorials/003_clustering_hierarchical.html).
 
 *)
 

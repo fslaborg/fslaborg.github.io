@@ -34,9 +34,13 @@ index: 2
 [![Script]({{root}}images/badge-script.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.fsx)&emsp;
 [![Notebook]({{root}}images/badge-notebook.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.ipynb)
 
+# Clustering with FSharp.Stats II: hierarchical clustering
+
 _Summary:_ This tutorial demonstrates hierarchical clustering with FSharp.Stats and how to visualize the results with Plotly.NET.
 
-# Introduction
+In the previous article of this series [k-means clustering using FSharp.Stats](https://fslab.org/content/tutorials/002_clustering_kMeans.html) was introduced.
+
+## Introduction
 
 Clustering methods can be used to group elements of a huge data set based on their similarity. Elements sharing similar properties cluster together and can be reported as coherent group.
 Many clustering algorithms require a predefined cluster number, that has to be provided by the experimenter.
@@ -94,7 +98,7 @@ For demonstration of hierarchical clustering, the classic iris data set is used,
 *)
 
 (**
-##Loading data
+## Loading data
 *)
 open FSharp.Data
 open Deedle
@@ -275,16 +279,22 @@ hClusteredDataHeatmap |> GenericChart.toChartHTML
   1. There is no strong guidance on which distance function and linkage type should be used. It often is chosen arbitrarily according to the user's experience.
   2. The visual interpretation of the dendrogram is difficult, since swapping the direction of some bifurcations may totally disturbe the visual impression.
 
-# Notes
+## Notes
 
   - Please note that depending on what data you want to cluster, a column wise z-score normalization may be required. In the presented example differences in sepal width have a reduced influence because
   the absolute variation is low.
 
-# References
+## References
 
   - Vijaya et al., A Review on Hierarchical Clustering Algorithms, Journal of Engineering and Applied Sciences, 2017
   - Rani and Rohil, A Study of Hierarchical Clustering Algorithm, International Journal of Information and Computation Technology, 2013
   - FSharp.Stats documentation, fslaborg, https://fslab.org/FSharp.Stats/Clustering.html
+
+## Further reading
+
+Examples are taken from [FSharp.Stats documentation](https://fslab.org/FSharp.Stats/Clustering.html) that covers various techniques for an optimal cluster number determination.
+
+The next article in this series covers [DBSCAN using FSharp.Stats](https://fslab.org/content/tutorials/004_clustering_DBSCAN.html).
 
 *)
 
