@@ -86,15 +86,12 @@ open FSharp.Data
 open FSharp.Stats
 open Deedle
 
-// Retrieve data using the FSharp.Data package
+// Retrieve data using the FSharp.Data package and read it as dataframe using the Deedle package
 let rawData = Http.RequestString @"https://raw.githubusercontent.com/fslaborg/datasets/main/data/iris.csv"
+let df = Frame.ReadCsvString(rawData)
 
-// Use .net Core functions to convert the retrieved string to a stream
-let dataAsStream = new System.IO.MemoryStream(rawData |> System.Text.Encoding.UTF8.GetBytes) 
+df.Print()
 
-let dataAsFrame = Frame.ReadCsv(dataAsStream,hasHeaders=true,separators=",")
-
-dataAsFrame.Print()
 
 (*** include-output ***)
 
@@ -112,16 +109,16 @@ let header3D = ["sepal_length";"petal_length";"petal_width"]
 
 //extract petal length and petal width
 let data2D = 
-    Frame.sliceCols header2D dataAsFrame
+    Frame.sliceCols header2D df
     |> Frame.toJaggedArray
 
 //extract sepal length, petal length, and petal width
 let data3D = 
-    Frame.sliceCols header3D dataAsFrame
+    Frame.sliceCols header3D df
     |> Frame.toJaggedArray
 
 let labels = 
-    Frame.getCol "species" dataAsFrame
+    Frame.getCol "species" df
     |> Series.values
     |> Seq.mapi (fun i s -> sprintf "%s_%i" s i)
 

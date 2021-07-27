@@ -103,15 +103,12 @@ For demonstration of hierarchical clustering, the classic iris data set is used,
 open FSharp.Data
 open Deedle
 
-// Retrieve data using the FSharp.Data package
+// Retrieve data using the FSharp.Data package and read it as dataframe using the Deedle package
 let rawData = Http.RequestString @"https://raw.githubusercontent.com/fslaborg/datasets/main/data/iris.csv"
+let df = Frame.ReadCsvString(rawData)
 
-// Use .net Core functions to convert the retrieved string to a stream
-let dataAsStream = new System.IO.MemoryStream(rawData |> System.Text.Encoding.UTF8.GetBytes) 
+df.Print()
 
-let dataAsFrame = Frame.ReadCsv(dataAsStream,hasHeaders=true,separators=",")
-
-dataAsFrame.Print()
 
 (*** include-output ***)
 
@@ -127,13 +124,13 @@ let colNames = ["sepal_length";"sepal_width";"petal_length";"petal_width"]
 
 // isolate data as float [] []
 let data = 
-    Frame.dropCol "species" dataAsFrame
+    Frame.dropCol "species" df
     |> Frame.toJaggedArray
     
 
 // isolate labels as seq<string>
 let labels = 
-    Frame.getCol "species" dataAsFrame
+    Frame.getCol "species" df
     |> Series.values
     |> Seq.mapi (fun i s -> sprintf "%s_%i" s i)
     |> Array.ofSeq

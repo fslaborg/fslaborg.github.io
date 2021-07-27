@@ -76,15 +76,12 @@ open Deedle
 // Retrieve data using the FSharp.Data package
 let rawData = Http.RequestString @"https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt"
 
-// Use .net Core functions to convert the retrieved string to a stream
-let dataAsStream = new System.IO.MemoryStream(rawData |> System.Text.Encoding.UTF8.GetBytes) 
-
-// And finally create a data frame object using the ReadCsv method provided by Deedle.
+// And create a data frame object using the ReadCsvString method provided by Deedle.
 // Note: Of course you can directly provide the path to a local source.
-let dataAsFrame = Frame.ReadCsv(dataAsStream,hasHeaders=true,separators="\t")
+let df = Frame.ReadCsvString(rawData,hasHeaders=true,separators="\t")
 
 // Using the Print() method, we can use the Deedle pretty printer to have a look at the data set.
-dataAsFrame.Print()
+df.Print()
 
 (*** include-output ***)
 
@@ -96,7 +93,7 @@ Lets say in our analysis we are only interested in the variables just described,
 *)
 
 let housesNotAtRiver = 
-    dataAsFrame
+    df
     |> Frame.sliceCols ["RoomsPerDwelling";"MedianHomeValue";"CharlesRiver"]
     |> Frame.filterRowValues (fun s -> s.GetAs<bool>("CharlesRiver") |> not ) 
 
@@ -140,7 +137,7 @@ Since plotly charts are interactive they invite us to combine mutliple charts. L
 *)
 
 let housesAtRiver = 
-    dataAsFrame
+    df
     |> Frame.sliceCols ["RoomsPerDwelling";"MedianHomeValue";"CharlesRiver"]
     |> Frame.filterRowValues (fun s -> s.GetAs<bool>("CharlesRiver"))
 
@@ -174,11 +171,11 @@ Suppose we would have a customer that wants two models, one to predict the price
 *)
 
 let pricesAll :Series<int,float> = 
-    dataAsFrame
+    df
     |> Frame.getCol "MedianHomeValue"
 
 let roomsPerDwellingAll :Series<int,float> = 
-    dataAsFrame
+    df
     |> Frame.getCol "RoomsPerDwelling"   
 
 let correlation = 
