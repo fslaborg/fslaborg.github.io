@@ -7,12 +7,12 @@
 
     <!--Opengraph properties (https://ogp.me/)-->
     <meta property="og:image" content="https://fslab.org/images/logo.svg" />
-    <meta property="og:title" content="Introduction
+    <meta property="og:title" content="Clustering with FSharp.Stats III: DBSCAN
 " />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="fslab.org" />
 
-    <title>Introduction
+    <title>Clustering with FSharp.Stats III: DBSCAN
 </title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -60,7 +60,7 @@
                         </figure>
                     </div>
                     <div class="media-content">
-                        <h1 class="title is-size-1 is-white">Introduction
+                        <h1 class="title is-size-1 is-white">Clustering with FSharp.Stats III: DBSCAN
 </h1>
                     </div>
                 </div>
@@ -74,8 +74,10 @@
                 <p><a href="https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=004_clustering_DBSCAN.ipynb"><img src="https://fslab.org/images/badge-binder.svg" alt="Binder" /></a>&emsp;
 <a href="https://fslab.org/content/tutorials/004_clustering_DBSCAN.fsx"><img src="https://fslab.org/images/badge-script.svg" alt="Script" /></a>&emsp;
 <a href="https://fslab.org/content/tutorials/004_clustering_DBSCAN.ipynb"><img src="https://fslab.org/images/badge-notebook.svg" alt="Notebook" /></a></p>
+<h1><a name="Clustering-with-FSharp-Stats-III-DBSCAN" class="anchor" href="#Clustering-with-FSharp-Stats-III-DBSCAN">Clustering with FSharp.Stats III: DBSCAN</a></h1>
 <p><em>Summary:</em> This tutorial demonstrates DBSCAN with FSharp.Stats and how to visualize the results with Plotly.NET.</p>
-<h1><a name="Introduction" class="anchor" href="#Introduction">Introduction</a></h1>
+<p>In the previous article of this series <a href="https://fslab.org/content/tutorials/003_clustering_hierarchical.html">hierarchical clustering using FSharp.Stats</a> was introduced.</p>
+<h2><a name="Introduction" class="anchor" href="#Introduction">Introduction</a></h2>
 <p>Clustering methods can be used to group elements of a huge data set based on their similarity. Elements sharing similar properties cluster together and can be reported as coherent group.
 Density-Based Spatial Clustering of Applications with Noise (DBSCAN) was developed to identify clusters with similar density and allows the exclusion of noise points.</p>
 <h3><a name="Two-global-parameters-have-to-be-defined" class="anchor" href="#Two-global-parameters-have-to-be-defined">Two global parameters have to be defined:</a></h3>
@@ -194,56 +196,56 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs45', 108)" onmouseover="showTip(event, 'fs45', 108)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs52', 109)" onmouseover="showTip(event, 'fs52', 109)" class="id">withTitle</span> <span class="s">&quot;rawChart3D&quot;</span>
 </code></pre>
 <center>
-<div id="a7c023a0-48b1-41bf-b654-a949a650c43e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="f53ff8c5-1069-45f0-b3a6-9bee3fc025e2" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_a7c023a048b141bfb654a949a650c43e = function() {
+            var renderPlotly_f53ff8c5106945f0b3a69bee3fc025e2 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"y":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"mode":"markers","line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"xaxis":{"title":"petal_length"},"yaxis":{"title":"petal_width"},"title":"rawChart2D"};
             var config = {};
-            Plotly.newPlot('a7c023a0-48b1-41bf-b654-a949a650c43e', data, layout, config);
+            Plotly.newPlot('f53ff8c5-1069-45f0-b3a6-9bee3fc025e2', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_a7c023a048b141bfb654a949a650c43e();
+                    renderPlotly_f53ff8c5106945f0b3a69bee3fc025e2();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_a7c023a048b141bfb654a949a650c43e();
+                renderPlotly_f53ff8c5106945f0b3a69bee3fc025e2();
             }
 </script>
 
 <br>
-<div id="b344f5fa-2ecd-45b8-af9b-dd83eeb64aed" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="ed3ee2c5-f854-4c91-8ecb-b26d592687e0" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_b344f5fa2ecd45b8af9bdd83eeb64aed = function() {
+            var renderPlotly_ed3ee2c5f8544c918ecbb26d592687e0 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter3d","x":[5.5,4.9,7.6,5.6,6.1,6.3,6.2,7.2,6.9,4.9,5.4,7.0,6.1,5.4,7.2,6.3,5.4,5.8,5.0,6.5,5.6,4.3,6.7,4.5,5.7,6.3,5.6,5.6,4.9,7.7,6.3,6.4,4.7,5.5,5.9,5.0,5.4,6.0,5.6,6.3,5.1,6.4,5.1,6.7,6.2,6.8,7.7,4.8,6.2,4.8,6.7,5.1,6.7,6.9,5.8,4.8,5.5,5.1,5.7,6.7,4.4,5.0,6.9,5.0,6.5,4.6,6.1,5.0,5.8,6.0,4.9,5.7,7.9,7.2,5.5,4.6,6.4,6.9,6.0,5.8,5.2,7.4,5.5,5.1,4.8,5.0,5.7,4.6,5.9,6.1,5.7,6.0,5.4,6.1,5.4,5.2,7.3,4.7,6.3,5.3,6.6,6.3,4.4,4.4,6.5,6.3,4.9,6.6,6.4,6.5,5.5,6.7,6.4,6.8,5.7,5.8,6.0,5.2,6.7,5.1,5.5,4.8,5.1,6.4,5.0,5.1,5.1,6.5,5.6,6.0,7.1,4.6,6.1,6.2,5.2,7.7,5.7,6.4,5.8,5.0,6.7,6.3,4.9,5.8,5.0,7.7,5.7,5.9,6.8,5.0],"y":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"z":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"mode":"markers","line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}},"title":"rawChart3D"};
             var config = {};
-            Plotly.newPlot('b344f5fa-2ecd-45b8-af9b-dd83eeb64aed', data, layout, config);
+            Plotly.newPlot('ed3ee2c5-f854-4c91-8ecb-b26d592687e0', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_b344f5fa2ecd45b8af9bdd83eeb64aed();
+                    renderPlotly_ed3ee2c5f8544c918ecbb26d592687e0();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_b344f5fa2ecd45b8af9bdd83eeb64aed();
+                renderPlotly_ed3ee2c5f8544c918ecbb26d592687e0();
             }
 </script>
 
@@ -288,9 +290,9 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
    seq
      [[|7.6; 6.6; 2.1|]; [|7.2; 6.1; 2.5|]; [|7.7; 6.1; 2.3|]; [|5.1; 3.0; 1.1|];
       ...] }"</code></pre></td></tr></table>
-<h1><a name="Visualization-of-clustering-result" class="anchor" href="#Visualization-of-clustering-result">Visualization of clustering result</a></h1>
+<h2><a name="Visualization-of-clustering-result" class="anchor" href="#Visualization-of-clustering-result">Visualization of clustering result</a></h2>
 <p>To visualize the clustering result coordinates of each cluster and noise points are visualized separately and combined in a single scatter plot.</p>
-<h2><a name="2D-clustering-result-visualization" class="anchor" href="#2D-clustering-result-visualization">2D clustering result visualization</a></h2>
+<h3><a name="2D-clustering-result-visualization" class="anchor" href="#2D-clustering-result-visualization">2D clustering result visualization</a></h3>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="c">//to create a chart with two dimensional data use the following function</span>
     
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs72', 150)" onmouseover="showTip(event, 'fs72', 150)" class="id">chartCluster2D</span> <span class="o">=</span> 
@@ -324,34 +326,34 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs45', 218)" onmouseover="showTip(event, 'fs45', 218)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs51', 219)" onmouseover="showTip(event, 'fs51', 219)" class="id">withY_AxisStyle</span> <span onmouseout="hideTip(event, 'fs24', 220)" onmouseover="showTip(event, 'fs24', 220)" class="id">header2D</span><span class="pn">.</span><span class="pn">[</span><span class="n">1</span><span class="pn">]</span>
 </code></pre>
 <center>
-<div id="cc61945a-4ff3-43ab-9b1d-95b4a2adb05b" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="a8d01669-ac9f-4fd2-b47c-6dc29f5841a2" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_cc61945a4ff343ab9b1d95b4a2adb05b = function() {
+            var renderPlotly_a8d01669ac9f4fd2b47c6dc29f5841a2 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[6.6,3.0,6.7,6.4,6.7,3.3,6.9],"y":[2.1,1.1,2.0,2.0,2.2,1.0,2.3],"mode":"markers","marker":{},"name":"Noise"},{"type":"scatter","x":[1.5,1.4,1.7,1.5,1.7,1.2,1.1,1.3,1.6,1.6,1.5,1.4,1.9,1.3,1.7,1.3,1.4,1.5,1.9,1.7,1.6,1.0],"y":[0.1,0.2,0.4,0.2,0.2,0.2,0.1,0.3,0.2,0.4,0.4,0.1,0.2,0.2,0.3,0.4,0.3,0.3,0.4,0.5,0.6,0.2],"mode":"markers","marker":{},"name":"Cluster 0"},{"type":"scatter","x":[4.9,4.9,4.8,5.0,5.0,5.1,4.7,5.2,5.0,5.1,5.1,5.1,4.9,5.3,5.2,5.3,5.1,5.1,4.7,5.1,4.8,4.5,4.5,4.6,4.7,5.0,4.6,4.5,5.4,5.5,4.4,4.7,4.5,4.6,4.4,4.4,5.6,5.7,5.4,5.6,5.5,5.6,5.7,5.7,5.6,4.3,4.2,4.2,4.2,4.1,5.8,5.8,5.9,6.0,5.8,5.6,4.1,4.0,4.0,4.0,5.9,6.1,6.1,6.0,3.9,3.9,3.9,3.8,3.6,3.7,6.1,6.3,3.5],"y":[2.0,1.8,1.8,2.0,1.9,1.6,1.6,2.3,1.7,2.3,1.9,2.0,1.5,2.3,2.0,1.9,2.4,1.8,1.4,1.5,1.4,1.6,1.7,1.5,1.5,1.5,1.4,1.5,2.1,1.8,1.2,1.2,1.3,1.3,1.3,1.4,2.4,2.3,2.3,2.1,2.1,2.2,2.5,2.1,1.8,1.3,1.5,1.3,1.2,1.3,2.2,1.8,2.1,1.8,1.6,1.4,1.0,1.2,1.3,1.0,2.3,2.3,1.9,2.5,1.1,1.4,1.2,1.1,1.3,1.0,2.5,1.8,1.0],"mode":"markers","marker":{},"name":"Cluster 1"}];
             var layout = {"title":"eps: 0.5 minPts: 20 pts: 150 cluster: 2 noisePts: 8","xaxis":{"title":"petal_length"},"yaxis":{"title":"petal_width"}};
             var config = {};
-            Plotly.newPlot('cc61945a-4ff3-43ab-9b1d-95b4a2adb05b', data, layout, config);
+            Plotly.newPlot('a8d01669-ac9f-4fd2-b47c-6dc29f5841a2', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_cc61945a4ff343ab9b1d95b4a2adb05b();
+                    renderPlotly_a8d01669ac9f4fd2b47c6dc29f5841a2();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_cc61945a4ff343ab9b1d95b4a2adb05b();
+                renderPlotly_a8d01669ac9f4fd2b47c6dc29f5841a2();
             }
 </script>
 
 </center>
-<h2><a name="3D-clustering-result-visualization" class="anchor" href="#3D-clustering-result-visualization">3D clustering result visualization</a></h2>
+<h3><a name="3D-clustering-result-visualization" class="anchor" href="#3D-clustering-result-visualization">3D clustering result visualization</a></h3>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs90', 224)" onmouseover="showTip(event, 'fs90', 224)" class="id">chartCluster3D</span> <span class="o">=</span> 
     <span onmouseout="hideTip(event, 'fs70', 225)" onmouseover="showTip(event, 'fs70', 225)" class="id">result3D</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs73', 226)" onmouseover="showTip(event, 'fs73', 226)" class="id">Clusterlist</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs35', 227)" onmouseover="showTip(event, 'fs35', 227)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs36', 228)" onmouseover="showTip(event, 'fs36', 228)" class="id">mapi</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs37', 229)" onmouseover="showTip(event, 'fs37', 229)" class="fn">i</span> <span onmouseout="hideTip(event, 'fs74', 230)" onmouseover="showTip(event, 'fs74', 230)" class="fn">l</span> <span class="k">-&gt;</span>
@@ -387,29 +389,29 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs95', 310)" onmouseover="showTip(event, 'fs95', 310)" class="fn">clusteredChart3D</span><span class="pn">(</span><span class="pn">)</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs63', 311)" onmouseover="showTip(event, 'fs63', 311)" class="m">DbScan</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs64', 312)" onmouseover="showTip(event, 'fs64', 312)" class="id">compute</span> <span onmouseout="hideTip(event, 'fs65', 313)" onmouseover="showTip(event, 'fs65', 313)" class="m">DistanceMetrics</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs66', 314)" onmouseover="showTip(event, 'fs66', 314)" class="m">Array</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs96', 315)" onmouseover="showTip(event, 'fs96', 315)" class="id">euclideanNaNSquared</span> <span class="n">20</span> <span class="pn">(</span><span class="n">0.7</span><span class="o">**</span><span class="n">2.</span><span class="pn">)</span> <span onmouseout="hideTip(event, 'fs30', 316)" onmouseover="showTip(event, 'fs30', 316)" class="id">data3D</span> 
 </code></pre>
 <center>
-<div id="b6d06c62-dcd9-4bdf-b242-4f6903574f3c" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="8a8efb32-63fd-448e-ae64-2590128f65ea" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_b6d06c62dcd94bdfb2424f6903574f3c = function() {
+            var renderPlotly_8a8efb3263fd448eae642590128f65ea = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter3d","x":[7.6,7.2,7.7,5.1,7.7,4.9,7.9,7.2,7.4,7.3,7.7,5.0,4.9,7.7],"y":[6.6,6.1,6.1,3.0,6.7,4.5,6.4,5.8,6.1,6.3,6.7,3.3,3.3,6.9],"z":[2.1,2.5,2.3,1.1,2.0,1.7,2.0,1.6,1.9,1.8,2.2,1.0,1.0,2.3],"mode":"markers","line":{},"marker":{},"name":"Noise"},{"type":"scatter3d","x":[5.5,5.6,5.6,5.6,5.5,5.0,5.8,5.8,5.2,5.5,5.7,5.9,6.1,6.0,5.5,5.7,5.6,5.7,5.8,5.7,5.6,6.2,6.0,6.0,5.7,5.4,6.1,6.1,6.1,6.3,6.4,6.2,5.9,6.3,6.4,6.0,6.6,5.6,6.0,6.3,6.6,6.5,6.7,6.7,6.1,6.2,6.3,6.3,6.3,6.0,5.8,5.9,6.8,5.7,6.5,5.8,6.7,6.9,6.5,6.4,7.0,6.1,6.4,6.5,6.3,6.4,6.7,6.2,6.4,6.4,6.3,6.9,6.7,6.9,6.7,6.8,6.5,6.7,6.9,6.7,6.3,6.8,7.2,7.1],"y":[3.8,4.1,3.9,3.6,4.4,3.5,4.1,4.0,3.9,3.7,4.1,4.2,4.0,4.0,4.0,4.2,4.2,4.2,3.9,3.5,4.5,4.3,4.5,4.5,4.5,4.5,4.6,4.7,4.7,4.4,4.3,4.5,4.8,4.7,4.5,4.8,4.4,4.9,5.0,4.9,4.6,4.6,4.7,4.4,4.9,4.8,5.1,4.9,5.0,5.1,5.1,5.1,4.8,5.0,5.1,5.1,5.0,4.9,5.2,5.3,4.7,5.6,5.5,5.5,5.6,5.3,5.2,5.4,5.6,5.6,5.6,5.1,5.7,5.4,5.6,5.5,5.8,5.8,5.7,5.7,6.0,5.9,6.0,5.9],"z":[1.1,1.3,1.1,1.3,1.2,1.0,1.0,1.2,1.4,1.0,1.3,1.5,1.3,1.0,1.3,1.3,1.3,1.2,1.2,1.0,1.5,1.3,1.6,1.5,1.3,1.5,1.4,1.2,1.4,1.3,1.3,1.5,1.8,1.6,1.5,1.8,1.4,2.0,1.5,1.5,1.3,1.5,1.5,1.4,1.8,1.8,1.5,1.8,1.9,1.6,1.9,1.8,1.4,2.0,2.0,2.4,1.7,1.5,2.0,1.9,1.4,1.4,1.8,1.8,1.8,2.3,2.3,2.3,2.1,2.2,2.4,2.3,2.1,2.1,2.4,2.1,2.2,1.8,2.3,2.5,2.5,2.3,1.8,2.1],"mode":"markers","line":{},"marker":{},"name":"Cluster_0"},{"type":"scatter3d","x":[4.9,4.9,5.4,5.4,5.4,5.0,4.5,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,4.4,5.0,5.0,4.6,5.5,4.6,5.1,5.0,4.6,5.4,5.2,4.7,5.3,4.4,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,4.3,5.8,5.7,5.7],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.3,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.3,1.3,1.6,1.0,1.3,1.4,1.5,1.6,1.5,1.3,1.5,1.3,1.5,1.4,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.1,1.2,1.5,1.7],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.2,0.3,0.6,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.1,0.2,0.4,0.3],"mode":"markers","line":{},"marker":{},"name":"Cluster_1"}];
             var layout = {"title":"eps: 0.7 minPts: 20 pts: 150 cluster: 2 noisePts: 14","scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}}};
             var config = {};
-            Plotly.newPlot('b6d06c62-dcd9-4bdf-b242-4f6903574f3c', data, layout, config);
+            Plotly.newPlot('8a8efb32-63fd-448e-ae64-2590128f65ea', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_b6d06c62dcd94bdfb2424f6903574f3c();
+                    renderPlotly_8a8efb3263fd448eae642590128f65ea();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_b6d06c62dcd94bdfb2424f6903574f3c();
+                renderPlotly_8a8efb3263fd448eae642590128f65ea();
             }
 </script>
 
@@ -419,14 +421,14 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
 <li>The selection of minPts and eps is critical and even small deviations can severely influence the final results</li>
 <li>When data points are of varying density, DBSCAN is not appropriate</li>
 </ol>
-<h1><a name="Notes" class="anchor" href="#Notes">Notes</a></h1>
+<h2><a name="Notes" class="anchor" href="#Notes">Notes</a></h2>
 <ul>
 <li>
 Please note that depending on what data you want to cluster, a column wise z-score normalization may be required. In the presented example differences in sepal width have a reduced influence because
 the absolute variation is low.
 </li>
 </ul>
-<h1><a name="References" class="anchor" href="#References">References</a></h1>
+<h2><a name="References" class="anchor" href="#References">References</a></h2>
 <ul>
 <li>FSharp.Stats documentation, fslaborg, <a href="https://fslab.org/FSharp.Stats/Clustering.html">https://fslab.org/FSharp.Stats/Clustering.html</a></li>
 <li>Shinde and Sankhe, Comparison of Enhanced DBSCAN Algorithms: A Review, International Journal of Engeneering Research &amp; Technology, 2017</li>

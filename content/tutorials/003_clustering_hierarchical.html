@@ -7,12 +7,12 @@
 
     <!--Opengraph properties (https://ogp.me/)-->
     <meta property="og:image" content="https://fslab.org/images/logo.svg" />
-    <meta property="og:title" content="Introduction
+    <meta property="og:title" content="Clustering with FSharp.Stats II: hierarchical clustering
 " />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="fslab.org" />
 
-    <title>Introduction
+    <title>Clustering with FSharp.Stats II: hierarchical clustering
 </title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -60,7 +60,7 @@
                         </figure>
                     </div>
                     <div class="media-content">
-                        <h1 class="title is-size-1 is-white">Introduction
+                        <h1 class="title is-size-1 is-white">Clustering with FSharp.Stats II: hierarchical clustering
 </h1>
                     </div>
                 </div>
@@ -74,8 +74,10 @@
                 <p><a href="https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=003_clustering_hierarchical.ipynb"><img src="https://fslab.org/images/badge-binder.svg" alt="Binder" /></a>&emsp;
 <a href="https://fslab.org/content/tutorials/003_clustering_hierarchical.fsx"><img src="https://fslab.org/images/badge-script.svg" alt="Script" /></a>&emsp;
 <a href="https://fslab.org/content/tutorials/003_clustering_hierarchical.ipynb"><img src="https://fslab.org/images/badge-notebook.svg" alt="Notebook" /></a></p>
+<h1><a name="Clustering-with-FSharp-Stats-II-hierarchical-clustering" class="anchor" href="#Clustering-with-FSharp-Stats-II-hierarchical-clustering">Clustering with FSharp.Stats II: hierarchical clustering</a></h1>
 <p><em>Summary:</em> This tutorial demonstrates hierarchical clustering with FSharp.Stats and how to visualize the results with Plotly.NET.</p>
-<h1><a name="Introduction" class="anchor" href="#Introduction">Introduction</a></h1>
+<p>In the previous article of this series <a href="https://fslab.org/content/tutorials/002_clustering_kMeans.html">k-means clustering using FSharp.Stats</a> was introduced.</p>
+<h2><a name="Introduction" class="anchor" href="#Introduction">Introduction</a></h2>
 <p>Clustering methods can be used to group elements of a huge data set based on their similarity. Elements sharing similar properties cluster together and can be reported as coherent group.
 Many clustering algorithms require a predefined cluster number, that has to be provided by the experimenter.
 Hierarchical clustering (hClust) does not require such cluster number definition. Instead, hierarchical clustering results in a tree structure, that has a single cluster (node) on its root and recursively splits up into clusters of
@@ -185,29 +187,29 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs38', 55)" onmouseover="showTip(event, 'fs38', 55)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs41', 56)" onmouseover="showTip(event, 'fs41', 56)" class="id">withTitle</span> <span class="s">&quot;raw iris data&quot;</span>
 </code></pre>
 <center>
-<div id="5ff448bc-b5e4-41f7-97ee-1e5358b1e16c" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="255c04af-c554-404e-84e4-7e394bbe08f9" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_5ff448bcb5e441f797ee1e5358b1e16c = function() {
+            var renderPlotly_255c04afc554404e84e47e394bbe08f9 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"heatmap","z":[[5.5,2.4,3.8,1.1],[4.9,3.1,1.5,0.1],[7.6,3.0,6.6,2.1],[5.6,2.8,4.9,2.0],[6.1,3.0,4.9,1.8],[6.3,3.4,5.6,2.4],[6.2,2.8,4.8,1.8],[7.2,3.2,6.0,1.8],[6.9,3.2,5.7,2.3],[4.9,3.0,1.4,0.2],[5.4,3.9,1.7,0.4],[7.0,3.2,4.7,1.4],[6.1,3.0,4.6,1.4],[5.4,3.7,1.5,0.2],[7.2,3.6,6.1,2.5],[6.3,2.8,5.1,1.5],[5.4,3.4,1.7,0.2],[5.8,4.0,1.2,0.2],[5.0,3.2,1.2,0.2],[6.5,3.0,5.8,2.2],[5.6,3.0,4.1,1.3],[4.3,3.0,1.1,0.1],[6.7,3.3,5.7,2.5],[4.5,2.3,1.3,0.3],[5.7,2.5,5.0,2.0],[6.3,2.7,4.9,1.8],[5.6,3.0,4.5,1.5],[5.6,2.5,3.9,1.1],[4.9,3.1,1.5,0.1],[7.7,3.0,6.1,2.3],[6.3,2.5,5.0,1.9],[6.4,3.1,5.5,1.8],[4.7,3.2,1.6,0.2],[5.5,4.2,1.4,0.2],[5.9,3.2,4.8,1.8],[5.0,3.4,1.6,0.4],[5.4,3.4,1.5,0.4],[6.0,2.7,5.1,1.6],[5.6,2.9,3.6,1.3],[6.3,3.3,4.7,1.6],[5.1,2.5,3.0,1.1],[6.4,3.2,4.5,1.5],[5.1,3.7,1.5,0.4],[6.7,3.0,5.2,2.3],[6.2,2.9,4.3,1.3],[6.8,2.8,4.8,1.4],[7.7,2.8,6.7,2.0],[4.8,3.0,1.4,0.1],[6.2,3.4,5.4,2.3],[4.8,3.4,1.9,0.2],[6.7,2.5,5.8,1.8],[5.1,3.5,1.4,0.2],[6.7,3.0,5.0,1.7],[6.9,3.1,5.1,2.3],[5.8,2.7,5.1,1.9],[4.8,3.1,1.6,0.2],[5.5,2.6,4.4,1.2],[5.1,3.8,1.6,0.2],[5.7,4.4,1.5,0.4],[6.7,3.3,5.7,2.1],[4.4,3.0,1.3,0.2],[5.0,3.5,1.3,0.3],[6.9,3.1,5.4,2.1],[5.0,3.5,1.6,0.6],[6.5,3.2,5.1,2.0],[4.6,3.6,1.0,0.2],[6.1,2.8,4.7,1.2],[5.0,2.0,3.5,1.0],[5.8,2.7,4.1,1.0],[6.0,3.4,4.5,1.6],[4.9,2.5,4.5,1.7],[5.7,3.8,1.7,0.3],[7.9,3.8,6.4,2.0],[7.2,3.0,5.8,1.6],[5.5,3.5,1.3,0.2],[4.6,3.2,1.4,0.2],[6.4,2.9,4.3,1.3],[6.9,3.1,4.9,1.5],[6.0,2.9,4.5,1.5],[5.8,2.6,4.0,1.2],[5.2,2.7,3.9,1.4],[7.4,2.8,6.1,1.9],[5.5,2.4,3.7,1.0],[5.1,3.4,1.5,0.2],[4.8,3.4,1.6,0.2],[5.0,3.0,1.6,0.2],[5.7,2.8,4.1,1.3],[4.6,3.1,1.5,0.2],[5.9,3.0,4.2,1.5],[6.1,2.8,4.0,1.3],[5.7,2.8,4.5,1.3],[6.0,2.2,4.0,1.0],[5.4,3.0,4.5,1.5],[6.1,2.9,4.7,1.4],[5.4,3.9,1.3,0.4],[5.2,4.1,1.5,0.1],[7.3,2.9,6.3,1.8],[4.7,3.2,1.3,0.2],[6.3,2.5,4.9,1.5],[5.3,3.7,1.5,0.2],[6.6,2.9,4.6,1.3],[6.3,2.9,5.6,1.8],[4.4,3.2,1.3,0.2],[4.4,2.9,1.4,0.2],[6.5,3.0,5.5,1.8],[6.3,2.3,4.4,1.3],[4.9,3.1,1.5,0.1],[6.6,3.0,4.4,1.4],[6.4,2.8,5.6,2.1],[6.5,2.8,4.6,1.5],[5.5,2.3,4.0,1.3],[6.7,3.1,5.6,2.4],[6.4,3.2,5.3,2.3],[6.8,3.0,5.5,2.1],[5.7,2.9,4.2,1.3],[5.8,2.7,5.1,1.9],[6.0,3.0,4.8,1.8],[5.2,3.4,1.4,0.2],[6.7,3.1,4.7,1.5],[5.1,3.5,1.4,0.3],[5.5,2.5,4.0,1.3],[4.8,3.0,1.4,0.3],[5.1,3.8,1.5,0.3],[6.4,2.8,5.6,2.2],[5.0,3.4,1.5,0.2],[5.1,3.8,1.9,0.4],[5.1,3.3,1.7,0.5],[6.5,3.0,5.2,2.0],[5.6,2.7,4.2,1.3],[6.0,2.2,5.0,1.5],[7.1,3.0,5.9,2.1],[4.6,3.4,1.4,0.3],[6.1,2.6,5.6,1.4],[6.2,2.2,4.5,1.5],[5.2,3.5,1.5,0.2],[7.7,3.8,6.7,2.2],[5.7,3.0,4.2,1.2],[6.4,2.7,5.3,1.9],[5.8,2.7,3.9,1.2],[5.0,2.3,3.3,1.0],[6.7,3.1,4.4,1.4],[6.3,3.3,6.0,2.5],[4.9,2.4,3.3,1.0],[5.8,2.8,5.1,2.4],[5.0,3.3,1.4,0.2],[7.7,2.6,6.9,2.3],[5.7,2.6,3.5,1.0],[5.9,3.0,5.1,1.8],[6.8,3.2,5.9,2.3],[5.0,3.6,1.4,0.2]],"x":["sepal_length","sepal_width","petal_length","petal_width"],"y":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"margin":{"l":100.0},"title":"raw iris data"};
             var config = {};
-            Plotly.newPlot('5ff448bc-b5e4-41f7-97ee-1e5358b1e16c', data, layout, config);
+            Plotly.newPlot('255c04af-c554-404e-84e4-7e394bbe08f9', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_5ff448bcb5e441f797ee1e5358b1e16c();
+                    renderPlotly_255c04afc554404e84e47e394bbe08f9();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_5ff448bcb5e441f797ee1e5358b1e16c();
+                renderPlotly_255c04afc554404e84e47e394bbe08f9();
             }
 </script>
 
@@ -278,29 +280,29 @@ Cluster0: [versicolor_44; versicolor_76; versicolor_89; versicolor_12; versicolo
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs38', 150)" onmouseover="showTip(event, 'fs38', 150)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs41', 151)" onmouseover="showTip(event, 'fs41', 151)" class="id">withTitle</span> <span class="s">&quot;Clustered iris data (hierarchical clustering)&quot;</span>
 </code></pre>
 <center>
-<div id="8eded582-3cd4-4788-b41a-7d821768ab67" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="3be8d839-be6f-4bfc-9c9b-e3b1046e980a" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_8eded5823cd44788b41a7d821768ab67 = function() {
+            var renderPlotly_3be8d839be6f4bfc9c9be3b1046e980a = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"heatmap","z":[[6.2,2.9,4.3,1.3],[6.4,2.9,4.3,1.3],[6.1,2.8,4.0,1.3],[6.1,3.0,4.6,1.4],[6.1,2.9,4.7,1.4],[6.0,2.9,4.5,1.5],[6.1,2.8,4.7,1.2],[6.3,3.3,4.7,1.6],[6.4,3.2,4.5,1.5],[6.0,3.4,4.5,1.6],[7.0,3.2,4.7,1.4],[6.9,3.1,4.9,1.5],[6.7,3.1,4.7,1.5],[6.8,2.8,4.8,1.4],[6.7,3.0,5.0,1.7],[6.6,2.9,4.6,1.3],[6.5,2.8,4.6,1.5],[6.6,3.0,4.4,1.4],[6.7,3.1,4.4,1.4],[6.3,2.8,5.1,1.5],[6.0,2.7,5.1,1.6],[6.3,2.5,4.9,1.5],[6.2,2.8,4.8,1.8],[6.3,2.7,4.9,1.8],[6.3,2.5,5.0,1.9],[6.1,3.0,4.9,1.8],[6.0,3.0,4.8,1.8],[5.9,3.2,4.8,1.8],[5.9,3.0,5.1,1.8],[5.8,2.7,5.1,1.9],[5.8,2.7,5.1,1.9],[5.7,2.5,5.0,2.0],[5.6,2.8,4.9,2.0],[5.8,2.8,5.1,2.4],[6.3,2.3,4.4,1.3],[6.2,2.2,4.5,1.5],[6.0,2.2,5.0,1.5],[5.6,2.9,3.6,1.3],[5.7,2.6,3.5,1.0],[5.5,2.4,3.8,1.1],[5.5,2.4,3.7,1.0],[5.6,2.5,3.9,1.1],[5.5,2.3,4.0,1.3],[5.5,2.5,4.0,1.3],[5.2,2.7,3.9,1.4],[5.8,2.6,4.0,1.2],[5.8,2.7,3.9,1.2],[5.8,2.7,4.1,1.0],[5.7,2.8,4.1,1.3],[5.6,2.7,4.2,1.3],[5.7,2.9,4.2,1.3],[5.7,3.0,4.2,1.2],[5.6,3.0,4.1,1.3],[5.5,2.6,4.4,1.2],[5.7,2.8,4.5,1.3],[5.9,3.0,4.2,1.5],[5.6,3.0,4.5,1.5],[5.4,3.0,4.5,1.5],[6.0,2.2,4.0,1.0],[4.9,2.5,4.5,1.7],[5.0,2.3,3.3,1.0],[4.9,2.4,3.3,1.0],[5.1,2.5,3.0,1.1],[5.0,2.0,3.5,1.0],[7.9,3.8,6.4,2.0],[7.7,3.8,6.7,2.2],[7.2,3.6,6.1,2.5],[7.2,3.2,6.0,1.8],[7.2,3.0,5.8,1.6],[7.1,3.0,5.9,2.1],[7.4,2.8,6.1,1.9],[7.3,2.9,6.3,1.8],[7.7,3.0,6.1,2.3],[7.6,3.0,6.6,2.1],[7.7,2.8,6.7,2.0],[7.7,2.6,6.9,2.3],[6.7,2.5,5.8,1.8],[6.1,2.6,5.6,1.4],[6.7,3.0,5.2,2.3],[6.9,3.1,5.1,2.3],[6.9,3.1,5.4,2.1],[6.8,3.0,5.5,2.1],[6.5,3.2,5.1,2.0],[6.5,3.0,5.2,2.0],[6.4,3.1,5.5,1.8],[6.5,3.0,5.5,1.8],[6.3,2.9,5.6,1.8],[6.4,2.7,5.3,1.9],[6.4,2.8,5.6,2.1],[6.4,2.8,5.6,2.2],[6.5,3.0,5.8,2.2],[6.7,3.3,5.7,2.5],[6.7,3.1,5.6,2.4],[6.9,3.2,5.7,2.3],[6.8,3.2,5.9,2.3],[6.7,3.3,5.7,2.1],[6.3,3.4,5.6,2.4],[6.2,3.4,5.4,2.3],[6.4,3.2,5.3,2.3],[6.3,3.3,6.0,2.5],[5.4,3.4,1.7,0.2],[5.4,3.4,1.5,0.4],[5.5,3.5,1.3,0.2],[5.1,3.7,1.5,0.4],[5.1,3.8,1.5,0.3],[5.1,3.8,1.6,0.2],[5.4,3.7,1.5,0.2],[5.3,3.7,1.5,0.2],[5.0,3.5,1.3,0.3],[5.0,3.6,1.4,0.2],[5.2,3.4,1.4,0.2],[5.2,3.5,1.5,0.2],[5.1,3.5,1.4,0.2],[5.1,3.5,1.4,0.3],[5.1,3.4,1.5,0.2],[5.0,3.4,1.5,0.2],[5.0,3.3,1.4,0.2],[5.0,3.4,1.6,0.4],[5.1,3.3,1.7,0.5],[5.0,3.5,1.6,0.6],[5.1,3.8,1.9,0.4],[4.6,3.2,1.4,0.2],[4.6,3.1,1.5,0.2],[4.7,3.2,1.3,0.2],[4.6,3.4,1.4,0.3],[4.9,3.0,1.4,0.2],[4.8,3.0,1.4,0.3],[4.8,3.0,1.4,0.1],[4.9,3.1,1.5,0.1],[4.9,3.1,1.5,0.1],[4.9,3.1,1.5,0.1],[5.0,3.0,1.6,0.2],[4.7,3.2,1.6,0.2],[4.8,3.1,1.6,0.2],[5.0,3.2,1.2,0.2],[4.8,3.4,1.9,0.2],[4.8,3.4,1.6,0.2],[4.4,3.0,1.3,0.2],[4.4,2.9,1.4,0.2],[4.4,3.2,1.3,0.2],[4.3,3.0,1.1,0.1],[4.6,3.6,1.0,0.2],[5.5,4.2,1.4,0.2],[5.2,4.1,1.5,0.1],[5.4,3.9,1.3,0.4],[5.4,3.9,1.7,0.4],[5.7,3.8,1.7,0.3],[5.8,4.0,1.2,0.2],[5.7,4.4,1.5,0.4],[4.5,2.3,1.3,0.3]],"x":["sepal_length","sepal_width","petal_length","petal_width"],"y":["versicolor_44","versicolor_76","versicolor_89","versicolor_12","versicolor_93","versicolor_78","versicolor_66","versicolor_39","versicolor_41","versicolor_69","versicolor_11","versicolor_77","versicolor_118","versicolor_45","versicolor_52","versicolor_100","versicolor_109","versicolor_107","versicolor_140","virginica_15","versicolor_37","versicolor_98","virginica_6","virginica_25","virginica_30","virginica_4","virginica_116","versicolor_34","virginica_147","virginica_54","virginica_115","virginica_24","virginica_3","virginica_143","versicolor_105","versicolor_133","virginica_129","versicolor_38","versicolor_146","versicolor_0","versicolor_82","versicolor_27","versicolor_110","versicolor_120","versicolor_80","versicolor_79","versicolor_138","versicolor_68","versicolor_86","versicolor_128","versicolor_114","versicolor_136","versicolor_20","versicolor_56","versicolor_90","versicolor_88","versicolor_26","versicolor_92","versicolor_91","virginica_70","versicolor_139","versicolor_142","versicolor_40","versicolor_67","virginica_72","virginica_135","virginica_14","virginica_7","virginica_73","virginica_130","virginica_81","virginica_96","virginica_29","virginica_2","virginica_46","virginica_145","virginica_50","virginica_132","virginica_43","virginica_53","virginica_62","virginica_113","virginica_64","virginica_127","virginica_31","virginica_104","virginica_101","virginica_137","virginica_108","virginica_123","virginica_19","virginica_22","virginica_111","virginica_8","virginica_148","virginica_59","virginica_5","virginica_48","virginica_112","virginica_141","setosa_16","setosa_36","setosa_74","setosa_42","setosa_122","setosa_57","setosa_13","setosa_99","setosa_61","setosa_149","setosa_117","setosa_134","setosa_51","setosa_119","setosa_83","setosa_124","setosa_144","setosa_35","setosa_126","setosa_63","setosa_125","setosa_75","setosa_87","setosa_97","setosa_131","setosa_9","setosa_121","setosa_47","setosa_1","setosa_28","setosa_106","setosa_85","setosa_32","setosa_55","setosa_18","setosa_49","setosa_84","setosa_60","setosa_103","setosa_102","setosa_21","setosa_65","setosa_33","setosa_95","setosa_94","setosa_10","setosa_71","setosa_17","setosa_58","setosa_23"]}];
             var layout = {"margin":{"l":100.0},"title":"Clustered iris data (hierarchical clustering)"};
             var config = {};
-            Plotly.newPlot('8eded582-3cd4-4788-b41a-7d821768ab67', data, layout, config);
+            Plotly.newPlot('3be8d839-be6f-4bfc-9c9b-e3b1046e980a', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_8eded5823cd44788b41a7d821768ab67();
+                    renderPlotly_3be8d839be6f4bfc9c9be3b1046e980a();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_8eded5823cd44788b41a7d821768ab67();
+                renderPlotly_3be8d839be6f4bfc9c9be3b1046e980a();
             }
 </script>
 
@@ -310,19 +312,22 @@ Cluster0: [versicolor_44; versicolor_76; versicolor_89; versicolor_12; versicolo
 <li>There is no strong guidance on which distance function and linkage type should be used. It often is chosen arbitrarily according to the user's experience.</li>
 <li>The visual interpretation of the dendrogram is difficult, since swapping the direction of some bifurcations may totally disturbe the visual impression.</li>
 </ol>
-<h1><a name="Notes" class="anchor" href="#Notes">Notes</a></h1>
+<h2><a name="Notes" class="anchor" href="#Notes">Notes</a></h2>
 <ul>
 <li>
 Please note that depending on what data you want to cluster, a column wise z-score normalization may be required. In the presented example differences in sepal width have a reduced influence because
 the absolute variation is low.
 </li>
 </ul>
-<h1><a name="References" class="anchor" href="#References">References</a></h1>
+<h2><a name="References" class="anchor" href="#References">References</a></h2>
 <ul>
 <li>Vijaya et al., A Review on Hierarchical Clustering Algorithms, Journal of Engineering and Applied Sciences, 2017</li>
 <li>Rani and Rohil, A Study of Hierarchical Clustering Algorithm, International Journal of Information and Computation Technology, 2013</li>
 <li>FSharp.Stats documentation, fslaborg, <a href="https://fslab.org/FSharp.Stats/Clustering.html">https://fslab.org/FSharp.Stats/Clustering.html</a></li>
 </ul>
+<h2><a name="Further-reading" class="anchor" href="#Further-reading">Further reading</a></h2>
+<p>Examples are taken from <a href="https://fslab.org/FSharp.Stats/Clustering.html">FSharp.Stats documentation</a> that covers various techniques for an optimal cluster number determination.</p>
+<p>The next article in this series covers <a href="https://fslab.org/content/tutorials/004_clustering_DBSCAN.html">DBSCAN using FSharp.Stats</a>.</p>
 
             </div>
         </div>
