@@ -4,6 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Opengraph properties (https://ogp.me/)-->
+    <meta property="og:image" content="https://fslab.org/images/logo.svg" />
+    <meta property="og:title" content="Introduction
+" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="fslab.org" />
+
     <title>Introduction
 </title>
     
@@ -63,9 +71,9 @@
         <div class="hero-body">
             <div class="container" id="fsdocs-content">
                 <a class="button landing-page-link is-size-4" href="https://fslab.org/tutorials.html"><i class="fas fa-long-arrow-alt-left"></i>Back to the index</a>
-                <p><a href="https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=7_clustering_DBSCAN.ipynb"><img src="https://fslab.org/images/badge-binder.svg" alt="Binder" /></a>&emsp;
-<a href="https://fslab.org/content/tutorials/7_clustering_DBSCAN.fsx"><img src="https://fslab.org/images/badge-script.svg" alt="Script" /></a>&emsp;
-<a href="https://fslab.org/content/tutorials/7_clustering_DBSCAN.ipynb"><img src="https://fslab.org/images/badge-notebook.svg" alt="Notebook" /></a></p>
+                <p><a href="https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=004_clustering_DBSCAN.ipynb"><img src="https://fslab.org/images/badge-binder.svg" alt="Binder" /></a>&emsp;
+<a href="https://fslab.org/content/tutorials/004_clustering_DBSCAN.fsx"><img src="https://fslab.org/images/badge-script.svg" alt="Script" /></a>&emsp;
+<a href="https://fslab.org/content/tutorials/004_clustering_DBSCAN.ipynb"><img src="https://fslab.org/images/badge-notebook.svg" alt="Notebook" /></a></p>
 <p><em>Summary:</em> This tutorial demonstrates DBSCAN with FSharp.Stats and how to visualize the results with Plotly.NET.</p>
 <h1><a name="Introduction" class="anchor" href="#Introduction">Introduction</a></h1>
 <p>Clustering methods can be used to group elements of a huge data set based on their similarity. Elements sharing similar properties cluster together and can be reported as coherent group.
@@ -186,56 +194,56 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs45', 108)" onmouseover="showTip(event, 'fs45', 108)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs52', 109)" onmouseover="showTip(event, 'fs52', 109)" class="id">withTitle</span> <span class="s">&quot;rawChart3D&quot;</span>
 </code></pre>
 <center>
-<div id="4c448466-4da5-4381-829f-87ed6b5204cc" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="a7c023a0-48b1-41bf-b654-a949a650c43e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_4c4484664da54381829f87ed6b5204cc = function() {
+            var renderPlotly_a7c023a048b141bfb654a949a650c43e = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"y":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"mode":"markers","line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"xaxis":{"title":"petal_length"},"yaxis":{"title":"petal_width"},"title":"rawChart2D"};
             var config = {};
-            Plotly.newPlot('4c448466-4da5-4381-829f-87ed6b5204cc', data, layout, config);
+            Plotly.newPlot('a7c023a0-48b1-41bf-b654-a949a650c43e', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_4c4484664da54381829f87ed6b5204cc();
+                    renderPlotly_a7c023a048b141bfb654a949a650c43e();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_4c4484664da54381829f87ed6b5204cc();
+                renderPlotly_a7c023a048b141bfb654a949a650c43e();
             }
 </script>
 
 <br>
-<div id="50469055-679d-4fdf-a3f7-2394af1aaba0" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="b344f5fa-2ecd-45b8-af9b-dd83eeb64aed" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_50469055679d4fdfa3f72394af1aaba0 = function() {
+            var renderPlotly_b344f5fa2ecd45b8af9bdd83eeb64aed = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter3d","x":[5.5,4.9,7.6,5.6,6.1,6.3,6.2,7.2,6.9,4.9,5.4,7.0,6.1,5.4,7.2,6.3,5.4,5.8,5.0,6.5,5.6,4.3,6.7,4.5,5.7,6.3,5.6,5.6,4.9,7.7,6.3,6.4,4.7,5.5,5.9,5.0,5.4,6.0,5.6,6.3,5.1,6.4,5.1,6.7,6.2,6.8,7.7,4.8,6.2,4.8,6.7,5.1,6.7,6.9,5.8,4.8,5.5,5.1,5.7,6.7,4.4,5.0,6.9,5.0,6.5,4.6,6.1,5.0,5.8,6.0,4.9,5.7,7.9,7.2,5.5,4.6,6.4,6.9,6.0,5.8,5.2,7.4,5.5,5.1,4.8,5.0,5.7,4.6,5.9,6.1,5.7,6.0,5.4,6.1,5.4,5.2,7.3,4.7,6.3,5.3,6.6,6.3,4.4,4.4,6.5,6.3,4.9,6.6,6.4,6.5,5.5,6.7,6.4,6.8,5.7,5.8,6.0,5.2,6.7,5.1,5.5,4.8,5.1,6.4,5.0,5.1,5.1,6.5,5.6,6.0,7.1,4.6,6.1,6.2,5.2,7.7,5.7,6.4,5.8,5.0,6.7,6.3,4.9,5.8,5.0,7.7,5.7,5.9,6.8,5.0],"y":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"z":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"mode":"markers","line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}},"title":"rawChart3D"};
             var config = {};
-            Plotly.newPlot('50469055-679d-4fdf-a3f7-2394af1aaba0', data, layout, config);
+            Plotly.newPlot('b344f5fa-2ecd-45b8-af9b-dd83eeb64aed', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_50469055679d4fdfa3f72394af1aaba0();
+                    renderPlotly_b344f5fa2ecd45b8af9bdd83eeb64aed();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_50469055679d4fdfa3f72394af1aaba0();
+                renderPlotly_b344f5fa2ecd45b8af9bdd83eeb64aed();
             }
 </script>
 
@@ -316,29 +324,29 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs45', 218)" onmouseover="showTip(event, 'fs45', 218)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs51', 219)" onmouseover="showTip(event, 'fs51', 219)" class="id">withY_AxisStyle</span> <span onmouseout="hideTip(event, 'fs24', 220)" onmouseover="showTip(event, 'fs24', 220)" class="id">header2D</span><span class="pn">.</span><span class="pn">[</span><span class="n">1</span><span class="pn">]</span>
 </code></pre>
 <center>
-<div id="885671eb-bf9c-4b0b-9864-9f7a455028b9" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="cc61945a-4ff3-43ab-9b1d-95b4a2adb05b" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_885671ebbf9c4b0b98649f7a455028b9 = function() {
+            var renderPlotly_cc61945a4ff343ab9b1d95b4a2adb05b = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":[6.6,3.0,6.7,6.4,6.7,3.3,6.9],"y":[2.1,1.1,2.0,2.0,2.2,1.0,2.3],"mode":"markers","marker":{},"name":"Noise"},{"type":"scatter","x":[1.5,1.4,1.7,1.5,1.7,1.2,1.1,1.3,1.6,1.6,1.5,1.4,1.9,1.3,1.7,1.3,1.4,1.5,1.9,1.7,1.6,1.0],"y":[0.1,0.2,0.4,0.2,0.2,0.2,0.1,0.3,0.2,0.4,0.4,0.1,0.2,0.2,0.3,0.4,0.3,0.3,0.4,0.5,0.6,0.2],"mode":"markers","marker":{},"name":"Cluster 0"},{"type":"scatter","x":[4.9,4.9,4.8,5.0,5.0,5.1,4.7,5.2,5.0,5.1,5.1,5.1,4.9,5.3,5.2,5.3,5.1,5.1,4.7,5.1,4.8,4.5,4.5,4.6,4.7,5.0,4.6,4.5,5.4,5.5,4.4,4.7,4.5,4.6,4.4,4.4,5.6,5.7,5.4,5.6,5.5,5.6,5.7,5.7,5.6,4.3,4.2,4.2,4.2,4.1,5.8,5.8,5.9,6.0,5.8,5.6,4.1,4.0,4.0,4.0,5.9,6.1,6.1,6.0,3.9,3.9,3.9,3.8,3.6,3.7,6.1,6.3,3.5],"y":[2.0,1.8,1.8,2.0,1.9,1.6,1.6,2.3,1.7,2.3,1.9,2.0,1.5,2.3,2.0,1.9,2.4,1.8,1.4,1.5,1.4,1.6,1.7,1.5,1.5,1.5,1.4,1.5,2.1,1.8,1.2,1.2,1.3,1.3,1.3,1.4,2.4,2.3,2.3,2.1,2.1,2.2,2.5,2.1,1.8,1.3,1.5,1.3,1.2,1.3,2.2,1.8,2.1,1.8,1.6,1.4,1.0,1.2,1.3,1.0,2.3,2.3,1.9,2.5,1.1,1.4,1.2,1.1,1.3,1.0,2.5,1.8,1.0],"mode":"markers","marker":{},"name":"Cluster 1"}];
             var layout = {"title":"eps: 0.5 minPts: 20 pts: 150 cluster: 2 noisePts: 8","xaxis":{"title":"petal_length"},"yaxis":{"title":"petal_width"}};
             var config = {};
-            Plotly.newPlot('885671eb-bf9c-4b0b-9864-9f7a455028b9', data, layout, config);
+            Plotly.newPlot('cc61945a-4ff3-43ab-9b1d-95b4a2adb05b', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_885671ebbf9c4b0b98649f7a455028b9();
+                    renderPlotly_cc61945a4ff343ab9b1d95b4a2adb05b();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_885671ebbf9c4b0b98649f7a455028b9();
+                renderPlotly_cc61945a4ff343ab9b1d95b4a2adb05b();
             }
 </script>
 
@@ -379,29 +387,29 @@ Since the species identifier occur several times (Iris-virginica, Iris-versicolo
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs95', 310)" onmouseover="showTip(event, 'fs95', 310)" class="fn">clusteredChart3D</span><span class="pn">(</span><span class="pn">)</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs63', 311)" onmouseover="showTip(event, 'fs63', 311)" class="m">DbScan</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs64', 312)" onmouseover="showTip(event, 'fs64', 312)" class="id">compute</span> <span onmouseout="hideTip(event, 'fs65', 313)" onmouseover="showTip(event, 'fs65', 313)" class="m">DistanceMetrics</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs66', 314)" onmouseover="showTip(event, 'fs66', 314)" class="m">Array</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs96', 315)" onmouseover="showTip(event, 'fs96', 315)" class="id">euclideanNaNSquared</span> <span class="n">20</span> <span class="pn">(</span><span class="n">0.7</span><span class="o">**</span><span class="n">2.</span><span class="pn">)</span> <span onmouseout="hideTip(event, 'fs30', 316)" onmouseover="showTip(event, 'fs30', 316)" class="id">data3D</span> 
 </code></pre>
 <center>
-<div id="a274f6ba-5d9e-4e08-847c-0594c86da413" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="b6d06c62-dcd9-4bdf-b242-4f6903574f3c" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_a274f6ba5d9e4e08847c0594c86da413 = function() {
+            var renderPlotly_b6d06c62dcd94bdfb2424f6903574f3c = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter3d","x":[7.6,7.2,7.7,5.1,7.7,4.9,7.9,7.2,7.4,7.3,7.7,5.0,4.9,7.7],"y":[6.6,6.1,6.1,3.0,6.7,4.5,6.4,5.8,6.1,6.3,6.7,3.3,3.3,6.9],"z":[2.1,2.5,2.3,1.1,2.0,1.7,2.0,1.6,1.9,1.8,2.2,1.0,1.0,2.3],"mode":"markers","line":{},"marker":{},"name":"Noise"},{"type":"scatter3d","x":[5.5,5.6,5.6,5.6,5.5,5.0,5.8,5.8,5.2,5.5,5.7,5.9,6.1,6.0,5.5,5.7,5.6,5.7,5.8,5.7,5.6,6.2,6.0,6.0,5.7,5.4,6.1,6.1,6.1,6.3,6.4,6.2,5.9,6.3,6.4,6.0,6.6,5.6,6.0,6.3,6.6,6.5,6.7,6.7,6.1,6.2,6.3,6.3,6.3,6.0,5.8,5.9,6.8,5.7,6.5,5.8,6.7,6.9,6.5,6.4,7.0,6.1,6.4,6.5,6.3,6.4,6.7,6.2,6.4,6.4,6.3,6.9,6.7,6.9,6.7,6.8,6.5,6.7,6.9,6.7,6.3,6.8,7.2,7.1],"y":[3.8,4.1,3.9,3.6,4.4,3.5,4.1,4.0,3.9,3.7,4.1,4.2,4.0,4.0,4.0,4.2,4.2,4.2,3.9,3.5,4.5,4.3,4.5,4.5,4.5,4.5,4.6,4.7,4.7,4.4,4.3,4.5,4.8,4.7,4.5,4.8,4.4,4.9,5.0,4.9,4.6,4.6,4.7,4.4,4.9,4.8,5.1,4.9,5.0,5.1,5.1,5.1,4.8,5.0,5.1,5.1,5.0,4.9,5.2,5.3,4.7,5.6,5.5,5.5,5.6,5.3,5.2,5.4,5.6,5.6,5.6,5.1,5.7,5.4,5.6,5.5,5.8,5.8,5.7,5.7,6.0,5.9,6.0,5.9],"z":[1.1,1.3,1.1,1.3,1.2,1.0,1.0,1.2,1.4,1.0,1.3,1.5,1.3,1.0,1.3,1.3,1.3,1.2,1.2,1.0,1.5,1.3,1.6,1.5,1.3,1.5,1.4,1.2,1.4,1.3,1.3,1.5,1.8,1.6,1.5,1.8,1.4,2.0,1.5,1.5,1.3,1.5,1.5,1.4,1.8,1.8,1.5,1.8,1.9,1.6,1.9,1.8,1.4,2.0,2.0,2.4,1.7,1.5,2.0,1.9,1.4,1.4,1.8,1.8,1.8,2.3,2.3,2.3,2.1,2.2,2.4,2.3,2.1,2.1,2.4,2.1,2.2,1.8,2.3,2.5,2.5,2.3,1.8,2.1],"mode":"markers","line":{},"marker":{},"name":"Cluster_0"},{"type":"scatter3d","x":[4.9,4.9,5.4,5.4,5.4,5.0,4.5,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,4.4,5.0,5.0,4.6,5.5,4.6,5.1,5.0,4.6,5.4,5.2,4.7,5.3,4.4,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,4.3,5.8,5.7,5.7],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.3,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.3,1.3,1.6,1.0,1.3,1.4,1.5,1.6,1.5,1.3,1.5,1.3,1.5,1.4,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.1,1.2,1.5,1.7],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.2,0.3,0.6,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.1,0.2,0.4,0.3],"mode":"markers","line":{},"marker":{},"name":"Cluster_1"}];
             var layout = {"title":"eps: 0.7 minPts: 20 pts: 150 cluster: 2 noisePts: 14","scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}}};
             var config = {};
-            Plotly.newPlot('a274f6ba-5d9e-4e08-847c-0594c86da413', data, layout, config);
+            Plotly.newPlot('b6d06c62-dcd9-4bdf-b242-4f6903574f3c', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_a274f6ba5d9e4e08847c0594c86da413();
+                    renderPlotly_b6d06c62dcd94bdfb2424f6903574f3c();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_a274f6ba5d9e4e08847c0594c86da413();
+                renderPlotly_b6d06c62dcd94bdfb2424f6903574f3c();
             }
 </script>
 
@@ -433,18 +441,71 @@ the absolute variation is low.
 <div class="fsdocs-tip" id="fs3">namespace FSharp.Stats</div>
 <div class="fsdocs-tip" id="fs4">namespace Deedle</div>
 <div class="fsdocs-tip" id="fs5">val rawData : string</div>
-<div class="fsdocs-tip" id="fs6">type Http =<br />&#160;&#160;private new : unit -&gt; Http<br />&#160;&#160;static member private AppendQueryToUrl : url:string * query:(string * string) list -&gt; string<br />&#160;&#160;static member AsyncRequest : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponse&gt;<br />&#160;&#160;static member AsyncRequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponseWithStream&gt;<br />&#160;&#160;static member AsyncRequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;string&gt;<br />&#160;&#160;static member private EncodeFormData : query:string -&gt; string<br />&#160;&#160;static member private InnerRequest : url:string * toHttpResponse:(string -&gt; int -&gt; string -&gt; string -&gt; &#39;a0 option -&gt; Map&lt;string,string&gt; -&gt; Map&lt;string,string&gt; -&gt; Stream -&gt; Async&lt;&#39;a1&gt;) * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:&#39;a0 * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;&#39;a1&gt;<br />&#160;&#160;static member Request : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponse<br />&#160;&#160;static member RequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponseWithStream<br />&#160;&#160;static member RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; string</div>
+<div class="fsdocs-tip" id="fs6">type Http =
+  private new : unit -&gt; Http
+  static member private AppendQueryToUrl : url:string * query:(string * string) list -&gt; string
+  static member AsyncRequest : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponse&gt;
+  static member AsyncRequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponseWithStream&gt;
+  static member AsyncRequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;string&gt;
+  static member private EncodeFormData : query:string -&gt; string
+  static member private InnerRequest : url:string * toHttpResponse:(string -&gt; int -&gt; string -&gt; string -&gt; &#39;a0 option -&gt; Map&lt;string,string&gt; -&gt; Map&lt;string,string&gt; -&gt; Stream -&gt; Async&lt;&#39;a1&gt;) * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:&#39;a0 * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;&#39;a1&gt;
+  static member Request : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponse
+  static member RequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponseWithStream
+  static member RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; string<br /><em>&lt;summary&gt;
+ Utilities for working with network via HTTP. Includes methods for downloading
+ resources with specified headers, query parameters and HTTP body
+&lt;/summary&gt;</em></div>
 <div class="fsdocs-tip" id="fs7">Multiple items<br />static member Http.RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:System.Net.CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(System.Net.HttpWebRequest -&gt; System.Net.HttpWebRequest) * ?timeout:int -&gt; string<br /><br />--------------------<br />static member Http.RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:System.Net.CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(System.Net.HttpWebRequest -&gt; System.Net.HttpWebRequest) * ?timeout:int -&gt; string</div>
 <div class="fsdocs-tip" id="fs8">val dataAsStream : System.IO.MemoryStream</div>
 <div class="fsdocs-tip" id="fs9">namespace System</div>
 <div class="fsdocs-tip" id="fs10">namespace System.IO</div>
-<div class="fsdocs-tip" id="fs11">Multiple items<br />type MemoryStream =<br />&#160;&#160;inherit Stream<br />&#160;&#160;new : unit -&gt; unit + 6 overloads<br />&#160;&#160;member BeginRead : buffer: byte [] * offset: int * count: int * callback: AsyncCallback * state: obj -&gt; IAsyncResult<br />&#160;&#160;member BeginWrite : buffer: byte [] * offset: int * count: int * callback: AsyncCallback * state: obj -&gt; IAsyncResult<br />&#160;&#160;member CopyTo : destination: Stream * bufferSize: int -&gt; unit<br />&#160;&#160;member CopyToAsync : destination: Stream * bufferSize: int * cancellationToken: CancellationToken -&gt; Task<br />&#160;&#160;member Dispose : disposing: bool -&gt; unit<br />&#160;&#160;member EndRead : asyncResult: IAsyncResult -&gt; int<br />&#160;&#160;member EndWrite : asyncResult: IAsyncResult -&gt; unit<br />&#160;&#160;member Flush : unit -&gt; unit<br />&#160;&#160;...<br /><br />--------------------<br />System.IO.MemoryStream() : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte []) : System.IO.MemoryStream<br />System.IO.MemoryStream(capacity: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool, publiclyVisible: bool) : System.IO.MemoryStream</div>
+<div class="fsdocs-tip" id="fs11">Multiple items<br />type MemoryStream =
+  inherit Stream
+  new : unit -&gt; unit + 6 overloads
+  member BeginRead : buffer: byte [] * offset: int * count: int * callback: AsyncCallback * state: obj -&gt; IAsyncResult
+  member BeginWrite : buffer: byte [] * offset: int * count: int * callback: AsyncCallback * state: obj -&gt; IAsyncResult
+  member CopyTo : destination: Stream * bufferSize: int -&gt; unit
+  member CopyToAsync : destination: Stream * bufferSize: int * cancellationToken: CancellationToken -&gt; Task
+  member Dispose : disposing: bool -&gt; unit
+  member EndRead : asyncResult: IAsyncResult -&gt; int
+  member EndWrite : asyncResult: IAsyncResult -&gt; unit
+  member Flush : unit -&gt; unit
+  ...<br /><em>&lt;summary&gt;Creates a stream whose backing store is memory.&lt;/summary&gt;</em><br /><br />--------------------<br />System.IO.MemoryStream() : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte []) : System.IO.MemoryStream<br />System.IO.MemoryStream(capacity: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool, publiclyVisible: bool) : System.IO.MemoryStream</div>
 <div class="fsdocs-tip" id="fs12">namespace System.Text</div>
-<div class="fsdocs-tip" id="fs13">type Encoding =<br />&#160;&#160;interface ICloneable<br />&#160;&#160;new : unit -&gt; unit + 2 overloads<br />&#160;&#160;member Clone : unit -&gt; obj<br />&#160;&#160;member Equals : value: obj -&gt; bool<br />&#160;&#160;member GetByteCount : chars: nativeptr&lt;char&gt; * count: int -&gt; int + 5 overloads<br />&#160;&#160;member GetBytes : chars: nativeptr&lt;char&gt; * charCount: int * bytes: nativeptr&lt;byte&gt; * byteCount: int -&gt; int + 7 overloads<br />&#160;&#160;member GetCharCount : bytes: nativeptr&lt;byte&gt; * count: int -&gt; int + 3 overloads<br />&#160;&#160;member GetChars : bytes: nativeptr&lt;byte&gt; * byteCount: int * chars: nativeptr&lt;char&gt; * charCount: int -&gt; int + 4 overloads<br />&#160;&#160;member GetDecoder : unit -&gt; Decoder<br />&#160;&#160;member GetEncoder : unit -&gt; Encoder<br />&#160;&#160;...</div>
-<div class="fsdocs-tip" id="fs14">property System.Text.Encoding.UTF8: System.Text.Encoding with get</div>
+<div class="fsdocs-tip" id="fs13">type Encoding =
+  interface ICloneable
+  new : unit -&gt; unit + 2 overloads
+  member Clone : unit -&gt; obj
+  member Equals : value: obj -&gt; bool
+  member GetByteCount : chars: nativeptr&lt;char&gt; * count: int -&gt; int + 5 overloads
+  member GetBytes : chars: nativeptr&lt;char&gt; * charCount: int * bytes: nativeptr&lt;byte&gt; * byteCount: int -&gt; int + 7 overloads
+  member GetCharCount : bytes: nativeptr&lt;byte&gt; * count: int -&gt; int + 3 overloads
+  member GetChars : bytes: nativeptr&lt;byte&gt; * byteCount: int * chars: nativeptr&lt;char&gt; * charCount: int -&gt; int + 4 overloads
+  member GetDecoder : unit -&gt; Decoder
+  member GetEncoder : unit -&gt; Encoder
+  ...<br /><em>&lt;summary&gt;Represents a character encoding.&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs14">property System.Text.Encoding.UTF8: System.Text.Encoding with get<br /><em>&lt;summary&gt;Gets an encoding for the UTF-8 format.&lt;/summary&gt;<br />&lt;returns&gt;An encoding for the UTF-8 format.&lt;/returns&gt;</em></div>
 <div class="fsdocs-tip" id="fs15">System.Text.Encoding.GetBytes(s: string) : byte []<br />System.Text.Encoding.GetBytes(chars: char []) : byte []<br />System.Text.Encoding.GetBytes(chars: System.ReadOnlySpan&lt;char&gt;, bytes: System.Span&lt;byte&gt;) : int<br />System.Text.Encoding.GetBytes(s: string, index: int, count: int) : byte []<br />System.Text.Encoding.GetBytes(chars: char [], index: int, count: int) : byte []<br />System.Text.Encoding.GetBytes(chars: nativeptr&lt;char&gt;, charCount: int, bytes: nativeptr&lt;byte&gt;, byteCount: int) : int<br />System.Text.Encoding.GetBytes(s: string, charIndex: int, charCount: int, bytes: byte [], byteIndex: int) : int<br />System.Text.Encoding.GetBytes(chars: char [], charIndex: int, charCount: int, bytes: byte [], byteIndex: int) : int</div>
 <div class="fsdocs-tip" id="fs16">val dataAsFrame : Frame&lt;int,string&gt;</div>
-<div class="fsdocs-tip" id="fs17">Multiple items<br />module Frame<br /><br />from Deedle<br /><br />--------------------<br />type Frame =<br />&#160;&#160;static member ReadCsv : location:string * hasHeaders:Nullable&lt;bool&gt; * inferTypes:Nullable&lt;bool&gt; * inferRows:Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:Nullable&lt;int&gt; * missingValues:string [] * preferOptions:bool -&gt; Frame&lt;int,string&gt; + 1 overload<br />&#160;&#160;static member ReadReader : reader:IDataReader -&gt; Frame&lt;int,string&gt;<br />&#160;&#160;static member CustomExpanders : Dictionary&lt;Type,Func&lt;obj,seq&lt;string * Type * obj&gt;&gt;&gt;<br />&#160;&#160;static member NonExpandableInterfaces : ResizeArray&lt;Type&gt;<br />&#160;&#160;static member NonExpandableTypes : HashSet&lt;Type&gt;<br /><br />--------------------<br />type Frame&lt;&#39;TRowKey,&#39;TColumnKey (requires equality and equality)&gt; =<br />&#160;&#160;interface IDynamicMetaObjectProvider<br />&#160;&#160;interface INotifyCollectionChanged<br />&#160;&#160;interface IFsiFormattable<br />&#160;&#160;interface IFrame<br />&#160;&#160;new : rowIndex:IIndex&lt;&#39;TRowKey&gt; * columnIndex:IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:IIndexBuilder * vectorBuilder:IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload<br />&#160;&#160;member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; -&gt; unit + 3 overloads<br />&#160;&#160;member AggregateRowsBy : groupBy:seq&lt;&#39;TColumnKey&gt; * aggBy:seq&lt;&#39;TColumnKey&gt; * aggFunc:Func&lt;Series&lt;&#39;TRowKey,&#39;a&gt;,&#39;b&gt; -&gt; Frame&lt;int,&#39;TColumnKey&gt;<br />&#160;&#160;member Clone : unit -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />&#160;&#160;member ColumnApply : f:Func&lt;Series&lt;&#39;TRowKey,&#39;T&gt;,ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload<br />&#160;&#160;member DropColumn : column:&#39;TColumnKey -&gt; unit<br />&#160;&#160;...<br /><br />--------------------<br />new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />new : rowIndex:Indices.IIndex&lt;&#39;TRowKey&gt; * columnIndex:Indices.IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:Indices.IIndexBuilder * vectorBuilder:Vectors.IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;</div>
+<div class="fsdocs-tip" id="fs17">Multiple items<br />module Frame
+
+from Deedle<br /><br />--------------------<br />type Frame =
+  static member ReadCsv : location:string * hasHeaders:Nullable&lt;bool&gt; * inferTypes:Nullable&lt;bool&gt; * inferRows:Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:Nullable&lt;int&gt; * missingValues:string [] * preferOptions:bool -&gt; Frame&lt;int,string&gt; + 1 overload
+  static member ReadReader : reader:IDataReader -&gt; Frame&lt;int,string&gt;
+  static member CustomExpanders : Dictionary&lt;Type,Func&lt;obj,seq&lt;string * Type * obj&gt;&gt;&gt;
+  static member NonExpandableInterfaces : ResizeArray&lt;Type&gt;
+  static member NonExpandableTypes : HashSet&lt;Type&gt;<br /><br />--------------------<br />type Frame&lt;&#39;TRowKey,&#39;TColumnKey (requires equality and equality)&gt; =
+  interface IDynamicMetaObjectProvider
+  interface INotifyCollectionChanged
+  interface IFsiFormattable
+  interface IFrame
+  new : rowIndex:IIndex&lt;&#39;TRowKey&gt; * columnIndex:IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:IIndexBuilder * vectorBuilder:IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload
+  member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; -&gt; unit + 3 overloads
+  member AggregateRowsBy : groupBy:seq&lt;&#39;TColumnKey&gt; * aggBy:seq&lt;&#39;TColumnKey&gt; * aggFunc:Func&lt;Series&lt;&#39;TRowKey,&#39;a&gt;,&#39;b&gt; -&gt; Frame&lt;int,&#39;TColumnKey&gt;
+  member Clone : unit -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;
+  member ColumnApply : f:Func&lt;Series&lt;&#39;TRowKey,&#39;T&gt;,ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload
+  member DropColumn : column:&#39;TColumnKey -&gt; unit
+  ...<br /><br />--------------------<br />new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />new : rowIndex:Indices.IIndex&lt;&#39;TRowKey&gt; * columnIndex:Indices.IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:Indices.IIndexBuilder * vectorBuilder:Vectors.IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;</div>
 <div class="fsdocs-tip" id="fs18">static member Frame.ReadCsv : path:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : stream:System.IO.Stream * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : reader:System.IO.TextReader * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : stream:System.IO.Stream * hasHeaders:System.Nullable&lt;bool&gt; * inferTypes:System.Nullable&lt;bool&gt; * inferRows:System.Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:System.Nullable&lt;int&gt; * missingValues:string [] * preferOptions:System.Nullable&lt;bool&gt; -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : location:string * hasHeaders:System.Nullable&lt;bool&gt; * inferTypes:System.Nullable&lt;bool&gt; * inferRows:System.Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:System.Nullable&lt;int&gt; * missingValues:string [] * preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : path:string * indexCol:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;&#39;R,string&gt; (requires equality)</div>
 <div class="fsdocs-tip" id="fs19">static member FrameExtensions.Print : frame:Frame&lt;&#39;K,&#39;V&gt; -&gt; unit (requires equality and equality)<br />static member FrameExtensions.Print : frame:Frame&lt;&#39;K,&#39;V&gt; * printTypes:bool -&gt; unit (requires equality and equality)</div>
 <div class="fsdocs-tip" id="fs20">namespace Plotly</div>
@@ -454,28 +515,104 @@ the absolute variation is low.
 <div class="fsdocs-tip" id="fs24">val header2D : string list</div>
 <div class="fsdocs-tip" id="fs25">val header3D : string list</div>
 <div class="fsdocs-tip" id="fs26">val data2D : float [] []</div>
-<div class="fsdocs-tip" id="fs27">Multiple items<br />module Frame<br /><br />from Deedle<br /><br />--------------------<br />type Frame =<br />&#160;&#160;inherit DynamicObj<br />&#160;&#160;new : unit -&gt; Frame<br /><br />--------------------<br />type Frame&lt;&#39;TRowKey,&#39;TColumnKey (requires equality and equality)&gt; =<br />&#160;&#160;interface IDynamicMetaObjectProvider<br />&#160;&#160;interface INotifyCollectionChanged<br />&#160;&#160;interface IFsiFormattable<br />&#160;&#160;interface IFrame<br />&#160;&#160;new : rowIndex:IIndex&lt;&#39;TRowKey&gt; * columnIndex:IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:IIndexBuilder * vectorBuilder:IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload<br />&#160;&#160;member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; -&gt; unit + 3 overloads<br />&#160;&#160;member AggregateRowsBy : groupBy:seq&lt;&#39;TColumnKey&gt; * aggBy:seq&lt;&#39;TColumnKey&gt; * aggFunc:Func&lt;Series&lt;&#39;TRowKey,&#39;a&gt;,&#39;b&gt; -&gt; Frame&lt;int,&#39;TColumnKey&gt;<br />&#160;&#160;member Clone : unit -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />&#160;&#160;member ColumnApply : f:Func&lt;Series&lt;&#39;TRowKey,&#39;T&gt;,ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload<br />&#160;&#160;member DropColumn : column:&#39;TColumnKey -&gt; unit<br />&#160;&#160;...<br /><br />--------------------<br />new : unit -&gt; Frame<br /><br />--------------------<br />new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />new : rowIndex:Indices.IIndex&lt;&#39;TRowKey&gt; * columnIndex:Indices.IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:Indices.IIndexBuilder * vectorBuilder:Vectors.IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;</div>
+<div class="fsdocs-tip" id="fs27">Multiple items<br />module Frame
+
+from Deedle<br /><br />--------------------<br />type Frame =
+  inherit DynamicObj
+  new : unit -&gt; Frame<br /><br />--------------------<br />type Frame&lt;&#39;TRowKey,&#39;TColumnKey (requires equality and equality)&gt; =
+  interface IDynamicMetaObjectProvider
+  interface INotifyCollectionChanged
+  interface IFsiFormattable
+  interface IFrame
+  new : rowIndex:IIndex&lt;&#39;TRowKey&gt; * columnIndex:IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:IIndexBuilder * vectorBuilder:IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload
+  member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; -&gt; unit + 3 overloads
+  member AggregateRowsBy : groupBy:seq&lt;&#39;TColumnKey&gt; * aggBy:seq&lt;&#39;TColumnKey&gt; * aggFunc:Func&lt;Series&lt;&#39;TRowKey,&#39;a&gt;,&#39;b&gt; -&gt; Frame&lt;int,&#39;TColumnKey&gt;
+  member Clone : unit -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;
+  member ColumnApply : f:Func&lt;Series&lt;&#39;TRowKey,&#39;T&gt;,ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload
+  member DropColumn : column:&#39;TColumnKey -&gt; unit
+  ...<br /><br />--------------------<br />new : unit -&gt; Frame<br /><br />--------------------<br />new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />new : rowIndex:Indices.IIndex&lt;&#39;TRowKey&gt; * columnIndex:Indices.IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:Indices.IIndexBuilder * vectorBuilder:Vectors.IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;</div>
 <div class="fsdocs-tip" id="fs28">val sliceCols : columns:seq&lt;&#39;C&gt; -&gt; frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; Frame&lt;&#39;R,&#39;C&gt; (requires equality and equality)</div>
 <div class="fsdocs-tip" id="fs29">val toJaggedArray : frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; float [] [] (requires equality and equality)</div>
 <div class="fsdocs-tip" id="fs30">val data3D : float [] []</div>
 <div class="fsdocs-tip" id="fs31">val labels : seq&lt;string&gt;</div>
 <div class="fsdocs-tip" id="fs32">val getCol : column:&#39;C -&gt; frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; Series&lt;&#39;R,&#39;V&gt; (requires equality and equality)</div>
-<div class="fsdocs-tip" id="fs33">Multiple items<br />module Series<br /><br />from Deedle<br /><br />--------------------<br />type Series =<br />&#160;&#160;static member ofNullables : values:seq&lt;Nullable&lt;&#39;a0&gt;&gt; -&gt; Series&lt;int,&#39;a0&gt; (requires default constructor and value type and &#39;a0 :&gt; ValueType)<br />&#160;&#160;static member ofObservations : observations:seq&lt;&#39;c * &#39;d&gt; -&gt; Series&lt;&#39;c,&#39;d&gt; (requires equality)<br />&#160;&#160;static member ofOptionalObservations : observations:seq&lt;&#39;K * &#39;a1 option&gt; -&gt; Series&lt;&#39;K,&#39;a1&gt; (requires equality)<br />&#160;&#160;static member ofValues : values:seq&lt;&#39;a&gt; -&gt; Series&lt;int,&#39;a&gt;<br /><br />--------------------<br />type Series&lt;&#39;K,&#39;V (requires equality)&gt; =<br />&#160;&#160;interface IFsiFormattable<br />&#160;&#160;interface ISeries&lt;&#39;K&gt;<br />&#160;&#160;new : index:IIndex&lt;&#39;K&gt; * vector:IVector&lt;&#39;V&gt; * vectorBuilder:IVectorBuilder * indexBuilder:IIndexBuilder -&gt; Series&lt;&#39;K,&#39;V&gt; + 3 overloads<br />&#160;&#160;member After : lowerExclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;<br />&#160;&#160;member Aggregate : aggregation:Aggregation&lt;&#39;K&gt; * keySelector:Func&lt;DataSegment&lt;Series&lt;&#39;K,&#39;V&gt;&gt;,&#39;TNewKey&gt; * valueSelector:Func&lt;DataSegment&lt;Series&lt;&#39;K,&#39;V&gt;&gt;,OptionalValue&lt;&#39;R&gt;&gt; -&gt; Series&lt;&#39;TNewKey,&#39;R&gt; (requires equality) + 1 overload<br />&#160;&#160;member AsyncMaterialize : unit -&gt; Async&lt;Series&lt;&#39;K,&#39;V&gt;&gt;<br />&#160;&#160;member Before : upperExclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;<br />&#160;&#160;member Between : lowerInclusive:&#39;K * upperInclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;<br />&#160;&#160;member Compare : another:Series&lt;&#39;K,&#39;V&gt; -&gt; Series&lt;&#39;K,Diff&lt;&#39;V&gt;&gt;<br />&#160;&#160;member Convert : forward:Func&lt;&#39;V,&#39;R&gt; * backward:Func&lt;&#39;R,&#39;V&gt; -&gt; Series&lt;&#39;K,&#39;R&gt;<br />&#160;&#160;...<br /><br />--------------------<br />new : pairs:seq&lt;System.Collections.Generic.KeyValuePair&lt;&#39;K,&#39;V&gt;&gt; -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : keys:seq&lt;&#39;K&gt; * values:seq&lt;&#39;V&gt; -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : keys:&#39;K [] * values:&#39;V [] -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : index:Indices.IIndex&lt;&#39;K&gt; * vector:IVector&lt;&#39;V&gt; * vectorBuilder:Vectors.IVectorBuilder * indexBuilder:Indices.IIndexBuilder -&gt; Series&lt;&#39;K,&#39;V&gt;</div>
+<div class="fsdocs-tip" id="fs33">Multiple items<br />module Series
+
+from Deedle<br /><br />--------------------<br />type Series =
+  static member ofNullables : values:seq&lt;Nullable&lt;&#39;a0&gt;&gt; -&gt; Series&lt;int,&#39;a0&gt; (requires default constructor and value type and &#39;a0 :&gt; ValueType)
+  static member ofObservations : observations:seq&lt;&#39;c * &#39;d&gt; -&gt; Series&lt;&#39;c,&#39;d&gt; (requires equality)
+  static member ofOptionalObservations : observations:seq&lt;&#39;K * &#39;a1 option&gt; -&gt; Series&lt;&#39;K,&#39;a1&gt; (requires equality)
+  static member ofValues : values:seq&lt;&#39;a&gt; -&gt; Series&lt;int,&#39;a&gt;<br /><br />--------------------<br />type Series&lt;&#39;K,&#39;V (requires equality)&gt; =
+  interface IFsiFormattable
+  interface ISeries&lt;&#39;K&gt;
+  new : index:IIndex&lt;&#39;K&gt; * vector:IVector&lt;&#39;V&gt; * vectorBuilder:IVectorBuilder * indexBuilder:IIndexBuilder -&gt; Series&lt;&#39;K,&#39;V&gt; + 3 overloads
+  member After : lowerExclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;
+  member Aggregate : aggregation:Aggregation&lt;&#39;K&gt; * keySelector:Func&lt;DataSegment&lt;Series&lt;&#39;K,&#39;V&gt;&gt;,&#39;TNewKey&gt; * valueSelector:Func&lt;DataSegment&lt;Series&lt;&#39;K,&#39;V&gt;&gt;,OptionalValue&lt;&#39;R&gt;&gt; -&gt; Series&lt;&#39;TNewKey,&#39;R&gt; (requires equality) + 1 overload
+  member AsyncMaterialize : unit -&gt; Async&lt;Series&lt;&#39;K,&#39;V&gt;&gt;
+  member Before : upperExclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;
+  member Between : lowerInclusive:&#39;K * upperInclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;
+  member Compare : another:Series&lt;&#39;K,&#39;V&gt; -&gt; Series&lt;&#39;K,Diff&lt;&#39;V&gt;&gt;
+  member Convert : forward:Func&lt;&#39;V,&#39;R&gt; * backward:Func&lt;&#39;R,&#39;V&gt; -&gt; Series&lt;&#39;K,&#39;R&gt;
+  ...<br /><br />--------------------<br />new : pairs:seq&lt;System.Collections.Generic.KeyValuePair&lt;&#39;K,&#39;V&gt;&gt; -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : keys:seq&lt;&#39;K&gt; * values:seq&lt;&#39;V&gt; -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : keys:&#39;K [] * values:&#39;V [] -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : index:Indices.IIndex&lt;&#39;K&gt; * vector:IVector&lt;&#39;V&gt; * vectorBuilder:Vectors.IVectorBuilder * indexBuilder:Indices.IIndexBuilder -&gt; Series&lt;&#39;K,&#39;V&gt;</div>
 <div class="fsdocs-tip" id="fs34">val values : series:Series&lt;&#39;K,&#39;T&gt; -&gt; seq&lt;&#39;T&gt; (requires equality)</div>
-<div class="fsdocs-tip" id="fs35">Multiple items<br />module Seq<br /><br />from Plotly.NET<br /><br />--------------------<br />module Seq<br /><br />from FSharp.Stats<br /><br />--------------------<br />module Seq<br /><br />from Microsoft.FSharp.Collections</div>
-<div class="fsdocs-tip" id="fs36">val mapi : mapping:(int -&gt; &#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;</div>
+<div class="fsdocs-tip" id="fs35">Multiple items<br />module Seq
+
+from Plotly.NET<br /><br />--------------------<br />module Seq
+
+from FSharp.Stats<br /><em>&lt;summary&gt;
+ Module to compute common statistical measure
+&lt;/summary&gt;</em><br /><br />--------------------<br />module Seq
+
+from Microsoft.FSharp.Collections<br /><em>&lt;summary&gt;Contains operations for working with values of type &lt;see cref=&quot;T:Microsoft.FSharp.Collections.seq`1&quot; /&gt;.&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs36">val mapi : mapping:(int -&gt; &#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;<br /><em>&lt;summary&gt;Builds a new collection whose elements are the results of applying the given function
+ to each of the elements of the collection. The integer index passed to the
+ function indicates the index (from 0) of element being transformed.&lt;/summary&gt;<br />&lt;param name=&quot;mapping&quot;&gt;A function to transform items from the input sequence that also supplies the current index.&lt;/param&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input sequence is null.&lt;/exception&gt;</em></div>
 <div class="fsdocs-tip" id="fs37">val i : int</div>
 <div class="fsdocs-tip" id="fs38">val s : string</div>
-<div class="fsdocs-tip" id="fs39">val sprintf : format:Printf.StringFormat&lt;&#39;T&gt; -&gt; &#39;T</div>
+<div class="fsdocs-tip" id="fs39">val sprintf : format:Printf.StringFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><em>&lt;summary&gt;Print to a string using the given format.&lt;/summary&gt;<br />&lt;param name=&quot;format&quot;&gt;The formatter.&lt;/param&gt;<br />&lt;returns&gt;The formatted result.&lt;/returns&gt;</em></div>
 <div class="fsdocs-tip" id="fs40">val rawChart2D : GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs41">val unzippedData : (float * float) []</div>
-<div class="fsdocs-tip" id="fs42">Multiple items<br />module Array<br /><br />from FSharp.Stats<br /><br />--------------------<br />module Array<br /><br />from Microsoft.FSharp.Collections</div>
-<div class="fsdocs-tip" id="fs43">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; array:&#39;T [] -&gt; &#39;U []</div>
+<div class="fsdocs-tip" id="fs42">Multiple items<br />module Array
+
+from FSharp.Stats<br /><em>&lt;summary&gt;
+ Module to compute common statistical measure on array
+&lt;/summary&gt;</em><br /><br />--------------------<br />module Array
+
+from Microsoft.FSharp.Collections<br /><em>&lt;summary&gt;Contains operations for working with arrays.&lt;/summary&gt;<br />&lt;remarks&gt;
+  See also &lt;a href=&quot;https://docs.microsoft.com/dotnet/fsharp/language-reference/arrays&quot;&gt;F# Language Guide - Arrays&lt;/a&gt;.
+ &lt;/remarks&gt;</em></div>
+<div class="fsdocs-tip" id="fs43">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; array:&#39;T [] -&gt; &#39;U []<br /><em>&lt;summary&gt;Builds a new array whose elements are the results of applying the given function
+ to each of the elements of the array.&lt;/summary&gt;<br />&lt;param name=&quot;mapping&quot;&gt;The function to transform elements of the array.&lt;/param&gt;<br />&lt;param name=&quot;array&quot;&gt;The input array.&lt;/param&gt;<br />&lt;returns&gt;The array of transformed elements.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input array is null.&lt;/exception&gt;</em></div>
 <div class="fsdocs-tip" id="fs44">val x : float []</div>
-<div class="fsdocs-tip" id="fs45">type Chart =<br />&#160;&#160;static member Area : x:seq&lt;#IConvertible&gt; * y:seq&lt;#IConvertible&gt; * ?Name:string * ?ShowMarkers:bool * ?Showlegend:bool * ?MarkerSymbol:Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Dash:DrawingStyle * ?Width:float -&gt; GenericChart + 1 overload<br />&#160;&#160;static member Bar : keys:seq&lt;#IConvertible&gt; * values:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Marker:Marker -&gt; GenericChart + 1 overload<br />&#160;&#160;static member BoxPlot : ?x:&#39;a0 * ?y:&#39;a1 * ?Name:string * ?Showlegend:bool * ?Color:string * ?Fillcolor:&#39;a2 * ?Opacity:float * ?Whiskerwidth:&#39;a3 * ?Boxpoints:Boxpoints * ?Boxmean:BoxMean * ?Jitter:&#39;a4 * ?Pointpos:&#39;a5 * ?Orientation:Orientation * ?Marker:Marker * ?Line:Line * ?Alignmentgroup:&#39;a6 * ?Offsetgroup:&#39;a7 * ?Notched:bool * ?NotchWidth:float * ?QuartileMethod:QuartileMethod -&gt; GenericChart + 1 overload<br />&#160;&#160;static member Bubble : x:seq&lt;#IConvertible&gt; * y:seq&lt;#IConvertible&gt; * sizes:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?StackGroup:string * ?Orientation:Orientation * ?GroupNorm:GroupNorm * ?UseWebGL:bool -&gt; GenericChart + 1 overload<br />&#160;&#160;static member Candlestick : open:seq&lt;#IConvertible&gt; * high:seq&lt;#IConvertible&gt; * low:seq&lt;#IConvertible&gt; * close:seq&lt;#IConvertible&gt; * x:seq&lt;#IConvertible&gt; * ?Increasing:Line * ?Decreasing:Line * ?WhiskerWidth:float * ?Line:Line * ?XCalendar:Calendar -&gt; GenericChart + 1 overload<br />&#160;&#160;static member ChoroplethMap : locations:seq&lt;string&gt; * z:seq&lt;#IConvertible&gt; * ?Text:seq&lt;#IConvertible&gt; * ?Locationmode:LocationFormat * ?Autocolorscale:bool * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?Marker:Marker * ?GeoJson:&#39;a2 * ?FeatureIdKey:string * ?Zmin:float * ?Zmax:float -&gt; GenericChart<br />&#160;&#160;static member ChoroplethMapbox : locations:seq&lt;#IConvertible&gt; * z:seq&lt;#IConvertible&gt; * geoJson:&#39;a2 * ?FeatureIdKey:string * ?Text:seq&lt;#IConvertible&gt; * ?Below:string * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?ZAuto:bool * ?ZMin:float * ?ZMid:float * ?ZMax:float -&gt; GenericChart<br />&#160;&#160;static member Column : keys:seq&lt;#IConvertible&gt; * values:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Marker:Marker -&gt; GenericChart + 1 overload<br />&#160;&#160;static member Contour : data:seq&lt;#seq&lt;&#39;a1&gt;&gt; * ?X:seq&lt;#IConvertible&gt; * ?Y:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Opacity:float * ?Colorscale:Colorscale * ?Showscale:&#39;a4 * ?zSmooth:SmoothAlg * ?Colorbar:&#39;a5 -&gt; GenericChart (requires &#39;a1 :&gt; IConvertible)<br />&#160;&#160;static member DensityMapbox : lon:seq&lt;#IConvertible&gt; * lat:seq&lt;#IConvertible&gt; * ?Z:seq&lt;#IConvertible&gt; * ?Radius:float * ?Opacity:float * ?Text:seq&lt;#IConvertible&gt; * ?Below:string * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?Showscale:bool * ?ZAuto:bool * ?ZMin:float * ?ZMid:float * ?ZMax:float -&gt; GenericChart + 1 overload<br />&#160;&#160;...</div>
+<div class="fsdocs-tip" id="fs45">type Chart =
+  static member Area : x:seq&lt;#IConvertible&gt; * y:seq&lt;#IConvertible&gt; * ?Name:string * ?ShowMarkers:bool * ?Showlegend:bool * ?MarkerSymbol:Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Dash:DrawingStyle * ?Width:float -&gt; GenericChart + 1 overload
+  static member Bar : keys:seq&lt;#IConvertible&gt; * values:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Marker:Marker -&gt; GenericChart + 1 overload
+  static member BoxPlot : ?x:&#39;a0 * ?y:&#39;a1 * ?Name:string * ?Showlegend:bool * ?Color:string * ?Fillcolor:&#39;a2 * ?Opacity:float * ?Whiskerwidth:&#39;a3 * ?Boxpoints:Boxpoints * ?Boxmean:BoxMean * ?Jitter:&#39;a4 * ?Pointpos:&#39;a5 * ?Orientation:Orientation * ?Marker:Marker * ?Line:Line * ?Alignmentgroup:&#39;a6 * ?Offsetgroup:&#39;a7 * ?Notched:bool * ?NotchWidth:float * ?QuartileMethod:QuartileMethod -&gt; GenericChart + 1 overload
+  static member Bubble : x:seq&lt;#IConvertible&gt; * y:seq&lt;#IConvertible&gt; * sizes:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?StackGroup:string * ?Orientation:Orientation * ?GroupNorm:GroupNorm * ?UseWebGL:bool -&gt; GenericChart + 1 overload
+  static member Candlestick : open:seq&lt;#IConvertible&gt; * high:seq&lt;#IConvertible&gt; * low:seq&lt;#IConvertible&gt; * close:seq&lt;#IConvertible&gt; * x:seq&lt;#IConvertible&gt; * ?Increasing:Line * ?Decreasing:Line * ?WhiskerWidth:float * ?Line:Line * ?XCalendar:Calendar -&gt; GenericChart + 1 overload
+  static member ChoroplethMap : locations:seq&lt;string&gt; * z:seq&lt;#IConvertible&gt; * ?Text:seq&lt;#IConvertible&gt; * ?Locationmode:LocationFormat * ?Autocolorscale:bool * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?Marker:Marker * ?GeoJson:&#39;a2 * ?FeatureIdKey:string * ?Zmin:float * ?Zmax:float -&gt; GenericChart
+  static member ChoroplethMapbox : locations:seq&lt;#IConvertible&gt; * z:seq&lt;#IConvertible&gt; * geoJson:&#39;a2 * ?FeatureIdKey:string * ?Text:seq&lt;#IConvertible&gt; * ?Below:string * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?ZAuto:bool * ?ZMin:float * ?ZMid:float * ?ZMax:float -&gt; GenericChart
+  static member Column : keys:seq&lt;#IConvertible&gt; * values:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Marker:Marker -&gt; GenericChart + 1 overload
+  static member Contour : data:seq&lt;#seq&lt;&#39;a1&gt;&gt; * ?X:seq&lt;#IConvertible&gt; * ?Y:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Opacity:float * ?Colorscale:Colorscale * ?Showscale:&#39;a4 * ?zSmooth:SmoothAlg * ?Colorbar:&#39;a5 -&gt; GenericChart (requires &#39;a1 :&gt; IConvertible)
+  static member DensityMapbox : lon:seq&lt;#IConvertible&gt; * lat:seq&lt;#IConvertible&gt; * ?Z:seq&lt;#IConvertible&gt; * ?Radius:float * ?Opacity:float * ?Text:seq&lt;#IConvertible&gt; * ?Below:string * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?Showscale:bool * ?ZAuto:bool * ?ZMin:float * ?ZMid:float * ?ZMax:float -&gt; GenericChart + 1 overload
+  ...<br /><em>&lt;summary&gt;
+ Provides a set of static methods for creating charts.
+&lt;/summary&gt;</em></div>
 <div class="fsdocs-tip" id="fs46">static member Chart.Scatter : xy:seq&lt;#System.IConvertible * #System.IConvertible&gt; * mode:StyleParam.Mode * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?Dash:StyleParam.DrawingStyle * ?Width:float * ?StackGroup:string * ?Orientation:StyleParam.Orientation * ?GroupNorm:StyleParam.GroupNorm * ?UseWebGL:bool -&gt; GenericChart.GenericChart<br />static member Chart.Scatter : x:seq&lt;#System.IConvertible&gt; * y:seq&lt;#System.IConvertible&gt; * mode:StyleParam.Mode * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?Dash:StyleParam.DrawingStyle * ?Width:float * ?StackGroup:string * ?Orientation:StyleParam.Orientation * ?GroupNorm:StyleParam.GroupNorm * ?UseWebGL:bool -&gt; GenericChart.GenericChart</div>
-<div class="fsdocs-tip" id="fs47">module StyleParam<br /><br />from Plotly.NET</div>
-<div class="fsdocs-tip" id="fs48">type Mode =<br />&#160;&#160;| None<br />&#160;&#160;| Lines<br />&#160;&#160;| Lines_Markers<br />&#160;&#160;| Lines_Text<br />&#160;&#160;| Lines_Markers_Text<br />&#160;&#160;| Markers<br />&#160;&#160;| Markers_Text<br />&#160;&#160;| Text<br />&#160;&#160;&#160;&#160;static member convert : (Mode -&gt; obj)<br />&#160;&#160;&#160;&#160;static member toString : (Mode -&gt; string)</div>
+<div class="fsdocs-tip" id="fs47">module StyleParam
+
+from Plotly.NET</div>
+<div class="fsdocs-tip" id="fs48">type Mode =
+  | None
+  | Lines
+  | Lines_Markers
+  | Lines_Text
+  | Lines_Markers_Text
+  | Markers
+  | Markers_Text
+  | Text
+    static member convert : (Mode -&gt; obj)
+    static member toString : (Mode -&gt; string)</div>
 <div class="fsdocs-tip" id="fs49">union case StyleParam.Mode.Markers: StyleParam.Mode</div>
 <div class="fsdocs-tip" id="fs50">static member Chart.withX_AxisStyle : title:string * ?MinMax:(float * float) * ?Showgrid:bool * ?Showline:bool * ?Side:StyleParam.Side * ?Overlaying:StyleParam.AxisAnchorId * ?Id:int * ?Domain:(float * float) * ?Position:float * ?Zeroline:bool * ?Anchor:StyleParam.AxisAnchorId -&gt; (GenericChart.GenericChart -&gt; GenericChart.GenericChart)</div>
 <div class="fsdocs-tip" id="fs51">static member Chart.withY_AxisStyle : title:string * ?MinMax:(float * float) * ?Showgrid:bool * ?Showline:bool * ?Side:StyleParam.Side * ?Overlaying:StyleParam.AxisAnchorId * ?Id:int * ?Domain:(float * float) * ?Position:float * ?Zeroline:bool * ?Anchor:StyleParam.AxisAnchorId -&gt; (GenericChart.GenericChart -&gt; GenericChart.GenericChart)</div>
@@ -484,17 +621,33 @@ the absolute variation is low.
 <div class="fsdocs-tip" id="fs54">val unzippedData : (float * float * float) []</div>
 <div class="fsdocs-tip" id="fs55">static member Chart.Scatter3d : xyz:seq&lt;#System.IConvertible * #System.IConvertible * #System.IConvertible&gt; * mode:StyleParam.Mode * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?Dash:StyleParam.DrawingStyle * ?Width:float -&gt; GenericChart.GenericChart<br />static member Chart.Scatter3d : x:seq&lt;#System.IConvertible&gt; * y:seq&lt;#System.IConvertible&gt; * z:seq&lt;#System.IConvertible&gt; * mode:StyleParam.Mode * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?Dash:StyleParam.DrawingStyle * ?Width:float -&gt; GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs56">static member Chart.withZ_AxisStyle : title:string * ?MinMax:(float * float) * ?Showgrid:bool * ?Showline:bool * ?Domain:(float * float) * ?Anchor:StyleParam.AxisAnchorId -&gt; (GenericChart.GenericChart -&gt; GenericChart.GenericChart)</div>
-<div class="fsdocs-tip" id="fs57">module GenericChart<br /><br />from Plotly.NET</div>
-<div class="fsdocs-tip" id="fs58">val toChartHTML : gChart:GenericChart.GenericChart -&gt; string</div>
+<div class="fsdocs-tip" id="fs57">module GenericChart
+
+from Plotly.NET<br /><em>&lt;summary&gt;
+ Module to represent a GenericChart
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs58">val toChartHTML : gChart:GenericChart.GenericChart -&gt; string<br /><em>&lt;summary&gt;
+ Converts a GenericChart to it HTML representation. The div layer has a default size of 600 if not specified otherwise.
+&lt;/summary&gt;</em></div>
 <div class="fsdocs-tip" id="fs59">val eps2D : float</div>
 <div class="fsdocs-tip" id="fs60">val eps3D : float</div>
 <div class="fsdocs-tip" id="fs61">val minPts : int</div>
 <div class="fsdocs-tip" id="fs62">val result2D : DbScan.DbscanResult&lt;float array&gt;</div>
-<div class="fsdocs-tip" id="fs63">module DbScan<br /><br />from FSharp.Stats.ML.Unsupervised</div>
+<div class="fsdocs-tip" id="fs63">module DbScan
+
+from FSharp.Stats.ML.Unsupervised</div>
 <div class="fsdocs-tip" id="fs64">val compute : dfu:(&#39;a array -&gt; &#39;a array -&gt; float) -&gt; minPts:int -&gt; eps:float -&gt; input:seq&lt;#seq&lt;&#39;a&gt;&gt; -&gt; DbScan.DbscanResult&lt;&#39;a array&gt;</div>
-<div class="fsdocs-tip" id="fs65">module DistanceMetrics<br /><br />from FSharp.Stats.ML</div>
-<div class="fsdocs-tip" id="fs66">module Array<br /><br />from FSharp.Stats.ML.DistanceMetrics</div>
-<div class="fsdocs-tip" id="fs67">val euclidean : a1:&#39;a array -&gt; a2:&#39;a array -&gt; float (requires member get_Zero and member ( - ) and member ( + ) and member op_Explicit and member ( * ))</div>
+<div class="fsdocs-tip" id="fs65">module DistanceMetrics
+
+from FSharp.Stats.ML<br /><em>&lt;summary&gt;
+Functions for computing distances of elements or sets
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs66">module Array
+
+from FSharp.Stats.ML.DistanceMetrics</div>
+<div class="fsdocs-tip" id="fs67">val euclidean : a1:&#39;a array -&gt; a2:&#39;a array -&gt; float (requires member get_Zero and member ( - ) and member ( + ) and member op_Explicit and member ( * ))<br /><em>&lt;summary&gt;
+ Euclidean distance of two coordinate arrays
+&lt;/summary&gt;</em></div>
 <div class="fsdocs-tip" id="fs68">val printClusters2D : string</div>
 <div class="fsdocs-tip" id="fs69">System.Object.ToString() : string</div>
 <div class="fsdocs-tip" id="fs70">val result3D : DbScan.DbscanResult&lt;float array&gt;</div>
@@ -502,9 +655,15 @@ the absolute variation is low.
 <div class="fsdocs-tip" id="fs72">val chartCluster2D : GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs73">DbScan.DbscanResult.Clusterlist: seq&lt;seq&lt;float array&gt;&gt;</div>
 <div class="fsdocs-tip" id="fs74">val l : seq&lt;float array&gt;</div>
-<div class="fsdocs-tip" id="fs75">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;</div>
+<div class="fsdocs-tip" id="fs75">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;<br /><em>&lt;summary&gt;Builds a new collection whose elements are the results of applying the given function
+ to each of the elements of the collection.  The given function will be applied
+ as elements are demanded using the &lt;c&gt;MoveNext&lt;/c&gt; method on enumerators retrieved from the
+ object.&lt;/summary&gt;<br />&lt;remarks&gt;The returned sequence may be passed between threads safely. However, 
+ individual IEnumerator values generated from the returned sequence should not be accessed concurrently.&lt;/remarks&gt;<br />&lt;param name=&quot;mapping&quot;&gt;A function to transform items from the input sequence.&lt;/param&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input sequence is null.&lt;/exception&gt;</em></div>
 <div class="fsdocs-tip" id="fs76">val x : float array</div>
-<div class="fsdocs-tip" id="fs77">val distinct : source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;T&gt; (requires equality)</div>
+<div class="fsdocs-tip" id="fs77">val distinct : source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;T&gt; (requires equality)<br /><em>&lt;summary&gt;Returns a sequence that contains no duplicate entries according to generic hash and
+ equality comparisons on the entries.
+ If an element occurs multiple times in the sequence then the later occurrences are discarded.&lt;/summary&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input sequence is null.&lt;/exception&gt;</em></div>
 <div class="fsdocs-tip" id="fs78">static member Chart.Point : xy:seq&lt;#System.IConvertible * #System.IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?StackGroup:string * ?Orientation:StyleParam.Orientation * ?GroupNorm:StyleParam.GroupNorm * ?UseWebGL:bool -&gt; GenericChart.GenericChart<br />static member Chart.Point : x:seq&lt;#System.IConvertible&gt; * y:seq&lt;#System.IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?StackGroup:string * ?Orientation:StyleParam.Orientation * ?GroupNorm:StyleParam.GroupNorm * ?UseWebGL:bool -&gt; GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs79">static member Chart.withTraceName : ?Name:string * ?Showlegend:bool * ?Legendgroup:string * ?Visible:StyleParam.Visible -&gt; (GenericChart.GenericChart -&gt; GenericChart.GenericChart)</div>
 <div class="fsdocs-tip" id="fs80">static member Chart.Combine : gCharts:seq&lt;GenericChart.GenericChart&gt; -&gt; GenericChart.GenericChart</div>
@@ -512,10 +671,10 @@ the absolute variation is low.
 <div class="fsdocs-tip" id="fs82">DbScan.DbscanResult.Noisepoints: seq&lt;float array&gt;</div>
 <div class="fsdocs-tip" id="fs83">val chartTitle2D : string</div>
 <div class="fsdocs-tip" id="fs84">val noiseCount : int</div>
-<div class="fsdocs-tip" id="fs85">val length : source:seq&lt;&#39;T&gt; -&gt; int</div>
+<div class="fsdocs-tip" id="fs85">val length : source:seq&lt;&#39;T&gt; -&gt; int<br /><em>&lt;summary&gt;Returns the length of the sequence&lt;/summary&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The length of the sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input sequence is null.&lt;/exception&gt;</em></div>
 <div class="fsdocs-tip" id="fs86">val clusterCount : int</div>
 <div class="fsdocs-tip" id="fs87">val clPtsCount : int</div>
-<div class="fsdocs-tip" id="fs88">val sumBy : projection:(&#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; &#39;U (requires member ( + ) and member get_Zero)</div>
+<div class="fsdocs-tip" id="fs88">val sumBy : projection:(&#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; &#39;U (requires member ( + ) and member get_Zero)<br /><em>&lt;summary&gt;Returns the sum of the results generated by applying the function to each element of the sequence.&lt;/summary&gt;<br />&lt;remarks&gt;The generated elements are summed using the &lt;c&gt;+&lt;/c&gt; operator and &lt;c&gt;Zero&lt;/c&gt; property associated with the generated type.&lt;/remarks&gt;<br />&lt;param name=&quot;projection&quot;&gt;A function to transform items from the input sequence into the type that will be summed.&lt;/param&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The computed sum.&lt;/returns&gt;</em></div>
 <div class="fsdocs-tip" id="fs89">val chart2D : GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs90">val chartCluster3D : GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs91">val x : seq&lt;float * float * float&gt;</div>
@@ -523,7 +682,9 @@ the absolute variation is low.
 <div class="fsdocs-tip" id="fs93">val chartname3D : string</div>
 <div class="fsdocs-tip" id="fs94">val chart3D : GenericChart.GenericChart</div>
 <div class="fsdocs-tip" id="fs95">val clusteredChart3D : unit -&gt; DbScan.DbscanResult&lt;float array&gt;</div>
-<div class="fsdocs-tip" id="fs96">val euclideanNaNSquared : a1:float array -&gt; a2:float array -&gt; float</div>
+<div class="fsdocs-tip" id="fs96">val euclideanNaNSquared : a1:float array -&gt; a2:float array -&gt; float<br /><em>&lt;summary&gt;
+ Squared Euclidean distance of two coordinate float arrays (ignores nan)
+&lt;/summary&gt;</em></div>
 
 </body>
 </html> 
