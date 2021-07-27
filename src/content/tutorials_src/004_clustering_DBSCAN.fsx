@@ -33,9 +33,14 @@ index: 2
 [![Script]({{root}}images/badge-script.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.fsx)&emsp;
 [![Notebook]({{root}}images/badge-notebook.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.ipynb)
 
+
+# Clustering with FSharp.Stats III: DBSCAN
+
 _Summary:_ This tutorial demonstrates DBSCAN with FSharp.Stats and how to visualize the results with Plotly.NET.
 
-# Introduction
+In the previous article of this series [hierarchical clustering using FSharp.Stats](https://fslab.org/content/tutorials/003_clustering_hierarchical.html) was introduced.
+
+## Introduction
 
 Clustering methods can be used to group elements of a huge data set based on their similarity. Elements sharing similar properties cluster together and can be reported as coherent group.
 Density-Based Spatial Clustering of Applications with Noise (DBSCAN) was developed to identify clusters with similar density and allows the exclusion of noise points.
@@ -75,7 +80,7 @@ In this tutorial we are going to perform DBSCAN on two- and three-dimensional da
 *)
 
 (**
-##Loading data
+## Loading data
 *)
 open FSharp.Data
 open FSharp.Stats
@@ -202,11 +207,11 @@ let printClusters3D = result3D.ToString()
 (*** include-value:printClusters3D ***)
 
 (**
-# Visualization of clustering result
+## Visualization of clustering result
 
 To visualize the clustering result coordinates of each cluster and noise points are visualized separately and combined in a single scatter plot.
 
-## 2D clustering result visualization
+### 2D clustering result visualization
 
 *)
 
@@ -258,7 +263,7 @@ chart2D |> GenericChart.toChartHTML
 </center>
 
 
-## 3D clustering result visualization
+### 3D clustering result visualization
 
 
 
@@ -318,12 +323,12 @@ chart3D |> GenericChart.toChartHTML
   1. The selection of minPts and eps is critical and even small deviations can severely influence the final results
   2. When data points are of varying density, DBSCAN is not appropriate
 
-# Notes
+## Notes
 
   - Please note that depending on what data you want to cluster, a column wise z-score normalization may be required. In the presented example differences in sepal width have a reduced influence because
   the absolute variation is low.
 
-# References
+## References
 
   - FSharp.Stats documentation, fslaborg, https://fslab.org/FSharp.Stats/Clustering.html
   - Shinde and Sankhe, Comparison of Enhanced DBSCAN Algorithms: A Review, International Journal of Engeneering Research & Technology, 2017
