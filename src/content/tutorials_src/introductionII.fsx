@@ -17,7 +17,7 @@ index: 1
 ### Visual Studio
 
 * Open Visual Studio and navigate to the "File" tab, where you select to create a new file.
-* Select the "F# Script File" option.
+* Select the "F# Script File" option.  
     
     ![]({{root}}images/FsxVS.png)
 
@@ -26,7 +26,7 @@ index: 1
 ### Visual Studio Code
 
 * Open Visual Studio Code and navigate to the "File" tab, where you select to create a new file.
-* You will then be prompted to select a language. Choose F# there.
+* You will then be prompted to select a language. Choose F# there.  
 
     ![]({{root}}images/FsxVSCode.png)
 
@@ -52,7 +52,7 @@ index: 1
 ## Working with notebooks
 
 * Visual Studio Code supports working with notebooks
-* To work with notebooks, you need to install the [.NET Interactive Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode) extension.
+* To work with notebooks, you need to install the [.NET Interactive Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode) extension.  
 
     ![]({{root}}images/NotebooksExt.png)
 
@@ -60,9 +60,9 @@ index: 1
 * You will then be prompted to create it either as .dib or .ipynb.
 * When asked for the language, choose F#
 * Notebooks contain Text- and Codeblocks:
-* Adding a new Text- or Codeblock can be done by hovering at the upper or lower border of an existing block or upper part of the notebook and pressing '+Code' or '+Markdown'
+* Adding a new Text- or Codeblock can be done by hovering at the upper or lower border of an existing block or upper part of the notebook and pressing `+Code` or `+Markdown`  
 
-        ![]({{root}}images/NBBlock.png)
+    ![]({{root}}images/NBBlock.png)
 
 * Working with Textblocks:
     You can edit a Textblock by doubleklicking on it. Inside a Textblock you can write plain text or style it with [Markdown](https://en.wikipedia.org/wiki/Markdown).
