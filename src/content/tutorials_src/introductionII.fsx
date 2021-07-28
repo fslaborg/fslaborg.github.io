@@ -21,7 +21,7 @@ index: 1
     
     ![]({{root}}images/FsxVS.png)
 
-* You now have a working script file. You can write code and execute it by selecting it and pressing 'Alt + Enter'.
+* You now have a working script file. You can write code and execute it by selecting it and pressing `Alt + Enter`.
 
 ### Visual Studio Code
 
@@ -30,7 +30,7 @@ index: 1
 
     ![]({{root}}images/FsxVSCode.png)
 
-* You now have a working script file. You can write code and execute it by selecting it and pressing 'Alt + Enter'.
+* You now have a working script file. You can write code and execute it by selecting it and pressing `Alt + Enter`.
 * When you are done with your file save it as .fsx.
 
 ## Referencing packages
@@ -56,7 +56,7 @@ index: 1
 
     ![]({{root}}images/NotebooksExt.png)
 
-* A new Notebook can be opened by pressing 'Ctrl + Shift + P' and selecting ".NET Interactive: Create new blank notebook".
+* A new Notebook can be opened by pressing `Ctrl + Shift + P` and selecting ".NET Interactive: Create new blank notebook".
 * You will then be prompted to create it either as .dib or .ipynb.
 * When asked for the language, choose F#
 * Notebooks contain Text- and Codeblocks:
@@ -68,7 +68,7 @@ index: 1
     You can edit a Textblock by doubleklicking on it. Inside a Textblock you can write plain text or style it with [Markdown](https://en.wikipedia.org/wiki/Markdown).
     Once you are finished you can press the `Esc` button.
 * Working with Codeblocks:
-    You can start editing any Codeblock by clicking in it. In there you can start writing your own code or edit existing code. Once you are done you can execute the Codeblock by pressing `Ctrl + Alt + Return`.
+    You can start editing any Codeblock by clicking in it. In there you can start writing your own code or edit existing code. Once you are done you can execute the Codeblock by pressing `Ctrl + Alt + Enter`.
     If you want to execute all codeblocks at once, you can press on the two arrows in the upper left corner of the notebook.
 *)
 
