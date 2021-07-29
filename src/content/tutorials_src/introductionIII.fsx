@@ -9,6 +9,24 @@ authors: Kevin Schneider, Jonathan Ott
 index: 3
 ---
 *)
+
+(***hide***)
+#r "nuget: BlackFox.Fake.BuildTask"
+#r "nuget: Fake.Core.Target"
+#r "nuget: Fake.Core.Process"
+#r "nuget: Fake.Core.ReleaseNotes"
+#r "nuget: Fake.IO.FileSystem"
+#r "nuget: Fake.DotNet.Cli"
+#r "nuget: Fake.DotNet.MSBuild"
+#r "nuget: Fake.DotNet.AssemblyInfoFile"
+#r "nuget: Fake.DotNet.Paket"
+#r "nuget: Fake.DotNet.FSFormatting"
+#r "nuget: Fake.DotNet.Fsi"
+#r "nuget: Fake.DotNet.NuGet"
+#r "nuget: Fake.Api.Github"
+#r "nuget: Fake.DotNet.Testing.Expecto "
+#r "nuget: Fake.Tools.Git"
+
 (**
 # F# Introduction III: Library Setup
 
@@ -198,12 +216,15 @@ BuildTask.runOrDefault copyBinaries
 * Create a `build.cmd` or `build.sh` file (or both) with the following lines:
 
 ### build.cmd
-*)
+
+```shell
 dotnet tool restore
 dotnet fake build %*
-(**
+```
+
 ### build.sh
-*)
+
+```shell
 #!/usr/bin/env bash
 
 set -eu
@@ -211,6 +232,8 @@ set -o pipefail
 
 dotnet tool restore
 dotnet fake build "$@"
+```
+
 (**
 * You can now run your build via calling either `build.cmd` or `build.sh`.
     * Optionally, you can pass the `-t` argument with it to execute a specific build task, e.g `./build.cmd -t clean` to execute the clean target.
@@ -312,40 +335,6 @@ module DocumentationTasks =
     open ProjectInfo
 
     open BasicTasks
-
-    let initDocPage = BuildTask.create "InitDocsPage" [] {
-        printfn "Please enter filename"
-        let filename = System.Console.ReadLine()
-        
-        printfn "Please enter title"
-        let title = System.Console.ReadLine()
-
-        let path = "./docs" </> filename
-
-        let lines = """
-(*** hide ***)
-(*** condition: prepare ***)
-#r @"..\packages\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll"
-#r "../bin/Plotly.NET/netstandard2.1/Plotly.NET.dll"
-(*** condition: ipynb ***)
-#if IPYNB
-#r "nuget: Plotly.NET, {{fsdocs-package-version}}"
-#r "nuget: Plotly.NET.Interactive, {{fsdocs-package-version}}"
-#endif // IPYNB
-(**
-# {{TITLE}}
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/plotly/Plotly.NET/gh-pages?filepath={{FILENAME}}.ipynb)
-*)
-"""
-
-        if (promptYesNo (sprintf "creating file %s with title %s OK?" path title)) then
-            lines
-            |> String.replace "{{FILENAME}}" filename
-            |> String.replace "{{TITLE}}" title
-            |> fun content -> File.WriteAllText (path,content)
-        else
-            failwith "aborted"
-    }
 
     let buildDocs = BuildTask.create "BuildDocs" [build; copyBinaries] {
         printfn "building docs with stable version %s" stableVersionTag
