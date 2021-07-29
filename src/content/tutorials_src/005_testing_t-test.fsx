@@ -116,7 +116,7 @@ We want to analyze if an estimated expected value differs from the sample above.
 <center>
 <img style="max-width:75%" src="../../images/OneSampleTTest.png"></img>
 </center>
-Fig. 1: **The one-sample t-test.** The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
+Fig. 1: _The one-sample t-test._ The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
 
 *)
 
@@ -157,7 +157,7 @@ In this next example, we are going to see if the gender of college athletes dete
 <center>
 <img style="max-width:75%" src="../../images/TwoSampleTTest.png"></img>
 </center>
-Fig. 2: **The two-sample t-test.** The dashed orange and green lines depict the distribution of both samples that are compared with each other.
+Fig. 2: _The two-sample t-test._ The dashed orange and green lines depict the distribution of both samples that are compared with each other.
 
 *)
 
@@ -302,9 +302,5 @@ let twoSamplePairedResult = TTest.twoSamplePaired dataCaffeineNoDose dataCaffein
 (**
 
 The two-sample paired t-test suggests a significant difference beween caffeine and non-caffeine treatment groups with a p-value of 0.012. 
-
----
-
-Want to see how to handle more complex datasets regarding hypothesis tests and how to check for multiple testing? Head over to [Multiple testing with FSharp.Stats](https://fslab.org/content/tutorials/006_testing_multiple-testing.html)
 
 *)
