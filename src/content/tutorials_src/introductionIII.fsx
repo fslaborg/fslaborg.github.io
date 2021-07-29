@@ -6,7 +6,7 @@
 title: F# Introduction III: Library Setup
 category: fsharp
 authors: Kevin Schneider, Jonathan Ott
-index: 2
+index: 3
 ---
 *)
 (**

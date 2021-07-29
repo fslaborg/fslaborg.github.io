@@ -6,7 +6,7 @@
 title: F# Introduction II: Scripting in F#
 category: fsharp
 authors: Jonathan Ott
-index: 1
+index: 2
 ---
 *)
 (**
