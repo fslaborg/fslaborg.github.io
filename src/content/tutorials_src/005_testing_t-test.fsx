@@ -92,6 +92,7 @@ let dataHousefly : seq<float> =
 
 Let us first have a look at the sample data with help of a boxplot. As shown below, the average wingspan is around 4.5 with variability ranges between 3.5 and 5.5.
 
+<center>
 *)
 
 let boxPlot = 
@@ -107,8 +108,9 @@ boxPlot
 boxPlot |> GenericChart.toChartHTML
 (***include-it-raw***)
 
-
 (**
+</center>
+
 ## One-sample t-test
 
 We want to analyze if an estimated expected value differs from the sample above. Therefore, we perform a one-sample t-test which covers exactly this situation.
