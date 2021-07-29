@@ -6,7 +6,7 @@
 title: F# Introduction I: Setting up an environment
 category: fsharp
 authors: Jonathan Ott
-index: 0
+index: 1
 ---
 *)
 (**
