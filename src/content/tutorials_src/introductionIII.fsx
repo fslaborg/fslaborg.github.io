@@ -74,9 +74,8 @@ The installation of .NET 5.0 or dotnet SDK 3.1 LTS is required. It is also recom
 * Open the `build.fsx` file (intellisense will not work right after creating it) and add the following content.
 
 First, lets reference the dependencies of the build script. In fake they are loaded via the `paket` manager:
-*)
 
-(***do-not-eval***)
+```fsharp
 #r "paket:
 nuget BlackFox.Fake.BuildTask
 nuget Fake.Core.Target
@@ -93,8 +92,8 @@ nuget Fake.DotNet.NuGet
 nuget Fake.Api.Github
 nuget Fake.DotNet.Testing.Expecto 
 nuget Fake.Tools.Git //"
+```
 
-(**
 Then, we open the dependencies. Note that for getting intellisense, you will have to run the script once with the fake runner (see [here](#Running-the-build-script)).
 *)
 
@@ -241,8 +240,6 @@ set -o pipefail
 dotnet tool restore
 dotnet fake build "$@"
 ```
-
-(**
 
 ## Running the build script
 
