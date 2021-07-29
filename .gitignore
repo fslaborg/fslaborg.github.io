@@ -354,3 +354,4 @@ src/content/tutorials/
 src/.fsdocs
 src/content/tutorials_src/.fsdocs
 .local-chromium/
+src/content/tmp/watch
