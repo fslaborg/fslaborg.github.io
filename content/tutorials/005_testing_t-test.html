@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Opengraph properties (https://ogp.me/)-->
+    <meta property="og:image" content="https://fslab.org/images/logo.svg" />
+    <meta property="og:title" content="Testing with FSharp.Stats I: t-test
+" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="fslab.org" />
+
+    <title>Testing with FSharp.Stats I: t-test
+</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+    <link rel="stylesheet" href="https://fslab.org/style/style.css">
+    <link type="text/css" rel="stylesheet" href="https://fslab.org/content/tutorials/content/fsdocs-default.css" />
+    <link type="text/css" rel="stylesheet" href="https://fslab.org/content/tutorials/content/fsdocs-custom.css" />
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="https://fslab.org/content/tutorials/content/fsdocs-tips.js"></script>
+    <script type="text/javascript" defer crossorigin="anonymous" src="https://kit.fontawesome.com/0d3e0ea7a6.js"></script>
+    <script type="text/javascript" defer crossorigin="anonymous" src="https://fslab.org/js/prism.js"></script>
+    <script type="text/javascript" defer crossorigin="anonymous" src="https://fslab.org/js/navbar.js"></script>
+    
+</head>
+<body>
+    <nav class="navbar is-fixed-top">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="https://fslab.org/images/favicon.png" alt="Logo">
+            </a>
+            <a class="navbar-burger" data-target="navMenu" aria-label="menu" role="button" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+            <a href="https://fslab.org/" class="navbar-item">Home</a>
+            <a href="https://fslab.org/packages.html" class="navbar-item">Data science packages</a>
+            <a hre="https://fslab.org/tutorials.html" class="navbar-item is-active-link-darkmagenta smooth-hover">Tutorials and Blogposts</a>
+        </div>
+    </nav>
+    <section class="hero is-small has-bg-darkmagenta">
+        <div class="hero-body">
+            <div class="container">
+                <div class="media mb-4">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <img id="logo-square" class="is-rounded" src="https://fslab.org/images/logo-rounded.svg">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <h1 class="title is-size-1 is-white">Testing with FSharp.Stats I: t-test
+</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container" id="fsdocs-content">
+                <a class="button landing-page-link is-size-4" href="https://fslab.org/tutorials.html"><i class="fas fa-long-arrow-alt-left"></i>Back to the index</a>
+                <p><a href="https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=005_testing_t-test.ipynb"><img src="https://fslab.org/images/badge-binder.svg" alt="Binder" /></a>&emsp;
+<a href="https://fslab.org/content/tutorials/005_testing_t-test.fsx"><img src="https://fslab.org/images/badge-script.svg" alt="Script" /></a>&emsp;
+<a href="https://fslab.org/content/tutorials/005_testing_t-test.ipynb"><img src="https://fslab.org/images/badge-notebook.svg" alt="Notebook" /></a></p>
+<h1><a name="Testing-with-FSharp-Stats-I-t-test" class="anchor" href="#Testing-with-FSharp-Stats-I-t-test">Testing with FSharp.Stats I: t-test</a></h1>
+<h2><a name="Getting-started-The-t-test" class="anchor" href="#Getting-started-The-t-test">Getting started: The t-test</a></h2>
+<p><em>I love statistical testing</em> - A sentence math teachers don't hear often during their time at school. In this tutorial we aim to give you a short introduction of the theory and how to
+perform the most used statistical test: the t-test</p>
+<p>Suppose you have measured the length of some leaves of two trees and you want to find out if the average length of the leaves is the same or if they differ from each other.
+If you knew the population distributions of all leaves hanging on both trees the task would be easy, but since we only have samples from both populations, we have to apply a statistical test.
+Student's t-test can be applied to test whether two samples have the same mean (H0), or if the means are different (H1). There are two requirements to the samples that have to be fulfilled:</p>
+<ol>
+<li>The variances of both samples have to be equal.</li>
+<li>The samples have to follow a normal distribution.</li>
+</ol>
+<p><em>Note: Slight deviations from these requirements can be accepted but strong violations result in an inflated false positive rate. If the variances are not equal a Welch test can be performed.</em>
+<em>There are some tests out there to check if the variances are equal or if the sample follows a normal distribution, but their effectiveness is discussed.</em>
+<em>You always should consider the shape of the theoretical background distribution, instead of relying on preliminary tests rashly.</em></p>
+<p>The t-test is one of the most used statistical tests in datascience. It is used to compare two samples in terms of statistical significance.
+Often a significance threshold (or &alpha; level) of 0.05 is chosen to define if a p value is defined as statistically significant. A p value describes how likely it is to observe an effect
+at least as extreme as you observed (in the comparison) by chance. Low p values indicate a high confidence to state that there is a real difference and the observed difference is not caused by chance.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#r</span> <span class="s">&quot;nuget: FSharp.Data&quot;</span>
+<span class="pp">#r</span> <span class="s">&quot;nuget: Deedle&quot;</span>
+<span class="pp">#r</span> <span class="s">&quot;nuget: FSharp.Stats, 0.4.2&quot;</span>
+<span class="pp">#r</span> <span class="s">&quot;nuget: Plotly.NET, 2.0.0-preview.6&quot;</span>
+
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="id">Data</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="id">Deedle</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="id">Plotly</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">NET</span>
+</code></pre>
+<p>For our purposes, we will use the housefly wing length dataset (from <em>Sokal et al., 1955, A morphometric analysis of DDT-resistant and non-resistant housefly strains</em>).
+Head over to the <a href="https://fslab.org/content/tutorials/4_getting-started.html#Data-access">Getting started</a> tutorial where it is shown how to import datasets in a simple way.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// We retrieve the dataset via FSharp.Data:</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="id">rawDataHousefly</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="rt">Http</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 8)" onmouseover="showTip(event, 'fs8', 8)" class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/fslaborg/datasets/main/data/HouseflyWingLength.txt&quot;</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 9)" onmouseover="showTip(event, 'fs9', 9)" class="id">dataHousefly</span> <span class="pn">:</span> <span onmouseout="hideTip(event, 'fs10', 10)" onmouseover="showTip(event, 'fs10', 10)" class="if">seq</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, 'fs11', 11)" onmouseover="showTip(event, 'fs11', 11)" class="vt">float</span><span class="pn">&gt;</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs12', 12)" onmouseover="showTip(event, 'fs12', 12)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs13', 13)" onmouseover="showTip(event, 'fs13', 13)" class="id">ReadCsvString</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs6', 14)" onmouseover="showTip(event, 'fs6', 14)" class="id">rawDataHousefly</span><span class="pn">,</span> <span class="k">false</span><span class="pn">,</span> <span class="fn">schema</span> <span class="o">=</span> <span class="s">&quot;wing length (mm * 10^1)&quot;</span><span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs12', 15)" onmouseover="showTip(event, 'fs12', 15)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 16)" onmouseover="showTip(event, 'fs14', 16)" class="id">getCol</span> <span class="s">&quot;wing length (mm * 10^1)&quot;</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs15', 17)" onmouseover="showTip(event, 'fs15', 17)" class="m">Series</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 18)" onmouseover="showTip(event, 'fs16', 18)" class="id">values</span>
+    <span class="c">// We convert the values to mm</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs17', 19)" onmouseover="showTip(event, 'fs17', 19)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 20)" onmouseover="showTip(event, 'fs18', 20)" class="id">map</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs19', 21)" onmouseover="showTip(event, 'fs19', 21)" class="fn">x</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs19', 22)" onmouseover="showTip(event, 'fs19', 22)" class="fn">x</span> <span class="o">/</span> <span class="n">10.</span><span class="pn">)</span>
+</code></pre>
+<p>Let us first have a look at the sample data with help of a boxplot. As shown below, the average wingspan is around 4.5 with variability ranges between 3.5 and 5.5.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs20', 23)" onmouseover="showTip(event, 'fs20', 23)" class="id">boxPlot</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs21', 24)" onmouseover="showTip(event, 'fs21', 24)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs22', 25)" onmouseover="showTip(event, 'fs22', 25)" class="id">BoxPlot</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs23', 26)" onmouseover="showTip(event, 'fs23', 26)" class="fn">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs9', 27)" onmouseover="showTip(event, 'fs9', 27)" class="id">dataHousefly</span><span class="pn">,</span> <span class="fn">Name</span> <span class="o">=</span> <span class="s">&quot;housefly&quot;</span><span class="pn">,</span> <span class="fn">Boxpoints</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs24', 28)" onmouseover="showTip(event, 'fs24', 28)" class="m">StyleParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 29)" onmouseover="showTip(event, 'fs25', 29)" class="rt">Boxpoints</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs26', 30)" onmouseover="showTip(event, 'fs26', 30)" class="id">All</span><span class="pn">,</span> <span class="fn">Jitter</span> <span class="o">=</span> <span class="n">0.2</span><span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 31)" onmouseover="showTip(event, 'fs21', 31)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 32)" onmouseover="showTip(event, 'fs27', 32)" class="id">withY_AxisStyle</span> <span class="s">&quot;wing length [mm]&quot;</span>
+</code></pre>
+<div id="597b37fb-727e-49fd-97b1-3b4603e117aa" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script type="text/javascript">
+
+            var renderPlotly_597b37fb727e49fd97b13b4603e117aa = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            fsharpPlotlyRequire(['plotly'], function(Plotly) {
+
+            var data = [{"type":"box","y":[3.6,3.7,3.8,3.8,3.9,3.9,4.0,4.0,4.0,4.0,4.1,4.1,4.1,4.1,4.1,4.1,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.9,4.9,4.9,4.9,4.9,4.9,4.9,5.0,5.0,5.0,5.0,5.0,5.0,5.1,5.1,5.1,5.1,5.2,5.2,5.3,5.3,5.4,5.5],"boxpoints":"all","jitter":0.2,"name":"housefly","marker":{}}];
+            var layout = {"yaxis":{"title":"wing length [mm]"}};
+            var config = {};
+            Plotly.newPlot('597b37fb-727e-49fd-97b1-3b4603e117aa', data, layout, config);
+});
+            };
+            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
+                var script = document.createElement("script");
+                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
+                script.onload = function(){
+                    renderPlotly_597b37fb727e49fd97b13b4603e117aa();
+                };
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            else {
+                renderPlotly_597b37fb727e49fd97b13b4603e117aa();
+            }
+</script>
+
+<h2><a name="One-sample-t-test" class="anchor" href="#One-sample-t-test">One-sample t-test</a></h2>
+<p>We want to analyze if an estimated expected value differs from the sample above. Therefore, we perform a one-sample t-test which covers exactly this situation.</p>
+<center>
+<img style="max-width:75%" src="../../images/OneSampleTTest.png"></img>
+</center>
+Fig. 1: _The one-sample t-test._ The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 36)" onmouseover="showTip(event, 'fs1', 36)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs30', 37)" onmouseover="showTip(event, 'fs30', 37)" class="id">Stats</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 38)" onmouseover="showTip(event, 'fs1', 38)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs30', 39)" onmouseover="showTip(event, 'fs30', 39)" class="id">Stats</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs31', 40)" onmouseover="showTip(event, 'fs31', 40)" class="id">Testing</span>
+
+<span class="c">// The testing module in FSharp.Stats require vectors as input types, thus we transform our array into a vector:</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs32', 41)" onmouseover="showTip(event, 'fs32', 41)" class="id">vectorDataHousefly</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs33', 42)" onmouseover="showTip(event, 'fs33', 42)" class="fn">vector</span> <span onmouseout="hideTip(event, 'fs9', 43)" onmouseover="showTip(event, 'fs9', 43)" class="id">dataHousefly</span>
+
+<span class="c">// The expected value of our population.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs34', 44)" onmouseover="showTip(event, 'fs34', 44)" class="id">expectedValue</span> <span class="o">=</span> <span class="n">4.5</span>
+
+<span class="c">// Perform the one-sample t-test with our vectorized data and our exptected value as parameters.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs35', 45)" onmouseover="showTip(event, 'fs35', 45)" class="id">oneSampleResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs36', 46)" onmouseover="showTip(event, 'fs36', 46)" class="m">TTest</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs37', 47)" onmouseover="showTip(event, 'fs37', 47)" class="id">oneSample</span> <span onmouseout="hideTip(event, 'fs32', 48)" onmouseover="showTip(event, 'fs32', 48)" class="id">vectorDataHousefly</span> <span onmouseout="hideTip(event, 'fs34', 49)" onmouseover="showTip(event, 'fs34', 49)" class="id">expectedValue</span>
+</code></pre>
+<table class="pre"><tr><td><pre><code>{ Statistic = 1.275624919
+  DegreesOfFreedom = 99.0
+  PValueLeft = 0.8974634108
+  PValueRight = 0.1025365892
+  PValue = 0.2050731784 }</code></pre></td></tr></table>
+<p>The function returns a <code>TTestStatistics</code> type. If contains the fields
+- <code>Statistic</code>: defines the exact teststatistic
+- <code>DegreesOfFreedom</code>: defines the degrees of freedom
+- <code>PValueLeft</code>: the left-tailed p-value
+- <code>PValueRight</code>: the right-tailed p-value
+- <code>PValue</code>: the two-tailed p-value</p>
+<p>As we can see, when looking at the two-tailed p-value, our sample does <em>not</em> differ significantly from our expected value. This matches our visual impression of the boxplot, where the sample distribution
+is centered around 4.5.</p>
+<h2><a name="Two-sample-t-test-unpaired-data" class="anchor" href="#Two-sample-t-test-unpaired-data">Two-sample t-test (unpaired data)</a></h2>
+<p>The t-test is most often used in its two-sample variant. Here, two samples, independent from each other, are compared. It is required that both samples are normally distributed.
+In this next example, we are going to see if the gender of college athletes determines the number of concussions suffered over 3 years (from: <em>Covassin et al., 2003, Sex Differences and the Incidence of Concussions Among Collegiate Athletes, Journal of Athletic Training</em>).</p>
+<center>
+<img style="max-width:75%" src="../../images/TwoSampleTTest.png"></img>
+</center>
+Fig. 2: _The two-sample t-test._ The dashed orange and green lines depict the distribution of both samples that are compared with each other.
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs38', 50)" onmouseover="showTip(event, 'fs38', 50)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs39', 51)" onmouseover="showTip(event, 'fs39', 51)" class="id">Text</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs40', 52)" onmouseover="showTip(event, 'fs40', 52)" class="id">rawDataAthletes</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs7', 53)" onmouseover="showTip(event, 'fs7', 53)" class="rt">Http</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 54)" onmouseover="showTip(event, 'fs8', 54)" class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/fslaborg/datasets/main/data/ConcussionsInMaleAndFemaleCollegeAthletes_adapted.tsv&quot;</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs41', 55)" onmouseover="showTip(event, 'fs41', 55)" class="d">dataAthletesAsStream</span> <span class="o">=</span> <span class="k">new</span> <span onmouseout="hideTip(event, 'fs38', 56)" onmouseover="showTip(event, 'fs38', 56)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs42', 57)" onmouseover="showTip(event, 'fs42', 57)" class="id">IO</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs43', 58)" onmouseover="showTip(event, 'fs43', 58)" class="id">MemoryStream</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs40', 59)" onmouseover="showTip(event, 'fs40', 59)" class="id">rawDataAthletes</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs44', 60)" onmouseover="showTip(event, 'fs44', 60)" class="rt">Encoding</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs45', 61)" onmouseover="showTip(event, 'fs45', 61)" class="id">UTF8</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs46', 62)" onmouseover="showTip(event, 'fs46', 62)" class="id">GetBytes</span><span class="pn">)</span>
+
+<span class="c">// The schema helps us setting column keys.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs47', 63)" onmouseover="showTip(event, 'fs47', 63)" class="id">dataAthletesAsFrame</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs12', 64)" onmouseover="showTip(event, 'fs12', 64)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs48', 65)" onmouseover="showTip(event, 'fs48', 65)" class="id">ReadCsv</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs41', 66)" onmouseover="showTip(event, 'fs41', 66)" class="d">dataAthletesAsStream</span><span class="pn">,</span> <span class="fn">hasHeaders</span> <span class="o">=</span> <span class="k">false</span><span class="pn">,</span> <span class="fn">separators</span> <span class="o">=</span> <span class="s">&quot;\t&quot;</span><span class="pn">,</span> <span class="fn">schema</span> <span class="o">=</span> <span class="s">&quot;Gender, Sports, Year, Concussion, Count&quot;</span><span class="pn">)</span>
+
+<span onmouseout="hideTip(event, 'fs47', 67)" onmouseover="showTip(event, 'fs47', 67)" class="id">dataAthletesAsFrame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs49', 68)" onmouseover="showTip(event, 'fs49', 68)" class="id">Print</span><span class="pn">(</span><span class="pn">)</span>
+
+<span class="c">// We need to filter out the columns and rows we don&#39;t need. Thus, we filter out the rows where the athletes suffered no concussions  </span>
+<span class="c">// as well as filter out the columns without the number of concussions.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs50', 69)" onmouseover="showTip(event, 'fs50', 69)" class="id">dataAthletesFemale</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs51', 70)" onmouseover="showTip(event, 'fs51', 70)" class="id">dataAthletesMale</span> <span class="o">=</span>
+    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs52', 71)" onmouseover="showTip(event, 'fs52', 71)" class="fn">getAthleteGenderData</span> <span onmouseout="hideTip(event, 'fs53', 72)" onmouseover="showTip(event, 'fs53', 72)" class="fn">gender</span> <span class="o">=</span>
+        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs54', 73)" onmouseover="showTip(event, 'fs54', 73)" class="fn">dataAthletesOnlyConcussion</span> <span class="o">=</span>
+            <span onmouseout="hideTip(event, 'fs47', 74)" onmouseover="showTip(event, 'fs47', 74)" class="id">dataAthletesAsFrame</span>
+            <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs12', 75)" onmouseover="showTip(event, 'fs12', 75)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs55', 76)" onmouseover="showTip(event, 'fs55', 76)" class="id">filterRows</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs56', 77)" onmouseover="showTip(event, 'fs56', 77)" class="fn">r</span> <span onmouseout="hideTip(event, 'fs57', 78)" onmouseover="showTip(event, 'fs57', 78)" class="fn">objS</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs57', 79)" onmouseover="showTip(event, 'fs57', 79)" class="fn">objS</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs58', 80)" onmouseover="showTip(event, 'fs58', 80)" class="id">GetAs</span> <span class="s">&quot;Concussion&quot;</span><span class="pn">)</span>
+        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs59', 81)" onmouseover="showTip(event, 'fs59', 81)" class="fn">dataAthletesGenderFrame</span> <span class="o">=</span>
+            <span onmouseout="hideTip(event, 'fs54', 82)" onmouseover="showTip(event, 'fs54', 82)" class="fn">dataAthletesOnlyConcussion</span>
+            <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs12', 83)" onmouseover="showTip(event, 'fs12', 83)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs55', 84)" onmouseover="showTip(event, 'fs55', 84)" class="id">filterRows</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs56', 85)" onmouseover="showTip(event, 'fs56', 85)" class="fn">r</span> <span onmouseout="hideTip(event, 'fs57', 86)" onmouseover="showTip(event, 'fs57', 86)" class="fn">objS</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs57', 87)" onmouseover="showTip(event, 'fs57', 87)" class="fn">objS</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs58', 88)" onmouseover="showTip(event, 'fs58', 88)" class="id">GetAs</span> <span class="s">&quot;Gender&quot;</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs53', 89)" onmouseover="showTip(event, 'fs53', 89)" class="fn">gender</span><span class="pn">)</span>
+        <span onmouseout="hideTip(event, 'fs59', 90)" onmouseover="showTip(event, 'fs59', 90)" class="fn">dataAthletesGenderFrame</span>
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs12', 91)" onmouseover="showTip(event, 'fs12', 91)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 92)" onmouseover="showTip(event, 'fs14', 92)" class="id">getCol</span> <span class="s">&quot;Count&quot;</span> 
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs15', 93)" onmouseover="showTip(event, 'fs15', 93)" class="m">Series</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 94)" onmouseover="showTip(event, 'fs16', 94)" class="id">values</span>
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs33', 95)" onmouseover="showTip(event, 'fs33', 95)" class="fn">vector</span>
+    <span onmouseout="hideTip(event, 'fs52', 96)" onmouseover="showTip(event, 'fs52', 96)" class="fn">getAthleteGenderData</span> <span class="s">&quot;Female&quot;</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs52', 97)" onmouseover="showTip(event, 'fs52', 97)" class="fn">getAthleteGenderData</span> <span class="s">&quot;Male&quot;</span>
+    
+</code></pre>
+<p>Again, let's check our data via boxplots before we proceed on comparing them.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs60', 98)" onmouseover="showTip(event, 'fs60', 98)" class="id">boxPlot2</span> <span class="o">=</span> 
+    <span class="pn">[</span>
+        <span onmouseout="hideTip(event, 'fs21', 99)" onmouseover="showTip(event, 'fs21', 99)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs22', 100)" onmouseover="showTip(event, 'fs22', 100)" class="id">BoxPlot</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs61', 101)" onmouseover="showTip(event, 'fs61', 101)" class="fn">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs50', 102)" onmouseover="showTip(event, 'fs50', 102)" class="id">dataAthletesFemale</span><span class="pn">,</span> <span class="fn">Name</span> <span class="o">=</span> <span class="s">&quot;female college athletes&quot;</span><span class="pn">,</span> <span class="fn">Boxpoints</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs24', 103)" onmouseover="showTip(event, 'fs24', 103)" class="m">StyleParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 104)" onmouseover="showTip(event, 'fs25', 104)" class="rt">Boxpoints</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs26', 105)" onmouseover="showTip(event, 'fs26', 105)" class="id">All</span><span class="pn">,</span> <span class="fn">Jitter</span> <span class="o">=</span> <span class="n">0.2</span><span class="pn">)</span>
+        <span onmouseout="hideTip(event, 'fs21', 106)" onmouseover="showTip(event, 'fs21', 106)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs22', 107)" onmouseover="showTip(event, 'fs22', 107)" class="id">BoxPlot</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs61', 108)" onmouseover="showTip(event, 'fs61', 108)" class="fn">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs51', 109)" onmouseover="showTip(event, 'fs51', 109)" class="id">dataAthletesMale</span><span class="pn">,</span> <span class="fn">Name</span> <span class="o">=</span> <span class="s">&quot;male college athletes&quot;</span><span class="pn">,</span> <span class="fn">Boxpoints</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs24', 110)" onmouseover="showTip(event, 'fs24', 110)" class="m">StyleParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 111)" onmouseover="showTip(event, 'fs25', 111)" class="rt">Boxpoints</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs26', 112)" onmouseover="showTip(event, 'fs26', 112)" class="id">All</span><span class="pn">,</span> <span class="fn">Jitter</span> <span class="o">=</span> <span class="n">0.2</span><span class="pn">)</span>
+    <span class="pn">]</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 113)" onmouseover="showTip(event, 'fs21', 113)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs62', 114)" onmouseover="showTip(event, 'fs62', 114)" class="id">Combine</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 115)" onmouseover="showTip(event, 'fs21', 115)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 116)" onmouseover="showTip(event, 'fs27', 116)" class="id">withY_AxisStyle</span> <span class="s">&quot;number of concussions over 3 years&quot;</span>
+</code></pre>
+<center>
+<div id="2c430ee4-3d92-4986-83d1-1427f2a2c57a" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script type="text/javascript">
+
+            var renderPlotly_2c430ee43d92498683d11427f2a2c57a = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            fsharpPlotlyRequire(['plotly'], function(Plotly) {
+
+            var data = [{"type":"box","y":[51.0,47.0,60.0,12.0,7.0,7.0,16.0,30.0,26.0,9.0,10.0,28.0,1.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"female college athletes","marker":{}},{"type":"box","y":[34.0,27.0,40.0,19.0,15.0,17.0,8.0,21.0,20.0,22.0,6.0,25.0,0.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"male college athletes","marker":{}}];
+            var layout = {"yaxis":{"title":"number of concussions over 3 years"}};
+            var config = {};
+            Plotly.newPlot('2c430ee4-3d92-4986-83d1-1427f2a2c57a', data, layout, config);
+});
+            };
+            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
+                var script = document.createElement("script");
+                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
+                script.onload = function(){
+                    renderPlotly_2c430ee43d92498683d11427f2a2c57a();
+                };
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            else {
+                renderPlotly_2c430ee43d92498683d11427f2a2c57a();
+            }
+</script>
+
+</center>
+<p>Both samples are tested against using <code>FSharp.Stats.Testing.TTest.twoSample</code> and assuming equal variances.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// We test both samples against each other, assuming equal variances.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs63', 120)" onmouseover="showTip(event, 'fs63', 120)" class="id">twoSampleResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs36', 121)" onmouseover="showTip(event, 'fs36', 121)" class="m">TTest</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs64', 122)" onmouseover="showTip(event, 'fs64', 122)" class="id">twoSample</span> <span class="k">true</span> <span onmouseout="hideTip(event, 'fs50', 123)" onmouseover="showTip(event, 'fs50', 123)" class="id">dataAthletesFemale</span> <span onmouseout="hideTip(event, 'fs51', 124)" onmouseover="showTip(event, 'fs51', 124)" class="id">dataAthletesMale</span>
+</code></pre>
+<table class="pre"><tr><td><pre><code>{ Statistic = 0.5616104016
+  DegreesOfFreedom = 28.0
+  PValueLeft = 0.7105752703
+  PValueRight = 0.2894247297
+  PValue = 0.5788494593 }</code></pre></td></tr></table>
+<p>With a p value of 0.58 the t-test indicate that there's no significant difference between the number of concussions over 3 years between male and female college athletes.</p>
+<h2><a name="Two-sample-t-test-paired-data" class="anchor" href="#Two-sample-t-test-paired-data">Two-sample t-test (paired data)</a></h2>
+<p>Paired data describes data where each value from the one sample is connected with its respective value from the other sample.<br />
+In the next case, the endurance performance of several persons in a normal situation (control situation) is compared to their performance after ingesting a specific amount of caffeine*.
+It is the same person that performs the exercise but under different conditions. Thus, the resulting values of the persons under each condition are compared.<br />
+Another example are time-dependent experiments: One measures, e.g., the condition of cells stressed with a high surrounding temperature in the beginning and after 30 minutes.
+The measured cells are always the same, yet their conditions might differ.
+Due to the connectivity of the sample pairs the samples must be of equal length.</p>
+<p>*Source: W.J. Pasman, M.A. van Baak, A.E. Jeukendrup, A. de Haan (1995). <em>The Effect of Different Dosages of Caffeine on Endurance Performance Time</em>, International Journal of Sports Medicine, Vol. 16, pp225-230.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs65', 125)" onmouseover="showTip(event, 'fs65', 125)" class="id">rawDataCaffeine</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs7', 126)" onmouseover="showTip(event, 'fs7', 126)" class="rt">Http</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 127)" onmouseover="showTip(event, 'fs8', 127)" class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/fslaborg/datasets/main/data/CaffeineAndEndurance(wide)_adapted.tsv&quot;</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs66', 128)" onmouseover="showTip(event, 'fs66', 128)" class="d">dataCaffeineAsStream</span> <span class="o">=</span> <span class="k">new</span> <span onmouseout="hideTip(event, 'fs38', 129)" onmouseover="showTip(event, 'fs38', 129)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs42', 130)" onmouseover="showTip(event, 'fs42', 130)" class="id">IO</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs43', 131)" onmouseover="showTip(event, 'fs43', 131)" class="id">MemoryStream</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs65', 132)" onmouseover="showTip(event, 'fs65', 132)" class="id">rawDataCaffeine</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs44', 133)" onmouseover="showTip(event, 'fs44', 133)" class="rt">Encoding</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs45', 134)" onmouseover="showTip(event, 'fs45', 134)" class="id">UTF8</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs46', 135)" onmouseover="showTip(event, 'fs46', 135)" class="id">GetBytes</span><span class="pn">)</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs67', 136)" onmouseover="showTip(event, 'fs67', 136)" class="id">dataCaffeineAsFrame</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs12', 137)" onmouseover="showTip(event, 'fs12', 137)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs48', 138)" onmouseover="showTip(event, 'fs48', 138)" class="id">ReadCsv</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs66', 139)" onmouseover="showTip(event, 'fs66', 139)" class="d">dataCaffeineAsStream</span><span class="pn">,</span> <span class="fn">hasHeaders</span> <span class="o">=</span> <span class="k">false</span><span class="pn">,</span> <span class="fn">separators</span> <span class="o">=</span> <span class="s">&quot;\t&quot;</span><span class="pn">,</span> <span class="fn">schema</span> <span class="o">=</span> <span class="s">&quot;Subject ID, no Dose, 5 mg, 9 mg, 13 mg&quot;</span><span class="pn">)</span>
+
+<span class="c">// We want to compare the subjects&#39; performances under the influence of 13 mg caffeine and in the control situation.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs68', 140)" onmouseover="showTip(event, 'fs68', 140)" class="id">dataCaffeineNoDose</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs69', 141)" onmouseover="showTip(event, 'fs69', 141)" class="id">dataCaffeine13mg</span> <span class="o">=</span>
+    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs70', 142)" onmouseover="showTip(event, 'fs70', 142)" class="fn">getVectorFromCol</span> <span onmouseout="hideTip(event, 'fs71', 143)" onmouseover="showTip(event, 'fs71', 143)" class="fn">col</span> <span class="o">=</span> 
+        <span onmouseout="hideTip(event, 'fs67', 144)" onmouseover="showTip(event, 'fs67', 144)" class="id">dataCaffeineAsFrame</span>
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs12', 145)" onmouseover="showTip(event, 'fs12', 145)" class="m">Frame</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 146)" onmouseover="showTip(event, 'fs14', 146)" class="id">getCol</span> <span onmouseout="hideTip(event, 'fs71', 147)" onmouseover="showTip(event, 'fs71', 147)" class="fn">col</span>
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs15', 148)" onmouseover="showTip(event, 'fs15', 148)" class="m">Series</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 149)" onmouseover="showTip(event, 'fs16', 149)" class="id">values</span>
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs33', 150)" onmouseover="showTip(event, 'fs33', 150)" class="fn">vector</span>
+    <span onmouseout="hideTip(event, 'fs70', 151)" onmouseover="showTip(event, 'fs70', 151)" class="fn">getVectorFromCol</span> <span class="s">&quot;no Dose&quot;</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs70', 152)" onmouseover="showTip(event, 'fs70', 152)" class="fn">getVectorFromCol</span> <span class="s">&quot;13 mg&quot;</span>
+
+<span class="c">// Transforming our data into a chart.</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs72', 153)" onmouseover="showTip(event, 'fs72', 153)" class="id">visualizePairedData</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs73', 154)" onmouseover="showTip(event, 'fs73', 154)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs74', 155)" onmouseover="showTip(event, 'fs74', 155)" class="id">zip</span> <span onmouseout="hideTip(event, 'fs68', 156)" onmouseover="showTip(event, 'fs68', 156)" class="id">dataCaffeineNoDose</span> <span onmouseout="hideTip(event, 'fs69', 157)" onmouseover="showTip(event, 'fs69', 157)" class="id">dataCaffeine13mg</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs73', 158)" onmouseover="showTip(event, 'fs73', 158)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs75', 159)" onmouseover="showTip(event, 'fs75', 159)" class="id">mapi</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs76', 160)" onmouseover="showTip(event, 'fs76', 160)" class="fn">i</span> <span class="pn">(</span><span onmouseout="hideTip(event, 'fs77', 161)" onmouseover="showTip(event, 'fs77', 161)" class="fn">control</span><span class="pn">,</span><span onmouseout="hideTip(event, 'fs78', 162)" onmouseover="showTip(event, 'fs78', 162)" class="fn">treatment</span><span class="pn">)</span> <span class="k">-&gt;</span> 
+        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs79', 163)" onmouseover="showTip(event, 'fs79', 163)" class="fn">participant</span> <span class="o">=</span> <span class="s">&quot;Person &quot;</span> <span class="o">+</span> <span onmouseout="hideTip(event, 'fs80', 164)" onmouseover="showTip(event, 'fs80', 164)" class="fn">string</span> <span onmouseout="hideTip(event, 'fs76', 165)" onmouseover="showTip(event, 'fs76', 165)" class="fn">i</span> 
+        <span onmouseout="hideTip(event, 'fs21', 166)" onmouseover="showTip(event, 'fs21', 166)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs81', 167)" onmouseover="showTip(event, 'fs81', 167)" class="id">Line</span><span class="pn">(</span><span class="pn">[</span><span class="s">&quot;no dose&quot;</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs77', 168)" onmouseover="showTip(event, 'fs77', 168)" class="fn">control</span><span class="pn">;</span> <span class="s">&quot;13 mg&quot;</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs78', 169)" onmouseover="showTip(event, 'fs78', 169)" class="fn">treatment</span><span class="pn">]</span><span class="pn">,</span> <span class="fn">Name</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs79', 170)" onmouseover="showTip(event, 'fs79', 170)" class="fn">participant</span><span class="pn">)</span>
+        <span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 171)" onmouseover="showTip(event, 'fs21', 171)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs62', 172)" onmouseover="showTip(event, 'fs62', 172)" class="id">Combine</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 173)" onmouseover="showTip(event, 'fs21', 173)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs82', 174)" onmouseover="showTip(event, 'fs82', 174)" class="id">withX_AxisStyle</span> <span class="s">&quot;&quot;</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 175)" onmouseover="showTip(event, 'fs21', 175)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 176)" onmouseover="showTip(event, 'fs27', 176)" class="id">withY_AxisStyle</span><span class="pn">(</span><span class="s">&quot;endurance performance&quot;</span><span class="pn">,</span> <span class="fn">MinMax</span> <span class="o">=</span> <span class="pn">(</span><span class="n">0.</span><span class="pn">,</span><span class="n">100.</span><span class="pn">)</span><span class="pn">)</span>
+</code></pre>
+<center>
+<div id="70492caf-6d34-419d-96de-95d5b704b0ab" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script type="text/javascript">
+
+            var renderPlotly_70492caf6d34419d96de95d5b704b0ab = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            fsharpPlotlyRequire(['plotly'], function(Plotly) {
+
+            var data = [{"type":"scatter","x":["no dose","13 mg"],"y":[36.05,37.55],"mode":"lines","line":{},"name":"Person 0","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[52.47,59.3],"mode":"lines","line":{},"name":"Person 1","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[56.55,79.12],"mode":"lines","line":{},"name":"Person 2","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[45.2,58.33],"mode":"lines","line":{},"name":"Person 3","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[35.25,70.54],"mode":"lines","line":{},"name":"Person 4","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[66.38,69.47],"mode":"lines","line":{},"name":"Person 5","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[40.57,46.48],"mode":"lines","line":{},"name":"Person 6","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[57.15,66.35],"mode":"lines","line":{},"name":"Person 7","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[28.34,36.2],"mode":"lines","line":{},"name":"Person 8","marker":{}}];
+            var layout = {"xaxis":{"title":""},"yaxis":{"title":"endurance performance","range":[0.0,100.0]}};
+            var config = {};
+            Plotly.newPlot('70492caf-6d34-419d-96de-95d5b704b0ab', data, layout, config);
+});
+            };
+            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
+                var script = document.createElement("script");
+                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
+                script.onload = function(){
+                    renderPlotly_70492caf6d34419d96de95d5b704b0ab();
+                };
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            else {
+                renderPlotly_70492caf6d34419d96de95d5b704b0ab();
+            }
+</script>
+
+</center>
+<p>The function for pairwise t-tests can be found at <code>FSharp.Stats.Testing.TTest.twoSamplePaired</code>. Note, that the order of the elements in each vector must be the same, so that a pairwise comparison can be performed.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs83', 180)" onmouseover="showTip(event, 'fs83', 180)" class="id">twoSamplePairedResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs36', 181)" onmouseover="showTip(event, 'fs36', 181)" class="m">TTest</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs84', 182)" onmouseover="showTip(event, 'fs84', 182)" class="id">twoSamplePaired</span> <span onmouseout="hideTip(event, 'fs68', 183)" onmouseover="showTip(event, 'fs68', 183)" class="id">dataCaffeineNoDose</span> <span onmouseout="hideTip(event, 'fs69', 184)" onmouseover="showTip(event, 'fs69', 184)" class="id">dataCaffeine13mg</span>
+</code></pre>
+<table class="pre"><tr><td><pre><code>{ Statistic = 3.252507672
+  DegreesOfFreedom = 8.0
+  PValueLeft = 0.9941713794
+  PValueRight = 0.005828620625
+  PValue = 0.01165724125 }</code></pre></td></tr></table>
+<p>The two-sample paired t-test suggests a significant difference beween caffeine and non-caffeine treatment groups with a p-value of 0.012.</p>
+
+            </div>
+        </div>
+    </section>
+    <div class="fsdocs-tip" id="fs1">Multiple items<br />namespace FSharp<br /><br />--------------------<br />namespace Microsoft.FSharp</div>
+<div class="fsdocs-tip" id="fs2">Multiple items<br />namespace FSharp.Data<br /><br />--------------------<br />namespace Microsoft.FSharp.Data</div>
+<div class="fsdocs-tip" id="fs3">namespace Deedle</div>
+<div class="fsdocs-tip" id="fs4">namespace Plotly</div>
+<div class="fsdocs-tip" id="fs5">namespace Plotly.NET</div>
+<div class="fsdocs-tip" id="fs6">val rawDataHousefly : string</div>
+<div class="fsdocs-tip" id="fs7">type Http =
+  private new : unit -&gt; Http
+  static member private AppendQueryToUrl : url:string * query:(string * string) list -&gt; string
+  static member AsyncRequest : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponse&gt;
+  static member AsyncRequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;HttpResponseWithStream&gt;
+  static member AsyncRequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;string&gt;
+  static member private EncodeFormData : query:string -&gt; string
+  static member private InnerRequest : url:string * toHttpResponse:(string -&gt; int -&gt; string -&gt; string -&gt; &#39;a0 option -&gt; Map&lt;string,string&gt; -&gt; Map&lt;string,string&gt; -&gt; Stream -&gt; Async&lt;&#39;a1&gt;) * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:&#39;a0 * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; Async&lt;&#39;a1&gt;
+  static member Request : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponse
+  static member RequestStream : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; HttpResponseWithStream
+  static member RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(HttpWebRequest -&gt; HttpWebRequest) * ?timeout:int -&gt; string<br /><em>&lt;summary&gt;
+ Utilities for working with network via HTTP. Includes methods for downloading
+ resources with specified headers, query parameters and HTTP body
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs8">Multiple items<br />static member Http.RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:System.Net.CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(System.Net.HttpWebRequest -&gt; System.Net.HttpWebRequest) * ?timeout:int -&gt; string<br /><br />--------------------<br />static member Http.RequestString : url:string * ?query:(string * string) list * ?headers:seq&lt;string * string&gt; * ?httpMethod:string * ?body:HttpRequestBody * ?cookies:seq&lt;string * string&gt; * ?cookieContainer:System.Net.CookieContainer * ?silentHttpErrors:bool * ?silentCookieErrors:bool * ?responseEncodingOverride:string * ?customizeHttpRequest:(System.Net.HttpWebRequest -&gt; System.Net.HttpWebRequest) * ?timeout:int -&gt; string</div>
+<div class="fsdocs-tip" id="fs9">val dataHousefly : seq&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs10">Multiple items<br />val seq : sequence:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;T&gt;<br /><em>&lt;summary&gt;Builds a sequence using sequence expression syntax&lt;/summary&gt;<br />&lt;param name=&quot;sequence&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;</em><br /><br />--------------------<br />type seq&lt;&#39;T&gt; = System.Collections.Generic.IEnumerable&lt;&#39;T&gt;<br /><em>&lt;summary&gt;An abbreviation for the CLI type &lt;see cref=&quot;T:System.Collections.Generic.IEnumerable`1&quot; /&gt;&lt;/summary&gt;<br />&lt;remarks&gt;
+  See the &lt;see cref=&quot;T:Microsoft.FSharp.Collections.SeqModule&quot; /&gt; module for further operations related to sequences.
+
+  See also &lt;a href=&quot;https://docs.microsoft.com/dotnet/fsharp/language-reference/sequences&quot;&gt;F# Language Guide - Sequences&lt;/a&gt;.
+&lt;/remarks&gt;</em></div>
+<div class="fsdocs-tip" id="fs11">Multiple items<br />val float : value:&#39;T -&gt; float (requires member op_Explicit)<br /><em>&lt;summary&gt;Converts the argument to 64-bit float. This is a direct conversion for all 
+ primitive numeric types. For strings, the input is converted using &lt;c&gt;Double.Parse()&lt;/c&gt;  
+ with InvariantCulture settings. Otherwise the operation requires an appropriate
+ static conversion method on the input type.&lt;/summary&gt;<br />&lt;param name=&quot;value&quot;&gt;The input value.&lt;/param&gt;<br />&lt;returns&gt;The converted float&lt;/returns&gt;</em><br /><br />--------------------<br />[&lt;Struct&gt;]
+type float = System.Double<br /><em>&lt;summary&gt;An abbreviation for the CLI type &lt;see cref=&quot;T:System.Double&quot; /&gt;.&lt;/summary&gt;<br />&lt;category&gt;Basic Types&lt;/category&gt;</em><br /><br />--------------------<br />type float&lt;&#39;Measure&gt; =
+  float<br /><em>&lt;summary&gt;The type of double-precision floating point numbers, annotated with a unit of measure. 
+ The unit of measure is erased in compiled code and when values of this type
+ are analyzed using reflection. The type is representationally equivalent to 
+ &lt;see cref=&quot;T:System.Double&quot; /&gt;.&lt;/summary&gt;<br />&lt;category index=&quot;6&quot;&gt;Basic Types with Units of Measure&lt;/category&gt;</em></div>
+<div class="fsdocs-tip" id="fs12">Multiple items<br />module Frame
+
+from Deedle<br /><br />--------------------<br />type Frame =
+  inherit DynamicObj
+  new : unit -&gt; Frame<br /><br />--------------------<br />type Frame&lt;&#39;TRowKey,&#39;TColumnKey (requires equality and equality)&gt; =
+  interface IDynamicMetaObjectProvider
+  interface INotifyCollectionChanged
+  interface IFsiFormattable
+  interface IFrame
+  new : rowIndex:IIndex&lt;&#39;TRowKey&gt; * columnIndex:IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:IIndexBuilder * vectorBuilder:IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload
+  member AddColumn : column:&#39;TColumnKey * series:seq&lt;&#39;V&gt; -&gt; unit + 3 overloads
+  member AggregateRowsBy : groupBy:seq&lt;&#39;TColumnKey&gt; * aggBy:seq&lt;&#39;TColumnKey&gt; * aggFunc:Func&lt;Series&lt;&#39;TRowKey,&#39;a&gt;,&#39;b&gt; -&gt; Frame&lt;int,&#39;TColumnKey&gt;
+  member Clone : unit -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;
+  member ColumnApply : f:Func&lt;Series&lt;&#39;TRowKey,&#39;T&gt;,ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt; + 1 overload
+  member DropColumn : column:&#39;TColumnKey -&gt; unit
+  ...<br /><br />--------------------<br />new : unit -&gt; Frame<br /><br />--------------------<br />new : names:seq&lt;&#39;TColumnKey&gt; * columns:seq&lt;ISeries&lt;&#39;TRowKey&gt;&gt; -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;<br />new : rowIndex:Indices.IIndex&lt;&#39;TRowKey&gt; * columnIndex:Indices.IIndex&lt;&#39;TColumnKey&gt; * data:IVector&lt;IVector&gt; * indexBuilder:Indices.IIndexBuilder * vectorBuilder:Vectors.IVectorBuilder -&gt; Frame&lt;&#39;TRowKey,&#39;TColumnKey&gt;</div>
+<div class="fsdocs-tip" id="fs13">static member Frame.ReadCsvString : csvString:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs14">val getCol : column:&#39;C -&gt; frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; Series&lt;&#39;R,&#39;V&gt; (requires equality and equality)</div>
+<div class="fsdocs-tip" id="fs15">Multiple items<br />module Series
+
+from Deedle<br /><br />--------------------<br />type Series =
+  static member ofNullables : values:seq&lt;Nullable&lt;&#39;a0&gt;&gt; -&gt; Series&lt;int,&#39;a0&gt; (requires default constructor and value type and &#39;a0 :&gt; ValueType)
+  static member ofObservations : observations:seq&lt;&#39;c * &#39;d&gt; -&gt; Series&lt;&#39;c,&#39;d&gt; (requires equality)
+  static member ofOptionalObservations : observations:seq&lt;&#39;K * &#39;a1 option&gt; -&gt; Series&lt;&#39;K,&#39;a1&gt; (requires equality)
+  static member ofValues : values:seq&lt;&#39;a&gt; -&gt; Series&lt;int,&#39;a&gt;<br /><br />--------------------<br />type Series&lt;&#39;K,&#39;V (requires equality)&gt; =
+  interface IFsiFormattable
+  interface ISeries&lt;&#39;K&gt;
+  new : index:IIndex&lt;&#39;K&gt; * vector:IVector&lt;&#39;V&gt; * vectorBuilder:IVectorBuilder * indexBuilder:IIndexBuilder -&gt; Series&lt;&#39;K,&#39;V&gt; + 3 overloads
+  member After : lowerExclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;
+  member Aggregate : aggregation:Aggregation&lt;&#39;K&gt; * keySelector:Func&lt;DataSegment&lt;Series&lt;&#39;K,&#39;V&gt;&gt;,&#39;TNewKey&gt; * valueSelector:Func&lt;DataSegment&lt;Series&lt;&#39;K,&#39;V&gt;&gt;,OptionalValue&lt;&#39;R&gt;&gt; -&gt; Series&lt;&#39;TNewKey,&#39;R&gt; (requires equality) + 1 overload
+  member AsyncMaterialize : unit -&gt; Async&lt;Series&lt;&#39;K,&#39;V&gt;&gt;
+  member Before : upperExclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;
+  member Between : lowerInclusive:&#39;K * upperInclusive:&#39;K -&gt; Series&lt;&#39;K,&#39;V&gt;
+  member Compare : another:Series&lt;&#39;K,&#39;V&gt; -&gt; Series&lt;&#39;K,Diff&lt;&#39;V&gt;&gt;
+  member Convert : forward:Func&lt;&#39;V,&#39;R&gt; * backward:Func&lt;&#39;R,&#39;V&gt; -&gt; Series&lt;&#39;K,&#39;R&gt;
+  ...<br /><br />--------------------<br />new : pairs:seq&lt;System.Collections.Generic.KeyValuePair&lt;&#39;K,&#39;V&gt;&gt; -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : keys:seq&lt;&#39;K&gt; * values:seq&lt;&#39;V&gt; -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : keys:&#39;K [] * values:&#39;V [] -&gt; Series&lt;&#39;K,&#39;V&gt;<br />new : index:Indices.IIndex&lt;&#39;K&gt; * vector:IVector&lt;&#39;V&gt; * vectorBuilder:Vectors.IVectorBuilder * indexBuilder:Indices.IIndexBuilder -&gt; Series&lt;&#39;K,&#39;V&gt;</div>
+<div class="fsdocs-tip" id="fs16">val values : series:Series&lt;&#39;K,&#39;T&gt; -&gt; seq&lt;&#39;T&gt; (requires equality)</div>
+<div class="fsdocs-tip" id="fs17">Multiple items<br />module Seq
+
+from Plotly.NET<br /><br />--------------------<br />module Seq
+
+from Microsoft.FSharp.Collections<br /><em>&lt;summary&gt;Contains operations for working with values of type &lt;see cref=&quot;T:Microsoft.FSharp.Collections.seq`1&quot; /&gt;.&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs18">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;<br /><em>&lt;summary&gt;Builds a new collection whose elements are the results of applying the given function
+ to each of the elements of the collection.  The given function will be applied
+ as elements are demanded using the &lt;c&gt;MoveNext&lt;/c&gt; method on enumerators retrieved from the
+ object.&lt;/summary&gt;<br />&lt;remarks&gt;The returned sequence may be passed between threads safely. However, 
+ individual IEnumerator values generated from the returned sequence should not be accessed concurrently.&lt;/remarks&gt;<br />&lt;param name=&quot;mapping&quot;&gt;A function to transform items from the input sequence.&lt;/param&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input sequence is null.&lt;/exception&gt;</em></div>
+<div class="fsdocs-tip" id="fs19">val x : float</div>
+<div class="fsdocs-tip" id="fs20">val boxPlot : GenericChart.GenericChart</div>
+<div class="fsdocs-tip" id="fs21">type Chart =
+  static member Area : x:seq&lt;#IConvertible&gt; * y:seq&lt;#IConvertible&gt; * ?Name:string * ?ShowMarkers:bool * ?Showlegend:bool * ?MarkerSymbol:Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Dash:DrawingStyle * ?Width:float -&gt; GenericChart + 1 overload
+  static member Bar : keys:seq&lt;#IConvertible&gt; * values:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Marker:Marker -&gt; GenericChart + 1 overload
+  static member BoxPlot : ?x:&#39;a * ?y:&#39;b * ?Name:string * ?Showlegend:bool * ?Color:string * ?Fillcolor:&#39;c * ?Opacity:float * ?Whiskerwidth:&#39;d * ?Boxpoints:Boxpoints * ?Boxmean:BoxMean * ?Jitter:&#39;e * ?Pointpos:&#39;f * ?Orientation:Orientation * ?Marker:Marker * ?Line:Line * ?Alignmentgroup:&#39;g * ?Offsetgroup:&#39;h * ?Notched:bool * ?NotchWidth:float * ?QuartileMethod:QuartileMethod -&gt; GenericChart + 1 overload
+  static member Bubble : x:seq&lt;#IConvertible&gt; * y:seq&lt;#IConvertible&gt; * sizes:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?MarkerSymbol:Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?StackGroup:string * ?Orientation:Orientation * ?GroupNorm:GroupNorm * ?UseWebGL:bool -&gt; GenericChart + 1 overload
+  static member Candlestick : open:seq&lt;#IConvertible&gt; * high:seq&lt;#IConvertible&gt; * low:seq&lt;#IConvertible&gt; * close:seq&lt;#IConvertible&gt; * x:seq&lt;#IConvertible&gt; * ?Increasing:Line * ?Decreasing:Line * ?WhiskerWidth:float * ?Line:Line * ?XCalendar:Calendar -&gt; GenericChart + 1 overload
+  static member ChoroplethMap : locations:seq&lt;string&gt; * z:seq&lt;#IConvertible&gt; * ?Text:seq&lt;#IConvertible&gt; * ?Locationmode:LocationFormat * ?Autocolorscale:bool * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?Marker:Marker * ?GeoJson:&#39;a2 * ?FeatureIdKey:string * ?Zmin:float * ?Zmax:float -&gt; GenericChart
+  static member ChoroplethMapbox : locations:seq&lt;#IConvertible&gt; * z:seq&lt;#IConvertible&gt; * geoJson:&#39;a2 * ?FeatureIdKey:string * ?Text:seq&lt;#IConvertible&gt; * ?Below:string * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?ZAuto:bool * ?ZMin:float * ?ZMid:float * ?ZMax:float -&gt; GenericChart
+  static member Column : keys:seq&lt;#IConvertible&gt; * values:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#IConvertible&gt; * ?TextPosition:TextPosition * ?TextFont:Font * ?Marker:Marker -&gt; GenericChart + 1 overload
+  static member Contour : data:seq&lt;#seq&lt;&#39;a1&gt;&gt; * ?X:seq&lt;#IConvertible&gt; * ?Y:seq&lt;#IConvertible&gt; * ?Name:string * ?Showlegend:bool * ?Opacity:float * ?Colorscale:Colorscale * ?Showscale:&#39;a4 * ?zSmooth:SmoothAlg * ?Colorbar:&#39;a5 -&gt; GenericChart (requires &#39;a1 :&gt; IConvertible)
+  static member DensityMapbox : lon:seq&lt;#IConvertible&gt; * lat:seq&lt;#IConvertible&gt; * ?Z:seq&lt;#IConvertible&gt; * ?Radius:float * ?Opacity:float * ?Text:seq&lt;#IConvertible&gt; * ?Below:string * ?Colorscale:Colorscale * ?Colorbar:Colorbar * ?Showscale:bool * ?ZAuto:bool * ?ZMin:float * ?ZMid:float * ?ZMax:float -&gt; GenericChart + 1 overload
+  ...<br /><em>&lt;summary&gt;
+ Provides a set of static methods for creating charts.
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs22">static member Chart.BoxPlot : xy:seq&lt;&#39;a0 * &#39;a1&gt; * ?Name:string * ?Showlegend:bool * ?Color:string * ?Fillcolor:&#39;a2 * ?Opacity:float * ?Whiskerwidth:&#39;a3 * ?Boxpoints:StyleParam.Boxpoints * ?Boxmean:StyleParam.BoxMean * ?Jitter:&#39;a4 * ?Pointpos:&#39;a5 * ?Orientation:StyleParam.Orientation * ?Marker:Marker * ?Line:Line * ?Alignmentgroup:&#39;a6 * ?Offsetgroup:&#39;a7 * ?Notched:bool * ?NotchWidth:float * ?QuartileMethod:StyleParam.QuartileMethod -&gt; GenericChart.GenericChart<br />static member Chart.BoxPlot : ?x:&#39;a * ?y:&#39;b * ?Name:string * ?Showlegend:bool * ?Color:string * ?Fillcolor:&#39;c * ?Opacity:float * ?Whiskerwidth:&#39;d * ?Boxpoints:StyleParam.Boxpoints * ?Boxmean:StyleParam.BoxMean * ?Jitter:&#39;e * ?Pointpos:&#39;f * ?Orientation:StyleParam.Orientation * ?Marker:Marker * ?Line:Line * ?Alignmentgroup:&#39;g * ?Offsetgroup:&#39;h * ?Notched:bool * ?NotchWidth:float * ?QuartileMethod:StyleParam.QuartileMethod -&gt; GenericChart.GenericChart</div>
+<div class="fsdocs-tip" id="fs23">argument y: seq&lt;float&gt; option<br /><em>&lt;summary&gt;
+ Displays the distribution of data based on the five number summary: minimum, first quartile, median, third quartile, and maximum.            
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs24">module StyleParam
+
+from Plotly.NET</div>
+<div class="fsdocs-tip" id="fs25">type Boxpoints =
+  | Outliers
+  | All
+  | Suspectedoutliers
+  | False
+    static member convert : (Boxpoints -&gt; obj)</div>
+<div class="fsdocs-tip" id="fs26">union case StyleParam.Boxpoints.All: StyleParam.Boxpoints</div>
+<div class="fsdocs-tip" id="fs27">static member Chart.withY_AxisStyle : title:string * ?MinMax:(float * float) * ?Showgrid:bool * ?Showline:bool * ?Side:StyleParam.Side * ?Overlaying:StyleParam.AxisAnchorId * ?Id:int * ?Domain:(float * float) * ?Position:float * ?Zeroline:bool * ?Anchor:StyleParam.AxisAnchorId -&gt; (GenericChart.GenericChart -&gt; GenericChart.GenericChart)</div>
+<div class="fsdocs-tip" id="fs28">module GenericChart
+
+from Plotly.NET<br /><em>&lt;summary&gt;
+ Module to represent a GenericChart
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs29">val toChartHTML : gChart:GenericChart.GenericChart -&gt; string<br /><em>&lt;summary&gt;
+ Converts a GenericChart to it HTML representation. The div layer has a default size of 600 if not specified otherwise.
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs30">namespace FSharp.Stats</div>
+<div class="fsdocs-tip" id="fs31">namespace FSharp.Stats.Testing</div>
+<div class="fsdocs-tip" id="fs32">val vectorDataHousefly : Vector&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs33">Multiple items<br />val vector : l:seq&lt;float&gt; -&gt; Vector&lt;float&gt;<br /><br />--------------------<br />type vector = Vector&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs34">val expectedValue : float</div>
+<div class="fsdocs-tip" id="fs35">val oneSampleResult : TestStatistics.TTestStatistics</div>
+<div class="fsdocs-tip" id="fs36">module TTest
+
+from FSharp.Stats.Testing</div>
+<div class="fsdocs-tip" id="fs37">val oneSample : sample1:Vector&lt;float&gt; -&gt; mu:float -&gt; TestStatistics.TTestStatistics</div>
+<div class="fsdocs-tip" id="fs38">namespace System</div>
+<div class="fsdocs-tip" id="fs39">namespace System.Text</div>
+<div class="fsdocs-tip" id="fs40">val rawDataAthletes : string</div>
+<div class="fsdocs-tip" id="fs41">val dataAthletesAsStream : System.IO.MemoryStream</div>
+<div class="fsdocs-tip" id="fs42">namespace System.IO</div>
+<div class="fsdocs-tip" id="fs43">Multiple items<br />type MemoryStream =
+  inherit Stream
+  new : unit -&gt; unit + 6 overloads
+  member BeginRead : buffer: byte [] * offset: int * count: int * callback: AsyncCallback * state: obj -&gt; IAsyncResult
+  member BeginWrite : buffer: byte [] * offset: int * count: int * callback: AsyncCallback * state: obj -&gt; IAsyncResult
+  member CopyTo : destination: Stream * bufferSize: int -&gt; unit
+  member CopyToAsync : destination: Stream * bufferSize: int * cancellationToken: CancellationToken -&gt; Task
+  member Dispose : disposing: bool -&gt; unit
+  member EndRead : asyncResult: IAsyncResult -&gt; int
+  member EndWrite : asyncResult: IAsyncResult -&gt; unit
+  member Flush : unit -&gt; unit
+  ...<br /><em>&lt;summary&gt;Creates a stream whose backing store is memory.&lt;/summary&gt;</em><br /><br />--------------------<br />System.IO.MemoryStream() : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte []) : System.IO.MemoryStream<br />System.IO.MemoryStream(capacity: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool) : System.IO.MemoryStream<br />System.IO.MemoryStream(buffer: byte [], index: int, count: int, writable: bool, publiclyVisible: bool) : System.IO.MemoryStream</div>
+<div class="fsdocs-tip" id="fs44">type Encoding =
+  interface ICloneable
+  new : unit -&gt; unit + 2 overloads
+  member Clone : unit -&gt; obj
+  member Equals : value: obj -&gt; bool
+  member GetByteCount : chars: nativeptr&lt;char&gt; * count: int -&gt; int + 5 overloads
+  member GetBytes : chars: nativeptr&lt;char&gt; * charCount: int * bytes: nativeptr&lt;byte&gt; * byteCount: int -&gt; int + 7 overloads
+  member GetCharCount : bytes: nativeptr&lt;byte&gt; * count: int -&gt; int + 3 overloads
+  member GetChars : bytes: nativeptr&lt;byte&gt; * byteCount: int * chars: nativeptr&lt;char&gt; * charCount: int -&gt; int + 4 overloads
+  member GetDecoder : unit -&gt; Decoder
+  member GetEncoder : unit -&gt; Encoder
+  ...<br /><em>&lt;summary&gt;Represents a character encoding.&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs45">property Encoding.UTF8: Encoding with get<br /><em>&lt;summary&gt;Gets an encoding for the UTF-8 format.&lt;/summary&gt;<br />&lt;returns&gt;An encoding for the UTF-8 format.&lt;/returns&gt;</em></div>
+<div class="fsdocs-tip" id="fs46">(extension) Encoding.GetBytes(chars: inref&lt;System.Buffers.ReadOnlySequence&lt;char&gt;&gt;) : byte []<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />Encoding.GetBytes(s: string) : byte []<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />Encoding.GetBytes(chars: char []) : byte []<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />(extension) Encoding.GetBytes(chars: inref&lt;System.Buffers.ReadOnlySequence&lt;char&gt;&gt;, writer: System.Buffers.IBufferWriter&lt;byte&gt;) : int64<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />(extension) Encoding.GetBytes(chars: inref&lt;System.Buffers.ReadOnlySequence&lt;char&gt;&gt;, bytes: System.Span&lt;byte&gt;) : int<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />(extension) Encoding.GetBytes(chars: System.ReadOnlySpan&lt;char&gt;, writer: System.Buffers.IBufferWriter&lt;byte&gt;) : int64<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />Encoding.GetBytes(chars: System.ReadOnlySpan&lt;char&gt;, bytes: System.Span&lt;byte&gt;) : int<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />Encoding.GetBytes(s: string, index: int, count: int) : byte []<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />Encoding.GetBytes(chars: char [], index: int, count: int) : byte []<br />&#160;&#160;&#160;<em>(+0 other overloads)</em><br />Encoding.GetBytes(chars: nativeptr&lt;char&gt;, charCount: int, bytes: nativeptr&lt;byte&gt;, byteCount: int) : int<br />&#160;&#160;&#160;<em>(+0 other overloads)</em></div>
+<div class="fsdocs-tip" id="fs47">val dataAthletesAsFrame : Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs48">static member Frame.ReadCsv : path:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : stream:System.IO.Stream * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : reader:System.IO.TextReader * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : stream:System.IO.Stream * hasHeaders:System.Nullable&lt;bool&gt; * inferTypes:System.Nullable&lt;bool&gt; * inferRows:System.Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:System.Nullable&lt;int&gt; * missingValues:string [] * preferOptions:System.Nullable&lt;bool&gt; -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : location:string * hasHeaders:System.Nullable&lt;bool&gt; * inferTypes:System.Nullable&lt;bool&gt; * inferRows:System.Nullable&lt;int&gt; * schema:string * separators:string * culture:string * maxRows:System.Nullable&lt;int&gt; * missingValues:string [] * preferOptions:bool -&gt; Frame&lt;int,string&gt;<br />static member Frame.ReadCsv : path:string * indexCol:string * ?hasHeaders:bool * ?inferTypes:bool * ?inferRows:int * ?schema:string * ?separators:string * ?culture:string * ?maxRows:int * ?missingValues:string [] * ?preferOptions:bool -&gt; Frame&lt;&#39;R,string&gt; (requires equality)</div>
+<div class="fsdocs-tip" id="fs49">static member FrameExtensions.Print : frame:Frame&lt;&#39;K,&#39;V&gt; -&gt; unit (requires equality and equality)<br />static member FrameExtensions.Print : frame:Frame&lt;&#39;K,&#39;V&gt; * printTypes:bool -&gt; unit (requires equality and equality)</div>
+<div class="fsdocs-tip" id="fs50">val dataAthletesFemale : Vector&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs51">val dataAthletesMale : Vector&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs52">val getAthleteGenderData : (&#39;a -&gt; Vector&lt;float&gt;) (requires equality)</div>
+<div class="fsdocs-tip" id="fs53">val gender : &#39;a (requires equality)</div>
+<div class="fsdocs-tip" id="fs54">val dataAthletesOnlyConcussion : Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs55">val filterRows : f:(&#39;R -&gt; ObjectSeries&lt;&#39;C&gt; -&gt; bool) -&gt; frame:Frame&lt;&#39;R,&#39;C&gt; -&gt; Frame&lt;&#39;R,&#39;C&gt; (requires equality and equality)</div>
+<div class="fsdocs-tip" id="fs56">val r : int</div>
+<div class="fsdocs-tip" id="fs57">val objS : ObjectSeries&lt;string&gt;</div>
+<div class="fsdocs-tip" id="fs58">member ObjectSeries.GetAs : column:&#39;K -&gt; &#39;R<br />member ObjectSeries.GetAs : column:&#39;K * fallback:&#39;R -&gt; &#39;R</div>
+<div class="fsdocs-tip" id="fs59">val dataAthletesGenderFrame : Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs60">val boxPlot2 : GenericChart.GenericChart</div>
+<div class="fsdocs-tip" id="fs61">argument y: Vector&lt;float&gt; option<br /><em>&lt;summary&gt;
+ Displays the distribution of data based on the five number summary: minimum, first quartile, median, third quartile, and maximum.            
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs62">static member Chart.Combine : gCharts:seq&lt;GenericChart.GenericChart&gt; -&gt; GenericChart.GenericChart</div>
+<div class="fsdocs-tip" id="fs63">val twoSampleResult : TestStatistics.TTestStatistics</div>
+<div class="fsdocs-tip" id="fs64">val twoSample : assumeEqualVariances:bool -&gt; sample1:Vector&lt;float&gt; -&gt; sample2:Vector&lt;float&gt; -&gt; TestStatistics.TTestStatistics<br /><em>&lt;summary&gt;
+ Computes a t-test or a Welch test (unequal variances)
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs65">val rawDataCaffeine : string</div>
+<div class="fsdocs-tip" id="fs66">val dataCaffeineAsStream : System.IO.MemoryStream</div>
+<div class="fsdocs-tip" id="fs67">val dataCaffeineAsFrame : Frame&lt;int,string&gt;</div>
+<div class="fsdocs-tip" id="fs68">val dataCaffeineNoDose : Vector&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs69">val dataCaffeine13mg : Vector&lt;float&gt;</div>
+<div class="fsdocs-tip" id="fs70">val getVectorFromCol : (string -&gt; Vector&lt;float&gt;)</div>
+<div class="fsdocs-tip" id="fs71">val col : string</div>
+<div class="fsdocs-tip" id="fs72">val visualizePairedData : GenericChart.GenericChart</div>
+<div class="fsdocs-tip" id="fs73">Multiple items<br />module Seq
+
+from FSharp.Stats<br /><em>&lt;summary&gt;
+ Module to compute common statistical measure
+&lt;/summary&gt;</em><br /><br />--------------------<br />module Seq
+
+from Plotly.NET<br /><br />--------------------<br />module Seq
+
+from Microsoft.FSharp.Collections<br /><em>&lt;summary&gt;Contains operations for working with values of type &lt;see cref=&quot;T:Microsoft.FSharp.Collections.seq`1&quot; /&gt;.&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs74">val zip : source1:seq&lt;&#39;T1&gt; -&gt; source2:seq&lt;&#39;T2&gt; -&gt; seq&lt;&#39;T1 * &#39;T2&gt;<br /><em>&lt;summary&gt;Combines the two sequences into a list of pairs. The two sequences need not have equal lengths:
+ when one sequence is exhausted any remaining elements in the other
+ sequence are ignored.&lt;/summary&gt;<br />&lt;param name=&quot;source1&quot;&gt;The first input sequence.&lt;/param&gt;<br />&lt;param name=&quot;source2&quot;&gt;The second input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when either of the input sequences is null.&lt;/exception&gt;</em></div>
+<div class="fsdocs-tip" id="fs75">val mapi : mapping:(int -&gt; &#39;T -&gt; &#39;U) -&gt; source:seq&lt;&#39;T&gt; -&gt; seq&lt;&#39;U&gt;<br /><em>&lt;summary&gt;Builds a new collection whose elements are the results of applying the given function
+ to each of the elements of the collection. The integer index passed to the
+ function indicates the index (from 0) of element being transformed.&lt;/summary&gt;<br />&lt;param name=&quot;mapping&quot;&gt;A function to transform items from the input sequence that also supplies the current index.&lt;/param&gt;<br />&lt;param name=&quot;source&quot;&gt;The input sequence.&lt;/param&gt;<br />&lt;returns&gt;The result sequence.&lt;/returns&gt;<br />&lt;exception cref=&quot;T:System.ArgumentNullException&quot;&gt;Thrown when the input sequence is null.&lt;/exception&gt;</em></div>
+<div class="fsdocs-tip" id="fs76">val i : int</div>
+<div class="fsdocs-tip" id="fs77">val control : float</div>
+<div class="fsdocs-tip" id="fs78">val treatment : float</div>
+<div class="fsdocs-tip" id="fs79">val participant : string</div>
+<div class="fsdocs-tip" id="fs80">Multiple items<br />val string : value:&#39;T -&gt; string<br /><em>&lt;summary&gt;Converts the argument to a string using &lt;c&gt;ToString&lt;/c&gt;.&lt;/summary&gt;<br />&lt;remarks&gt;For standard integer and floating point values the and any type that implements &lt;c&gt;IFormattable&lt;/c&gt;&lt;c&gt;ToString&lt;/c&gt; conversion uses &lt;c&gt;CultureInfo.InvariantCulture&lt;/c&gt;. &lt;/remarks&gt;<br />&lt;param name=&quot;value&quot;&gt;The input value.&lt;/param&gt;<br />&lt;returns&gt;The converted string.&lt;/returns&gt;</em><br /><br />--------------------<br />type string = System.String<br /><em>&lt;summary&gt;An abbreviation for the CLI type &lt;see cref=&quot;T:System.String&quot; /&gt;.&lt;/summary&gt;<br />&lt;category&gt;Basic Types&lt;/category&gt;</em></div>
+<div class="fsdocs-tip" id="fs81">static member Chart.Line : xy:seq&lt;#System.IConvertible * #System.IConvertible&gt; * ?Name:string * ?ShowMarkers:bool * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?Dash:StyleParam.DrawingStyle * ?Width:float * ?StackGroup:string * ?Orientation:StyleParam.Orientation * ?GroupNorm:StyleParam.GroupNorm * ?UseWebGL:bool -&gt; GenericChart.GenericChart<br />static member Chart.Line : x:seq&lt;#System.IConvertible&gt; * y:seq&lt;#System.IConvertible&gt; * ?Name:string * ?ShowMarkers:bool * ?Showlegend:bool * ?MarkerSymbol:StyleParam.Symbol * ?Color:string * ?Opacity:float * ?Labels:seq&lt;#System.IConvertible&gt; * ?TextPosition:StyleParam.TextPosition * ?TextFont:Font * ?Dash:StyleParam.DrawingStyle * ?Width:float * ?StackGroup:string * ?Orientation:StyleParam.Orientation * ?GroupNorm:StyleParam.GroupNorm * ?UseWebGL:bool -&gt; GenericChart.GenericChart</div>
+<div class="fsdocs-tip" id="fs82">static member Chart.withX_AxisStyle : title:string * ?MinMax:(float * float) * ?Showgrid:bool * ?Showline:bool * ?Side:StyleParam.Side * ?Overlaying:StyleParam.AxisAnchorId * ?Id:int * ?Domain:(float * float) * ?Position:float * ?Zeroline:bool * ?Anchor:StyleParam.AxisAnchorId -&gt; (GenericChart.GenericChart -&gt; GenericChart.GenericChart)</div>
+<div class="fsdocs-tip" id="fs83">val twoSamplePairedResult : TestStatistics.TTestStatistics</div>
+<div class="fsdocs-tip" id="fs84">val twoSamplePaired : sample1:Vector&lt;float&gt; -&gt; sample2:Vector&lt;float&gt; -&gt; TestStatistics.TTestStatistics<br /><em>&lt;summary&gt;
+ which observations in one sample can be paired with observations in the other sample.
+&lt;/summary&gt;</em></div>
+
+</body>
+</html> 
