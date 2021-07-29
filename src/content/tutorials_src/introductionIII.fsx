@@ -71,8 +71,12 @@ The installation of .NET 5.0 or dotnet SDK 3.1 LTS is required. It is also recom
 
     ![]({{root}}images/Lib3.png)
 
-* Open the `build.fsx` file (intellisense will not work right after creating it) and add the following content:
+* Open the `build.fsx` file (intellisense will not work right after creating it) and add the following content.
+
+First, lets reference the dependencies of the build script. In fake they are loaded via the `paket` manager:
 *)
+
+(***do-not-eval***)
 #r "paket:
 nuget BlackFox.Fake.BuildTask
 nuget Fake.Core.Target
@@ -89,6 +93,10 @@ nuget Fake.DotNet.NuGet
 nuget Fake.Api.Github
 nuget Fake.DotNet.Testing.Expecto 
 nuget Fake.Tools.Git //"
+
+(**
+Then, we open the dependencies. Note that for getting intellisense, you will have to run the script once with the fake runner (see [here](#Running-the-build-script)).
+*)
 
 #if !FAKE
 #load "./.fake/build.fsx/intellisense.fsx"
@@ -235,6 +243,9 @@ dotnet fake build "$@"
 ```
 
 (**
+
+## Running the build script
+
 * You can now run your build via calling either `build.cmd` or `build.sh`.
     * Optionally, you can pass the `-t` argument with it to execute a specific build task, e.g `./build.cmd -t clean` to execute the clean target.
     * The first time you run the build.cmd will also enable intellisense for the fake build script
