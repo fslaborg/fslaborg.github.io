@@ -32,27 +32,24 @@ index: 4
 
 # Smoothing data with the Savitzky-Golay filter
 
-_Summary:_ This tutorial demonstrates how to access a public dataset for temperature data with [FSharp.Data](https://fsprojects.github.io/FSharp.Data/), how to smoothe the data points with 
+_Summary:_ This tutorial demonstrates how to access a public dataset for temperature data with [FSharp.Data](https://fsprojects.github.io/FSharp.Data/), how to smooth the data points with 
 the Savitzky-Golay filter from [FSharp.Stats](https://fslab.org/FSharp.Stats/) and finally how to visualize the results with [Plotly.NET](https://plotly.net).
 
 ## Introduction: 
 
 The Savitzky-Golay is a type of low-pass filter, particularly suited for smoothing noisy data. The main idea behind this approach is to make for each point a 
-least-square fit with a polynomial of high order over a odd-sized window centered at the point. One advantage of the Savitzky-Golay filter is that, portions 
+least-square fit with a polynomial of high order over a odd-sized window centered at the point. One advantage of the Savitzky-Golay filter is that portions 
 of high frequencies are not simply cut off, but are preserved due to the polynomial regression. This allows the filter to preserve properties of the distribution 
-such as relative maxima, minima and dispersion, which are usually distorted by flattening or shifting by conventional methods such as moving average.
+such as relative maxima, minima, and dispersion, which are usually distorted by flattening or shifting by conventional methods such as moving average.
 
 This is useful when trying to identify general trends in highly fluctuating data sets, or to smooth out noise to improve the ability to find minima and maxima of the data trend.
-To showcase this we will plot a temperature dataset from the ["Deutsche Wetterdienst"](https://www.dwd.de/DE/leistungen/klimadatendeutschland/klimadatendeutschland.html), 
+To showcase this we will plot a temperature dataset from the "[Deutscher Wetterdienst](https://www.dwd.de/DE/leistungen/klimadatendeutschland/klimadatendeutschland.html)", 
 a german organization for climate data. We will do this for both the original data points and a smoothed version.
-
-<center>
 
 ![windowed polynomial regression](https://upload.wikimedia.org/wikipedia/commons/8/89/Lissage_sg3_anim.gif)
 
 The image shows the moving window for polynomial regression used in the Savitzky-Golay filter [@wikipedia](https://upload.wikimedia.org/wikipedia/commons/8/89/Lissage_sg3_anim.gif)
 
-</center>
 
 ## Referencing packages
 
@@ -87,7 +84,7 @@ rawData.[..1000] |> printfn "%s"
 (**
 
 Currently the data set is not in a format, that is easily parsable. Normally you would try to use 
-the Deedle package to read in the data into a a [Deedle](https://fslab.org/Deedle/) data frame. As this is not possible here, we will do some ugly formatting.
+the Deedle package to read in the data into a [Deedle](https://fslab.org/Deedle/) data frame. As this is not possible here, we will do some ugly formatting.
 
 ## Data Formatting/Parsing
 *)
@@ -181,11 +178,11 @@ let rawChart =
     processedData 
     |> createTempChart
 
-(**<center>*)
+
 (***hide***)
 rawChart |> GenericChart.toChartHTML
 (***include-it-raw***)
-(**</center>*)
+
 
 (**
 
@@ -220,8 +217,7 @@ let smoothedChart =
     |> smootheTemp 31 4
     |> createTempChart 
 
-(**<center>*)
+
 (***hide***)
 smoothedChart |> GenericChart.toChartHTML
 (***include-it-raw***)
-(**</center>*)
