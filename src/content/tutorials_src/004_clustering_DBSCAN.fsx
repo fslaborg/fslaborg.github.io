@@ -56,9 +56,7 @@ Density-Based Spatial Clustering of Applications with Noise (DBSCAN) was develop
   - **Border point**: Within a radius of eps there are less data points than minPts present, but a core point is within the neighbourhood.
   - **Noise point**: None of the conditions above apply.
 
-<center>
 <img style="max-width:75%" src="../../images/dbscan.png" class="center"></img>
-</center>
 
 <br>
 
@@ -141,9 +139,7 @@ let rawChart3D =
     |> Chart.withZ_AxisStyle header3D.[2]
     |> Chart.withTitle "rawChart3D"
 
-(**
-<center>
-*)
+
 (*** condition: ipynb ***)
 #if IPYNB
 rawChart2D
@@ -168,7 +164,6 @@ rawChart3D |> GenericChart.toChartHTML
 
 
 (**
-</center>
 ## Clustering
 
 The function that performs DBSCAN can be found at `FSharp.Stats.ML.Unsupervised.DbScan.compute`. It requires four input parameters:
@@ -244,9 +239,7 @@ let chart2D =
     |> Chart.withTitle chartTitle2D
     |> Chart.withX_AxisStyle header2D.[0]
     |> Chart.withY_AxisStyle header2D.[1]
-(**
-<center>
-*)
+
 (*** condition: ipynb ***)
 #if IPYNB
 chart2D
@@ -257,8 +250,6 @@ chart2D |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
-
 
 ### 3D clustering result visualization
 
@@ -300,9 +291,8 @@ let chart3D =
     
 //for faster computation you can use the squaredEuclidean distance and set your eps to its square
 let clusteredChart3D() = DbScan.compute DistanceMetrics.Array.euclideanNaNSquared 20 (0.7**2.) data3D 
-(**
-<center>
-*)
+
+
 (*** condition: ipynb ***)
 #if IPYNB
 chart3D
@@ -313,7 +303,7 @@ chart3D |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
+
 
 ## Limitations
 

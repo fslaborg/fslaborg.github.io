@@ -209,11 +209,6 @@ let boxPlot2 =
     |> Chart.Combine
     |> Chart.withY_AxisStyle "number of concussions over 3 years"
 
-(**
-
-<center>
-
-*)
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -225,7 +220,6 @@ boxPlot2 |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
 
 Both samples are tested against using `FSharp.Stats.Testing.TTest.twoSample` and assuming equal variances.
 

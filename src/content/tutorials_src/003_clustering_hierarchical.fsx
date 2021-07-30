@@ -75,9 +75,9 @@ When the distance between two clusters is calculated, there are several linkage 
 
   - **median linkage**: median pairwise distance between the clusters
 
-<center>
+
 <img style="max-width:100%" src="../../images/hClust.png"></img>
-</center>
+
 <br>
 
 
@@ -141,9 +141,7 @@ let dataChart =
     |> Chart.withMarginSize(Left=100.)
     |> Chart.withTitle "raw iris data"
 
-(**
-<center>
-*)
+
 (*** condition: ipynb ***)
 #if IPYNB
 dataChart
@@ -154,7 +152,6 @@ dataChart |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
 ## Clustering
 
 The function that performs hierarchical clustering can be found at `FSharp.Stats.ML.Unsupervised.HierarchicalClustering.generate`. It requires three input parameters:
@@ -255,9 +252,7 @@ let hClusteredDataHeatmap =
     // required to fit the species identifier on the left side of the heatmap
     |> Chart.withMarginSize(Left=100.)
     |> Chart.withTitle "Clustered iris data (hierarchical clustering)"
-(**
-<center>
-*)
+
 (*** condition: ipynb ***)
 #if IPYNB
 hClusteredDataHeatmap
@@ -269,7 +264,7 @@ hClusteredDataHeatmap |> GenericChart.toChartHTML
 
 
 (**
-</center>
+
 
 ## Limitations
 
