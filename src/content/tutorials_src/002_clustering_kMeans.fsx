@@ -338,7 +338,7 @@ bestKChart |> GenericChart.toChartHTML
   
 Examples are taken from [FSharp.Stats documentation](https://fslab.org/FSharp.Stats/Clustering.html) that covers various techniques for an optimal cluster number determination.
   
-The next article in this series covers [hierarchical clustering using FSharp.Stats](https://fslab.org/content/tutorials/003_clustering_hierarchical.html).
+The next article in this series covers [hierarchical clustering using FSharp.Stats](003_clustering_hierarchical.html).
 
 *)
 

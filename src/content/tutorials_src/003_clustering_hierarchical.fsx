@@ -38,7 +38,7 @@ index: 2
 
 _Summary:_ This tutorial demonstrates hierarchical clustering with FSharp.Stats and how to visualize the results with Plotly.NET.
 
-In the previous article of this series [k-means clustering using FSharp.Stats](https://fslab.org/content/tutorials/002_clustering_kMeans.html) was introduced.
+In the previous article of this series [k-means clustering using FSharp.Stats](002_clustering_kMeans.html) was introduced.
 
 ## Introduction
 
@@ -76,7 +76,7 @@ When the distance between two clusters is calculated, there are several linkage 
   - **median linkage**: median pairwise distance between the clusters
 
 <center>
-<img style="max-width:85%" src="../../images/hClust.png"></img>
+<img style="max-width:100%" src="../../images/hClust.png"></img>
 </center>
 <br>
 
@@ -291,7 +291,7 @@ hClusteredDataHeatmap |> GenericChart.toChartHTML
 
 Examples are taken from [FSharp.Stats documentation](https://fslab.org/FSharp.Stats/Clustering.html) that covers various techniques for an optimal cluster number determination.
 
-The next article in this series covers [DBSCAN using FSharp.Stats](https://fslab.org/content/tutorials/004_clustering_DBSCAN.html).
+The next article in this series covers [DBSCAN using FSharp.Stats](004_clustering_DBSCAN.html).
 
 *)
 

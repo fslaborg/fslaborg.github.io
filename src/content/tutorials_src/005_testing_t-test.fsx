@@ -73,7 +73,7 @@ open Plotly.NET
 (**
 
 For our purposes, we will use the housefly wing length dataset (from _Sokal et al., 1955, A morphometric analysis of DDT-resistant and non-resistant housefly strains_).
-Head over to the [Getting started](https://fslab.org/content/tutorials/4_getting-started.html#Data-access) tutorial where it is shown how to import datasets in a simple way.
+Head over to the [Getting started](001_getting-started.html#Data-access) tutorial where it is shown how to import datasets in a simple way.
 
 
 *)
