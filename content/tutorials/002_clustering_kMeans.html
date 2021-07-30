@@ -91,9 +91,7 @@ The algorithm to cluster a n-dimensional dataset can be fully described in the f
 <h3><a name="Distance-measure" class="anchor" href="#Distance-measure">Distance measure</a></h3>
 <p>While several distance metrics can be used (e.g. Manhattan distance or correlation measures) it is preferred to use Euclidean distance.
 It is recommended to use a squared Euclidean distance. To not calculate the square root does not change the result but saves computation time.</p>
-<center>
-<img style="max-width:75%" src="../../images/kMeans.png" class="center"></img>
-</center>
+<img style="max-width:75%" src="../../images/kMeans.png"></img>
 <br>
 <p>For demonstration of k-means clustering, the classic iris data set is used, which consists of 150 records, each of which contains four measurements and a species identifier.</p>
 <h2><a name="Referencing-packages" class="anchor" href="#Referencing-packages">Referencing packages</a></h2>
@@ -172,34 +170,32 @@ Since the species identifier occur several times (<em>Iris-virginica</em>, <em>I
 
 <span class="c">// required to fit the species identifier on the left side of the heatmap</span>
 </code></pre>
-<center>
-<div id="6fc17ced-c5e3-429f-80f6-d3c4410c279a" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="3af81b6e-0e0f-42d3-9d44-7c3d63b48889" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_6fc17cedc5e3429f80f6d3c4410c279a = function() {
+            var renderPlotly_3af81b6e0e0f42d39d447c3d63b48889 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"heatmap","z":[[5.5,2.4,3.8,1.1],[4.9,3.1,1.5,0.1],[7.6,3.0,6.6,2.1],[5.6,2.8,4.9,2.0],[6.1,3.0,4.9,1.8],[6.3,3.4,5.6,2.4],[6.2,2.8,4.8,1.8],[7.2,3.2,6.0,1.8],[6.9,3.2,5.7,2.3],[4.9,3.0,1.4,0.2],[5.4,3.9,1.7,0.4],[7.0,3.2,4.7,1.4],[6.1,3.0,4.6,1.4],[5.4,3.7,1.5,0.2],[7.2,3.6,6.1,2.5],[6.3,2.8,5.1,1.5],[5.4,3.4,1.7,0.2],[5.8,4.0,1.2,0.2],[5.0,3.2,1.2,0.2],[6.5,3.0,5.8,2.2],[5.6,3.0,4.1,1.3],[4.3,3.0,1.1,0.1],[6.7,3.3,5.7,2.5],[4.5,2.3,1.3,0.3],[5.7,2.5,5.0,2.0],[6.3,2.7,4.9,1.8],[5.6,3.0,4.5,1.5],[5.6,2.5,3.9,1.1],[4.9,3.1,1.5,0.1],[7.7,3.0,6.1,2.3],[6.3,2.5,5.0,1.9],[6.4,3.1,5.5,1.8],[4.7,3.2,1.6,0.2],[5.5,4.2,1.4,0.2],[5.9,3.2,4.8,1.8],[5.0,3.4,1.6,0.4],[5.4,3.4,1.5,0.4],[6.0,2.7,5.1,1.6],[5.6,2.9,3.6,1.3],[6.3,3.3,4.7,1.6],[5.1,2.5,3.0,1.1],[6.4,3.2,4.5,1.5],[5.1,3.7,1.5,0.4],[6.7,3.0,5.2,2.3],[6.2,2.9,4.3,1.3],[6.8,2.8,4.8,1.4],[7.7,2.8,6.7,2.0],[4.8,3.0,1.4,0.1],[6.2,3.4,5.4,2.3],[4.8,3.4,1.9,0.2],[6.7,2.5,5.8,1.8],[5.1,3.5,1.4,0.2],[6.7,3.0,5.0,1.7],[6.9,3.1,5.1,2.3],[5.8,2.7,5.1,1.9],[4.8,3.1,1.6,0.2],[5.5,2.6,4.4,1.2],[5.1,3.8,1.6,0.2],[5.7,4.4,1.5,0.4],[6.7,3.3,5.7,2.1],[4.4,3.0,1.3,0.2],[5.0,3.5,1.3,0.3],[6.9,3.1,5.4,2.1],[5.0,3.5,1.6,0.6],[6.5,3.2,5.1,2.0],[4.6,3.6,1.0,0.2],[6.1,2.8,4.7,1.2],[5.0,2.0,3.5,1.0],[5.8,2.7,4.1,1.0],[6.0,3.4,4.5,1.6],[4.9,2.5,4.5,1.7],[5.7,3.8,1.7,0.3],[7.9,3.8,6.4,2.0],[7.2,3.0,5.8,1.6],[5.5,3.5,1.3,0.2],[4.6,3.2,1.4,0.2],[6.4,2.9,4.3,1.3],[6.9,3.1,4.9,1.5],[6.0,2.9,4.5,1.5],[5.8,2.6,4.0,1.2],[5.2,2.7,3.9,1.4],[7.4,2.8,6.1,1.9],[5.5,2.4,3.7,1.0],[5.1,3.4,1.5,0.2],[4.8,3.4,1.6,0.2],[5.0,3.0,1.6,0.2],[5.7,2.8,4.1,1.3],[4.6,3.1,1.5,0.2],[5.9,3.0,4.2,1.5],[6.1,2.8,4.0,1.3],[5.7,2.8,4.5,1.3],[6.0,2.2,4.0,1.0],[5.4,3.0,4.5,1.5],[6.1,2.9,4.7,1.4],[5.4,3.9,1.3,0.4],[5.2,4.1,1.5,0.1],[7.3,2.9,6.3,1.8],[4.7,3.2,1.3,0.2],[6.3,2.5,4.9,1.5],[5.3,3.7,1.5,0.2],[6.6,2.9,4.6,1.3],[6.3,2.9,5.6,1.8],[4.4,3.2,1.3,0.2],[4.4,2.9,1.4,0.2],[6.5,3.0,5.5,1.8],[6.3,2.3,4.4,1.3],[4.9,3.1,1.5,0.1],[6.6,3.0,4.4,1.4],[6.4,2.8,5.6,2.1],[6.5,2.8,4.6,1.5],[5.5,2.3,4.0,1.3],[6.7,3.1,5.6,2.4],[6.4,3.2,5.3,2.3],[6.8,3.0,5.5,2.1],[5.7,2.9,4.2,1.3],[5.8,2.7,5.1,1.9],[6.0,3.0,4.8,1.8],[5.2,3.4,1.4,0.2],[6.7,3.1,4.7,1.5],[5.1,3.5,1.4,0.3],[5.5,2.5,4.0,1.3],[4.8,3.0,1.4,0.3],[5.1,3.8,1.5,0.3],[6.4,2.8,5.6,2.2],[5.0,3.4,1.5,0.2],[5.1,3.8,1.9,0.4],[5.1,3.3,1.7,0.5],[6.5,3.0,5.2,2.0],[5.6,2.7,4.2,1.3],[6.0,2.2,5.0,1.5],[7.1,3.0,5.9,2.1],[4.6,3.4,1.4,0.3],[6.1,2.6,5.6,1.4],[6.2,2.2,4.5,1.5],[5.2,3.5,1.5,0.2],[7.7,3.8,6.7,2.2],[5.7,3.0,4.2,1.2],[6.4,2.7,5.3,1.9],[5.8,2.7,3.9,1.2],[5.0,2.3,3.3,1.0],[6.7,3.1,4.4,1.4],[6.3,3.3,6.0,2.5],[4.9,2.4,3.3,1.0],[5.8,2.8,5.1,2.4],[5.0,3.3,1.4,0.2],[7.7,2.6,6.9,2.3],[5.7,2.6,3.5,1.0],[5.9,3.0,5.1,1.8],[6.8,3.2,5.9,2.3],[5.0,3.6,1.4,0.2]],"x":["sepal_length","sepal_width","petal_length","petal_width"],"y":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"margin":{"l":100.0},"title":"raw iris data"};
             var config = {};
-            Plotly.newPlot('6fc17ced-c5e3-429f-80f6-d3c4410c279a', data, layout, config);
+            Plotly.newPlot('3af81b6e-0e0f-42d3-9d44-7c3d63b48889', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_6fc17cedc5e3429f80f6d3c4410c279a();
+                    renderPlotly_3af81b6e0e0f42d39d447c3d63b48889();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_6fc17cedc5e3429f80f6d3c4410c279a();
+                renderPlotly_3af81b6e0e0f42d39d447c3d63b48889();
             }
 </script>
 
-</center>
 <h2><a name="Clustering" class="anchor" href="#Clustering">Clustering</a></h2>
 <p>The function that performs k-means clustering can be found at <code>FSharp.Stats.ML.Unsupervised.IterativeClustering.kmeans</code>. It requires four input parameters:</p>
 <ol>
@@ -236,12 +232,12 @@ A function realizing the mapping is integrated in the <code>kmeansResult</code>.
 
 <span class="c">// Each datapoint is given associated with its cluster index, species identifier, and coordinates.</span>
 </code></pre>
-<table class="pre"><tr><td><pre><code>"4, "versicolor_0", [|5.5; 2.4; 3.8; 1.1|]
+<table class="pre"><tr><td><pre><code>"2, "versicolor_0", [|5.5; 2.4; 3.8; 1.1|]
 3, "setosa_1", [|4.9; 3.1; 1.5; 0.1|]
-2, "virginica_2", [|7.6; 3.0; 6.6; 2.1|]
+4, "virginica_2", [|7.6; 3.0; 6.6; 2.1|]
 1, "virginica_3", [|5.6; 2.8; 4.9; 2.0|]
 1, "virginica_4", [|6.1; 3.0; 4.9; 1.8|]
-2, "virginica_5", [|6.3; 3.4; 5.6; 2.4|]
+4, "virginica_5", [|6.3; 3.4; 5.6; 2.4|]
 1, "virginica_6", [|6.2; 2.8; 4.8; 1.8|]
  ... "</code></pre></td></tr></table>
 <h2><a name="Visualization-of-the-clustering-result-as-heatmap" class="anchor" href="#Visualization-of-the-clustering-result-as-heatmap">Visualization of the clustering result as heatmap</a></h2>
@@ -257,34 +253,32 @@ A function realizing the mapping is integrated in the <code>kmeansResult</code>.
         <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs28', 128)" onmouseover="showTip(event, 'fs28', 128)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs30', 129)" onmouseover="showTip(event, 'fs30', 129)" class="id">withMarginSize</span><span class="pn">(</span><span class="fn">Left</span><span class="o">=</span><span class="n">100.</span><span class="pn">)</span>
         <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs28', 130)" onmouseover="showTip(event, 'fs28', 130)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs31', 131)" onmouseover="showTip(event, 'fs31', 131)" class="id">withTitle</span> <span class="s">&quot;clustered iris data (k-means clustering)&quot;</span>
 </code></pre>
-<center>
-<div id="a4e517b5-01f9-4726-81fc-3082bbb69d7e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="48375444-ee40-4bdb-9fb6-a6361ae487fb" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_a4e517b501f9472681fc3082bbb69d7e = function() {
+            var renderPlotly_48375444ee404bdb9fb6a6361ae487fb = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"heatmap","z":[[5.6,2.8,4.9,2.0],[6.1,3.0,4.9,1.8],[6.2,2.8,4.8,1.8],[7.0,3.2,4.7,1.4],[6.1,3.0,4.6,1.4],[6.3,2.8,5.1,1.5],[5.7,2.5,5.0,2.0],[6.3,2.7,4.9,1.8],[6.3,2.5,5.0,1.9],[6.4,3.1,5.5,1.8],[5.9,3.2,4.8,1.8],[6.0,2.7,5.1,1.6],[6.3,3.3,4.7,1.6],[6.4,3.2,4.5,1.5],[6.7,3.0,5.2,2.3],[6.8,2.8,4.8,1.4],[6.2,3.4,5.4,2.3],[6.7,3.0,5.0,1.7],[6.9,3.1,5.1,2.3],[5.8,2.7,5.1,1.9],[6.5,3.2,5.1,2.0],[6.1,2.8,4.7,1.2],[6.0,3.4,4.5,1.6],[6.4,2.9,4.3,1.3],[6.9,3.1,4.9,1.5],[6.0,2.9,4.5,1.5],[6.1,2.9,4.7,1.4],[6.3,2.5,4.9,1.5],[6.6,2.9,4.6,1.3],[6.3,2.9,5.6,1.8],[6.5,3.0,5.5,1.8],[6.6,3.0,4.4,1.4],[6.4,2.8,5.6,2.1],[6.5,2.8,4.6,1.5],[6.4,3.2,5.3,2.3],[5.8,2.7,5.1,1.9],[6.0,3.0,4.8,1.8],[6.7,3.1,4.7,1.5],[6.4,2.8,5.6,2.2],[6.5,3.0,5.2,2.0],[6.0,2.2,5.0,1.5],[6.1,2.6,5.6,1.4],[6.2,2.2,4.5,1.5],[6.4,2.7,5.3,1.9],[6.7,3.1,4.4,1.4],[5.8,2.8,5.1,2.4],[5.9,3.0,5.1,1.8],[7.6,3.0,6.6,2.1],[6.3,3.4,5.6,2.4],[7.2,3.2,6.0,1.8],[6.9,3.2,5.7,2.3],[7.2,3.6,6.1,2.5],[6.5,3.0,5.8,2.2],[6.7,3.3,5.7,2.5],[7.7,3.0,6.1,2.3],[7.7,2.8,6.7,2.0],[6.7,2.5,5.8,1.8],[6.7,3.3,5.7,2.1],[6.9,3.1,5.4,2.1],[7.9,3.8,6.4,2.0],[7.2,3.0,5.8,1.6],[7.4,2.8,6.1,1.9],[7.3,2.9,6.3,1.8],[6.7,3.1,5.6,2.4],[6.8,3.0,5.5,2.1],[7.1,3.0,5.9,2.1],[7.7,3.8,6.7,2.2],[6.3,3.3,6.0,2.5],[7.7,2.6,6.9,2.3],[6.8,3.2,5.9,2.3],[4.9,3.1,1.5,0.1],[4.9,3.0,1.4,0.2],[5.4,3.9,1.7,0.4],[5.4,3.7,1.5,0.2],[5.4,3.4,1.7,0.2],[5.8,4.0,1.2,0.2],[5.0,3.2,1.2,0.2],[4.3,3.0,1.1,0.1],[4.5,2.3,1.3,0.3],[4.9,3.1,1.5,0.1],[4.7,3.2,1.6,0.2],[5.5,4.2,1.4,0.2],[5.0,3.4,1.6,0.4],[5.4,3.4,1.5,0.4],[5.1,3.7,1.5,0.4],[4.8,3.0,1.4,0.1],[4.8,3.4,1.9,0.2],[5.1,3.5,1.4,0.2],[4.8,3.1,1.6,0.2],[5.1,3.8,1.6,0.2],[5.7,4.4,1.5,0.4],[4.4,3.0,1.3,0.2],[5.0,3.5,1.3,0.3],[5.0,3.5,1.6,0.6],[4.6,3.6,1.0,0.2],[5.7,3.8,1.7,0.3],[5.5,3.5,1.3,0.2],[4.6,3.2,1.4,0.2],[5.1,3.4,1.5,0.2],[4.8,3.4,1.6,0.2],[5.0,3.0,1.6,0.2],[4.6,3.1,1.5,0.2],[5.4,3.9,1.3,0.4],[5.2,4.1,1.5,0.1],[4.7,3.2,1.3,0.2],[5.3,3.7,1.5,0.2],[4.4,3.2,1.3,0.2],[4.4,2.9,1.4,0.2],[4.9,3.1,1.5,0.1],[5.2,3.4,1.4,0.2],[5.1,3.5,1.4,0.3],[4.8,3.0,1.4,0.3],[5.1,3.8,1.5,0.3],[5.0,3.4,1.5,0.2],[5.1,3.8,1.9,0.4],[5.1,3.3,1.7,0.5],[4.6,3.4,1.4,0.3],[5.2,3.5,1.5,0.2],[5.0,3.3,1.4,0.2],[5.0,3.6,1.4,0.2],[5.5,2.4,3.8,1.1],[5.6,3.0,4.1,1.3],[5.6,3.0,4.5,1.5],[5.6,2.5,3.9,1.1],[5.6,2.9,3.6,1.3],[5.1,2.5,3.0,1.1],[6.2,2.9,4.3,1.3],[5.5,2.6,4.4,1.2],[5.0,2.0,3.5,1.0],[5.8,2.7,4.1,1.0],[4.9,2.5,4.5,1.7],[5.8,2.6,4.0,1.2],[5.2,2.7,3.9,1.4],[5.5,2.4,3.7,1.0],[5.7,2.8,4.1,1.3],[5.9,3.0,4.2,1.5],[6.1,2.8,4.0,1.3],[5.7,2.8,4.5,1.3],[6.0,2.2,4.0,1.0],[5.4,3.0,4.5,1.5],[6.3,2.3,4.4,1.3],[5.5,2.3,4.0,1.3],[5.7,2.9,4.2,1.3],[5.5,2.5,4.0,1.3],[5.6,2.7,4.2,1.3],[5.7,3.0,4.2,1.2],[5.8,2.7,3.9,1.2],[5.0,2.3,3.3,1.0],[4.9,2.4,3.3,1.0],[5.7,2.6,3.5,1.0]],"x":["sepal_length","sepal_width","petal_length","petal_width"],"y":["virginica_3","virginica_4","virginica_6","versicolor_11","versicolor_12","virginica_15","virginica_24","virginica_25","virginica_30","virginica_31","versicolor_34","versicolor_37","versicolor_39","versicolor_41","virginica_43","versicolor_45","virginica_48","versicolor_52","virginica_53","virginica_54","virginica_64","versicolor_66","versicolor_69","versicolor_76","versicolor_77","versicolor_78","versicolor_93","versicolor_98","versicolor_100","virginica_101","virginica_104","versicolor_107","virginica_108","versicolor_109","virginica_112","virginica_115","virginica_116","versicolor_118","virginica_123","virginica_127","virginica_129","virginica_132","versicolor_133","virginica_137","versicolor_140","virginica_143","virginica_147","virginica_2","virginica_5","virginica_7","virginica_8","virginica_14","virginica_19","virginica_22","virginica_29","virginica_46","virginica_50","virginica_59","virginica_62","virginica_72","virginica_73","virginica_81","virginica_96","virginica_111","virginica_113","virginica_130","virginica_135","virginica_141","virginica_145","virginica_148","setosa_1","setosa_9","setosa_10","setosa_13","setosa_16","setosa_17","setosa_18","setosa_21","setosa_23","setosa_28","setosa_32","setosa_33","setosa_35","setosa_36","setosa_42","setosa_47","setosa_49","setosa_51","setosa_55","setosa_57","setosa_58","setosa_60","setosa_61","setosa_63","setosa_65","setosa_71","setosa_74","setosa_75","setosa_83","setosa_84","setosa_85","setosa_87","setosa_94","setosa_95","setosa_97","setosa_99","setosa_102","setosa_103","setosa_106","setosa_117","setosa_119","setosa_121","setosa_122","setosa_124","setosa_125","setosa_126","setosa_131","setosa_134","setosa_144","setosa_149","versicolor_0","versicolor_20","versicolor_26","versicolor_27","versicolor_38","versicolor_40","versicolor_44","versicolor_56","versicolor_67","versicolor_68","virginica_70","versicolor_79","versicolor_80","versicolor_82","versicolor_86","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_105","versicolor_110","versicolor_114","versicolor_120","versicolor_128","versicolor_136","versicolor_138","versicolor_139","versicolor_142","versicolor_146"]}];
+            var data = [{"type":"heatmap","z":[[5.6,2.8,4.9,2.0],[6.1,3.0,4.9,1.8],[6.2,2.8,4.8,1.8],[7.0,3.2,4.7,1.4],[6.1,3.0,4.6,1.4],[6.3,2.8,5.1,1.5],[5.7,2.5,5.0,2.0],[6.3,2.7,4.9,1.8],[5.6,3.0,4.5,1.5],[6.3,2.5,5.0,1.9],[5.9,3.2,4.8,1.8],[6.0,2.7,5.1,1.6],[6.3,3.3,4.7,1.6],[6.4,3.2,4.5,1.5],[6.2,2.9,4.3,1.3],[6.8,2.8,4.8,1.4],[6.7,3.0,5.0,1.7],[5.8,2.7,5.1,1.9],[6.5,3.2,5.1,2.0],[6.1,2.8,4.7,1.2],[6.0,3.4,4.5,1.6],[6.4,2.9,4.3,1.3],[6.9,3.1,4.9,1.5],[6.0,2.9,4.5,1.5],[6.1,2.9,4.7,1.4],[6.3,2.5,4.9,1.5],[6.6,2.9,4.6,1.3],[6.3,2.3,4.4,1.3],[6.6,3.0,4.4,1.4],[6.5,2.8,4.6,1.5],[5.8,2.7,5.1,1.9],[6.0,3.0,4.8,1.8],[6.7,3.1,4.7,1.5],[6.5,3.0,5.2,2.0],[6.0,2.2,5.0,1.5],[6.1,2.6,5.6,1.4],[6.2,2.2,4.5,1.5],[6.4,2.7,5.3,1.9],[6.7,3.1,4.4,1.4],[5.8,2.8,5.1,2.4],[5.9,3.0,5.1,1.8],[5.5,2.4,3.8,1.1],[5.6,3.0,4.1,1.3],[5.6,2.5,3.9,1.1],[5.6,2.9,3.6,1.3],[5.1,2.5,3.0,1.1],[5.5,2.6,4.4,1.2],[5.0,2.0,3.5,1.0],[5.8,2.7,4.1,1.0],[4.9,2.5,4.5,1.7],[5.8,2.6,4.0,1.2],[5.2,2.7,3.9,1.4],[5.5,2.4,3.7,1.0],[5.7,2.8,4.1,1.3],[5.9,3.0,4.2,1.5],[6.1,2.8,4.0,1.3],[5.7,2.8,4.5,1.3],[6.0,2.2,4.0,1.0],[5.4,3.0,4.5,1.5],[5.5,2.3,4.0,1.3],[5.7,2.9,4.2,1.3],[5.5,2.5,4.0,1.3],[5.6,2.7,4.2,1.3],[5.7,3.0,4.2,1.2],[5.8,2.7,3.9,1.2],[5.0,2.3,3.3,1.0],[4.9,2.4,3.3,1.0],[5.7,2.6,3.5,1.0],[4.9,3.1,1.5,0.1],[4.9,3.0,1.4,0.2],[5.4,3.9,1.7,0.4],[5.4,3.7,1.5,0.2],[5.4,3.4,1.7,0.2],[5.8,4.0,1.2,0.2],[5.0,3.2,1.2,0.2],[4.3,3.0,1.1,0.1],[4.5,2.3,1.3,0.3],[4.9,3.1,1.5,0.1],[4.7,3.2,1.6,0.2],[5.5,4.2,1.4,0.2],[5.0,3.4,1.6,0.4],[5.4,3.4,1.5,0.4],[5.1,3.7,1.5,0.4],[4.8,3.0,1.4,0.1],[4.8,3.4,1.9,0.2],[5.1,3.5,1.4,0.2],[4.8,3.1,1.6,0.2],[5.1,3.8,1.6,0.2],[5.7,4.4,1.5,0.4],[4.4,3.0,1.3,0.2],[5.0,3.5,1.3,0.3],[5.0,3.5,1.6,0.6],[4.6,3.6,1.0,0.2],[5.7,3.8,1.7,0.3],[5.5,3.5,1.3,0.2],[4.6,3.2,1.4,0.2],[5.1,3.4,1.5,0.2],[4.8,3.4,1.6,0.2],[5.0,3.0,1.6,0.2],[4.6,3.1,1.5,0.2],[5.4,3.9,1.3,0.4],[5.2,4.1,1.5,0.1],[4.7,3.2,1.3,0.2],[5.3,3.7,1.5,0.2],[4.4,3.2,1.3,0.2],[4.4,2.9,1.4,0.2],[4.9,3.1,1.5,0.1],[5.2,3.4,1.4,0.2],[5.1,3.5,1.4,0.3],[4.8,3.0,1.4,0.3],[5.1,3.8,1.5,0.3],[5.0,3.4,1.5,0.2],[5.1,3.8,1.9,0.4],[5.1,3.3,1.7,0.5],[4.6,3.4,1.4,0.3],[5.2,3.5,1.5,0.2],[5.0,3.3,1.4,0.2],[5.0,3.6,1.4,0.2],[7.6,3.0,6.6,2.1],[6.3,3.4,5.6,2.4],[7.2,3.2,6.0,1.8],[6.9,3.2,5.7,2.3],[7.2,3.6,6.1,2.5],[6.5,3.0,5.8,2.2],[6.7,3.3,5.7,2.5],[7.7,3.0,6.1,2.3],[6.4,3.1,5.5,1.8],[6.7,3.0,5.2,2.3],[7.7,2.8,6.7,2.0],[6.2,3.4,5.4,2.3],[6.7,2.5,5.8,1.8],[6.9,3.1,5.1,2.3],[6.7,3.3,5.7,2.1],[6.9,3.1,5.4,2.1],[7.9,3.8,6.4,2.0],[7.2,3.0,5.8,1.6],[7.4,2.8,6.1,1.9],[7.3,2.9,6.3,1.8],[6.3,2.9,5.6,1.8],[6.5,3.0,5.5,1.8],[6.4,2.8,5.6,2.1],[6.7,3.1,5.6,2.4],[6.4,3.2,5.3,2.3],[6.8,3.0,5.5,2.1],[6.4,2.8,5.6,2.2],[7.1,3.0,5.9,2.1],[7.7,3.8,6.7,2.2],[6.3,3.3,6.0,2.5],[7.7,2.6,6.9,2.3],[6.8,3.2,5.9,2.3]],"x":["sepal_length","sepal_width","petal_length","petal_width"],"y":["virginica_3","virginica_4","virginica_6","versicolor_11","versicolor_12","virginica_15","virginica_24","virginica_25","versicolor_26","virginica_30","versicolor_34","versicolor_37","versicolor_39","versicolor_41","versicolor_44","versicolor_45","versicolor_52","virginica_54","virginica_64","versicolor_66","versicolor_69","versicolor_76","versicolor_77","versicolor_78","versicolor_93","versicolor_98","versicolor_100","versicolor_105","versicolor_107","versicolor_109","virginica_115","virginica_116","versicolor_118","virginica_127","virginica_129","virginica_132","versicolor_133","virginica_137","versicolor_140","virginica_143","virginica_147","versicolor_0","versicolor_20","versicolor_27","versicolor_38","versicolor_40","versicolor_56","versicolor_67","versicolor_68","virginica_70","versicolor_79","versicolor_80","versicolor_82","versicolor_86","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_110","versicolor_114","versicolor_120","versicolor_128","versicolor_136","versicolor_138","versicolor_139","versicolor_142","versicolor_146","setosa_1","setosa_9","setosa_10","setosa_13","setosa_16","setosa_17","setosa_18","setosa_21","setosa_23","setosa_28","setosa_32","setosa_33","setosa_35","setosa_36","setosa_42","setosa_47","setosa_49","setosa_51","setosa_55","setosa_57","setosa_58","setosa_60","setosa_61","setosa_63","setosa_65","setosa_71","setosa_74","setosa_75","setosa_83","setosa_84","setosa_85","setosa_87","setosa_94","setosa_95","setosa_97","setosa_99","setosa_102","setosa_103","setosa_106","setosa_117","setosa_119","setosa_121","setosa_122","setosa_124","setosa_125","setosa_126","setosa_131","setosa_134","setosa_144","setosa_149","virginica_2","virginica_5","virginica_7","virginica_8","virginica_14","virginica_19","virginica_22","virginica_29","virginica_31","virginica_43","virginica_46","virginica_48","virginica_50","virginica_53","virginica_59","virginica_62","virginica_72","virginica_73","virginica_81","virginica_96","virginica_101","virginica_104","virginica_108","virginica_111","virginica_112","virginica_113","virginica_123","virginica_130","virginica_135","virginica_141","virginica_145","virginica_148"]}];
             var layout = {"margin":{"l":100.0},"title":"clustered iris data (k-means clustering)"};
             var config = {};
-            Plotly.newPlot('a4e517b5-01f9-4726-81fc-3082bbb69d7e', data, layout, config);
+            Plotly.newPlot('48375444-ee40-4bdb-9fb6-a6361ae487fb', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_a4e517b501f9472681fc3082bbb69d7e();
+                    renderPlotly_48375444ee404bdb9fb6a6361ae487fb();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_a4e517b501f9472681fc3082bbb69d7e();
+                renderPlotly_48375444ee404bdb9fb6a6361ae487fb();
             }
 </script>
 
-</center>
 <p>To visualize the result in a three-dimensional chart, three of the four measurements are isolated after clustering and visualized as 3D-scatter plot.</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs72', 135)" onmouseover="showTip(event, 'fs72', 135)" class="id">clusterChart3D</span> <span class="o">=</span>
     <span class="c">//group clusters</span>
@@ -306,34 +300,32 @@ A function realizing the mapping is integrated in the <code>kmeansResult</code>.
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs28', 181)" onmouseover="showTip(event, 'fs28', 181)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs88', 182)" onmouseover="showTip(event, 'fs88', 182)" class="id">withY_AxisStyle</span> <span onmouseout="hideTip(event, 'fs13', 183)" onmouseover="showTip(event, 'fs13', 183)" class="id">colNames</span><span class="pn">.</span><span class="pn">[</span><span class="n">2</span><span class="pn">]</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs28', 184)" onmouseover="showTip(event, 'fs28', 184)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs89', 185)" onmouseover="showTip(event, 'fs89', 185)" class="id">withZ_AxisStyle</span> <span onmouseout="hideTip(event, 'fs13', 186)" onmouseover="showTip(event, 'fs13', 186)" class="id">colNames</span><span class="pn">.</span><span class="pn">[</span><span class="n">3</span><span class="pn">]</span>
 </code></pre>
-<center>
-<div id="30b5649f-fd40-4531-afc3-a3786dc31d05" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="2622c8e5-4967-42c1-8e7a-e5f70caa0ae2" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_30b5649ffd404531afc3a3786dc31d05 = function() {
+            var renderPlotly_2622c8e5496742c18e7ae5f70caa0ae2 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter3d","x":[5.5,5.6,5.6,5.6,5.6,5.1,6.2,5.5,5.0,5.8,4.9,5.8,5.2,5.5,5.7,5.9,6.1,5.7,6.0,5.4,6.3,5.5,5.7,5.5,5.6,5.7,5.8,5.0,4.9,5.7],"y":[3.8,4.1,4.5,3.9,3.6,3.0,4.3,4.4,3.5,4.1,4.5,4.0,3.9,3.7,4.1,4.2,4.0,4.5,4.0,4.5,4.4,4.0,4.2,4.0,4.2,4.2,3.9,3.3,3.3,3.5],"z":[1.1,1.3,1.5,1.1,1.3,1.1,1.3,1.2,1.0,1.0,1.7,1.2,1.4,1.0,1.3,1.5,1.3,1.3,1.0,1.5,1.3,1.3,1.3,1.3,1.3,1.2,1.2,1.0,1.0,1.0],"mode":"markers","name":"cluster 4","line":{},"marker":{},"text":["versicolor_0","versicolor_20","versicolor_26","versicolor_27","versicolor_38","versicolor_40","versicolor_44","versicolor_56","versicolor_67","versicolor_68","virginica_70","versicolor_79","versicolor_80","versicolor_82","versicolor_86","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_105","versicolor_110","versicolor_114","versicolor_120","versicolor_128","versicolor_136","versicolor_138","versicolor_139","versicolor_142","versicolor_146"]},{"type":"scatter3d","x":[4.9,4.9,5.4,5.4,5.4,5.8,5.0,4.3,4.5,4.9,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,5.7,4.4,5.0,5.0,4.6,5.7,5.5,4.6,5.1,4.8,5.0,4.6,5.4,5.2,4.7,5.3,4.4,4.4,4.9,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,5.0],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.2,1.1,1.3,1.5,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.5,1.3,1.3,1.6,1.0,1.7,1.3,1.4,1.5,1.6,1.6,1.5,1.3,1.5,1.3,1.5,1.3,1.4,1.5,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.4],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.2,0.1,0.3,0.1,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.4,0.2,0.3,0.6,0.2,0.3,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.2],"mode":"markers","name":"cluster 3","line":{},"marker":{},"text":["setosa_1","setosa_9","setosa_10","setosa_13","setosa_16","setosa_17","setosa_18","setosa_21","setosa_23","setosa_28","setosa_32","setosa_33","setosa_35","setosa_36","setosa_42","setosa_47","setosa_49","setosa_51","setosa_55","setosa_57","setosa_58","setosa_60","setosa_61","setosa_63","setosa_65","setosa_71","setosa_74","setosa_75","setosa_83","setosa_84","setosa_85","setosa_87","setosa_94","setosa_95","setosa_97","setosa_99","setosa_102","setosa_103","setosa_106","setosa_117","setosa_119","setosa_121","setosa_122","setosa_124","setosa_125","setosa_126","setosa_131","setosa_134","setosa_144","setosa_149"]},{"type":"scatter3d","x":[7.6,6.3,7.2,6.9,7.2,6.5,6.7,7.7,7.7,6.7,6.7,6.9,7.9,7.2,7.4,7.3,6.7,6.8,7.1,7.7,6.3,7.7,6.8],"y":[6.6,5.6,6.0,5.7,6.1,5.8,5.7,6.1,6.7,5.8,5.7,5.4,6.4,5.8,6.1,6.3,5.6,5.5,5.9,6.7,6.0,6.9,5.9],"z":[2.1,2.4,1.8,2.3,2.5,2.2,2.5,2.3,2.0,1.8,2.1,2.1,2.0,1.6,1.9,1.8,2.4,2.1,2.1,2.2,2.5,2.3,2.3],"mode":"markers","name":"cluster 2","line":{},"marker":{},"text":["virginica_2","virginica_5","virginica_7","virginica_8","virginica_14","virginica_19","virginica_22","virginica_29","virginica_46","virginica_50","virginica_59","virginica_62","virginica_72","virginica_73","virginica_81","virginica_96","virginica_111","virginica_113","virginica_130","virginica_135","virginica_141","virginica_145","virginica_148"]},{"type":"scatter3d","x":[5.6,6.1,6.2,7.0,6.1,6.3,5.7,6.3,6.3,6.4,5.9,6.0,6.3,6.4,6.7,6.8,6.2,6.7,6.9,5.8,6.5,6.1,6.0,6.4,6.9,6.0,6.1,6.3,6.6,6.3,6.5,6.6,6.4,6.5,6.4,5.8,6.0,6.7,6.4,6.5,6.0,6.1,6.2,6.4,6.7,5.8,5.9],"y":[4.9,4.9,4.8,4.7,4.6,5.1,5.0,4.9,5.0,5.5,4.8,5.1,4.7,4.5,5.2,4.8,5.4,5.0,5.1,5.1,5.1,4.7,4.5,4.3,4.9,4.5,4.7,4.9,4.6,5.6,5.5,4.4,5.6,4.6,5.3,5.1,4.8,4.7,5.6,5.2,5.0,5.6,4.5,5.3,4.4,5.1,5.1],"z":[2.0,1.8,1.8,1.4,1.4,1.5,2.0,1.8,1.9,1.8,1.8,1.6,1.6,1.5,2.3,1.4,2.3,1.7,2.3,1.9,2.0,1.2,1.6,1.3,1.5,1.5,1.4,1.5,1.3,1.8,1.8,1.4,2.1,1.5,2.3,1.9,1.8,1.5,2.2,2.0,1.5,1.4,1.5,1.9,1.4,2.4,1.8],"mode":"markers","name":"cluster 1","line":{},"marker":{},"text":["virginica_3","virginica_4","virginica_6","versicolor_11","versicolor_12","virginica_15","virginica_24","virginica_25","virginica_30","virginica_31","versicolor_34","versicolor_37","versicolor_39","versicolor_41","virginica_43","versicolor_45","virginica_48","versicolor_52","virginica_53","virginica_54","virginica_64","versicolor_66","versicolor_69","versicolor_76","versicolor_77","versicolor_78","versicolor_93","versicolor_98","versicolor_100","virginica_101","virginica_104","versicolor_107","virginica_108","versicolor_109","virginica_112","virginica_115","virginica_116","versicolor_118","virginica_123","virginica_127","virginica_129","virginica_132","versicolor_133","virginica_137","versicolor_140","virginica_143","virginica_147"]}];
+            var data = [{"type":"scatter3d","x":[5.5,5.6,5.6,5.6,5.1,5.5,5.0,5.8,4.9,5.8,5.2,5.5,5.7,5.9,6.1,5.7,6.0,5.4,5.5,5.7,5.5,5.6,5.7,5.8,5.0,4.9,5.7],"y":[3.8,4.1,3.9,3.6,3.0,4.4,3.5,4.1,4.5,4.0,3.9,3.7,4.1,4.2,4.0,4.5,4.0,4.5,4.0,4.2,4.0,4.2,4.2,3.9,3.3,3.3,3.5],"z":[1.1,1.3,1.1,1.3,1.1,1.2,1.0,1.0,1.7,1.2,1.4,1.0,1.3,1.5,1.3,1.3,1.0,1.5,1.3,1.3,1.3,1.3,1.2,1.2,1.0,1.0,1.0],"mode":"markers","name":"cluster 2","line":{},"marker":{},"text":["versicolor_0","versicolor_20","versicolor_27","versicolor_38","versicolor_40","versicolor_56","versicolor_67","versicolor_68","virginica_70","versicolor_79","versicolor_80","versicolor_82","versicolor_86","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_110","versicolor_114","versicolor_120","versicolor_128","versicolor_136","versicolor_138","versicolor_139","versicolor_142","versicolor_146"]},{"type":"scatter3d","x":[4.9,4.9,5.4,5.4,5.4,5.8,5.0,4.3,4.5,4.9,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,5.7,4.4,5.0,5.0,4.6,5.7,5.5,4.6,5.1,4.8,5.0,4.6,5.4,5.2,4.7,5.3,4.4,4.4,4.9,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,5.0],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.2,1.1,1.3,1.5,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.5,1.3,1.3,1.6,1.0,1.7,1.3,1.4,1.5,1.6,1.6,1.5,1.3,1.5,1.3,1.5,1.3,1.4,1.5,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.4],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.2,0.1,0.3,0.1,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.4,0.2,0.3,0.6,0.2,0.3,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.2],"mode":"markers","name":"cluster 3","line":{},"marker":{},"text":["setosa_1","setosa_9","setosa_10","setosa_13","setosa_16","setosa_17","setosa_18","setosa_21","setosa_23","setosa_28","setosa_32","setosa_33","setosa_35","setosa_36","setosa_42","setosa_47","setosa_49","setosa_51","setosa_55","setosa_57","setosa_58","setosa_60","setosa_61","setosa_63","setosa_65","setosa_71","setosa_74","setosa_75","setosa_83","setosa_84","setosa_85","setosa_87","setosa_94","setosa_95","setosa_97","setosa_99","setosa_102","setosa_103","setosa_106","setosa_117","setosa_119","setosa_121","setosa_122","setosa_124","setosa_125","setosa_126","setosa_131","setosa_134","setosa_144","setosa_149"]},{"type":"scatter3d","x":[7.6,6.3,7.2,6.9,7.2,6.5,6.7,7.7,6.4,6.7,7.7,6.2,6.7,6.9,6.7,6.9,7.9,7.2,7.4,7.3,6.3,6.5,6.4,6.7,6.4,6.8,6.4,7.1,7.7,6.3,7.7,6.8],"y":[6.6,5.6,6.0,5.7,6.1,5.8,5.7,6.1,5.5,5.2,6.7,5.4,5.8,5.1,5.7,5.4,6.4,5.8,6.1,6.3,5.6,5.5,5.6,5.6,5.3,5.5,5.6,5.9,6.7,6.0,6.9,5.9],"z":[2.1,2.4,1.8,2.3,2.5,2.2,2.5,2.3,1.8,2.3,2.0,2.3,1.8,2.3,2.1,2.1,2.0,1.6,1.9,1.8,1.8,1.8,2.1,2.4,2.3,2.1,2.2,2.1,2.2,2.5,2.3,2.3],"mode":"markers","name":"cluster 4","line":{},"marker":{},"text":["virginica_2","virginica_5","virginica_7","virginica_8","virginica_14","virginica_19","virginica_22","virginica_29","virginica_31","virginica_43","virginica_46","virginica_48","virginica_50","virginica_53","virginica_59","virginica_62","virginica_72","virginica_73","virginica_81","virginica_96","virginica_101","virginica_104","virginica_108","virginica_111","virginica_112","virginica_113","virginica_123","virginica_130","virginica_135","virginica_141","virginica_145","virginica_148"]},{"type":"scatter3d","x":[5.6,6.1,6.2,7.0,6.1,6.3,5.7,6.3,5.6,6.3,5.9,6.0,6.3,6.4,6.2,6.8,6.7,5.8,6.5,6.1,6.0,6.4,6.9,6.0,6.1,6.3,6.6,6.3,6.6,6.5,5.8,6.0,6.7,6.5,6.0,6.1,6.2,6.4,6.7,5.8,5.9],"y":[4.9,4.9,4.8,4.7,4.6,5.1,5.0,4.9,4.5,5.0,4.8,5.1,4.7,4.5,4.3,4.8,5.0,5.1,5.1,4.7,4.5,4.3,4.9,4.5,4.7,4.9,4.6,4.4,4.4,4.6,5.1,4.8,4.7,5.2,5.0,5.6,4.5,5.3,4.4,5.1,5.1],"z":[2.0,1.8,1.8,1.4,1.4,1.5,2.0,1.8,1.5,1.9,1.8,1.6,1.6,1.5,1.3,1.4,1.7,1.9,2.0,1.2,1.6,1.3,1.5,1.5,1.4,1.5,1.3,1.3,1.4,1.5,1.9,1.8,1.5,2.0,1.5,1.4,1.5,1.9,1.4,2.4,1.8],"mode":"markers","name":"cluster 1","line":{},"marker":{},"text":["virginica_3","virginica_4","virginica_6","versicolor_11","versicolor_12","virginica_15","virginica_24","virginica_25","versicolor_26","virginica_30","versicolor_34","versicolor_37","versicolor_39","versicolor_41","versicolor_44","versicolor_45","versicolor_52","virginica_54","virginica_64","versicolor_66","versicolor_69","versicolor_76","versicolor_77","versicolor_78","versicolor_93","versicolor_98","versicolor_100","versicolor_105","versicolor_107","versicolor_109","virginica_115","virginica_116","versicolor_118","virginica_127","virginica_129","virginica_132","versicolor_133","virginica_137","versicolor_140","virginica_143","virginica_147"]}];
             var layout = {"title":"isolated coordinates of clustered iris data (k-means clustering)","scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}}};
             var config = {};
-            Plotly.newPlot('30b5649f-fd40-4531-afc3-a3786dc31d05', data, layout, config);
+            Plotly.newPlot('2622c8e5-4967-42c1-8e7a-e5f70caa0ae2', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_30b5649ffd404531afc3a3786dc31d05();
+                    renderPlotly_2622c8e5496742c18e7ae5f70caa0ae2();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_30b5649ffd404531afc3a3786dc31d05();
+                renderPlotly_2622c8e5496742c18e7ae5f70caa0ae2();
             }
 </script>
 
-</center>
 <h3><a name="Optimal-cluster-number" class="anchor" href="#Optimal-cluster-number">Optimal cluster number</a></h3>
 <p>The identification of the optimal cluster number <em>k</em> in terms of the average squared distance of each point to its centroid
 can be realized by performing the clustering over a range of <em>k</em>'s multiple times and taking the <em>k</em> according to the elbow criterion.
@@ -364,34 +356,32 @@ Further more robust and advanced cluster number determination techniques can be 
         <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs28', 244)" onmouseover="showTip(event, 'fs28', 244)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs88', 245)" onmouseover="showTip(event, 'fs88', 245)" class="id">withY_AxisStyle</span> <span class="s">&quot;average dispersion&quot;</span>
         <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs28', 246)" onmouseover="showTip(event, 'fs28', 246)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs31', 247)" onmouseover="showTip(event, 'fs31', 247)" class="id">withTitle</span> <span class="s">&quot;iris data set average dispersion per k&quot;</span>
 </code></pre>
-<center>
-<div id="2f29e114-07c8-41f9-a2b9-5c56e8b4acba" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="6f798f11-5682-4394-abf5-5cb09b5e7900" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_2f29e11407c841f9a2b95c56e8b4acba = function() {
+            var renderPlotly_6f798f1156824394abf55cb09b5e7900 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter","x":[2,3,4,5,6,7,8,9,10],"y":[2.6540379473960134,1.5098516028581195,0.41309043660730094,0.2071311354762891,0.20529704134686938,0.25351883394771074,0.11707461243193365,0.08950975034866812,0.08617843944787075],"mode":"lines","line":{},"marker":{},"error_y":{"array":[0.0,0.9990476602217744,0.12815634724845137,0.028434165186704597,0.10978457708249986,0.17539202973320175,0.03122220992706225,0.04515336030283782,0.021032198834190934]}}];
+            var data = [{"type":"scatter","x":[2,3,4,5,6,7,8,9,10],"y":[2.6540379473960134,0.5650312518995808,0.38803906608177446,0.29230741158532003,0.2373132989645519,0.13834835970059728,0.1357053267442978,0.08322059498343679,0.08737041591135615],"mode":"lines","line":{},"marker":{},"error_y":{"array":[0.0,0.0007123479218563531,0.1310594862948539,0.1477208912891985,0.14254593783782382,0.04273703212986345,0.047431340902462864,0.019991321015868344,0.019069875532032494]}}];
             var layout = {"xaxis":{"title":"k"},"yaxis":{"title":"average dispersion"},"title":"iris data set average dispersion per k"};
             var config = {};
-            Plotly.newPlot('2f29e114-07c8-41f9-a2b9-5c56e8b4acba', data, layout, config);
+            Plotly.newPlot('6f798f11-5682-4394-abf5-5cb09b5e7900', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_2f29e11407c841f9a2b95c56e8b4acba();
+                    renderPlotly_6f798f1156824394abf55cb09b5e7900();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_2f29e11407c841f9a2b95c56e8b4acba();
+                renderPlotly_6f798f1156824394abf55cb09b5e7900();
             }
 </script>
 
-</center>
 <h2><a name="Limitations" class="anchor" href="#Limitations">Limitations</a></h2>
 <ol>
 <li>Outlier have a strong influence on the positioning of the centroids.</li>
@@ -414,7 +404,7 @@ the absolute variation is low.
 </ul>
 <h2><a name="Further-reading" class="anchor" href="#Further-reading">Further reading</a></h2>
 <p>Examples are taken from <a href="https://fslab.org/FSharp.Stats/Clustering.html">FSharp.Stats documentation</a> that covers various techniques for an optimal cluster number determination.</p>
-<p>The next article in this series covers <a href="https://fslab.org/content/tutorials/003_clustering_hierarchical.html">hierarchical clustering using FSharp.Stats</a>.</p>
+<p>The next article in this series covers <a href="003_clustering_hierarchical.html">hierarchical clustering using FSharp.Stats</a>.</p>
 
             </div>
         </div>

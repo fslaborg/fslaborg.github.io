@@ -1,12 +1,12 @@
 (**
-[![Binder](https://fslab.org/images/badge-binder.svg)](https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=content/tutorials/001_replicate-quality-control.ipynb)&emsp;
-[![Script](https://fslab.org/images/badge-script.svg)](https://fslab.org/content/tutorials/001_replicate-quality-control.fsx)&emsp;
-[![Notebook](https://fslab.org/images/badge-notebook.svg)](https://fslab.org/content/tutorials/001_replicate-quality-control.ipynb)
+[![Binder](https://fslab.org/images/badge-binder.svg)](https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=content/tutorials/007_replicate-quality-control.ipynb)&emsp;
+[![Script](https://fslab.org/images/badge-script.svg)](https://fslab.org/content/tutorials/007_replicate-quality-control.fsx)&emsp;
+[![Notebook](https://fslab.org/images/badge-notebook.svg)](https://fslab.org/content/tutorials/007_replicate-quality-control.ipynb)
 
 # Replicate quality control
 
 
-_Summary:_ This tutorial demonstrates an example workflow using different FSLab libaries. The aim is to check the quality of replicate measurements by clustering the samples.
+_Summary:_ This tutorial demonstrates an example workflow using different FsLab libraries. The aim is to check the quality of replicate measurements by clustering the samples.
 
 
 ## Introduction
@@ -15,13 +15,13 @@ In biology and other sciences, experimental procedures are often repeated severa
 Replicates are especially useful to check for the reproducibility of the results and to boost their trustability.
 
 One metric for the quality of the measurements is rather easy in principle. Samples received from a similar procedure should also result in similar measurements. 
-Therefore just checking if replicates are more similiar than other samples can already hand to the experimenter some implications about the quality of his samples.
+Therefore just checking if replicates are more similar than other samples can already hand to the experimenter some implications about the quality of his samples.
 This is especially useful when considering that usually - as the ground truth is unknown - this trustability is difficult to measure. 
 
-In this tutorial, a simple workflow will be presented for how to visualize the clustering of replicates in an experiment. For this, 3 FSLab libraries will be used:
+In this tutorial, a simple workflow will be presented for how to visualize the clustering of replicates in an experiment. For this, 3 FsLab libraries will be used:
 
 0. [FSharp.Data](https://fsprojects.github.io/FSharp.Data/) for retreiving the data file
-1. [Deedle](http://bluemountaincapital.github.io/Deedle/index.html) for reading a frame containing the data
+1. [Deedle](https://github.com/fslaborg/Deedle) for reading a frame containing the data
 2. & 3. [FSharp.Stats](https://fslab.org/FSharp.Stats/) to impute missing values and cluster the samples
 4. [CyJS.NET](https://fslab.org/Cyjs.NET/) to visualize the results
 
@@ -90,10 +90,10 @@ Gene99 -> <missing>        1170.12951077744 1103.50236480969 1212.87417318883 12
 (**
 ## Data imputation
 
-Missing data is an constant companion of many data scientists. And it's not the best company, as missing values missing values [can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency](https://en.wikipedia.org/wiki/Imputation_(statistics)).
+Missing data is a constant companion of many data scientists. And it's not the best company, as missing values [can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency](https://en.wikipedia.org/wiki/Imputation_(statistics)).
 
 To tackle this, missing values can be substituted in a step called `imputation`. Different approaches for this exist. Here a k-nearest neighbour imputation is shown, which works as follows: 
-For each observation with missing values, the k most similar other observations are chosen. Then the missing value of this observation is substituted by the mean of these values in the neighouring observations.
+For each observation with missing values, the k most similar other observations are chosen. Then the missing value of this observation is substituted by the mean of these values in the neighbouring observations.
 
 
 *)
@@ -111,11 +111,9 @@ let imputedData =
 
 // Creating a new frame from the old keys and the new imputed data
 let imputedFrame = 
-    let rowKeyMap = rawFrame.RowKeys |> Seq.indexed |> Map.ofSeq
-    let columnKeyMap = rawFrame.ColumnKeys |> Seq.indexed |> Map.ofSeq
     Frame.ofJaggedArray imputedData
-    |> Frame.mapRowKeys (fun r -> rowKeyMap.[r])
-    |> Frame.mapColKeys (fun c -> columnKeyMap.[c])(* output: 
+    |> Frame.indexRowsWith rawFrame.RowKeys
+    |> Frame.indexColsWith rawFrame.ColumnKeys(* output: 
 Condition0_1      Condition0_2     Condition0_3      Condition1_1     Condition1_2       Condition1_3       Condition2_1     Condition2_2       Condition2_3      
 Gene0  -> 815.0863716692485 834.177804837712 859.507048737706  892.488061131967 1018.39682842723   993.467661383195   1103.47465251202 1157.72940330711   1065.74060396554  
 Gene1  -> 874.831680800388  750.248739657293 885.186911420285  928.994516057073 853.081858812674   793.574297701139   1065.97949919587 1131.14376992316   1097.76308399039  
@@ -151,7 +149,7 @@ Gene99 -> 1162.515191125715 1170.12951077744 1103.50236480969  1212.87417318883 
 (**
 ## Hierarchical clustering
 
-To sort the level of closeness between samples, we perform a hierarchical clustering. Details about this can be found [003_clustering_hierarchical.html](here) and [https://fslab.org/FSharp.Stats/Clustering.html#Hierarchical-clustering](here).
+To sort the level of closeness between samples, we perform a hierarchical clustering. Details about this can be found [here](003_clustering_hierarchical.html) and [here](https://fslab.org/FSharp.Stats/Clustering.html#Hierarchical-clustering).
 
 
 *)
@@ -198,9 +196,9 @@ Node
 (**
 ## Data visualization
 
-Finally, the clustering results can be visualized to check for replicate clustering. For this we use `Cyjs.NET`, an FSLab library which makes use of the `Cytoscape.js` network visualization tool.
+Finally, the clustering results can be visualized to check for replicate clustering. For this we use `Cyjs.NET`, an FsLab library which makes use of the `Cytoscape.js` network visualization tool.
 
-Further information about styling the graphs can be found [https://fslab.org/Cyjs.NET/](here).
+Further information about styling the graphs can be found [here](https://fslab.org/Cyjs.NET/).
 
 *)
 open Cyjs.NET
@@ -279,15 +277,15 @@ cytoGraph
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#e725dacbb55 { width: 600px; height: 400px; display: block } </style>
-<div id="e725dacbb55"></div>
+<body> <style>#ea85f306191 { width: 600px; height: 400px; display: block } </style>
+<div id="ea85f306191"></div>
 <script type="text/javascript">
 
-            var renderCyjs_421a116bfe6846a48d28089ae47c51fe = function() {
+            var renderCyjs_6c45f14885594f2d86be647b323bf2c5 = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('e725dacbb55'),"elements":[{"data":{"id":"0","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"16","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"12","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition2_3","label":"Condition2","color":"#F5A45D","width":"40"}},{"data":{"id":"10","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition2_2","label":"Condition2","color":"#F5A45D","width":"40"}},{"data":{"id":"Condition2_1","label":"Condition2","color":"#F5A45D","width":"40"}},{"data":{"id":"15","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"11","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition0_3","label":"Condition0","color":"#6FB1FC","width":"40"}},{"data":{"id":"9","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition0_2","label":"Condition0","color":"#6FB1FC","width":"40"}},{"data":{"id":"Condition0_1","label":"Condition0","color":"#6FB1FC","width":"40"}},{"data":{"id":"14","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition1_2","label":"Condition1","color":"#EDA1ED","width":"40"}},{"data":{"id":"13","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition1_3","label":"Condition1","color":"#EDA1ED","width":"40"}},{"data":{"id":"Condition1_1","label":"Condition1","color":"#EDA1ED","width":"40"}},{"data":{"id":"e0","source":"0","target":"16","weight":1.0}},{"data":{"id":"e1","source":"16","target":"12","weight":0.0}},{"data":{"id":"e2","source":"12","target":"Condition2_3","weight":0.8973798862378771}},{"data":{"id":"e3","source":"12","target":"10","weight":0.8973798862378771}},{"data":{"id":"e4","source":"10","target":"Condition2_2","weight":0.9034335448782408}},{"data":{"id":"e5","source":"10","target":"Condition2_1","weight":0.9034335448782408}},{"data":{"id":"e6","source":"16","target":"15","weight":0.0}},{"data":{"id":"e7","source":"15","target":"11","weight":0.8185845514902051}},{"data":{"id":"e8","source":"11","target":"Condition0_3","weight":0.8975016360931424}},{"data":{"id":"e9","source":"11","target":"9","weight":0.8975016360931424}},{"data":{"id":"e10","source":"9","target":"Condition0_2","weight":0.9057934536767105}},{"data":{"id":"e11","source":"9","target":"Condition0_1","weight":0.9057934536767105}},{"data":{"id":"e12","source":"15","target":"14","weight":0.8185845514902051}},{"data":{"id":"e13","source":"14","target":"Condition1_2","weight":0.8946615908188091}},{"data":{"id":"e14","source":"14","target":"13","weight":0.8946615908188091}},{"data":{"id":"e15","source":"13","target":"Condition1_3","weight":0.8967059720282985}},{"data":{"id":"e16","source":"13","target":"Condition1_1","weight":0.8967059720282985}}],"style":[{"selector":"node","style":{"content":"data(label)","shape":"data(shape)","color":"data(color)","width":"data(width)"}}],"layout":{"name":"cose"}}
+            var graphdata = {"container":document.getElementById('ea85f306191'),"elements":[{"data":{"id":"0","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"16","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"12","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition2_3","label":"Condition2","color":"#F5A45D","width":"40"}},{"data":{"id":"10","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition2_2","label":"Condition2","color":"#F5A45D","width":"40"}},{"data":{"id":"Condition2_1","label":"Condition2","color":"#F5A45D","width":"40"}},{"data":{"id":"15","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"11","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition0_3","label":"Condition0","color":"#6FB1FC","width":"40"}},{"data":{"id":"9","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition0_2","label":"Condition0","color":"#6FB1FC","width":"40"}},{"data":{"id":"Condition0_1","label":"Condition0","color":"#6FB1FC","width":"40"}},{"data":{"id":"14","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition1_2","label":"Condition1","color":"#EDA1ED","width":"40"}},{"data":{"id":"13","label":"","color":"#DDDDDD","width":"10"}},{"data":{"id":"Condition1_3","label":"Condition1","color":"#EDA1ED","width":"40"}},{"data":{"id":"Condition1_1","label":"Condition1","color":"#EDA1ED","width":"40"}},{"data":{"id":"e0","source":"0","target":"16","weight":1.0}},{"data":{"id":"e1","source":"16","target":"12","weight":0.0}},{"data":{"id":"e2","source":"12","target":"Condition2_3","weight":0.8973798862378771}},{"data":{"id":"e3","source":"12","target":"10","weight":0.8973798862378771}},{"data":{"id":"e4","source":"10","target":"Condition2_2","weight":0.9034335448782408}},{"data":{"id":"e5","source":"10","target":"Condition2_1","weight":0.9034335448782408}},{"data":{"id":"e6","source":"16","target":"15","weight":0.0}},{"data":{"id":"e7","source":"15","target":"11","weight":0.8185845514902051}},{"data":{"id":"e8","source":"11","target":"Condition0_3","weight":0.8975016360931424}},{"data":{"id":"e9","source":"11","target":"9","weight":0.8975016360931424}},{"data":{"id":"e10","source":"9","target":"Condition0_2","weight":0.9057934536767105}},{"data":{"id":"e11","source":"9","target":"Condition0_1","weight":0.9057934536767105}},{"data":{"id":"e12","source":"15","target":"14","weight":0.8185845514902051}},{"data":{"id":"e13","source":"14","target":"Condition1_2","weight":0.8946615908188091}},{"data":{"id":"e14","source":"14","target":"13","weight":0.8946615908188091}},{"data":{"id":"e15","source":"13","target":"Condition1_3","weight":0.8967059720282985}},{"data":{"id":"e16","source":"13","target":"Condition1_1","weight":0.8967059720282985}}],"style":[{"selector":"node","style":{"content":"data(label)","shape":"data(shape)","color":"data(color)","width":"data(width)"}}],"layout":{"name":"cose"}}
             var cy = cytoscape( graphdata );
             cy.userZoomingEnabled( false );
             
@@ -297,12 +295,12 @@ cytoGraph
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_421a116bfe6846a48d28089ae47c51fe();
+                    renderCyjs_6c45f14885594f2d86be647b323bf2c5();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_421a116bfe6846a48d28089ae47c51fe();
+                renderCyjs_6c45f14885594f2d86be647b323bf2c5();
             }
 </script>
  </body>
@@ -310,8 +308,8 @@ cytoGraph
 
 ## Interpretation
 
-As can be seen in the graph, replicates of one conditions cluster together. This is a good sign for the quality of the experiment. 
-If one replicate of a condition does not behave this way, it can be considered an outlayer.
+As can be seen in the graph, replicates of one condition cluster together. This is a good sign for the quality of the experiment. 
+If one replicate of a condition does not behave this way, it can be considered an outlier.
 If the replicates don't cluster together at all, there might be some problems with the experiment.
 
 

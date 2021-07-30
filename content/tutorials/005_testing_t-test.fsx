@@ -39,7 +39,7 @@ open Deedle
 open Plotly.NET
 (**
 For our purposes, we will use the housefly wing length dataset (from _Sokal et al., 1955, A morphometric analysis of DDT-resistant and non-resistant housefly strains_).
-Head over to the [Getting started](https://fslab.org/content/tutorials/4_getting-started.html#Data-access) tutorial where it is shown how to import datasets in a simple way.
+Head over to the [Getting started](001_getting-started.html#Data-access) tutorial where it is shown how to import datasets in a simple way.
 
 
 
@@ -56,49 +56,48 @@ let dataHousefly : seq<float> =
 (**
 Let us first have a look at the sample data with help of a boxplot. As shown below, the average wingspan is around 4.5 with variability ranges between 3.5 and 5.5.
 
-<center>
+
 
 *)
 let boxPlot = 
     Chart.BoxPlot(y = dataHousefly, Name = "housefly", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
     |> Chart.withY_AxisStyle "wing length [mm]"(* output: 
-<div id="5125cbe3-56af-4f11-8f9a-db37d7088dcb" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="07144878-b794-4f42-8bd4-3b3d51e357f9" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_5125cbe356af4f118f9adb37d7088dcb = function() {
+            var renderPlotly_07144878b7944f428bd43b3d51e357f9 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[3.6,3.7,3.8,3.8,3.9,3.9,4.0,4.0,4.0,4.0,4.1,4.1,4.1,4.1,4.1,4.1,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.9,4.9,4.9,4.9,4.9,4.9,4.9,5.0,5.0,5.0,5.0,5.0,5.0,5.1,5.1,5.1,5.1,5.2,5.2,5.3,5.3,5.4,5.5],"boxpoints":"all","jitter":0.2,"name":"housefly","marker":{}}];
             var layout = {"yaxis":{"title":"wing length [mm]"}};
             var config = {};
-            Plotly.newPlot('5125cbe3-56af-4f11-8f9a-db37d7088dcb', data, layout, config);
+            Plotly.newPlot('07144878-b794-4f42-8bd4-3b3d51e357f9', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_5125cbe356af4f118f9adb37d7088dcb();
+                    renderPlotly_07144878b7944f428bd43b3d51e357f9();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_5125cbe356af4f118f9adb37d7088dcb();
+                renderPlotly_07144878b7944f428bd43b3d51e357f9();
             }
 </script>
 *)
 (**
-</center>
-
 ## One-sample t-test
 
 We want to analyze if an estimated expected value differs from the sample above. Therefore, we perform a one-sample t-test which covers exactly this situation.
 
-<center>
+
+
 <img style="max-width:75%" src="../../images/OneSampleTTest.png"></img>
-</center>
-Fig. 1: _The one-sample t-test._ The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
+
+Fig. 1: **The one-sample t-test** The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
 
 
 *)
@@ -120,10 +119,15 @@ let oneSampleResult = TTest.oneSample vectorDataHousefly expectedValue(* output:
   PValue = 0.2050731784 }*)
 (**
 The function returns a `TTestStatistics` type. If contains the fields 
+
   - `Statistic`: defines the exact teststatistic
+
   - `DegreesOfFreedom`: defines the degrees of freedom
+
   - `PValueLeft`: the left-tailed p-value 
+
   - `PValueRight`: the right-tailed p-value
+
   - `PValue`: the two-tailed p-value
 
 As we can see, when looking at the two-tailed p-value, our sample does _not_ differ significantly from our expected value. This matches our visual impression of the boxplot, where the sample distribution 
@@ -135,10 +139,10 @@ is centered around 4.5.
 The t-test is most often used in its two-sample variant. Here, two samples, independent from each other, are compared. It is required that both samples are normally distributed.
 In this next example, we are going to see if the gender of college athletes determines the number of concussions suffered over 3 years (from: _Covassin et al., 2003, Sex Differences and the Incidence of Concussions Among Collegiate Athletes, Journal of Athletic Training_).
 
-<center>
+
 <img style="max-width:75%" src="../../images/TwoSampleTTest.png"></img>
-</center>
-Fig. 2: _The two-sample t-test._ The dashed orange and green lines depict the distribution of both samples that are compared with each other.
+
+Fig. 2: **The two-sample t-test** The dashed orange and green lines depict the distribution of both samples that are compared with each other.
 
 
 *)
@@ -185,29 +189,29 @@ let boxPlot2 =
 <center>
 
 
-<div id="4b14b35c-63c3-4408-8d2d-b4bb65c86749" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="41d30c31-4c28-4587-a610-f45f13557c38" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_4b14b35c63c344088d2db4bb65c86749 = function() {
+            var renderPlotly_41d30c314c284587a610f45f13557c38 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[51.0,47.0,60.0,12.0,7.0,7.0,16.0,30.0,26.0,9.0,10.0,28.0,1.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"female college athletes","marker":{}},{"type":"box","y":[34.0,27.0,40.0,19.0,15.0,17.0,8.0,21.0,20.0,22.0,6.0,25.0,0.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"male college athletes","marker":{}}];
             var layout = {"yaxis":{"title":"number of concussions over 3 years"}};
             var config = {};
-            Plotly.newPlot('4b14b35c-63c3-4408-8d2d-b4bb65c86749', data, layout, config);
+            Plotly.newPlot('41d30c31-4c28-4587-a610-f45f13557c38', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_4b14b35c63c344088d2db4bb65c86749();
+                    renderPlotly_41d30c314c284587a610f45f13557c38();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_4b14b35c63c344088d2db4bb65c86749();
+                renderPlotly_41d30c314c284587a610f45f13557c38();
             }
 </script>
 
@@ -264,39 +268,34 @@ let visualizePairedData =
         )
     |> Chart.Combine
     |> Chart.withX_AxisStyle ""
-    |> Chart.withY_AxisStyle("endurance performance", MinMax = (0.,100.))
-(**
-<center>
-
-
-<div id="adf875d9-d4ea-4196-a625-2360ccd2e80a" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+    |> Chart.withY_AxisStyle("endurance performance", MinMax = (0.,100.))(* output: 
+<div id="490d7630-23b3-4bdb-985e-bb44d7994e4e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_adf875d9d4ea4196a6252360ccd2e80a = function() {
+            var renderPlotly_490d763023b34bdb985ebb44d7994e4e = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":["no dose","13 mg"],"y":[36.05,37.55],"mode":"lines","line":{},"name":"Person 0","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[52.47,59.3],"mode":"lines","line":{},"name":"Person 1","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[56.55,79.12],"mode":"lines","line":{},"name":"Person 2","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[45.2,58.33],"mode":"lines","line":{},"name":"Person 3","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[35.25,70.54],"mode":"lines","line":{},"name":"Person 4","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[66.38,69.47],"mode":"lines","line":{},"name":"Person 5","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[40.57,46.48],"mode":"lines","line":{},"name":"Person 6","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[57.15,66.35],"mode":"lines","line":{},"name":"Person 7","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[28.34,36.2],"mode":"lines","line":{},"name":"Person 8","marker":{}}];
             var layout = {"xaxis":{"title":""},"yaxis":{"title":"endurance performance","range":[0.0,100.0]}};
             var config = {};
-            Plotly.newPlot('adf875d9-d4ea-4196-a625-2360ccd2e80a', data, layout, config);
+            Plotly.newPlot('490d7630-23b3-4bdb-985e-bb44d7994e4e', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_adf875d9d4ea4196a6252360ccd2e80a();
+                    renderPlotly_490d763023b34bdb985ebb44d7994e4e();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_adf875d9d4ea4196a6252360ccd2e80a();
+                renderPlotly_490d763023b34bdb985ebb44d7994e4e();
             }
 </script>
-
-</center>
-
+*)
+(**
 The function for pairwise t-tests can be found at `FSharp.Stats.Testing.TTest.twoSamplePaired`. Note, that the order of the elements in each vector must be the same, so that a pairwise comparison can be performed.
 
 

@@ -101,7 +101,7 @@ at least as extreme as you observed (in the comparison) by chance. Low p values 
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="id">Plotly</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">NET</span>
 </code></pre>
 <p>For our purposes, we will use the housefly wing length dataset (from <em>Sokal et al., 1955, A morphometric analysis of DDT-resistant and non-resistant housefly strains</em>).
-Head over to the <a href="https://fslab.org/content/tutorials/4_getting-started.html#Data-access">Getting started</a> tutorial where it is shown how to import datasets in a simple way.</p>
+Head over to the <a href="001_getting-started.html#Data-access">Getting started</a> tutorial where it is shown how to import datasets in a simple way.</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// We retrieve the dataset via FSharp.Data:</span>
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="id">rawDataHousefly</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="rt">Http</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 8)" onmouseover="showTip(event, 'fs8', 8)" class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/fslaborg/datasets/main/data/HouseflyWingLength.txt&quot;</span>
 
@@ -113,44 +113,40 @@ Head over to the <a href="https://fslab.org/content/tutorials/4_getting-started.
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs17', 19)" onmouseover="showTip(event, 'fs17', 19)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 20)" onmouseover="showTip(event, 'fs18', 20)" class="id">map</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, 'fs19', 21)" onmouseover="showTip(event, 'fs19', 21)" class="fn">x</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs19', 22)" onmouseover="showTip(event, 'fs19', 22)" class="fn">x</span> <span class="o">/</span> <span class="n">10.</span><span class="pn">)</span>
 </code></pre>
 <p>Let us first have a look at the sample data with help of a boxplot. As shown below, the average wingspan is around 4.5 with variability ranges between 3.5 and 5.5.</p>
-<center>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs20', 23)" onmouseover="showTip(event, 'fs20', 23)" class="id">boxPlot</span> <span class="o">=</span> 
     <span onmouseout="hideTip(event, 'fs21', 24)" onmouseover="showTip(event, 'fs21', 24)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs22', 25)" onmouseover="showTip(event, 'fs22', 25)" class="id">BoxPlot</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs23', 26)" onmouseover="showTip(event, 'fs23', 26)" class="fn">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs9', 27)" onmouseover="showTip(event, 'fs9', 27)" class="id">dataHousefly</span><span class="pn">,</span> <span class="fn">Name</span> <span class="o">=</span> <span class="s">&quot;housefly&quot;</span><span class="pn">,</span> <span class="fn">Boxpoints</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs24', 28)" onmouseover="showTip(event, 'fs24', 28)" class="m">StyleParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 29)" onmouseover="showTip(event, 'fs25', 29)" class="rt">Boxpoints</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs26', 30)" onmouseover="showTip(event, 'fs26', 30)" class="id">All</span><span class="pn">,</span> <span class="fn">Jitter</span> <span class="o">=</span> <span class="n">0.2</span><span class="pn">)</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 31)" onmouseover="showTip(event, 'fs21', 31)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 32)" onmouseover="showTip(event, 'fs27', 32)" class="id">withY_AxisStyle</span> <span class="s">&quot;wing length [mm]&quot;</span>
 </code></pre>
-<div id="0884f599-b1dc-4693-bbb4-238424d72b4e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="17cb8bbf-c5a1-463f-a417-9a2b391963d6" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_0884f599b1dc4693bbb4238424d72b4e = function() {
+            var renderPlotly_17cb8bbfc5a1463fa4179a2b391963d6 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[3.6,3.7,3.8,3.8,3.9,3.9,4.0,4.0,4.0,4.0,4.1,4.1,4.1,4.1,4.1,4.1,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.9,4.9,4.9,4.9,4.9,4.9,4.9,5.0,5.0,5.0,5.0,5.0,5.0,5.1,5.1,5.1,5.1,5.2,5.2,5.3,5.3,5.4,5.5],"boxpoints":"all","jitter":0.2,"name":"housefly","marker":{}}];
             var layout = {"yaxis":{"title":"wing length [mm]"}};
             var config = {};
-            Plotly.newPlot('0884f599-b1dc-4693-bbb4-238424d72b4e', data, layout, config);
+            Plotly.newPlot('17cb8bbf-c5a1-463f-a417-9a2b391963d6', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_0884f599b1dc4693bbb4238424d72b4e();
+                    renderPlotly_17cb8bbfc5a1463fa4179a2b391963d6();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_0884f599b1dc4693bbb4238424d72b4e();
+                renderPlotly_17cb8bbfc5a1463fa4179a2b391963d6();
             }
 </script>
 
-</center>
 <h2><a name="One-sample-t-test" class="anchor" href="#One-sample-t-test">One-sample t-test</a></h2>
 <p>We want to analyze if an estimated expected value differs from the sample above. Therefore, we perform a one-sample t-test which covers exactly this situation.</p>
-<center>
 <img style="max-width:75%" src="../../images/OneSampleTTest.png"></img>
-</center>
-Fig. 1: _The one-sample t-test._ The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
+<p>Fig. 1: <strong>The one-sample t-test</strong> The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 36)" onmouseover="showTip(event, 'fs1', 36)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs30', 37)" onmouseover="showTip(event, 'fs30', 37)" class="id">Stats</span>
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 38)" onmouseover="showTip(event, 'fs1', 38)" class="id">FSharp</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs30', 39)" onmouseover="showTip(event, 'fs30', 39)" class="id">Stats</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs31', 40)" onmouseover="showTip(event, 'fs31', 40)" class="id">Testing</span>
 
@@ -168,21 +164,21 @@ Fig. 1: _The one-sample t-test._ The dashed orange line depicts the distribution
   PValueLeft = 0.8974634108
   PValueRight = 0.1025365892
   PValue = 0.2050731784 }</code></pre></td></tr></table>
-<p>The function returns a <code>TTestStatistics</code> type. If contains the fields
-- <code>Statistic</code>: defines the exact teststatistic
-- <code>DegreesOfFreedom</code>: defines the degrees of freedom
-- <code>PValueLeft</code>: the left-tailed p-value
-- <code>PValueRight</code>: the right-tailed p-value
-- <code>PValue</code>: the two-tailed p-value</p>
+<p>The function returns a <code>TTestStatistics</code> type. If contains the fields</p>
+<ul>
+<li><p><code>Statistic</code>: defines the exact teststatistic</p></li>
+<li><p><code>DegreesOfFreedom</code>: defines the degrees of freedom</p></li>
+<li><p><code>PValueLeft</code>: the left-tailed p-value</p></li>
+<li><p><code>PValueRight</code>: the right-tailed p-value</p></li>
+<li><p><code>PValue</code>: the two-tailed p-value</p></li>
+</ul>
 <p>As we can see, when looking at the two-tailed p-value, our sample does <em>not</em> differ significantly from our expected value. This matches our visual impression of the boxplot, where the sample distribution
 is centered around 4.5.</p>
 <h2><a name="Two-sample-t-test-unpaired-data" class="anchor" href="#Two-sample-t-test-unpaired-data">Two-sample t-test (unpaired data)</a></h2>
 <p>The t-test is most often used in its two-sample variant. Here, two samples, independent from each other, are compared. It is required that both samples are normally distributed.
 In this next example, we are going to see if the gender of college athletes determines the number of concussions suffered over 3 years (from: <em>Covassin et al., 2003, Sex Differences and the Incidence of Concussions Among Collegiate Athletes, Journal of Athletic Training</em>).</p>
-<center>
 <img style="max-width:75%" src="../../images/TwoSampleTTest.png"></img>
-</center>
-Fig. 2: _The two-sample t-test._ The dashed orange and green lines depict the distribution of both samples that are compared with each other.
+<p>Fig. 2: <strong>The two-sample t-test</strong> The dashed orange and green lines depict the distribution of both samples that are compared with each other.</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs38', 50)" onmouseover="showTip(event, 'fs38', 50)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs39', 51)" onmouseover="showTip(event, 'fs39', 51)" class="id">Text</span>
 
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs40', 52)" onmouseover="showTip(event, 'fs40', 52)" class="id">rawDataAthletes</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs7', 53)" onmouseover="showTip(event, 'fs7', 53)" class="rt">Http</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 54)" onmouseover="showTip(event, 'fs8', 54)" class="id">RequestString</span> <span class="s">@&quot;https://raw.githubusercontent.com/fslaborg/datasets/main/data/ConcussionsInMaleAndFemaleCollegeAthletes_adapted.tsv&quot;</span>
@@ -221,29 +217,29 @@ Fig. 2: _The two-sample t-test._ The dashed orange and green lines depict the di
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 115)" onmouseover="showTip(event, 'fs21', 115)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 116)" onmouseover="showTip(event, 'fs27', 116)" class="id">withY_AxisStyle</span> <span class="s">&quot;number of concussions over 3 years&quot;</span>
 </code></pre>
 <center>
-<div id="72ec285b-4be2-45ff-a6d7-a5fb7809d7cc" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="88006e31-24a7-4535-8520-efff2e6751cb" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_72ec285b4be245ffa6d7a5fb7809d7cc = function() {
+            var renderPlotly_88006e3124a745358520efff2e6751cb = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[51.0,47.0,60.0,12.0,7.0,7.0,16.0,30.0,26.0,9.0,10.0,28.0,1.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"female college athletes","marker":{}},{"type":"box","y":[34.0,27.0,40.0,19.0,15.0,17.0,8.0,21.0,20.0,22.0,6.0,25.0,0.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"male college athletes","marker":{}}];
             var layout = {"yaxis":{"title":"number of concussions over 3 years"}};
             var config = {};
-            Plotly.newPlot('72ec285b-4be2-45ff-a6d7-a5fb7809d7cc', data, layout, config);
+            Plotly.newPlot('88006e31-24a7-4535-8520-efff2e6751cb', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_72ec285b4be245ffa6d7a5fb7809d7cc();
+                    renderPlotly_88006e3124a745358520efff2e6751cb();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_72ec285b4be245ffa6d7a5fb7809d7cc();
+                renderPlotly_88006e3124a745358520efff2e6751cb();
             }
 </script>
 
@@ -291,34 +287,32 @@ Due to the connectivity of the sample pairs the samples must be of equal length.
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 173)" onmouseover="showTip(event, 'fs21', 173)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs82', 174)" onmouseover="showTip(event, 'fs82', 174)" class="id">withX_AxisStyle</span> <span class="s">&quot;&quot;</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 175)" onmouseover="showTip(event, 'fs21', 175)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 176)" onmouseover="showTip(event, 'fs27', 176)" class="id">withY_AxisStyle</span><span class="pn">(</span><span class="s">&quot;endurance performance&quot;</span><span class="pn">,</span> <span class="fn">MinMax</span> <span class="o">=</span> <span class="pn">(</span><span class="n">0.</span><span class="pn">,</span><span class="n">100.</span><span class="pn">)</span><span class="pn">)</span>
 </code></pre>
-<center>
-<div id="f3ec8c7f-f264-412e-b7f4-e857eafd393e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="040c0f86-a083-4f6c-9a7d-0eeb911bd15e" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_f3ec8c7ff264412eb7f4e857eafd393e = function() {
+            var renderPlotly_040c0f86a0834f6c9a7d0eeb911bd15e = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":["no dose","13 mg"],"y":[36.05,37.55],"mode":"lines","line":{},"name":"Person 0","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[52.47,59.3],"mode":"lines","line":{},"name":"Person 1","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[56.55,79.12],"mode":"lines","line":{},"name":"Person 2","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[45.2,58.33],"mode":"lines","line":{},"name":"Person 3","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[35.25,70.54],"mode":"lines","line":{},"name":"Person 4","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[66.38,69.47],"mode":"lines","line":{},"name":"Person 5","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[40.57,46.48],"mode":"lines","line":{},"name":"Person 6","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[57.15,66.35],"mode":"lines","line":{},"name":"Person 7","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[28.34,36.2],"mode":"lines","line":{},"name":"Person 8","marker":{}}];
             var layout = {"xaxis":{"title":""},"yaxis":{"title":"endurance performance","range":[0.0,100.0]}};
             var config = {};
-            Plotly.newPlot('f3ec8c7f-f264-412e-b7f4-e857eafd393e', data, layout, config);
+            Plotly.newPlot('040c0f86-a083-4f6c-9a7d-0eeb911bd15e', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_f3ec8c7ff264412eb7f4e857eafd393e();
+                    renderPlotly_040c0f86a0834f6c9a7d0eeb911bd15e();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_f3ec8c7ff264412eb7f4e857eafd393e();
+                renderPlotly_040c0f86a0834f6c9a7d0eeb911bd15e();
             }
 </script>
 
-</center>
 <p>The function for pairwise t-tests can be found at <code>FSharp.Stats.Testing.TTest.twoSamplePaired</code>. Note, that the order of the elements in each vector must be the same, so that a pairwise comparison can be performed.</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs83', 180)" onmouseover="showTip(event, 'fs83', 180)" class="id">twoSamplePairedResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs36', 181)" onmouseover="showTip(event, 'fs36', 181)" class="m">TTest</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs84', 182)" onmouseover="showTip(event, 'fs84', 182)" class="id">twoSamplePaired</span> <span onmouseout="hideTip(event, 'fs68', 183)" onmouseover="showTip(event, 'fs68', 183)" class="id">dataCaffeineNoDose</span> <span onmouseout="hideTip(event, 'fs69', 184)" onmouseover="showTip(event, 'fs69', 184)" class="id">dataCaffeine13mg</span>
 </code></pre>
