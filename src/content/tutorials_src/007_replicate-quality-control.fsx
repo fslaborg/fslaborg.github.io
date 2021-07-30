@@ -33,7 +33,7 @@ index: 0
 # Replicate quality control
 
 
-_Summary:_ This tutorial demonstrates an example workflow using different FSLab libaries. The aim is to check the quality of replicate measurements by clustering the samples.
+_Summary:_ This tutorial demonstrates an example workflow using different FsLab libraries. The aim is to check the quality of replicate measurements by clustering the samples.
 
 
 ## Introduction
@@ -42,10 +42,10 @@ In biology and other sciences, experimental procedures are often repeated severa
 Replicates are especially useful to check for the reproducibility of the results and to boost their trustability.
 
 One metric for the quality of the measurements is rather easy in principle. Samples received from a similar procedure should also result in similar measurements. 
-Therefore just checking if replicates are more similiar than other samples can already hand to the experimenter some implications about the quality of his samples.
+Therefore just checking if replicates are more similar than other samples can already hand to the experimenter some implications about the quality of his samples.
 This is especially useful when considering that usually - as the ground truth is unknown - this trustability is difficult to measure. 
 
-In this tutorial, a simple workflow will be presented for how to visualize the clustering of replicates in an experiment. For this, 3 FSLab libraries will be used:
+In this tutorial, a simple workflow will be presented for how to visualize the clustering of replicates in an experiment. For this, 3 FsLab libraries will be used:
 
 0. [FSharp.Data](https://fsprojects.github.io/FSharp.Data/) for retreiving the data file
 1. [Deedle](http://bluemountaincapital.github.io/Deedle/index.html) for reading a frame containing the data
@@ -96,7 +96,7 @@ rawFrame.Print()
 Missing data is an constant companion of many data scientists. And it's not the best company, as missing values missing values [can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency](https://en.wikipedia.org/wiki/Imputation_(statistics)).
 
 To tackle this, missing values can be substituted in a step called `imputation`. Different approaches for this exist. Here a k-nearest neighbour imputation is shown, which works as follows: 
-For each observation with missing values, the k most similar other observations are chosen. Then the missing value of this observation is substituted by the mean of these values in the neighouring observations.
+For each observation with missing values, the k most similar other observations are chosen. Then the missing value of this observation is substituted by the mean of these values in the neighbouring observations.
 
 *)
 
@@ -160,7 +160,7 @@ let clustering =
 
 ## Data visualization
 
-Finally, the clustering results can be visualized to check for replicate clustering. For this we use `Cyjs.NET`, an FSLab library which makes use of the `Cytoscape.js` network visualization tool.
+Finally, the clustering results can be visualized to check for replicate clustering. For this we use `Cyjs.NET`, an FsLab library which makes use of the `Cytoscape.js` network visualization tool.
 
 Further information about styling the graphs can be found [https://fslab.org/Cyjs.NET/](here).
 *)
@@ -252,8 +252,8 @@ cytoGraph
 
 ## Interpretation
 
-As can be seen in the graph, replicates of one conditions cluster together. This is a good sign for the quality of the experiment. 
-If one replicate of a condition does not behave this way, it can be considered an outlayer.
+As can be seen in the graph, replicates of one condition cluster together. This is a good sign for the quality of the experiment. 
+If one replicate of a condition does not behave this way, it can be considered an outlier.
 If the replicates don't cluster together at all, there might be some problems with the experiment.
 
 *)
