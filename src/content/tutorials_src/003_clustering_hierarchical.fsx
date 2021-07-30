@@ -205,7 +205,7 @@ inspectThreeClusters
     let truncCluster = x.[0..4] |> String.concat "; " 
     sprintf "Cluster%i: [%s ...]" i truncCluster 
     )
-|> String.concat "<br>"
+|> String.concat "\n"
 #endif // IPYNB
 
 (***hide***)
