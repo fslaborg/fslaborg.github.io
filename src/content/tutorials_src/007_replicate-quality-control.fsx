@@ -93,7 +93,7 @@ rawFrame.Print()
 
 ## Data imputation
 
-Missing data is an constant companion of many data scientists. And it's not the best company, as missing values missing values [can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency](https://en.wikipedia.org/wiki/Imputation_(statistics)).
+Missing data is a constant companion of many data scientists. And it's not the best company, as missing values [can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency](https://en.wikipedia.org/wiki/Imputation_(statistics)).
 
 To tackle this, missing values can be substituted in a step called `imputation`. Different approaches for this exist. Here a k-nearest neighbour imputation is shown, which works as follows: 
 For each observation with missing values, the k most similar other observations are chosen. Then the missing value of this observation is substituted by the mean of these values in the neighbouring observations.
@@ -114,11 +114,9 @@ let imputedData =
 
 // Creating a new frame from the old keys and the new imputed data
 let imputedFrame = 
-    let rowKeyMap = rawFrame.RowKeys |> Seq.indexed |> Map.ofSeq
-    let columnKeyMap = rawFrame.ColumnKeys |> Seq.indexed |> Map.ofSeq
     Frame.ofJaggedArray imputedData
-    |> Frame.mapRowKeys (fun r -> rowKeyMap.[r])
-    |> Frame.mapColKeys (fun c -> columnKeyMap.[c])
+    |> Frame.indexRowsWith rawFrame.RowKeys
+    |> Frame.indexColsWith rawFrame.ColumnKeys
 
 (***hide***)
 imputedFrame.Print()
@@ -128,7 +126,7 @@ imputedFrame.Print()
 
 ## Hierarchical clustering
 
-To sort the level of closeness between samples, we perform a hierarchical clustering. Details about this can be found [003_clustering_hierarchical.html](here) and [https://fslab.org/FSharp.Stats/Clustering.html#Hierarchical-clustering](here).
+To sort the level of closeness between samples, we perform a hierarchical clustering. Details about this can be found [here](003_clustering_hierarchical.html) and [here](https://fslab.org/FSharp.Stats/Clustering.html#Hierarchical-clustering).
 
 *)
 
@@ -162,7 +160,7 @@ let clustering =
 
 Finally, the clustering results can be visualized to check for replicate clustering. For this we use `Cyjs.NET`, an FsLab library which makes use of the `Cytoscape.js` network visualization tool.
 
-Further information about styling the graphs can be found [https://fslab.org/Cyjs.NET/](here).
+Further information about styling the graphs can be found [here](https://fslab.org/Cyjs.NET/).
 *)
 
 
