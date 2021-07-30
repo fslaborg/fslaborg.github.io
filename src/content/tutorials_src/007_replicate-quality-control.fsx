@@ -48,7 +48,7 @@ This is especially useful when considering that usually - as the ground truth is
 In this tutorial, a simple workflow will be presented for how to visualize the clustering of replicates in an experiment. For this, 3 FsLab libraries will be used:
 
 0. [FSharp.Data](https://fsprojects.github.io/FSharp.Data/) for retreiving the data file
-1. [Deedle](http://bluemountaincapital.github.io/Deedle/index.html) for reading a frame containing the data
+1. [Deedle](https://github.com/fslaborg/Deedle) for reading a frame containing the data
 2. & 3. [FSharp.Stats](https://fslab.org/FSharp.Stats/) to impute missing values and cluster the samples
 4. [CyJS.NET](https://fslab.org/Cyjs.NET/) to visualize the results
 
