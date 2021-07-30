@@ -58,9 +58,8 @@ Since the random initiation of centroids may influences the result, a second ini
 While several distance metrics can be used (e.g. Manhattan distance or correlation measures) it is preferred to use Euclidean distance.
 It is recommended to use a squared Euclidean distance. To not calculate the square root does not change the result but saves computation time.
 
-<center>
-<img style="max-width:75%" src="../../images/kMeans.png" class="center"></img>
-</center>
+<img style="max-width:75%" src="../../images/kMeans.png"></img>
+
 <br>
 
 
@@ -122,7 +121,7 @@ let dataChart =
     |> Chart.withTitle "raw iris data"
 
 // required to fit the species identifier on the left side of the heatmap
-(**<center>*)
+
 (*** condition: ipynb ***)
 #if IPYNB
 dataChart
@@ -133,7 +132,7 @@ dataChart |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
+
 ## Clustering
 
 The function that performs k-means clustering can be found at `FSharp.Stats.ML.Unsupervised.IterativeClustering.kmeans`. It requires four input parameters:
@@ -185,8 +184,7 @@ clusteredIrisData
 |> Seq.take 10
 |> Seq.map (fun (a,b,c) -> sprintf "%i, %A, %A" a b c)
 |> String.concat "\n"
-|> String.concat "<br>"
-|> fun x -> x + "<br> ... "
+|> fun x -> x + "\n... "
 #endif // IPYNB
 
 (***hide***)
@@ -216,7 +214,7 @@ let clusterChart =
         |> Chart.withMarginSize(Left=100.)
         |> Chart.withTitle "clustered iris data (k-means clustering)"
 (**
-<center>
+
 *)
 (*** condition: ipynb ***)
 #if IPYNB
@@ -228,7 +226,7 @@ clusterChart |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
+
 
 To visualize the result in a three-dimensional chart, three of the four measurements are isolated after clustering and visualized as 3D-scatter plot.
 
@@ -255,7 +253,7 @@ let clusterChart3D =
     |> Chart.withZ_AxisStyle colNames.[3]
 
 (**
-<center>
+
 *)
 (*** condition: ipynb ***)
 #if IPYNB
@@ -267,7 +265,7 @@ clusterChart3D |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
+
 
 ### Optimal cluster number
 
@@ -303,7 +301,7 @@ let bestKChart =
         |> Chart.withY_AxisStyle "average dispersion"
         |> Chart.withTitle "iris data set average dispersion per k"
 (**
-<center>
+
 *)
 (*** condition: ipynb ***)
 #if IPYNB
@@ -316,7 +314,7 @@ bestKChart |> GenericChart.toChartHTML
 
 (**
 
-</center>
+
 
 ## Limitations
 
@@ -340,7 +338,7 @@ bestKChart |> GenericChart.toChartHTML
   
 Examples are taken from [FSharp.Stats documentation](https://fslab.org/FSharp.Stats/Clustering.html) that covers various techniques for an optimal cluster number determination.
   
-The next article in this series covers [hierarchical clustering using FSharp.Stats](https://fslab.org/content/tutorials/003_clustering_hierarchical.html).
+The next article in this series covers [hierarchical clustering using FSharp.Stats](003_clustering_hierarchical.html).
 
 *)
 

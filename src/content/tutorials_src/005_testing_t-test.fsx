@@ -73,7 +73,7 @@ open Plotly.NET
 (**
 
 For our purposes, we will use the housefly wing length dataset (from _Sokal et al., 1955, A morphometric analysis of DDT-resistant and non-resistant housefly strains_).
-Head over to the [Getting started](https://fslab.org/content/tutorials/4_getting-started.html#Data-access) tutorial where it is shown how to import datasets in a simple way.
+Head over to the [Getting started](001_getting-started.html#Data-access) tutorial where it is shown how to import datasets in a simple way.
 
 
 *)
@@ -92,7 +92,7 @@ let dataHousefly : seq<float> =
 
 Let us first have a look at the sample data with help of a boxplot. As shown below, the average wingspan is around 4.5 with variability ranges between 3.5 and 5.5.
 
-<center>
+
 *)
 
 let boxPlot = 
@@ -109,16 +109,16 @@ boxPlot |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-</center>
 
 ## One-sample t-test
 
 We want to analyze if an estimated expected value differs from the sample above. Therefore, we perform a one-sample t-test which covers exactly this situation.
 
-<center>
+
+
 <img style="max-width:75%" src="../../images/OneSampleTTest.png"></img>
-</center>
-Fig. 1: _The one-sample t-test._ The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
+
+Fig. 1: **The one-sample t-test** The dashed orange line depicts the distribution of our sample, the green bar the expected value to test against.
 
 *)
 
@@ -141,10 +141,15 @@ let oneSampleResult = TTest.oneSample vectorDataHousefly expectedValue
 (**
 
 The function returns a `TTestStatistics` type. If contains the fields 
+
   - `Statistic`: defines the exact teststatistic
+
   - `DegreesOfFreedom`: defines the degrees of freedom
+
   - `PValueLeft`: the left-tailed p-value 
+
   - `PValueRight`: the right-tailed p-value
+
   - `PValue`: the two-tailed p-value
 
 As we can see, when looking at the two-tailed p-value, our sample does _not_ differ significantly from our expected value. This matches our visual impression of the boxplot, where the sample distribution 
@@ -156,10 +161,10 @@ is centered around 4.5.
 The t-test is most often used in its two-sample variant. Here, two samples, independent from each other, are compared. It is required that both samples are normally distributed.
 In this next example, we are going to see if the gender of college athletes determines the number of concussions suffered over 3 years (from: _Covassin et al., 2003, Sex Differences and the Incidence of Concussions Among Collegiate Athletes, Journal of Athletic Training_).
 
-<center>
+
 <img style="max-width:75%" src="../../images/TwoSampleTTest.png"></img>
-</center>
-Fig. 2: _The two-sample t-test._ The dashed orange and green lines depict the distribution of both samples that are compared with each other.
+
+Fig. 2: **The two-sample t-test** The dashed orange and green lines depict the distribution of both samples that are compared with each other.
 
 *)
 
@@ -276,7 +281,6 @@ let visualizePairedData =
 
 (**
 
-<center>
 
 *)
 
@@ -291,7 +295,7 @@ visualizePairedData |> GenericChart.toChartHTML
 
 (**
 
-</center>
+
 
 The function for pairwise t-tests can be found at `FSharp.Stats.Testing.TTest.twoSamplePaired`. Note, that the order of the elements in each vector must be the same, so that a pairwise comparison can be performed.
 

@@ -38,7 +38,7 @@ index: 2
 
 _Summary:_ This tutorial demonstrates DBSCAN with FSharp.Stats and how to visualize the results with Plotly.NET.
 
-In the previous article of this series [hierarchical clustering using FSharp.Stats](https://fslab.org/content/tutorials/003_clustering_hierarchical.html) was introduced.
+In the previous article of this series [hierarchical clustering using FSharp.Stats](003_clustering_hierarchical.html) was introduced.
 
 ## Introduction
 
@@ -327,7 +327,7 @@ chart3D |> GenericChart.toChartHTML
 
 ## References
 
-  - FSharp.Stats documentation, fslaborg, https://fslab.org/FSharp.Stats/Clustering.html
+  - [FSharp.Stats documentation](https://fslab.org/FSharp.Stats/Clustering.html), fslaborg, 
   - Shinde and Sankhe, Comparison of Enhanced DBSCAN Algorithms: A Review, International Journal of Engeneering Research & Technology, 2017
   - Nagaraju et al., An effective density based approach to detect complex data clusters using notion of neighborhood difference, Int. J. Autom. Comput., 2017, https://doi.org/10.1007/s11633-016-1038-7 
 
