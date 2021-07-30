@@ -118,7 +118,9 @@ module Predicates =
 
     let staticPredicate (projectRoot: string, page: string) =
         let ext = Path.GetExtension page
-        if page.Contains "_public" ||
+
+        if page.Contains "tutorials/" && ext = ".fsx" then true
+        elif page.Contains "_public" ||
            page.Contains "_bin" ||
            page.Contains "_lib" ||
            page.Contains "_data" ||
