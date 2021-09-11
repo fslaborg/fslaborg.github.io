@@ -94,91 +94,6 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://github.com/fsprojects/FSharp.Data">
-                    FSharp.Data
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              The FSharp.Data package contains type providers and utilities to accesscommon data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Data"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-              <span class="has-bg-magenta tag">
-                type providers
-              </span>
-              <span class="has-bg-magenta tag">
-                http
-              </span>
-            </div>
-            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Data-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
-<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
                   <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
                 </figure>
               </div>
@@ -253,6 +168,71 @@ let cv = Seq.cv sample
               Docs
             </a>
             <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/flips">
+                    flips
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Fsharp LInear Programming System.
+            </p>
+            <code class="package-reference">
+              #r "nuget: flips"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                optimization
+              </span>
+              <span class="has-bg-magenta tag">
+                linear programming
+              </span>
+            </div>
+            <a href="#flips-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="flips-collapse" class="is-collapsible">
+              <hr/>
+              <p>Flips is an F# library for modeling and solving Linear Programming (LP) and Mixed-Integer Programming (MIP) problems. It is inspired by the work of the PuLP library for Python and the excellent Gurobi Python library. It builds on the work of the outstanding <a href="https://github.com/google/or-tools">Google OR-Tools library</a> and the <a href="https://optano.com/en/modeling/">OPTANO</a> library .</p>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/flips">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://flipslibrary.com/#/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/flips/">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
@@ -356,57 +336,164 @@ let myFirstStyledGraph =
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
                 </figure>
               </div>
               <div class="media-content">
                 <p class="title">
-                  <a href="https://www.github.com/fslaborg/flips">
-                    flips
+                  <a href="https://github.com/fsprojects/FSharp.Data">
+                    FSharp.Data
                   </a>
                 </p>
               </div>
             </div>
             <p class="subtitle is-6">
-              Fsharp LInear Programming System.
+              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
             </p>
             <code class="package-reference">
-              #r "nuget: flips"
+              #r "nuget: FSharp.Data"
             </code>
             <div class="tags">
               <span class="has-bg-magenta tag">
-                optimization
+                data access
               </span>
               <span class="has-bg-magenta tag">
-                linear programming
+                type providers
+              </span>
+              <span class="has-bg-magenta tag">
+                http
               </span>
             </div>
-            <a href="#flips-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
               Read More
               <span class="icon">
                 <i class="fas fa-angle-down"></i>
               </span>
             </a>
-            <div id="flips-collapse" class="is-collapsible">
+            <div id="FSharp.Data-collapse" class="is-collapsible">
               <hr/>
-              <p>Flips is an F# library for modeling and solving Linear Programming (LP) and Mixed-Integer Programming (MIP) problems. It is inspired by the work of the PuLP library for Python and the excellent Gurobi Python library. It builds on the work of the outstanding <a href="https://github.com/google/or-tools">Google OR-Tools library</a> and the <a href="https://optano.com/en/modeling/">OPTANO</a> library .</p>
+              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
+<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
 
             </div>
           </div>
           <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/flips">
+            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
               <span class="icon">
                 <i class="fas fa-code-branch"></i>
               </span>
               Github
             </a>
-            <a class="card-footer-item" href="https://flipslibrary.com/#/">
+            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
               <span class="icon">
                 <i class="fas fa-book"></i>
               </span>
               Docs
             </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/flips/">
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/Deedle">
+                    Deedle
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Deedle is an easy to use library for data and time series manipulation and for scientific programming.
+            </p>
+            <code class="package-reference">
+              #r "nuget: Deedle"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                dataframe
+              </span>
+              <span class="has-bg-magenta tag">
+                data exploration
+              </span>
+              <span class="has-bg-magenta tag">
+                data access
+              </span>
+            </div>
+            <a href="#Deedle-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="Deedle-collapse" class="is-collapsible">
+              <hr/>
+              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
+<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
+<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
+<p>It reads the boston housing data set csv file from an online data source and</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/Deedle">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/Deedle/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
@@ -509,93 +596,6 @@ myChart |&gt; Chart.savePNG(&quot;myChart&quot;,Width=600,Height=600)  //save ch
               Docs
             </a>
             <a class="card-footer-item" href="https://www.nuget.org/packages/Plotly.NET/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/Deedle">
-                    Deedle
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              Deedle is an easy to use library for data and time series manipulation and for scientific programming.
-            </p>
-            <code class="package-reference">
-              #r "nuget: Deedle"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                dataframe
-              </span>
-              <span class="has-bg-magenta tag">
-                data exploration
-              </span>
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-            </div>
-            <a href="#Deedle-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="Deedle-collapse" class="is-collapsible">
-              <hr/>
-              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
-<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
-<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
-<p>It reads the boston housing data set csv file from an online data source and</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/Deedle">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/Deedle/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
