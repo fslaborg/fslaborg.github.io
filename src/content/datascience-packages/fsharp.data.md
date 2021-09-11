@@ -4,7 +4,7 @@ package-logo: https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon
 package-nuget-link: https://www.nuget.org/packages/FSharp.Data
 package-github-link: https://github.com/fsprojects/FSharp.Data
 package-documentation-link: https://fsprojects.github.io/FSharp.Data/
-package-description: The FSharp.Data package contains type providers and utilities to accesscommon data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
+package-description: The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
 #package-posts-link: optional
 package-tags: data access, type providers, http
 ---
