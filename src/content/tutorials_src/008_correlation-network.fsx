@@ -45,7 +45,12 @@ _Summary:_ This tutorial demonstrates an example workflow using different FsLab 
 
 ## Introduction
 
+Networks provide a mathematical representation of connections found everywhere, e.g. computers connected through the internet, friends connected by friendships or animals connected in the food web. 
+This mathematical representation allows for many different, but universal approaches for creating, manipulating and interrogating these networks for new information. E.g. the most important nodes (or vertices)
+can be identified for different metrics or the most efficient connection between two nodes can be found. 
 
+One widely used kind of network in biology is the gene co-expression network. Here the nodes are genes and the edges (or links) between them are how similar their expression patterns are. One measure for 
+this similarity is the correlation between the expression patterns. This kind of network is often used for finding interesting candidates, by identifying genes which are highly connected with known genes of interest.
 
 In this tutorial, a simple workflow will be presented for how to create and visualize a correlation network from experimental gene expression data. For this, 4 FsLab libraries will be used:
 
@@ -119,8 +124,25 @@ let rows =
 let correlationNetwork = 
     Correlation.Matrix.rowWisePearson rows
 
-(***hide***)
-correlationNetwork
+// (***hide***)
+
+// // Histogram over the correlations for visualizing the distribution
+// let correlationHistogram = 
+//     correlationNetwork
+//     |> Matrix.toJaggedArray
+//     |> Array.collect
+//     |> Chart.Histogram
+
+
+// (*** condition: ipynb ***)
+// #if IPYNB
+// rawChart2D
+// #endif // IPYNB
+
+// (***hide***)
+// correlationHistogram |> GenericChart.toChartHTML
+// (***include-it-raw***)
+
 
 (*** include-output ***)
 (** 
@@ -131,11 +153,19 @@ Creating this correlation network is not the endproduct you want though, as ever
 whether an edge between two vertices exists or not, instead of taking into consideration the strength of the connection. Therefore, many questions you want the network to answer, require a selection step, 
 in which strong connections are kept and weak ones are discarded. This is called thresholding. For this different algorithms exist. Here we will use an algorithm based on Random Matrix Theory (RMT). 
 
-The basic idea behind this RMT approach is filtering the network until a modular state is reached
+The basic idea behind this RMT approach is filtering the network until a modular state is reached. Modularity is a measure for how much nodes in a network form groups, where connections between same-group members is 
+stronger or more likely than between members of different groups. In general, biological networks are generally regarded as modular, as usually more simple parts (like proteins resulting from gene expression)
+need to work closely together to form more complex functions (like photosynthesis). 
+
+<img style="max-width:75%" src="../../images/RMT_distributions.png" class="center"></img>
+
+Finding this threshold is a repetitive process. For each threshold, the eigenvalues of the matrix are calculated, normalized and the spacing between these eigenvalues is calculated. For an evenly filled matrix, the 
+frequency of these spacings follows the Wigner's surmise (see picture above). If a certain number of edges is filtered and an underlying modular structure is revealed, the spacings start following the Poisson distribution.
+The algorithm searches the point where this switch from one distribution to the other is reached with a given accuracy.   
 
 *)
 
-// Calculate the critical threshold
+// Calculate the critical threshold with an accuracy of 0.01
 let thr,_ = Testing.RMT.compute 0.9 0.01 0.05 correlationNetwork
 
 // Set all correlations less strong than the critical threshold to 0
@@ -144,7 +174,25 @@ let filteredNetwork =
     |> Matrix.map (fun v -> if (abs v) > thr then v else 0.)
 
 
-(*** include-value:clustering ***)
+// (***hide***)
+
+// // Histogram over the correlations for visualizing the distribution
+// let correlationHistogramFiltered = 
+//     filteredNetwork
+//     |> Matrix.toJaggedArray
+//     |> Array.collect id
+//     |> Chart.Histogram
+
+
+// (*** condition: ipynb ***)
+// #if IPYNB
+// rawChart2D
+// #endif // IPYNB
+
+// (***hide***)
+// correlationHistogramFiltered |> GenericChart.toChartHTML
+// (***include-it-raw***)
+
 
 (** 
 
@@ -200,10 +248,6 @@ let cytoGraph =
             CyParam.width =. CyParam.weight
             CyParam.height =. CyParam.weight
         ]
-    |> CyGraph.withStyle "edge" 
-        [
-            // CyParam.width =. CyParam.width
-        ]
     |> CyGraph.withLayout (Layout.initCose (id))  
 
 (** 
@@ -228,8 +272,5 @@ cytoGraph
 
 ## Interpretation
 
-As can be seen in the graph, replicates of one condition cluster together. This is a good sign for the quality of the experiment. 
-If one replicate of a condition does not behave this way, it can be considered an outlier.
-If the replicates don't cluster together at all, there might be some problems with the experiment.
-
+As can be seen, the network was filtered, resulting in different, partly completely separated, modules.
 *)
