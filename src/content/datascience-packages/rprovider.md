@@ -41,4 +41,5 @@ R.mean([1;2;3;4])
 |> R.plot
 
 // Plot the data from the standard 'Nile' data set
-R.plot(R.Nile)```
+R.plot(R.Nile)
+```
