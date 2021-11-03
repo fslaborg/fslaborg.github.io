@@ -14,11 +14,17 @@ them available as .NET namespaces underneath the parent namespace RProvider. For
 the stats package is available as RProvider.stats. If you open the namespaces you want to 
 use, functions and values will be available as R.name.
 
+There are three requirements to be set up on your system:
+
+* dotnet SDK 5.0 or greater; and
+* R statistical language. *Note: on Windows, there is currently a bug in R preventing us from supporting R versions greater than 4.0.2.*
+* R_HOME environment variable set to the R home directory. This can usually be identified by running the command 'R RHOME'.
+
 Below is a simple script example that demonstrates using R statistical functions,
 and using R graphics functions to create charts:
 
 ```fsharp
-#r "nuget: RProvider,2.0.0-beta2"
+#r "nuget: RProvider,2.0.1"
 
 open RProvider
 open RProvider.graphics
