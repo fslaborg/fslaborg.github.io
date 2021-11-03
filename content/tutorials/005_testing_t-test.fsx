@@ -62,29 +62,29 @@ Let us first have a look at the sample data with help of a boxplot. As shown bel
 let boxPlot = 
     Chart.BoxPlot(y = dataHousefly, Name = "housefly", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
     |> Chart.withY_AxisStyle "wing length [mm]"(* output: 
-<div id="4bbcc261-764b-47ee-a54a-4977dfa4e5f2" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="12b6916a-9308-48cf-b7f3-aa3396efe915" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_4bbcc261764b47eea54a4977dfa4e5f2 = function() {
+            var renderPlotly_12b6916a930848cfb7f3aa3396efe915 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[3.6,3.7,3.8,3.8,3.9,3.9,4.0,4.0,4.0,4.0,4.1,4.1,4.1,4.1,4.1,4.1,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.9,4.9,4.9,4.9,4.9,4.9,4.9,5.0,5.0,5.0,5.0,5.0,5.0,5.1,5.1,5.1,5.1,5.2,5.2,5.3,5.3,5.4,5.5],"boxpoints":"all","jitter":0.2,"name":"housefly","marker":{}}];
             var layout = {"yaxis":{"title":"wing length [mm]"}};
             var config = {};
-            Plotly.newPlot('4bbcc261-764b-47ee-a54a-4977dfa4e5f2', data, layout, config);
+            Plotly.newPlot('12b6916a-9308-48cf-b7f3-aa3396efe915', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_4bbcc261764b47eea54a4977dfa4e5f2();
+                    renderPlotly_12b6916a930848cfb7f3aa3396efe915();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_4bbcc261764b47eea54a4977dfa4e5f2();
+                renderPlotly_12b6916a930848cfb7f3aa3396efe915();
             }
 </script>
 *)
@@ -185,29 +185,29 @@ let boxPlot2 =
     ]
     |> Chart.Combine
     |> Chart.withY_AxisStyle "number of concussions over 3 years"(* output: 
-<div id="faf7cfda-9734-47c7-96f1-fb1cd2013475" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="4b7b4537-5fbc-422e-8169-124cbe061e4d" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_faf7cfda973447c796f1fb1cd2013475 = function() {
+            var renderPlotly_4b7b45375fbc422e8169124cbe061e4d = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[51.0,47.0,60.0,12.0,7.0,7.0,16.0,30.0,26.0,9.0,10.0,28.0,1.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"female college athletes","marker":{}},{"type":"box","y":[34.0,27.0,40.0,19.0,15.0,17.0,8.0,21.0,20.0,22.0,6.0,25.0,0.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"male college athletes","marker":{}}];
             var layout = {"yaxis":{"title":"number of concussions over 3 years"}};
             var config = {};
-            Plotly.newPlot('faf7cfda-9734-47c7-96f1-fb1cd2013475', data, layout, config);
+            Plotly.newPlot('4b7b4537-5fbc-422e-8169-124cbe061e4d', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_faf7cfda973447c796f1fb1cd2013475();
+                    renderPlotly_4b7b45375fbc422e8169124cbe061e4d();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_faf7cfda973447c796f1fb1cd2013475();
+                renderPlotly_4b7b45375fbc422e8169124cbe061e4d();
             }
 </script>
 *)
@@ -264,29 +264,29 @@ let visualizePairedData =
     |> Chart.Combine
     |> Chart.withX_AxisStyle ""
     |> Chart.withY_AxisStyle("endurance performance", MinMax = (0.,100.))(* output: 
-<div id="20b9e793-5dd0-4930-9c48-74621a0d9d9c" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="eff3dd0d-5c45-4474-af7c-cf1065431626" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_20b9e7935dd049309c4874621a0d9d9c = function() {
+            var renderPlotly_eff3dd0d5c454474af7ccf1065431626 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":["no dose","13 mg"],"y":[36.05,37.55],"mode":"lines","line":{},"name":"Person 0","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[52.47,59.3],"mode":"lines","line":{},"name":"Person 1","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[56.55,79.12],"mode":"lines","line":{},"name":"Person 2","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[45.2,58.33],"mode":"lines","line":{},"name":"Person 3","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[35.25,70.54],"mode":"lines","line":{},"name":"Person 4","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[66.38,69.47],"mode":"lines","line":{},"name":"Person 5","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[40.57,46.48],"mode":"lines","line":{},"name":"Person 6","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[57.15,66.35],"mode":"lines","line":{},"name":"Person 7","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[28.34,36.2],"mode":"lines","line":{},"name":"Person 8","marker":{}}];
             var layout = {"xaxis":{"title":""},"yaxis":{"title":"endurance performance","range":[0.0,100.0]}};
             var config = {};
-            Plotly.newPlot('20b9e793-5dd0-4930-9c48-74621a0d9d9c', data, layout, config);
+            Plotly.newPlot('eff3dd0d-5c45-4474-af7c-cf1065431626', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_20b9e7935dd049309c4874621a0d9d9c();
+                    renderPlotly_eff3dd0d5c454474af7ccf1065431626();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_20b9e7935dd049309c4874621a0d9d9c();
+                renderPlotly_eff3dd0d5c454474af7ccf1065431626();
             }
 </script>
 *)
