@@ -117,29 +117,29 @@ Head over to the <a href="001_getting-started.html#Data-access">Getting started<
     <span onmouseout="hideTip(event, 'fs21', 24)" onmouseover="showTip(event, 'fs21', 24)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs22', 25)" onmouseover="showTip(event, 'fs22', 25)" class="id">BoxPlot</span><span class="pn">(</span><span onmouseout="hideTip(event, 'fs23', 26)" onmouseover="showTip(event, 'fs23', 26)" class="fn">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs9', 27)" onmouseover="showTip(event, 'fs9', 27)" class="id">dataHousefly</span><span class="pn">,</span> <span class="fn">Name</span> <span class="o">=</span> <span class="s">&quot;housefly&quot;</span><span class="pn">,</span> <span class="fn">Boxpoints</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs24', 28)" onmouseover="showTip(event, 'fs24', 28)" class="m">StyleParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs25', 29)" onmouseover="showTip(event, 'fs25', 29)" class="rt">Boxpoints</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs26', 30)" onmouseover="showTip(event, 'fs26', 30)" class="id">All</span><span class="pn">,</span> <span class="fn">Jitter</span> <span class="o">=</span> <span class="n">0.2</span><span class="pn">)</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 31)" onmouseover="showTip(event, 'fs21', 31)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 32)" onmouseover="showTip(event, 'fs27', 32)" class="id">withY_AxisStyle</span> <span class="s">&quot;wing length [mm]&quot;</span>
 </code></pre>
-<div id="1d34d992-3fe6-48bf-bf82-6529b6091669" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="9033af2c-f355-4039-b603-f6d79b2afc75" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_1d34d9923fe648bfbf826529b6091669 = function() {
+            var renderPlotly_9033af2cf3554039b603f6d79b2afc75 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[3.6,3.7,3.8,3.8,3.9,3.9,4.0,4.0,4.0,4.0,4.1,4.1,4.1,4.1,4.1,4.1,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.9,4.9,4.9,4.9,4.9,4.9,4.9,5.0,5.0,5.0,5.0,5.0,5.0,5.1,5.1,5.1,5.1,5.2,5.2,5.3,5.3,5.4,5.5],"boxpoints":"all","jitter":0.2,"name":"housefly","marker":{}}];
             var layout = {"yaxis":{"title":"wing length [mm]"}};
             var config = {};
-            Plotly.newPlot('1d34d992-3fe6-48bf-bf82-6529b6091669', data, layout, config);
+            Plotly.newPlot('9033af2c-f355-4039-b603-f6d79b2afc75', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_1d34d9923fe648bfbf826529b6091669();
+                    renderPlotly_9033af2cf3554039b603f6d79b2afc75();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_1d34d9923fe648bfbf826529b6091669();
+                renderPlotly_9033af2cf3554039b603f6d79b2afc75();
             }
 </script>
 
@@ -216,29 +216,29 @@ In this next example, we are going to see if the gender of college athletes dete
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 113)" onmouseover="showTip(event, 'fs21', 113)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs62', 114)" onmouseover="showTip(event, 'fs62', 114)" class="id">Combine</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 115)" onmouseover="showTip(event, 'fs21', 115)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 116)" onmouseover="showTip(event, 'fs27', 116)" class="id">withY_AxisStyle</span> <span class="s">&quot;number of concussions over 3 years&quot;</span>
 </code></pre>
-<div id="91760bc3-0bbe-4d2d-b273-4036cb1d3a34" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="17caa729-19fc-4ae0-9755-cf6fa5a6d523" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_91760bc30bbe4d2db2734036cb1d3a34 = function() {
+            var renderPlotly_17caa72919fc4ae09755cf6fa5a6d523 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[51.0,47.0,60.0,12.0,7.0,7.0,16.0,30.0,26.0,9.0,10.0,28.0,1.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"female college athletes","marker":{}},{"type":"box","y":[34.0,27.0,40.0,19.0,15.0,17.0,8.0,21.0,20.0,22.0,6.0,25.0,0.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"male college athletes","marker":{}}];
             var layout = {"yaxis":{"title":"number of concussions over 3 years"}};
             var config = {};
-            Plotly.newPlot('91760bc3-0bbe-4d2d-b273-4036cb1d3a34', data, layout, config);
+            Plotly.newPlot('17caa729-19fc-4ae0-9755-cf6fa5a6d523', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_91760bc30bbe4d2db2734036cb1d3a34();
+                    renderPlotly_17caa72919fc4ae09755cf6fa5a6d523();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_91760bc30bbe4d2db2734036cb1d3a34();
+                renderPlotly_17caa72919fc4ae09755cf6fa5a6d523();
             }
 </script>
 
@@ -285,29 +285,29 @@ Due to the connectivity of the sample pairs the samples must be of equal length.
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 173)" onmouseover="showTip(event, 'fs21', 173)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs82', 174)" onmouseover="showTip(event, 'fs82', 174)" class="id">withX_AxisStyle</span> <span class="s">&quot;&quot;</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs21', 175)" onmouseover="showTip(event, 'fs21', 175)" class="rt">Chart</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs27', 176)" onmouseover="showTip(event, 'fs27', 176)" class="id">withY_AxisStyle</span><span class="pn">(</span><span class="s">&quot;endurance performance&quot;</span><span class="pn">,</span> <span class="fn">MinMax</span> <span class="o">=</span> <span class="pn">(</span><span class="n">0.</span><span class="pn">,</span><span class="n">100.</span><span class="pn">)</span><span class="pn">)</span>
 </code></pre>
-<div id="123d6dff-03d4-4d41-a1d6-994a5729a824" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="78b86fa9-03ac-4a9d-b094-4a0d8c670b4f" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_123d6dff03d44d41a1d6994a5729a824 = function() {
+            var renderPlotly_78b86fa903ac4a9db0944a0d8c670b4f = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","x":["no dose","13 mg"],"y":[36.05,37.55],"mode":"lines","line":{},"name":"Person 0","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[52.47,59.3],"mode":"lines","line":{},"name":"Person 1","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[56.55,79.12],"mode":"lines","line":{},"name":"Person 2","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[45.2,58.33],"mode":"lines","line":{},"name":"Person 3","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[35.25,70.54],"mode":"lines","line":{},"name":"Person 4","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[66.38,69.47],"mode":"lines","line":{},"name":"Person 5","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[40.57,46.48],"mode":"lines","line":{},"name":"Person 6","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[57.15,66.35],"mode":"lines","line":{},"name":"Person 7","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[28.34,36.2],"mode":"lines","line":{},"name":"Person 8","marker":{}}];
             var layout = {"xaxis":{"title":""},"yaxis":{"title":"endurance performance","range":[0.0,100.0]}};
             var config = {};
-            Plotly.newPlot('123d6dff-03d4-4d41-a1d6-994a5729a824', data, layout, config);
+            Plotly.newPlot('78b86fa9-03ac-4a9d-b094-4a0d8c670b4f', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_123d6dff03d44d41a1d6994a5729a824();
+                    renderPlotly_78b86fa903ac4a9db0944a0d8c670b4f();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_123d6dff03d44d41a1d6994a5729a824();
+                renderPlotly_78b86fa903ac4a9db0944a0d8c670b4f();
             }
 </script>
 
