@@ -14,7 +14,7 @@ index: 1
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 
 (***condition:ipynb***)
@@ -22,8 +22,8 @@ index: 1
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
@@ -72,8 +72,8 @@ For demonstration of k-means clustering, the classic iris data set is used, whic
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
 
@@ -246,7 +246,7 @@ let clusterChart3D =
             let truncData = data |> Seq.map (fun x -> x.[0],x.[2],x.[3]) 
             Chart.Scatter3d(truncData,mode=StyleParam.Mode.Markers,Name = clusterName,Labels=label)
         )
-    |> Chart.Combine
+    |> Chart.combine
     |> Chart.withTitle "isolated coordinates of clustered iris data (k-means clustering)"
     |> Chart.withX_AxisStyle colNames.[0]
     |> Chart.withY_AxisStyle colNames.[2]

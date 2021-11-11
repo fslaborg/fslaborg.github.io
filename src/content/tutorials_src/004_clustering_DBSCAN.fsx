@@ -14,7 +14,7 @@ index: 2
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 
 (***condition:ipynb***)
@@ -22,8 +22,8 @@ index: 2
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
@@ -70,8 +70,8 @@ In this tutorial we are going to perform DBSCAN on two- and three-dimensional da
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
 
@@ -125,8 +125,8 @@ let rawChart2D =
         data2D
         |> Array.map (fun x -> x.[0],x.[1])
     Chart.Scatter(unzippedData,mode=StyleParam.Mode.Markers,Labels=labels)
-    |> Chart.withX_AxisStyle header2D.[0]
-    |> Chart.withY_AxisStyle header2D.[1]
+    |> Chart.withXAxisStyle header2D.[0]
+    |> Chart.withYAxisStyle header2D.[1]
     |> Chart.withTitle "rawChart2D"
 
 let rawChart3D =
@@ -134,9 +134,9 @@ let rawChart3D =
         data3D
         |> Array.map (fun x -> x.[0],x.[1],x.[2])
     Chart.Scatter3d(unzippedData,mode=StyleParam.Mode.Markers,Labels=labels)
-    |> Chart.withX_AxisStyle header3D.[0]
-    |> Chart.withY_AxisStyle header3D.[1]
-    |> Chart.withZ_AxisStyle header3D.[2]
+    |> Chart.withXAxisStyle header3D.[0]
+    |> Chart.withYAxisStyle header3D.[1]
+    |> Chart.withZAxisStyle header3D.[2]
     |> Chart.withTitle "rawChart3D"
 
 
@@ -218,7 +218,7 @@ let chartCluster2D =
         |> Seq.distinct //more efficient visualization; no difference in plot but in point numbers
         |> Chart.Point
         |> Chart.withTraceName (sprintf "Cluster %i" i))
-    |> Chart.Combine
+    |> Chart.combine
 
 let chartNoise2D = 
     result2D.Noisepoints
@@ -235,10 +235,10 @@ let chartTitle2D =
 
 let chart2D =
     [chartNoise2D;chartCluster2D]
-    |> Chart.Combine
+    |> Chart.combine
     |> Chart.withTitle chartTitle2D
-    |> Chart.withX_AxisStyle header2D.[0]
-    |> Chart.withY_AxisStyle header2D.[1]
+    |> Chart.withXAxisStyle header2D.[0]
+    |> Chart.withYAxisStyle header2D.[1]
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -266,7 +266,7 @@ let chartCluster3D =
         |> Seq.distinct //faster visualization; no difference in plot but in point number
         |> fun x -> Chart.Scatter3d (x,StyleParam.Mode.Markers)
         |> Chart.withTraceName (sprintf "Cluster_%i" i))
-    |> Chart.Combine
+    |> Chart.combine
 
 let chartNoise3D =
     result3D.Noisepoints
@@ -283,11 +283,11 @@ let chartname3D =
    
 let chart3D = 
     [chartNoise3D;chartCluster3D]
-    |> Chart.Combine
+    |> Chart.combine
     |> Chart.withTitle chartname3D
-    |> Chart.withX_AxisStyle header3D.[0]
-    |> Chart.withY_AxisStyle header3D.[1]
-    |> Chart.withZ_AxisStyle header3D.[2]
+    |> Chart.withXAxisStyle header3D.[0]
+    |> Chart.withYAxisStyle header3D.[1]
+    |> Chart.withZAxisStyle header3D.[2]
     
 //for faster computation you can use the squaredEuclidean distance and set your eps to its square
 let clusteredChart3D() = DbScan.compute DistanceMetrics.Array.euclideanNaNSquared 20 (0.7**2.) data3D 

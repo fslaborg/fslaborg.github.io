@@ -14,7 +14,7 @@ index: 2
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 
 (***condition:ipynb***)
@@ -22,8 +22,8 @@ index: 2
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
@@ -90,8 +90,8 @@ For demonstration of hierarchical clustering, the classic iris data set is used,
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
 

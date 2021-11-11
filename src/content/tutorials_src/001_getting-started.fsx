@@ -14,7 +14,7 @@ index: 0
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 
 (***condition:ipynb***)
@@ -22,8 +22,8 @@ index: 0
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
@@ -46,8 +46,8 @@ FsLab is a meant to be a project incubation space and can be thought of as a saf
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
 
@@ -119,8 +119,8 @@ let pricesNotAtRiver : seq<float> =
     
 let h1 = 
     Chart.Histogram(pricesNotAtRiver)
-    |> Chart.withX_AxisStyle("median value of owner occupied homes in 1000s")
-    |> Chart.withX_AxisStyle("price distribution")
+    |> Chart.withXAxisStyle("median value of owner occupied homes in 1000s")
+    |> Chart.withXAxisStyle("price distribution")
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -152,9 +152,9 @@ let h2 =
     Chart.Histogram(pricesAtRiver)
     |> Chart.withTraceName "at river"
     ]
-    |> Chart.Combine
-    |> Chart.withX_AxisStyle("median value of owner occupied homes in 1000s")
-    |> Chart.withX_AxisStyle("Comparison of price distributions")
+    |> Chart.combine
+    |> Chart.withXAxisStyle("median value of owner occupied homes in 1000s")
+    |> Chart.withXAxisStyle("Comparison of price distributions")
 
 (***hide***)
 h2 |> GenericChart.toChartHTML
@@ -218,9 +218,9 @@ let predictPricesByRooms description data =
         Chart.Line(tmpRooms,predictedPrices)
         |> Chart.withTraceName (sprintf "%s: coefficients: intercept:%f, slope:%f" description coeffs.[0] coeffs.[1])
         ]                                  
-        |> Chart.Combine
-        |> Chart.withX_AxisStyle("rooms per dwelling")
-        |> Chart.withY_AxisStyle("median value")
+        |> Chart.combine
+        |> Chart.withXAxisStyle("rooms per dwelling")
+        |> Chart.withYAxisStyle("median value")
     fit   
 
 (**
@@ -231,7 +231,7 @@ let modelVis =
     predictPricesByRooms "not at river" housesNotAtRiver
     predictPricesByRooms "at river" housesAtRiver
     ]
-    |> Chart.Combine
+    |> Chart.combine
     |> Chart.withSize(1200.,700.)
 
 (***hide***)

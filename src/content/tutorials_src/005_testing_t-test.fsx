@@ -14,17 +14,19 @@ index: 5
 (***condition:prepare***)
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
-#r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Newtonsoft.JSON, 13.0.1"
+#r "nuget: DynamicObj, 0.2.0"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 
 (***condition:ipynb***)
 #if IPYNB
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
-#r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Newtonsoft.JSON, 13.0.1"
+#r "nuget: DynamicObj, 0.2.0"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 #endif // IPYNB
 
@@ -64,7 +66,7 @@ at least as extreme as you observed (in the comparison) by chance. Low p values 
 #r "nuget: FSharp.Data"
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats, 0.4.2"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 
 open FSharp.Data
 open Deedle
@@ -96,8 +98,8 @@ Let us first have a look at the sample data with help of a boxplot. As shown bel
 *)
 
 let boxPlot = 
-    Chart.BoxPlot(y = dataHousefly, Name = "housefly", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
-    |> Chart.withY_AxisStyle "wing length [mm]"
+    Chart.BoxPlot(y = dataHousefly, Name = "housefly", BoxPoints = StyleParam.BoxPoints.All, Jitter = 0.2)
+    |> Chart.withYAxisStyle "wing length [mm]"
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -107,6 +109,7 @@ boxPlot
 (***hide***)
 boxPlot |> GenericChart.toChartHTML
 (***include-it-raw***)
+
 
 (**
 
@@ -203,11 +206,11 @@ Again, let's check our data via boxplots before we proceed on comparing them.
 
 let boxPlot2 = 
     [
-        Chart.BoxPlot(y = dataAthletesFemale, Name = "female college athletes", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
-        Chart.BoxPlot(y = dataAthletesMale, Name = "male college athletes", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
+        Chart.BoxPlot(y = dataAthletesFemale, Name = "female college athletes", BoxPoints = StyleParam.BoxPoints.All, Jitter = 0.2)
+        Chart.BoxPlot(y = dataAthletesMale, Name = "male college athletes", BoxPoints = StyleParam.BoxPoints.All, Jitter = 0.2)
     ]
-    |> Chart.Combine
-    |> Chart.withY_AxisStyle "number of concussions over 3 years"
+    |> Chart.combine
+    |> Chart.withYAxisStyle "number of concussions over 3 years"
 
 
 (*** condition: ipynb ***)
@@ -269,9 +272,9 @@ let visualizePairedData =
         let participant = "Person " + string i 
         Chart.Line(["no dose", control; "13 mg", treatment], Name = participant)
         )
-    |> Chart.Combine
-    |> Chart.withX_AxisStyle ""
-    |> Chart.withY_AxisStyle("endurance performance", MinMax = (0.,100.))
+    |> Chart.combine
+    |> Chart.withXAxisStyle ""
+    |> Chart.withYAxisStyle("endurance performance", MinMax = (0.,100.))
 
 (**
 

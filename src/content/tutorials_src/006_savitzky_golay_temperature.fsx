@@ -13,15 +13,15 @@ index: 4
 (***condition:prepare***)
 #r "nuget: Fsharp.Data"
 #r "nuget: FSharp.Stats"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 
 (***condition:ipynb***)
 #if IPYNB
 #r "nuget: FSharp.Data"
 #r "nuget: FSharp.Stats"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #endif // IPYNB
 
 (**
@@ -58,8 +58,8 @@ The image shows the moving window for polynomial regression used in the Savitzky
 #r "nuget: FSharp.Stats"
 // third party .net packages 
 #r "nuget: FSharp.Data"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 ```
 
 *)
@@ -138,6 +138,7 @@ Next we create a create chart function with [Plotly.NET](https://plotly.net) to 
 *)
 
 open Plotly.NET
+open Plotly.NET.LayoutObjects
 
 // Because our data set is already rather wide we want to move the legend from the right side of the plot
 // to the right center. As this function is not defined for fsharp we will use the underlying js bindings (https://plotly.com/javascript/legend/#positioning-the-legend-inside-the-plot).
@@ -158,8 +159,8 @@ let createTempChart (days,tm,tmUpper,tmLower) =
         // data arrays
         days, tm, tmUpper, tmLower,
         StyleParam.Mode.Lines_Markers,
-        Color="#3D1244",
-        RangeColor="#F99BDE",
+        Color= Color.fromString "#3D1244",
+        RangeColor= Color.fromString "#F99BDE",
         // Name for line in legend
         Name="Average temperature over 24 timepoints each day",
         // Name for lower point when hovering over chart
@@ -170,7 +171,7 @@ let createTempChart (days,tm,tmUpper,tmLower) =
     // Configure the chart with the legend from above
     |> Chart.withLegend legend
     // Add name to y axis
-    |> Chart.withY_AxisStyle("daily temperature [°C]")
+    |> Chart.withYAxisStyle("daily temperature [°C]")
     |> Chart.withSize (1000.,600.)
 
 /// Chart for original data set 
