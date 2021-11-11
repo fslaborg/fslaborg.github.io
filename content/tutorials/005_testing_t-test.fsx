@@ -32,7 +32,7 @@ at least as extreme as you observed (in the comparison) by chance. Low p values 
 #r "nuget: FSharp.Data"
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats, 0.4.2"
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
 
 open FSharp.Data
 open Deedle
@@ -60,31 +60,31 @@ Let us first have a look at the sample data with help of a boxplot. As shown bel
 
 *)
 let boxPlot = 
-    Chart.BoxPlot(y = dataHousefly, Name = "housefly", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
-    |> Chart.withY_AxisStyle "wing length [mm]"(* output: 
-<div id="6f504481-f68b-42cd-942b-1b43a6561a76" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+    Chart.BoxPlot(y = dataHousefly, Name = "housefly", BoxPoints = StyleParam.BoxPoints.All, Jitter = 0.2)
+    |> Chart.withYAxisStyle "wing length [mm]"(* output: 
+<div id="5e4b7e40-213d-4599-ab72-7c8374b8adc7" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_6f504481f68b42cd942b1b43a6561a76 = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_5e4b7e40213d4599ab727c8374b8adc7 = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[3.6,3.7,3.8,3.8,3.9,3.9,4.0,4.0,4.0,4.0,4.1,4.1,4.1,4.1,4.1,4.1,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.3,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.4,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.6,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.7,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.8,4.9,4.9,4.9,4.9,4.9,4.9,4.9,5.0,5.0,5.0,5.0,5.0,5.0,5.1,5.1,5.1,5.1,5.2,5.2,5.3,5.3,5.4,5.5],"boxpoints":"all","jitter":0.2,"name":"housefly","marker":{}}];
-            var layout = {"yaxis":{"title":"wing length [mm]"}};
+            var layout = {"yaxis":{"title":{"text":"wing length [mm]"}}};
             var config = {};
-            Plotly.newPlot('6f504481-f68b-42cd-942b-1b43a6561a76', data, layout, config);
+            Plotly.newPlot('5e4b7e40-213d-4599-ab72-7c8374b8adc7', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_6f504481f68b42cd942b1b43a6561a76();
+                    renderPlotly_5e4b7e40213d4599ab727c8374b8adc7();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_6f504481f68b42cd942b1b43a6561a76();
+                renderPlotly_5e4b7e40213d4599ab727c8374b8adc7();
             }
 </script>
 *)
@@ -180,34 +180,34 @@ Again, let's check our data via boxplots before we proceed on comparing them.
 *)
 let boxPlot2 = 
     [
-        Chart.BoxPlot(y = dataAthletesFemale, Name = "female college athletes", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
-        Chart.BoxPlot(y = dataAthletesMale, Name = "male college athletes", Boxpoints = StyleParam.Boxpoints.All, Jitter = 0.2)
+        Chart.BoxPlot(y = dataAthletesFemale, Name = "female college athletes", BoxPoints = StyleParam.BoxPoints.All, Jitter = 0.2)
+        Chart.BoxPlot(y = dataAthletesMale, Name = "male college athletes", BoxPoints = StyleParam.BoxPoints.All, Jitter = 0.2)
     ]
-    |> Chart.Combine
-    |> Chart.withY_AxisStyle "number of concussions over 3 years"(* output: 
-<div id="6e6beca9-2328-4430-aae2-f9876d23614b" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+    |> Chart.combine
+    |> Chart.withYAxisStyle "number of concussions over 3 years"(* output: 
+<div id="b686fa27-a205-402b-b3dd-ab890d9dbdc0" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_6e6beca923284430aae2f9876d23614b = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_b686fa27a205402bb3ddab890d9dbdc0 = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"box","y":[51.0,47.0,60.0,12.0,7.0,7.0,16.0,30.0,26.0,9.0,10.0,28.0,1.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"female college athletes","marker":{}},{"type":"box","y":[34.0,27.0,40.0,19.0,15.0,17.0,8.0,21.0,20.0,22.0,6.0,25.0,0.0,0.0,0.0],"boxpoints":"all","jitter":0.2,"name":"male college athletes","marker":{}}];
-            var layout = {"yaxis":{"title":"number of concussions over 3 years"}};
+            var layout = {"yaxis":{"title":{"text":"number of concussions over 3 years"}}};
             var config = {};
-            Plotly.newPlot('6e6beca9-2328-4430-aae2-f9876d23614b', data, layout, config);
+            Plotly.newPlot('b686fa27-a205-402b-b3dd-ab890d9dbdc0', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_6e6beca923284430aae2f9876d23614b();
+                    renderPlotly_b686fa27a205402bb3ddab890d9dbdc0();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_6e6beca923284430aae2f9876d23614b();
+                renderPlotly_b686fa27a205402bb3ddab890d9dbdc0();
             }
 </script>
 *)
@@ -261,32 +261,32 @@ let visualizePairedData =
         let participant = "Person " + string i 
         Chart.Line(["no dose", control; "13 mg", treatment], Name = participant)
         )
-    |> Chart.Combine
-    |> Chart.withX_AxisStyle ""
-    |> Chart.withY_AxisStyle("endurance performance", MinMax = (0.,100.))(* output: 
-<div id="80e42112-12be-416d-a9b7-d7f5d040daa3" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+    |> Chart.combine
+    |> Chart.withXAxisStyle ""
+    |> Chart.withYAxisStyle("endurance performance", MinMax = (0.,100.))(* output: 
+<div id="1ef7316f-a759-48d0-a7ba-3c4fca7e54b0" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_80e4211212be416da9b7d7f5d040daa3 = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_1ef7316fa75948d0a7ba3c4fca7e54b0 = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter","x":["no dose","13 mg"],"y":[36.05,37.55],"mode":"lines","line":{},"name":"Person 0","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[52.47,59.3],"mode":"lines","line":{},"name":"Person 1","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[56.55,79.12],"mode":"lines","line":{},"name":"Person 2","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[45.2,58.33],"mode":"lines","line":{},"name":"Person 3","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[35.25,70.54],"mode":"lines","line":{},"name":"Person 4","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[66.38,69.47],"mode":"lines","line":{},"name":"Person 5","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[40.57,46.48],"mode":"lines","line":{},"name":"Person 6","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[57.15,66.35],"mode":"lines","line":{},"name":"Person 7","marker":{}},{"type":"scatter","x":["no dose","13 mg"],"y":[28.34,36.2],"mode":"lines","line":{},"name":"Person 8","marker":{}}];
-            var layout = {"xaxis":{"title":""},"yaxis":{"title":"endurance performance","range":[0.0,100.0]}};
+            var data = [{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[36.05,37.55],"line":{},"name":"Person 0","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[52.47,59.3],"line":{},"name":"Person 1","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[56.55,79.12],"line":{},"name":"Person 2","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[45.2,58.33],"line":{},"name":"Person 3","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[35.25,70.54],"line":{},"name":"Person 4","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[66.38,69.47],"line":{},"name":"Person 5","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[40.57,46.48],"line":{},"name":"Person 6","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[57.15,66.35],"line":{},"name":"Person 7","marker":{}},{"type":"scatter","mode":"lines","x":["no dose","13 mg"],"y":[28.34,36.2],"line":{},"name":"Person 8","marker":{}}];
+            var layout = {"xaxis":{"title":{"text":""}},"yaxis":{"title":{"text":"endurance performance"},"range":[0.0,100.0]}};
             var config = {};
-            Plotly.newPlot('80e42112-12be-416d-a9b7-d7f5d040daa3', data, layout, config);
+            Plotly.newPlot('1ef7316f-a759-48d0-a7ba-3c4fca7e54b0', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_80e4211212be416da9b7d7f5d040daa3();
+                    renderPlotly_1ef7316fa75948d0a7ba3c4fca7e54b0();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_80e4211212be416da9b7d7f5d040daa3();
+                renderPlotly_1ef7316fa75948d0a7ba3c4fca7e54b0();
             }
 </script>
 *)

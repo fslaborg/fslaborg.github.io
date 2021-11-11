@@ -40,8 +40,8 @@ In this tutorial we are going to perform DBSCAN on two- and three-dimensional da
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
 
@@ -122,8 +122,8 @@ let rawChart2D =
         data2D
         |> Array.map (fun x -> x.[0],x.[1])
     Chart.Scatter(unzippedData,mode=StyleParam.Mode.Markers,Labels=labels)
-    |> Chart.withX_AxisStyle header2D.[0]
-    |> Chart.withY_AxisStyle header2D.[1]
+    |> Chart.withXAxisStyle header2D.[0]
+    |> Chart.withYAxisStyle header2D.[1]
     |> Chart.withTitle "rawChart2D"
 
 let rawChart3D =
@@ -131,62 +131,62 @@ let rawChart3D =
         data3D
         |> Array.map (fun x -> x.[0],x.[1],x.[2])
     Chart.Scatter3d(unzippedData,mode=StyleParam.Mode.Markers,Labels=labels)
-    |> Chart.withX_AxisStyle header3D.[0]
-    |> Chart.withY_AxisStyle header3D.[1]
-    |> Chart.withZ_AxisStyle header3D.[2]
+    |> Chart.withXAxisStyle header3D.[0]
+    |> Chart.withYAxisStyle header3D.[1]
+    |> Chart.withZAxisStyle header3D.[2]
     |> Chart.withTitle "rawChart3D"(* output: 
-<div id="abe1ccb2-931c-45d4-b973-4f9944645c0c" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="68f07122-3477-4512-aa0a-871fb6604fa8" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_abe1ccb2931c45d4b9734f9944645c0c = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_68f0712234774512aa0a871fb6604fa8 = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter","x":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"y":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"mode":"markers","line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
-            var layout = {"xaxis":{"title":"petal_length"},"yaxis":{"title":"petal_width"},"title":"rawChart2D"};
+            var data = [{"type":"scatter","mode":"markers","x":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"y":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
+            var layout = {"xaxis":{"title":{"text":"petal_length"}},"yaxis":{"title":{"text":"petal_width"}},"title":{"text":"rawChart2D"}};
             var config = {};
-            Plotly.newPlot('abe1ccb2-931c-45d4-b973-4f9944645c0c', data, layout, config);
+            Plotly.newPlot('68f07122-3477-4512-aa0a-871fb6604fa8', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_abe1ccb2931c45d4b9734f9944645c0c();
+                    renderPlotly_68f0712234774512aa0a871fb6604fa8();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_abe1ccb2931c45d4b9734f9944645c0c();
+                renderPlotly_68f0712234774512aa0a871fb6604fa8();
             }
 </script>
 *)
 (**
 <br>
 
-<div id="0fec17dd-2f7e-4318-9f34-4838ddf7c1c6" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="f40aae0d-c241-4152-a5b2-b21b4ea3564c" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_0fec17dd2f7e43189f344838ddf7c1c6 = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_f40aae0dc2414152a5b2b21b4ea3564c = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter3d","x":[5.5,4.9,7.6,5.6,6.1,6.3,6.2,7.2,6.9,4.9,5.4,7.0,6.1,5.4,7.2,6.3,5.4,5.8,5.0,6.5,5.6,4.3,6.7,4.5,5.7,6.3,5.6,5.6,4.9,7.7,6.3,6.4,4.7,5.5,5.9,5.0,5.4,6.0,5.6,6.3,5.1,6.4,5.1,6.7,6.2,6.8,7.7,4.8,6.2,4.8,6.7,5.1,6.7,6.9,5.8,4.8,5.5,5.1,5.7,6.7,4.4,5.0,6.9,5.0,6.5,4.6,6.1,5.0,5.8,6.0,4.9,5.7,7.9,7.2,5.5,4.6,6.4,6.9,6.0,5.8,5.2,7.4,5.5,5.1,4.8,5.0,5.7,4.6,5.9,6.1,5.7,6.0,5.4,6.1,5.4,5.2,7.3,4.7,6.3,5.3,6.6,6.3,4.4,4.4,6.5,6.3,4.9,6.6,6.4,6.5,5.5,6.7,6.4,6.8,5.7,5.8,6.0,5.2,6.7,5.1,5.5,4.8,5.1,6.4,5.0,5.1,5.1,6.5,5.6,6.0,7.1,4.6,6.1,6.2,5.2,7.7,5.7,6.4,5.8,5.0,6.7,6.3,4.9,5.8,5.0,7.7,5.7,5.9,6.8,5.0],"y":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"z":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"mode":"markers","line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
-            var layout = {"scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}},"title":"rawChart3D"};
+            var data = [{"type":"scatter3d","mode":"markers","x":[5.5,4.9,7.6,5.6,6.1,6.3,6.2,7.2,6.9,4.9,5.4,7.0,6.1,5.4,7.2,6.3,5.4,5.8,5.0,6.5,5.6,4.3,6.7,4.5,5.7,6.3,5.6,5.6,4.9,7.7,6.3,6.4,4.7,5.5,5.9,5.0,5.4,6.0,5.6,6.3,5.1,6.4,5.1,6.7,6.2,6.8,7.7,4.8,6.2,4.8,6.7,5.1,6.7,6.9,5.8,4.8,5.5,5.1,5.7,6.7,4.4,5.0,6.9,5.0,6.5,4.6,6.1,5.0,5.8,6.0,4.9,5.7,7.9,7.2,5.5,4.6,6.4,6.9,6.0,5.8,5.2,7.4,5.5,5.1,4.8,5.0,5.7,4.6,5.9,6.1,5.7,6.0,5.4,6.1,5.4,5.2,7.3,4.7,6.3,5.3,6.6,6.3,4.4,4.4,6.5,6.3,4.9,6.6,6.4,6.5,5.5,6.7,6.4,6.8,5.7,5.8,6.0,5.2,6.7,5.1,5.5,4.8,5.1,6.4,5.0,5.1,5.1,6.5,5.6,6.0,7.1,4.6,6.1,6.2,5.2,7.7,5.7,6.4,5.8,5.0,6.7,6.3,4.9,5.8,5.0,7.7,5.7,5.9,6.8,5.0],"y":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"z":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
+            var layout = {"xaxis":{"title":{"text":"sepal_length"}},"yaxis":{"title":{"text":"petal_length"}},"scene":{"zaxis":{"title":{"text":"petal_width"}}},"title":{"text":"rawChart3D"}};
             var config = {};
-            Plotly.newPlot('0fec17dd-2f7e-4318-9f34-4838ddf7c1c6', data, layout, config);
+            Plotly.newPlot('f40aae0d-c241-4152-a5b2-b21b4ea3564c', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_0fec17dd2f7e43189f344838ddf7c1c6();
+                    renderPlotly_f40aae0dc2414152a5b2b21b4ea3564c();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_0fec17dd2f7e43189f344838ddf7c1c6();
+                renderPlotly_f40aae0dc2414152a5b2b21b4ea3564c();
             }
 </script>
 
@@ -251,7 +251,7 @@ let chartCluster2D =
         |> Seq.distinct //more efficient visualization; no difference in plot but in point numbers
         |> Chart.Point
         |> Chart.withTraceName (sprintf "Cluster %i" i))
-    |> Chart.Combine
+    |> Chart.combine
 
 let chartNoise2D = 
     result2D.Noisepoints
@@ -268,33 +268,33 @@ let chartTitle2D =
 
 let chart2D =
     [chartNoise2D;chartCluster2D]
-    |> Chart.Combine
+    |> Chart.combine
     |> Chart.withTitle chartTitle2D
-    |> Chart.withX_AxisStyle header2D.[0]
-    |> Chart.withY_AxisStyle header2D.[1](* output: 
-<div id="842dda05-0a0d-4b2f-8763-479848a6bf20" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+    |> Chart.withXAxisStyle header2D.[0]
+    |> Chart.withYAxisStyle header2D.[1](* output: 
+<div id="c8fefed0-8a68-44d4-acb2-d50db95d14bf" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_842dda050a0d4b2f8763479848a6bf20 = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_c8fefed08a6844d4acb2d50db95d14bf = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter","x":[6.6,3.0,6.7,6.4,6.7,3.3,6.9],"y":[2.1,1.1,2.0,2.0,2.2,1.0,2.3],"mode":"markers","marker":{},"name":"Noise"},{"type":"scatter","x":[1.5,1.4,1.7,1.5,1.7,1.2,1.1,1.3,1.6,1.6,1.5,1.4,1.9,1.3,1.7,1.3,1.4,1.5,1.9,1.7,1.6,1.0],"y":[0.1,0.2,0.4,0.2,0.2,0.2,0.1,0.3,0.2,0.4,0.4,0.1,0.2,0.2,0.3,0.4,0.3,0.3,0.4,0.5,0.6,0.2],"mode":"markers","marker":{},"name":"Cluster 0"},{"type":"scatter","x":[4.9,4.9,4.8,5.0,5.0,5.1,4.7,5.2,5.0,5.1,5.1,5.1,4.9,5.3,5.2,5.3,5.1,5.1,4.7,5.1,4.8,4.5,4.5,4.6,4.7,5.0,4.6,4.5,5.4,5.5,4.4,4.7,4.5,4.6,4.4,4.4,5.6,5.7,5.4,5.6,5.5,5.6,5.7,5.7,5.6,4.3,4.2,4.2,4.2,4.1,5.8,5.8,5.9,6.0,5.8,5.6,4.1,4.0,4.0,4.0,5.9,6.1,6.1,6.0,3.9,3.9,3.9,3.8,3.6,3.7,6.1,6.3,3.5],"y":[2.0,1.8,1.8,2.0,1.9,1.6,1.6,2.3,1.7,2.3,1.9,2.0,1.5,2.3,2.0,1.9,2.4,1.8,1.4,1.5,1.4,1.6,1.7,1.5,1.5,1.5,1.4,1.5,2.1,1.8,1.2,1.2,1.3,1.3,1.3,1.4,2.4,2.3,2.3,2.1,2.1,2.2,2.5,2.1,1.8,1.3,1.5,1.3,1.2,1.3,2.2,1.8,2.1,1.8,1.6,1.4,1.0,1.2,1.3,1.0,2.3,2.3,1.9,2.5,1.1,1.4,1.2,1.1,1.3,1.0,2.5,1.8,1.0],"mode":"markers","marker":{},"name":"Cluster 1"}];
-            var layout = {"title":"eps: 0.5 minPts: 20 pts: 150 cluster: 2 noisePts: 8","xaxis":{"title":"petal_length"},"yaxis":{"title":"petal_width"}};
+            var data = [{"type":"scatter","mode":"markers","x":[6.6,3.0,6.7,6.4,6.7,3.3,6.9],"y":[2.1,1.1,2.0,2.0,2.2,1.0,2.3],"marker":{},"name":"Noise"},{"type":"scatter","mode":"markers","x":[1.5,1.4,1.7,1.5,1.7,1.2,1.1,1.3,1.6,1.6,1.5,1.4,1.9,1.3,1.7,1.3,1.4,1.5,1.9,1.7,1.6,1.0],"y":[0.1,0.2,0.4,0.2,0.2,0.2,0.1,0.3,0.2,0.4,0.4,0.1,0.2,0.2,0.3,0.4,0.3,0.3,0.4,0.5,0.6,0.2],"marker":{},"name":"Cluster 0"},{"type":"scatter","mode":"markers","x":[4.9,4.9,4.8,5.0,5.0,5.1,4.7,5.2,5.0,5.1,5.1,5.1,4.9,5.3,5.2,5.3,5.1,5.1,4.7,5.1,4.8,4.5,4.5,4.6,4.7,5.0,4.6,4.5,5.4,5.5,4.4,4.7,4.5,4.6,4.4,4.4,5.6,5.7,5.4,5.6,5.5,5.6,5.7,5.7,5.6,4.3,4.2,4.2,4.2,4.1,5.8,5.8,5.9,6.0,5.8,5.6,4.1,4.0,4.0,4.0,5.9,6.1,6.1,6.0,3.9,3.9,3.9,3.8,3.6,3.7,6.1,6.3,3.5],"y":[2.0,1.8,1.8,2.0,1.9,1.6,1.6,2.3,1.7,2.3,1.9,2.0,1.5,2.3,2.0,1.9,2.4,1.8,1.4,1.5,1.4,1.6,1.7,1.5,1.5,1.5,1.4,1.5,2.1,1.8,1.2,1.2,1.3,1.3,1.3,1.4,2.4,2.3,2.3,2.1,2.1,2.2,2.5,2.1,1.8,1.3,1.5,1.3,1.2,1.3,2.2,1.8,2.1,1.8,1.6,1.4,1.0,1.2,1.3,1.0,2.3,2.3,1.9,2.5,1.1,1.4,1.2,1.1,1.3,1.0,2.5,1.8,1.0],"marker":{},"name":"Cluster 1"}];
+            var layout = {"title":{"text":"eps: 0.5 minPts: 20 pts: 150 cluster: 2 noisePts: 8"},"xaxis":{"title":{"text":"petal_length"}},"yaxis":{"title":{"text":"petal_width"}}};
             var config = {};
-            Plotly.newPlot('842dda05-0a0d-4b2f-8763-479848a6bf20', data, layout, config);
+            Plotly.newPlot('c8fefed0-8a68-44d4-acb2-d50db95d14bf', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_842dda050a0d4b2f8763479848a6bf20();
+                    renderPlotly_c8fefed08a6844d4acb2d50db95d14bf();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_842dda050a0d4b2f8763479848a6bf20();
+                renderPlotly_c8fefed08a6844d4acb2d50db95d14bf();
             }
 </script>
 *)
@@ -313,7 +313,7 @@ let chartCluster3D =
         |> Seq.distinct //faster visualization; no difference in plot but in point number
         |> fun x -> Chart.Scatter3d (x,StyleParam.Mode.Markers)
         |> Chart.withTraceName (sprintf "Cluster_%i" i))
-    |> Chart.Combine
+    |> Chart.combine
 
 let chartNoise3D =
     result3D.Noisepoints
@@ -330,37 +330,37 @@ let chartname3D =
    
 let chart3D = 
     [chartNoise3D;chartCluster3D]
-    |> Chart.Combine
+    |> Chart.combine
     |> Chart.withTitle chartname3D
-    |> Chart.withX_AxisStyle header3D.[0]
-    |> Chart.withY_AxisStyle header3D.[1]
-    |> Chart.withZ_AxisStyle header3D.[2]
+    |> Chart.withXAxisStyle header3D.[0]
+    |> Chart.withYAxisStyle header3D.[1]
+    |> Chart.withZAxisStyle header3D.[2]
     
 //for faster computation you can use the squaredEuclidean distance and set your eps to its square
 let clusteredChart3D() = DbScan.compute DistanceMetrics.Array.euclideanNaNSquared 20 (0.7**2.) data3D (* output: 
-<div id="b70fbd98-0542-4d25-b182-6ba497281fac" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="468c5fd5-33a6-43d9-947e-dbba8d7ee9f8" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_b70fbd9805424d25b1826ba497281fac = function() {
-            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-latest.min'}}) || require;
+            var renderPlotly_468c5fd533a643d9947edbba8d7ee9f8 = function() {
+            var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
-            var data = [{"type":"scatter3d","x":[7.6,7.2,7.7,5.1,7.7,4.9,7.9,7.2,7.4,7.3,7.7,5.0,4.9,7.7],"y":[6.6,6.1,6.1,3.0,6.7,4.5,6.4,5.8,6.1,6.3,6.7,3.3,3.3,6.9],"z":[2.1,2.5,2.3,1.1,2.0,1.7,2.0,1.6,1.9,1.8,2.2,1.0,1.0,2.3],"mode":"markers","line":{},"marker":{},"name":"Noise"},{"type":"scatter3d","x":[5.5,5.6,5.6,5.6,5.5,5.0,5.8,5.8,5.2,5.5,5.7,5.9,6.1,6.0,5.5,5.7,5.6,5.7,5.8,5.7,5.6,6.2,6.0,6.0,5.7,5.4,6.1,6.1,6.1,6.3,6.4,6.2,5.9,6.3,6.4,6.0,6.6,5.6,6.0,6.3,6.6,6.5,6.7,6.7,6.1,6.2,6.3,6.3,6.3,6.0,5.8,5.9,6.8,5.7,6.5,5.8,6.7,6.9,6.5,6.4,7.0,6.1,6.4,6.5,6.3,6.4,6.7,6.2,6.4,6.4,6.3,6.9,6.7,6.9,6.7,6.8,6.5,6.7,6.9,6.7,6.3,6.8,7.2,7.1],"y":[3.8,4.1,3.9,3.6,4.4,3.5,4.1,4.0,3.9,3.7,4.1,4.2,4.0,4.0,4.0,4.2,4.2,4.2,3.9,3.5,4.5,4.3,4.5,4.5,4.5,4.5,4.6,4.7,4.7,4.4,4.3,4.5,4.8,4.7,4.5,4.8,4.4,4.9,5.0,4.9,4.6,4.6,4.7,4.4,4.9,4.8,5.1,4.9,5.0,5.1,5.1,5.1,4.8,5.0,5.1,5.1,5.0,4.9,5.2,5.3,4.7,5.6,5.5,5.5,5.6,5.3,5.2,5.4,5.6,5.6,5.6,5.1,5.7,5.4,5.6,5.5,5.8,5.8,5.7,5.7,6.0,5.9,6.0,5.9],"z":[1.1,1.3,1.1,1.3,1.2,1.0,1.0,1.2,1.4,1.0,1.3,1.5,1.3,1.0,1.3,1.3,1.3,1.2,1.2,1.0,1.5,1.3,1.6,1.5,1.3,1.5,1.4,1.2,1.4,1.3,1.3,1.5,1.8,1.6,1.5,1.8,1.4,2.0,1.5,1.5,1.3,1.5,1.5,1.4,1.8,1.8,1.5,1.8,1.9,1.6,1.9,1.8,1.4,2.0,2.0,2.4,1.7,1.5,2.0,1.9,1.4,1.4,1.8,1.8,1.8,2.3,2.3,2.3,2.1,2.2,2.4,2.3,2.1,2.1,2.4,2.1,2.2,1.8,2.3,2.5,2.5,2.3,1.8,2.1],"mode":"markers","line":{},"marker":{},"name":"Cluster_0"},{"type":"scatter3d","x":[4.9,4.9,5.4,5.4,5.4,5.0,4.5,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,4.4,5.0,5.0,4.6,5.5,4.6,5.1,5.0,4.6,5.4,5.2,4.7,5.3,4.4,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,4.3,5.8,5.7,5.7],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.3,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.3,1.3,1.6,1.0,1.3,1.4,1.5,1.6,1.5,1.3,1.5,1.3,1.5,1.4,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.1,1.2,1.5,1.7],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.2,0.3,0.6,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.1,0.2,0.4,0.3],"mode":"markers","line":{},"marker":{},"name":"Cluster_1"}];
-            var layout = {"title":"eps: 0.7 minPts: 20 pts: 150 cluster: 2 noisePts: 14","scene":{"xaxis":{"title":"sepal_length"},"yaxis":{"title":"petal_length"},"zaxis":{"title":"petal_width"}}};
+            var data = [{"type":"scatter3d","mode":"markers","x":[7.6,7.2,7.7,5.1,7.7,4.9,7.9,7.2,7.4,7.3,7.7,5.0,4.9,7.7],"y":[6.6,6.1,6.1,3.0,6.7,4.5,6.4,5.8,6.1,6.3,6.7,3.3,3.3,6.9],"z":[2.1,2.5,2.3,1.1,2.0,1.7,2.0,1.6,1.9,1.8,2.2,1.0,1.0,2.3],"line":{},"marker":{},"name":"Noise"},{"type":"scatter3d","mode":"markers","x":[5.5,5.6,5.6,5.6,5.5,5.0,5.8,5.8,5.2,5.5,5.7,5.9,6.1,6.0,5.5,5.7,5.6,5.7,5.8,5.7,5.6,6.2,6.0,6.0,5.7,5.4,6.1,6.1,6.1,6.3,6.4,6.2,5.9,6.3,6.4,6.0,6.6,5.6,6.0,6.3,6.6,6.5,6.7,6.7,6.1,6.2,6.3,6.3,6.3,6.0,5.8,5.9,6.8,5.7,6.5,5.8,6.7,6.9,6.5,6.4,7.0,6.1,6.4,6.5,6.3,6.4,6.7,6.2,6.4,6.4,6.3,6.9,6.7,6.9,6.7,6.8,6.5,6.7,6.9,6.7,6.3,6.8,7.2,7.1],"y":[3.8,4.1,3.9,3.6,4.4,3.5,4.1,4.0,3.9,3.7,4.1,4.2,4.0,4.0,4.0,4.2,4.2,4.2,3.9,3.5,4.5,4.3,4.5,4.5,4.5,4.5,4.6,4.7,4.7,4.4,4.3,4.5,4.8,4.7,4.5,4.8,4.4,4.9,5.0,4.9,4.6,4.6,4.7,4.4,4.9,4.8,5.1,4.9,5.0,5.1,5.1,5.1,4.8,5.0,5.1,5.1,5.0,4.9,5.2,5.3,4.7,5.6,5.5,5.5,5.6,5.3,5.2,5.4,5.6,5.6,5.6,5.1,5.7,5.4,5.6,5.5,5.8,5.8,5.7,5.7,6.0,5.9,6.0,5.9],"z":[1.1,1.3,1.1,1.3,1.2,1.0,1.0,1.2,1.4,1.0,1.3,1.5,1.3,1.0,1.3,1.3,1.3,1.2,1.2,1.0,1.5,1.3,1.6,1.5,1.3,1.5,1.4,1.2,1.4,1.3,1.3,1.5,1.8,1.6,1.5,1.8,1.4,2.0,1.5,1.5,1.3,1.5,1.5,1.4,1.8,1.8,1.5,1.8,1.9,1.6,1.9,1.8,1.4,2.0,2.0,2.4,1.7,1.5,2.0,1.9,1.4,1.4,1.8,1.8,1.8,2.3,2.3,2.3,2.1,2.2,2.4,2.3,2.1,2.1,2.4,2.1,2.2,1.8,2.3,2.5,2.5,2.3,1.8,2.1],"line":{},"marker":{},"name":"Cluster_0"},{"type":"scatter3d","mode":"markers","x":[4.9,4.9,5.4,5.4,5.4,5.0,4.5,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,4.4,5.0,5.0,4.6,5.5,4.6,5.1,5.0,4.6,5.4,5.2,4.7,5.3,4.4,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,4.3,5.8,5.7,5.7],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.3,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.3,1.3,1.6,1.0,1.3,1.4,1.5,1.6,1.5,1.3,1.5,1.3,1.5,1.4,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.1,1.2,1.5,1.7],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.2,0.3,0.6,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.1,0.2,0.4,0.3],"line":{},"marker":{},"name":"Cluster_1"}];
+            var layout = {"title":{"text":"eps: 0.7 minPts: 20 pts: 150 cluster: 2 noisePts: 14"},"xaxis":{"title":{"text":"sepal_length"}},"yaxis":{"title":{"text":"petal_length"}},"scene":{"zaxis":{"title":{"text":"petal_width"}}}};
             var config = {};
-            Plotly.newPlot('b70fbd98-0542-4d25-b182-6ba497281fac', data, layout, config);
+            Plotly.newPlot('468c5fd5-33a6-43d9-947e-dbba8d7ee9f8', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_b70fbd9805424d25b1826ba497281fac();
+                    renderPlotly_468c5fd533a643d9947edbba8d7ee9f8();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_b70fbd9805424d25b1826ba497281fac();
+                renderPlotly_468c5fd533a643d9947edbba8d7ee9f8();
             }
 </script>
 *)
