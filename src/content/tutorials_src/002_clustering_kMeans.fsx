@@ -248,9 +248,9 @@ let clusterChart3D =
         )
     |> Chart.combine
     |> Chart.withTitle "isolated coordinates of clustered iris data (k-means clustering)"
-    |> Chart.withX_AxisStyle colNames.[0]
-    |> Chart.withY_AxisStyle colNames.[2]
-    |> Chart.withZ_AxisStyle colNames.[3]
+    |> Chart.withXAxisStyle colNames.[0]
+    |> Chart.withYAxisStyle colNames.[2]
+    |> Chart.withZAxisStyle colNames.[3]
 
 (**
 
@@ -297,8 +297,8 @@ let bestKChart =
     |> fun (ks,means,stdevs) -> 
         Chart.Line(ks,means)
         |> Chart.withYErrorStyle(stdevs)
-        |> Chart.withX_AxisStyle "k"
-        |> Chart.withY_AxisStyle "average dispersion"
+        |> Chart.withXAxisStyle "k"
+        |> Chart.withYAxisStyle "average dispersion"
         |> Chart.withTitle "iris data set average dispersion per k"
 (**
 

@@ -251,7 +251,7 @@ I wont even include the source code for this, because it obviously sucks:
 <br>
 <hr>
 
-![heatmap](/img/heatmap.png)
+![heatmap]({{root}}images/sequence_features_heatmap.png))
 
 _Fig1: My first pitiful attempt at visualizing sequence features_
 <hr>
