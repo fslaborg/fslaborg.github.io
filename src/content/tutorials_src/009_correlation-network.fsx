@@ -6,7 +6,7 @@
 title: Correlation network
 category: advanced
 authors: Heinrich Lukas Weil    
-index: 1
+index: 2
 ---
 *)
 
@@ -16,18 +16,12 @@ index: 1
 #r "nuget: FSharp.Stats"
 #r "nuget: Cyjs.NET"
 
-FSharp.Stats.ServiceLocator.setEnvironmentPathVariable @"C:\Users\HLWei\.nuget\packages\fsharp.stats\0.4.2\netlib_LAPACK"
-FSharp.Stats.Algebra.LinearAlgebra.Service()
-
 (***condition:ipynb***)
 #if IPYNB
 #r "nuget: FSharp.Data"
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Cyjs.NET"
-
-FSharp.Stats.ServiceLocator.setEnvironmentPathVariable @"C:\Users\HLWei\.nuget\packages\fsharp.stats\0.4.2\netlib_LAPACK"
-FSharp.Stats.Algebra.LinearAlgebra.Service()
 
 #endif // IPYNB
 
@@ -166,7 +160,11 @@ The algorithm searches the point where this switch from one distribution to the 
 *)
 
 // Calculate the critical threshold with an accuracy of 0.01
+(*** do-not-eval ***)
 let thr,_ = Testing.RMT.compute 0.9 0.01 0.05 correlationNetwork
+
+(***hide***)
+let thr = 0.8203125
 
 // Set all correlations less strong than the critical threshold to 0
 let filteredNetwork = 
@@ -211,14 +209,18 @@ open Cyjs.NET
 let cytoVertices = 
     rawFrame.RowKeys
     |> Seq.toList
-    |> List.mapi (fun i v -> 
+    |> List.indexed
+    |> List.choose (fun (i,v) -> 
         let degree = 
             Matrix.getRow filteredNetwork i 
             |> Seq.filter ((<>) 0.)
             |> Seq.length
-            |> float
-        let styling = [CyParam.label v; CyParam.weight (sqrt degree + 1. |> (*) 10.)]
-        Elements.node (string i) styling
+        let styling = [CyParam.label v; CyParam.weight (sqrt (float degree) + 1. |> (*) 10.)]
+
+        if degree > 1 then 
+            Some (Elements.node (string i) styling)
+        else 
+            None
     )
 
 // Styled edges
@@ -247,14 +249,24 @@ let cytoGraph =
             CyParam.content =. CyParam.label
             CyParam.width =. CyParam.weight
             CyParam.height =. CyParam.weight
+            CyParam.Text.Align.center
+            CyParam.Border.color "#A00975"
+            CyParam.Border.width 3
         ]
-    |> CyGraph.withLayout (Layout.initCose (id))  
+    |> CyGraph.withStyle "edge" 
+        [
+            CyParam.Line.color "#3D1244"
+        ]
+    |> CyGraph.withLayout (Layout.initCose (Layout.LayoutOptions.Cose(NodeOverlap = 400,ComponentSpacing = 100)))  
+
+1
 
 (** 
 
 ```fsharp
 // Send the cytograph to the browser
 cytoGraph
+|> CyGraph.withSize (1300,1000)
 |> CyGraph.show
 ```
 
@@ -262,7 +274,7 @@ cytoGraph
 
 (***hide***)
 cytoGraph
-|> CyGraph.withSize(600, 900) 
+|> CyGraph.withSize (1300,1000)
 |> HTML.toEmbeddedHTML
 
 (*** include-it-raw ***)
