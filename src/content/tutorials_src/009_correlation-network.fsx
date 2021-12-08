@@ -15,6 +15,7 @@ index: 2
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Cyjs.NET"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 (***condition:ipynb***)
 #if IPYNB
@@ -22,6 +23,7 @@ index: 2
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Cyjs.NET"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 #endif // IPYNB
 
@@ -61,9 +63,13 @@ In this tutorial, a simple workflow will be presented for how to create and visu
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 #r "nuget: Cyjs.NET"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 do fsi.AddPrinter(fun (printer:Deedle.Internal.IFsiFormattable) -> "\n" + (printer.Format()))
 
+// The edge filtering method presented in this tutorial requires an Eigenvalue decomposition. 
+// FSharp.Stats uses the one implemented in the LAPACK library. 
+// To enable it just reference the lapack folder in the FSharp.Stats nuget package:
 FSharp.Stats.ServiceLocator.setEnvironmentPathVariable @"C:\Users\USERNAME\.nuget\packages\fsharp.stats\0.4.2\netlib_LAPACK" // 
 FSharp.Stats.Algebra.LinearAlgebra.Service()
 
@@ -107,6 +113,7 @@ The correlation between these genes is calculated over the expression of these g
 *)
 
 open FSharp.Stats
+open Plotly.NET
 
 // Get the rows as a matrix
 let rows = 
@@ -118,27 +125,34 @@ let rows =
 let correlationNetwork = 
     Correlation.Matrix.rowWisePearson rows
 
-// (***hide***)
-
-// // Histogram over the correlations for visualizing the distribution
-// let correlationHistogram = 
-//     correlationNetwork
-//     |> Matrix.toJaggedArray
-//     |> Array.collect
-//     |> Chart.Histogram
-
-
-// (*** condition: ipynb ***)
-// #if IPYNB
-// rawChart2D
-// #endif // IPYNB
-
-// (***hide***)
-// correlationHistogram |> GenericChart.toChartHTML
-// (***include-it-raw***)
+// Histogram over the correlations for visualizing the distribution
+let correlationHistogram = 
+    correlationNetwork
+    |> Matrix.toJaggedArray
+    |> Array.mapi (fun i a -> a |> Array.indexed |> Array.choose (fun (j,v) -> if i = j then None else Some v))
+    |> Array.concat
+    |> Chart.Histogram
 
 
-(*** include-output ***)
+(** 
+
+```fsharp
+// Send the histogram to the browser
+correlationHistogram
+|> Chart.show
+```
+*)
+
+(***hide***)
+correlationHistogram
+|> GenericChart.toEmbeddedHTML
+
+(*** include-it-raw ***)
+
+(** 
+As can be seen, the correlation between the most genes is relatively weak. The correlations roughly follow a right skewed gaussian distribution. So in this dataset genes tend to be more likely to be correlated than anti-correlated.
+*)
+
 (** 
 
 ## Critical threshold finding
@@ -151,16 +165,21 @@ The basic idea behind this RMT approach is filtering the network until a modular
 stronger or more likely than between members of different groups. In general, biological networks are generally regarded as modular, as usually more simple parts (like proteins resulting from gene expression)
 need to work closely together to form more complex functions (like photosynthesis). 
 
-<img style="max-width:75%" src="../../images/RMT_distributions.png" class="center"></img>
+*)
+(***hide***)
+System.IO.File.ReadAllText "../../images/RMT_detailed.html"
+(*** include-it-raw ***)
+(**
 
-Finding this threshold is a repetitive process. For each threshold, the eigenvalues of the matrix are calculated, normalized and the spacing between these eigenvalues is calculated. For an evenly filled matrix, the 
-frequency of these spacings follows the Wigner's surmise (see picture above). If a certain number of edges is filtered and an underlying modular structure is revealed, the spacings start following the Poisson distribution.
-The algorithm searches the point where this switch from one distribution to the other is reached with a given accuracy.   
+Finding this threshold is a repetitive process shown above. For each threshold, the eigenvalues of the matrix are calculated, normalized and the spacing between these eigenvalues is calculated. For an evenly filled matrix, the 
+frequency of these spacings follows the Wigner's surmise (see left picture above). If a certain number of edges is filtered and an underlying modular structure is revealed, the spacings start following the Poisson distribution.
+The algorithm searches the point where this switch from one distribution to the other is reached with a given accuracy (see right picture above).   
 
 *)
 
-// Calculate the critical threshold with an accuracy of 0.01
+
 (*** do-not-eval ***)
+// Calculate the critical threshold with an accuracy of 0.01
 let thr,_ = Testing.RMT.compute 0.9 0.01 0.05 correlationNetwork
 
 (***hide***)
@@ -174,23 +193,33 @@ let filteredNetwork =
 
 // (***hide***)
 
-// // Histogram over the correlations for visualizing the distribution
-// let correlationHistogramFiltered = 
-//     filteredNetwork
-//     |> Matrix.toJaggedArray
-//     |> Array.collect id
-//     |> Chart.Histogram
+// Histogram over the correlations for visualizing the distribution
+let correlationHistogramFiltered = 
+    filteredNetwork
+    |> Matrix.toJaggedArray
+    |> Array.mapi (fun i a -> a |> Array.indexed |> Array.choose (fun (j,v) -> if i = j || v = 0. then None else Some v))
+    |> Array.collect id
+    |> Chart.Histogram
 
 
-// (*** condition: ipynb ***)
-// #if IPYNB
-// rawChart2D
-// #endif // IPYNB
+(** 
 
-// (***hide***)
-// correlationHistogramFiltered |> GenericChart.toChartHTML
-// (***include-it-raw***)
+```fsharp
+// Send the histogram to the browser
+correlationHistogramFiltered
+|> Chart.show
+```
+*)
 
+(***hide***)
+correlationHistogramFiltered
+|> GenericChart.toEmbeddedHTML
+
+(*** include-it-raw ***)
+
+(** 
+After filtering the edges according the critical threshold found using RMT, only the strongly correlated genes are regarded as linked. As the distribution of all correlations was slightly skewed to higher values, only few anti correlations meet the threshold.
+*)
 
 (** 
 
@@ -258,8 +287,6 @@ let cytoGraph =
             CyParam.Line.color "#3D1244"
         ]
     |> CyGraph.withLayout (Layout.initCose (Layout.LayoutOptions.Cose(NodeOverlap = 400,ComponentSpacing = 100)))  
-
-1
 
 (** 
 
