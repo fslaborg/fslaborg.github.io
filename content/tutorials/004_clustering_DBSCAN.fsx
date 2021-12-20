@@ -135,58 +135,58 @@ let rawChart3D =
     |> Chart.withYAxisStyle header3D.[1]
     |> Chart.withZAxisStyle header3D.[2]
     |> Chart.withTitle "rawChart3D"(* output: 
-<div id="fb3399a4-f6cc-455a-93be-fce07cfe5d53" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="bc9a201e-dd03-41a3-a8e8-8374977b409f" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_fb3399a4f6cc455a93befce07cfe5d53 = function() {
+            var renderPlotly_bc9a201edd0341a3a8e88374977b409f = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","mode":"markers","x":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"y":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"xaxis":{"title":{"text":"petal_length"}},"yaxis":{"title":{"text":"petal_width"}},"title":{"text":"rawChart2D"}};
             var config = {};
-            Plotly.newPlot('fb3399a4-f6cc-455a-93be-fce07cfe5d53', data, layout, config);
+            Plotly.newPlot('bc9a201e-dd03-41a3-a8e8-8374977b409f', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_fb3399a4f6cc455a93befce07cfe5d53();
+                    renderPlotly_bc9a201edd0341a3a8e88374977b409f();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_fb3399a4f6cc455a93befce07cfe5d53();
+                renderPlotly_bc9a201edd0341a3a8e88374977b409f();
             }
 </script>
 *)
 (**
 <br>
 
-<div id="cd1410f5-1f61-4315-8f64-ad0e1b677fa1" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="7f219891-6b11-4b98-b5e8-2cc7a4ad95c6" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_cd1410f51f6143158f64ad0e1b677fa1 = function() {
+            var renderPlotly_7f2198916b114b98b5e82cc7a4ad95c6 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter3d","mode":"markers","x":[5.5,4.9,7.6,5.6,6.1,6.3,6.2,7.2,6.9,4.9,5.4,7.0,6.1,5.4,7.2,6.3,5.4,5.8,5.0,6.5,5.6,4.3,6.7,4.5,5.7,6.3,5.6,5.6,4.9,7.7,6.3,6.4,4.7,5.5,5.9,5.0,5.4,6.0,5.6,6.3,5.1,6.4,5.1,6.7,6.2,6.8,7.7,4.8,6.2,4.8,6.7,5.1,6.7,6.9,5.8,4.8,5.5,5.1,5.7,6.7,4.4,5.0,6.9,5.0,6.5,4.6,6.1,5.0,5.8,6.0,4.9,5.7,7.9,7.2,5.5,4.6,6.4,6.9,6.0,5.8,5.2,7.4,5.5,5.1,4.8,5.0,5.7,4.6,5.9,6.1,5.7,6.0,5.4,6.1,5.4,5.2,7.3,4.7,6.3,5.3,6.6,6.3,4.4,4.4,6.5,6.3,4.9,6.6,6.4,6.5,5.5,6.7,6.4,6.8,5.7,5.8,6.0,5.2,6.7,5.1,5.5,4.8,5.1,6.4,5.0,5.1,5.1,6.5,5.6,6.0,7.1,4.6,6.1,6.2,5.2,7.7,5.7,6.4,5.8,5.0,6.7,6.3,4.9,5.8,5.0,7.7,5.7,5.9,6.8,5.0],"y":[3.8,1.5,6.6,4.9,4.9,5.6,4.8,6.0,5.7,1.4,1.7,4.7,4.6,1.5,6.1,5.1,1.7,1.2,1.2,5.8,4.1,1.1,5.7,1.3,5.0,4.9,4.5,3.9,1.5,6.1,5.0,5.5,1.6,1.4,4.8,1.6,1.5,5.1,3.6,4.7,3.0,4.5,1.5,5.2,4.3,4.8,6.7,1.4,5.4,1.9,5.8,1.4,5.0,5.1,5.1,1.6,4.4,1.6,1.5,5.7,1.3,1.3,5.4,1.6,5.1,1.0,4.7,3.5,4.1,4.5,4.5,1.7,6.4,5.8,1.3,1.4,4.3,4.9,4.5,4.0,3.9,6.1,3.7,1.5,1.6,1.6,4.1,1.5,4.2,4.0,4.5,4.0,4.5,4.7,1.3,1.5,6.3,1.3,4.9,1.5,4.6,5.6,1.3,1.4,5.5,4.4,1.5,4.4,5.6,4.6,4.0,5.6,5.3,5.5,4.2,5.1,4.8,1.4,4.7,1.4,4.0,1.4,1.5,5.6,1.5,1.9,1.7,5.2,4.2,5.0,5.9,1.4,5.6,4.5,1.5,6.7,4.2,5.3,3.9,3.3,4.4,6.0,3.3,5.1,1.4,6.9,3.5,5.1,5.9,1.4],"z":[1.1,0.1,2.1,2.0,1.8,2.4,1.8,1.8,2.3,0.2,0.4,1.4,1.4,0.2,2.5,1.5,0.2,0.2,0.2,2.2,1.3,0.1,2.5,0.3,2.0,1.8,1.5,1.1,0.1,2.3,1.9,1.8,0.2,0.2,1.8,0.4,0.4,1.6,1.3,1.6,1.1,1.5,0.4,2.3,1.3,1.4,2.0,0.1,2.3,0.2,1.8,0.2,1.7,2.3,1.9,0.2,1.2,0.2,0.4,2.1,0.2,0.3,2.1,0.6,2.0,0.2,1.2,1.0,1.0,1.6,1.7,0.3,2.0,1.6,0.2,0.2,1.3,1.5,1.5,1.2,1.4,1.9,1.0,0.2,0.2,0.2,1.3,0.2,1.5,1.3,1.3,1.0,1.5,1.4,0.4,0.1,1.8,0.2,1.5,0.2,1.3,1.8,0.2,0.2,1.8,1.3,0.1,1.4,2.1,1.5,1.3,2.4,2.3,2.1,1.3,1.9,1.8,0.2,1.5,0.3,1.3,0.3,0.3,2.2,0.2,0.4,0.5,2.0,1.3,1.5,2.1,0.3,1.4,1.5,0.2,2.2,1.2,1.9,1.2,1.0,1.4,2.5,1.0,2.4,0.2,2.3,1.0,1.8,2.3,0.2],"line":{},"marker":{},"text":["versicolor_0","setosa_1","virginica_2","virginica_3","virginica_4","virginica_5","virginica_6","virginica_7","virginica_8","setosa_9","setosa_10","versicolor_11","versicolor_12","setosa_13","virginica_14","virginica_15","setosa_16","setosa_17","setosa_18","virginica_19","versicolor_20","setosa_21","virginica_22","setosa_23","virginica_24","virginica_25","versicolor_26","versicolor_27","setosa_28","virginica_29","virginica_30","virginica_31","setosa_32","setosa_33","versicolor_34","setosa_35","setosa_36","versicolor_37","versicolor_38","versicolor_39","versicolor_40","versicolor_41","setosa_42","virginica_43","versicolor_44","versicolor_45","virginica_46","setosa_47","virginica_48","setosa_49","virginica_50","setosa_51","versicolor_52","virginica_53","virginica_54","setosa_55","versicolor_56","setosa_57","setosa_58","virginica_59","setosa_60","setosa_61","virginica_62","setosa_63","virginica_64","setosa_65","versicolor_66","versicolor_67","versicolor_68","versicolor_69","virginica_70","setosa_71","virginica_72","virginica_73","setosa_74","setosa_75","versicolor_76","versicolor_77","versicolor_78","versicolor_79","versicolor_80","virginica_81","versicolor_82","setosa_83","setosa_84","setosa_85","versicolor_86","setosa_87","versicolor_88","versicolor_89","versicolor_90","versicolor_91","versicolor_92","versicolor_93","setosa_94","setosa_95","virginica_96","setosa_97","versicolor_98","setosa_99","versicolor_100","virginica_101","setosa_102","setosa_103","virginica_104","versicolor_105","setosa_106","versicolor_107","virginica_108","versicolor_109","versicolor_110","virginica_111","virginica_112","virginica_113","versicolor_114","virginica_115","virginica_116","setosa_117","versicolor_118","setosa_119","versicolor_120","setosa_121","setosa_122","virginica_123","setosa_124","setosa_125","setosa_126","virginica_127","versicolor_128","virginica_129","virginica_130","setosa_131","virginica_132","versicolor_133","setosa_134","virginica_135","versicolor_136","virginica_137","versicolor_138","versicolor_139","versicolor_140","virginica_141","versicolor_142","virginica_143","setosa_144","virginica_145","versicolor_146","virginica_147","virginica_148","setosa_149"]}];
             var layout = {"xaxis":{"title":{"text":"sepal_length"}},"yaxis":{"title":{"text":"petal_length"}},"scene":{"zaxis":{"title":{"text":"petal_width"}}},"title":{"text":"rawChart3D"}};
             var config = {};
-            Plotly.newPlot('cd1410f5-1f61-4315-8f64-ad0e1b677fa1', data, layout, config);
+            Plotly.newPlot('7f219891-6b11-4b98-b5e8-2cc7a4ad95c6', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_cd1410f51f6143158f64ad0e1b677fa1();
+                    renderPlotly_7f2198916b114b98b5e82cc7a4ad95c6();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_cd1410f51f6143158f64ad0e1b677fa1();
+                renderPlotly_7f2198916b114b98b5e82cc7a4ad95c6();
             }
 </script>
 
@@ -272,29 +272,29 @@ let chart2D =
     |> Chart.withTitle chartTitle2D
     |> Chart.withXAxisStyle header2D.[0]
     |> Chart.withYAxisStyle header2D.[1](* output: 
-<div id="c69ca8c0-9dac-42a9-a672-50b58f54146a" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="3c896bbd-aeca-4c6d-903d-773ae1083af8" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_c69ca8c09dac42a9a67250b58f54146a = function() {
+            var renderPlotly_3c896bbdaeca4c6d903d773ae1083af8 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter","mode":"markers","x":[6.6,3.0,6.7,6.4,6.7,3.3,6.9],"y":[2.1,1.1,2.0,2.0,2.2,1.0,2.3],"marker":{},"name":"Noise"},{"type":"scatter","mode":"markers","x":[1.5,1.4,1.7,1.5,1.7,1.2,1.1,1.3,1.6,1.6,1.5,1.4,1.9,1.3,1.7,1.3,1.4,1.5,1.9,1.7,1.6,1.0],"y":[0.1,0.2,0.4,0.2,0.2,0.2,0.1,0.3,0.2,0.4,0.4,0.1,0.2,0.2,0.3,0.4,0.3,0.3,0.4,0.5,0.6,0.2],"marker":{},"name":"Cluster 0"},{"type":"scatter","mode":"markers","x":[4.9,4.9,4.8,5.0,5.0,5.1,4.7,5.2,5.0,5.1,5.1,5.1,4.9,5.3,5.2,5.3,5.1,5.1,4.7,5.1,4.8,4.5,4.5,4.6,4.7,5.0,4.6,4.5,5.4,5.5,4.4,4.7,4.5,4.6,4.4,4.4,5.6,5.7,5.4,5.6,5.5,5.6,5.7,5.7,5.6,4.3,4.2,4.2,4.2,4.1,5.8,5.8,5.9,6.0,5.8,5.6,4.1,4.0,4.0,4.0,5.9,6.1,6.1,6.0,3.9,3.9,3.9,3.8,3.6,3.7,6.1,6.3,3.5],"y":[2.0,1.8,1.8,2.0,1.9,1.6,1.6,2.3,1.7,2.3,1.9,2.0,1.5,2.3,2.0,1.9,2.4,1.8,1.4,1.5,1.4,1.6,1.7,1.5,1.5,1.5,1.4,1.5,2.1,1.8,1.2,1.2,1.3,1.3,1.3,1.4,2.4,2.3,2.3,2.1,2.1,2.2,2.5,2.1,1.8,1.3,1.5,1.3,1.2,1.3,2.2,1.8,2.1,1.8,1.6,1.4,1.0,1.2,1.3,1.0,2.3,2.3,1.9,2.5,1.1,1.4,1.2,1.1,1.3,1.0,2.5,1.8,1.0],"marker":{},"name":"Cluster 1"}];
             var layout = {"title":{"text":"eps: 0.5 minPts: 20 pts: 150 cluster: 2 noisePts: 8"},"xaxis":{"title":{"text":"petal_length"}},"yaxis":{"title":{"text":"petal_width"}}};
             var config = {};
-            Plotly.newPlot('c69ca8c0-9dac-42a9-a672-50b58f54146a', data, layout, config);
+            Plotly.newPlot('3c896bbd-aeca-4c6d-903d-773ae1083af8', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_c69ca8c09dac42a9a67250b58f54146a();
+                    renderPlotly_3c896bbdaeca4c6d903d773ae1083af8();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_c69ca8c09dac42a9a67250b58f54146a();
+                renderPlotly_3c896bbdaeca4c6d903d773ae1083af8();
             }
 </script>
 *)
@@ -338,29 +338,29 @@ let chart3D =
     
 //for faster computation you can use the squaredEuclidean distance and set your eps to its square
 let clusteredChart3D() = DbScan.compute DistanceMetrics.Array.euclideanNaNSquared 20 (0.7**2.) data3D (* output: 
-<div id="ac16f526-7ab4-42e9-965c-3ec70668056d" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="f9acd00d-4edf-4efb-a72b-4be809175282" style="width: 600px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script type="text/javascript">
 
-            var renderPlotly_ac16f5267ab442e9965c3ec70668056d = function() {
+            var renderPlotly_f9acd00d4edf4efba72b4be809175282 = function() {
             var fsharpPlotlyRequire = requirejs.config({context:'fsharp-plotly',paths:{plotly:'https://cdn.plot.ly/plotly-2.4.2.min'}}) || require;
             fsharpPlotlyRequire(['plotly'], function(Plotly) {
 
             var data = [{"type":"scatter3d","mode":"markers","x":[7.6,7.2,7.7,5.1,7.7,4.9,7.9,7.2,7.4,7.3,7.7,5.0,4.9,7.7],"y":[6.6,6.1,6.1,3.0,6.7,4.5,6.4,5.8,6.1,6.3,6.7,3.3,3.3,6.9],"z":[2.1,2.5,2.3,1.1,2.0,1.7,2.0,1.6,1.9,1.8,2.2,1.0,1.0,2.3],"line":{},"marker":{},"name":"Noise"},{"type":"scatter3d","mode":"markers","x":[5.5,5.6,5.6,5.6,5.5,5.0,5.8,5.8,5.2,5.5,5.7,5.9,6.1,6.0,5.5,5.7,5.6,5.7,5.8,5.7,5.6,6.2,6.0,6.0,5.7,5.4,6.1,6.1,6.1,6.3,6.4,6.2,5.9,6.3,6.4,6.0,6.6,5.6,6.0,6.3,6.6,6.5,6.7,6.7,6.1,6.2,6.3,6.3,6.3,6.0,5.8,5.9,6.8,5.7,6.5,5.8,6.7,6.9,6.5,6.4,7.0,6.1,6.4,6.5,6.3,6.4,6.7,6.2,6.4,6.4,6.3,6.9,6.7,6.9,6.7,6.8,6.5,6.7,6.9,6.7,6.3,6.8,7.2,7.1],"y":[3.8,4.1,3.9,3.6,4.4,3.5,4.1,4.0,3.9,3.7,4.1,4.2,4.0,4.0,4.0,4.2,4.2,4.2,3.9,3.5,4.5,4.3,4.5,4.5,4.5,4.5,4.6,4.7,4.7,4.4,4.3,4.5,4.8,4.7,4.5,4.8,4.4,4.9,5.0,4.9,4.6,4.6,4.7,4.4,4.9,4.8,5.1,4.9,5.0,5.1,5.1,5.1,4.8,5.0,5.1,5.1,5.0,4.9,5.2,5.3,4.7,5.6,5.5,5.5,5.6,5.3,5.2,5.4,5.6,5.6,5.6,5.1,5.7,5.4,5.6,5.5,5.8,5.8,5.7,5.7,6.0,5.9,6.0,5.9],"z":[1.1,1.3,1.1,1.3,1.2,1.0,1.0,1.2,1.4,1.0,1.3,1.5,1.3,1.0,1.3,1.3,1.3,1.2,1.2,1.0,1.5,1.3,1.6,1.5,1.3,1.5,1.4,1.2,1.4,1.3,1.3,1.5,1.8,1.6,1.5,1.8,1.4,2.0,1.5,1.5,1.3,1.5,1.5,1.4,1.8,1.8,1.5,1.8,1.9,1.6,1.9,1.8,1.4,2.0,2.0,2.4,1.7,1.5,2.0,1.9,1.4,1.4,1.8,1.8,1.8,2.3,2.3,2.3,2.1,2.2,2.4,2.3,2.1,2.1,2.4,2.1,2.2,1.8,2.3,2.5,2.5,2.3,1.8,2.1],"line":{},"marker":{},"name":"Cluster_0"},{"type":"scatter3d","mode":"markers","x":[4.9,4.9,5.4,5.4,5.4,5.0,4.5,4.7,5.5,5.0,5.4,5.1,4.8,4.8,5.1,4.8,5.1,4.4,5.0,5.0,4.6,5.5,4.6,5.1,5.0,4.6,5.4,5.2,4.7,5.3,4.4,5.2,5.1,4.8,5.1,5.0,5.1,5.1,4.6,5.2,5.0,4.3,5.8,5.7,5.7],"y":[1.5,1.4,1.7,1.5,1.7,1.2,1.3,1.6,1.4,1.6,1.5,1.5,1.4,1.9,1.4,1.6,1.6,1.3,1.3,1.6,1.0,1.3,1.4,1.5,1.6,1.5,1.3,1.5,1.3,1.5,1.4,1.4,1.4,1.4,1.5,1.5,1.9,1.7,1.4,1.5,1.4,1.1,1.2,1.5,1.7],"z":[0.1,0.2,0.4,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4,0.1,0.2,0.2,0.2,0.2,0.2,0.3,0.6,0.2,0.2,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.2,0.4,0.5,0.3,0.2,0.2,0.1,0.2,0.4,0.3],"line":{},"marker":{},"name":"Cluster_1"}];
             var layout = {"title":{"text":"eps: 0.7 minPts: 20 pts: 150 cluster: 2 noisePts: 14"},"xaxis":{"title":{"text":"sepal_length"}},"yaxis":{"title":{"text":"petal_length"}},"scene":{"zaxis":{"title":{"text":"petal_width"}}}};
             var config = {};
-            Plotly.newPlot('ac16f526-7ab4-42e9-965c-3ec70668056d', data, layout, config);
+            Plotly.newPlot('f9acd00d-4edf-4efb-a72b-4be809175282', data, layout, config);
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderPlotly_ac16f5267ab442e9965c3ec70668056d();
+                    renderPlotly_f9acd00d4edf4efba72b4be809175282();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderPlotly_ac16f5267ab442e9965c3ec70668056d();
+                renderPlotly_f9acd00d4edf4efba72b4be809175282();
             }
 </script>
 *)
