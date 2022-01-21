@@ -11,17 +11,17 @@ index: 0
 *)
 
 (***condition:prepare***)
-#r "nuget: FSharp.Data"
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Cyjs.NET"
+#r "nuget: FSharp.Data, 4.2.7"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Cyjs.NET, 0.0.4"
 
 (***condition:ipynb***)
 #if IPYNB
-#r "nuget: FSharp.Data"
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Cyjs.NET"
+#r "nuget: FSharp.Data, 4.2.7"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Cyjs.NET, 0.0.4"
 #endif // IPYNB
 
 

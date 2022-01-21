@@ -9,20 +9,19 @@ authors: Heinrich Lukas Weil
 index: 2
 ---
 *)
-
 (***condition:prepare***)
-#r "nuget: FSharp.Data"
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Cyjs.NET"
+#r "nuget: FSharp.Data, 4.2.7"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Cyjs.NET, 0.0.4"
 #r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 (***condition:ipynb***)
 #if IPYNB
-#r "nuget: FSharp.Data"
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Cyjs.NET"
+#r "nuget: FSharp.Data, 4.2.7"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Cyjs.NET, 0.0.4"
 #r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 #endif // IPYNB
@@ -36,7 +35,7 @@ index: 2
 # Correlation network
 
 
-_Summary:_ This tutorial demonstrates an example workflow using different FsLab libraries. The aim is to create a correlation network, finding a threhold for which to filter and visualizing the result.
+_Summary:_ This tutorial demonstrates an example workflow using different FsLab libraries. The aim is to create a correlation network, finding a threshold for which to filter and visualizing the result.
 
 
 ## Introduction
