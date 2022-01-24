@@ -14,7 +14,7 @@ index: 2
 #r "nuget: Deedle, 2.5.0"
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.Json, 13.0.1"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: FSharp.Data, 4.2.7"
 
 (***condition:ipynb***)
@@ -22,7 +22,7 @@ index: 2
 #r "nuget: Deedle, 2.5.0"
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.Json, 13.0.1"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data, 4.2.7"
 #endif // IPYNB
@@ -70,7 +70,7 @@ In this tutorial we are going to perform DBSCAN on two- and three-dimensional da
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
@@ -124,7 +124,7 @@ let rawChart2D =
     let unzippedData =
         data2D
         |> Array.map (fun x -> x.[0],x.[1])
-    Chart.Scatter(unzippedData,mode=StyleParam.Mode.Markers,Labels=labels)
+    Chart.Scatter(unzippedData,mode=StyleParam.Mode.Markers,MultiText=labels)
     |> Chart.withXAxisStyle header2D.[0]
     |> Chart.withYAxisStyle header2D.[1]
     |> Chart.withTitle "rawChart2D"
@@ -133,7 +133,7 @@ let rawChart3D =
     let unzippedData =
         data3D
         |> Array.map (fun x -> x.[0],x.[1],x.[2])
-    Chart.Scatter3d(unzippedData,mode=StyleParam.Mode.Markers,Labels=labels)
+    Chart.Scatter3D(unzippedData,mode=StyleParam.Mode.Markers,MultiText=labels)
     |> Chart.withXAxisStyle header3D.[0]
     |> Chart.withYAxisStyle header3D.[1]
     |> Chart.withZAxisStyle header3D.[2]
@@ -264,7 +264,7 @@ let chartCluster3D =
         l
         |> Seq.map (fun x -> x.[0],x.[1],x.[2])
         |> Seq.distinct //faster visualization; no difference in plot but in point number
-        |> fun x -> Chart.Scatter3d (x,StyleParam.Mode.Markers)
+        |> fun x -> Chart.Scatter3D (x,StyleParam.Mode.Markers)
         |> Chart.withTraceName (sprintf "Cluster_%i" i))
     |> Chart.combine
 
@@ -272,7 +272,7 @@ let chartNoise3D =
     result3D.Noisepoints
     |> Seq.map (fun x -> x.[0],x.[1],x.[2])  
     |> Seq.distinct //faster visualization; no difference in plot but in point number
-    |> fun x -> Chart.Scatter3d (x,StyleParam.Mode.Markers)
+    |> fun x -> Chart.Scatter3D (x,StyleParam.Mode.Markers)
     |> Chart.withTraceName "Noise"
 
 let chartname3D = 

@@ -15,7 +15,7 @@ index: 3
 #r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: FSharp.Data, 4.2.7"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.16"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.15"
 
 (***condition:ipynb***)
 #if IPYNB
@@ -33,7 +33,9 @@ open Plotly.NET.LayoutObjects
 
 // Extension of chart module for more automated chart styling
 module Chart = 
-    let myAxis name = LinearAxis.init(Title=Title.init name,Mirror=StyleParam.Mirror.All,Ticks=StyleParam.TickOptions.Inside,ShowGrid=false,ShowLine=true)
+    let myAxis name = 
+        LinearAxis.init(Title=Title.init name,Mirror=StyleParam.Mirror.All,Ticks=StyleParam.TickOptions.Inside,ShowGrid=false,ShowLine=true)
+        
     let withAxisTitles x y chart = 
         chart 
         |> Chart.withTemplate ChartTemplates.lightMirrored
@@ -48,6 +50,7 @@ module Chart =
 
 _Summary:_ This blog post provides insight into the definition, calculation, and interpretation of q-values. _[Benedikt Venn](https://github.com/bvenn)_, 21 Jan 2022
 
+_TLDR:_ A q value defines the proportion of false positives there are within all discoveries that were called significant up to the current item.
 
 ### Table of contents
 
@@ -62,13 +65,6 @@ _Summary:_ This blog post provides insight into the definition, calculation, and
 - [References](#References)
 
 *)
-
-let asd = 
-    Chart.Point([1,2])
-
-(***hide***)
-asd |> GenericChart.toChartHTML
-(***include-it-raw***)
 
 
 
@@ -91,8 +87,10 @@ module Chart =
     let withAxisTitles x y chart = 
         chart 
         |> Chart.withTemplate ChartTemplates.lightMirrored
-        |> Chart.withXAxis (myAxis x) 
-        |> Chart.withYAxis (myAxis y)
+        //|> Chart.withXAxis (myAxis x) 
+        //|> Chart.withYAxis (myAxis y)
+        |> Chart.withXAxisStyle x
+        |> Chart.withYAxisStyle y
 
 ```
 
@@ -117,6 +115,7 @@ Consider two population distributions that follow a normal distribution. Both ha
 open FSharpAux
 open FSharp.Stats
 
+
 let distributionA = Distributions.Continuous.normal 10.0 1.0
 let distributionB = Distributions.Continuous.normal 10.0 1.0
 
@@ -127,6 +126,8 @@ let distributionChartAB =
     ]
     |> Chart.combine
     |> Chart.withAxisTitles "variable X" "relative count"
+    //|> Chart.withXAxisStyle "variable X"
+    //|> Chart.withYAxisStyle "relative count"
     |> Chart.withSize (900.,600.)
     |> Chart.withTitle "null hypothesis"
 
@@ -135,15 +136,6 @@ let distributionChartAB =
 (***hide***)
 distributionChartAB |> GenericChart.toChartHTML
 (***include-it-raw***)
-
-asd |> GenericChart.toChartHTML
-(***include-it-raw***)
-
-let k = Chart.Area([5. .. 0.01 .. 15.] |> List.map (fun x -> x,distributionA.PDF x),"distA") |> GenericChart.toChartHTML
-
-distributionA.PDF 2.
-(***include-it-raw***)
-
 
 (**
 </center>
@@ -196,7 +188,9 @@ let nullDistributionChart =
     |> Array.map (fun (k,c) -> k,float c) 
     |> Chart.StackedColumn 
     |> Chart.withTraceName "alt"
-    |> Chart.withAxisTitles "pvalue" "frequency"
+    //|> Chart.withAxisTitles "pvalue" "frequency"
+    |> Chart.withXAxisStyle "pvalue"
+    |> Chart.withYAxisStyle "frequency"
 
 let thresholdLine =
     Shape.init(ShapeType.Line,0.05,0.05,0.,300.)
@@ -219,7 +213,9 @@ let distributionChartAC =
         Chart.Area([5. .. 0.01 .. 15.] |> List.map (fun x -> x,distributionC.PDF x),"distC")
     ]
     |> Chart.combine
-    |> Chart.withAxisTitles  "variable X" "relative count"
+    //|> Chart.withAxisTitles  "variable X" "relative count"
+    |> Chart.withXAxisStyle "variable X"
+    |> Chart.withYAxisStyle "relative count"
     |> Chart.withSize (1000.,600.)
     |> Chart.withTitle "alternative hypothesis"
 
@@ -257,8 +253,9 @@ let fwer =
         x,(1. - (1. - 0.05)**(float x))
         )
     |> Chart.Point
-    |> Chart.withYAxisStyle("",MinMax=(0.,1.))
-    |> Chart.withAxisTitles "#tests" "p(at least one FP)" 
+    //|> Chart.withAxisTitles "#tests" "p(at least one FP)" 
+    |> Chart.withXAxisStyle "#tests"
+    |> Chart.withYAxisStyle("p(at least one FP)",MinMax=(0.,1.))
     |> Chart.withShape bonferroniLine
     |> Chart.withTitle "FWER"
 
@@ -358,8 +355,7 @@ sample t tests looks as follows:
 *)
 
 let examplePVals = 
-    //let rawData = Http.RequestString @"https://raw.githubusercontent.com/fslaborg/datasets/main/data/pvalExample.txt"
-    let rawData = Http.RequestString @"https://raw.githubusercontent.com/bvenn/datasets/main/data/pvalExample.txt"
+    let rawData = Http.RequestString @"https://raw.githubusercontent.com/fslaborg/datasets/main/data/pvalExample.txt"
     rawData.Split '\n'
     |> Array.tail
     |> Array.map float
@@ -387,7 +383,9 @@ let exampleDistribution =
         |> Array.map (fun (k,c) -> k,float c / (m * 0.025))
         |> Chart.Column
         |> Chart.withTraceName "density"
-        |> Chart.withAxisTitles "p value" "density"
+        //|> Chart.withAxisTitles "p value" "density"
+        |> Chart.withXAxisStyle "p value"
+        |> Chart.withYAxisStyle "density"
         |> Chart.withShapes [nullLine;empLine]
 
         examplePVals
@@ -396,7 +394,9 @@ let exampleDistribution =
         |> Array.map (fun (k,c) -> k,float c)
         |> Chart.Column
         |> Chart.withTraceName "gene count"
-        |> Chart.withAxisTitles "p value" "gene count"
+        //|> Chart.withAxisTitles "p value" "gene count"
+        |> Chart.withXAxisStyle "p value"
+        |> Chart.withYAxisStyle "gene count"
         ]
     ]
     |> Chart.Grid()
@@ -480,7 +480,9 @@ let p2qValeChart =
     [qvaluesNotSmoothed;qvaluesSmoothed]
     |> Chart.combine
     |> Chart.withYAxisStyle("",MinMax=(0.,1.))
-    |> Chart.withAxisTitles "p value" "q value"
+    //|> Chart.withAxisTitles "p value" "q value"
+    |> Chart.withXAxisStyle "p value"
+    |> Chart.withYAxisStyle "q value"
     |> Chart.withShape empLine
     |> Chart.withTitle (sprintf "#[genes with q value < 0.05] = %i" eXpos)
 
@@ -527,7 +529,9 @@ let pi0EstChart =
     |> Chart.Point
     |> Chart.withYAxisStyle("",MinMax=(0.,1.))
     |> Chart.withXAxisStyle("",MinMax=(0.,1.))
-    |> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0(\lambda)$"
+    //|> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0(\lambda)$"
+    |> Chart.withXAxisStyle "$\lambda$"
+    |> Chart.withYAxisStyle "$\hat \pi_0(\lambda)$"
     |> Chart.withMathTex(true)
     |> Chart.withConfig(
         Config.init(
@@ -609,7 +613,9 @@ let bootstrappedPi0 =
         Chart.BoxPlot(x=Array.init x.Length (fun _ -> l),y=x,Fillcolor=Color.fromHex"#1F77B4",MarkerColor=Color.fromHex"#1F77B4",Name=sprintf "%.2f" l))
     |> Chart.combine
     |> Chart.withYAxisStyle("",MinMax=(0.,1.))
-    |> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0$"
+    //|> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0$"
+    |> Chart.withXAxisStyle "$\lambda$"
+    |> Chart.withYAxisStyle "$\hat \pi_0$"
     |> Chart.withMathTex(true)
     |> Chart.withShape minpiHatShape
     |> Chart.withConfig(
@@ -704,7 +710,9 @@ let qChart =
         Chart.Line(Array.sortBy fst (Array.zip examplePVals qvaluesRobust),Name="qValueRobust")
     ]
     |> Chart.combine
-    |> Chart.withAxisTitles "p value" "q value"
+    //|> Chart.withAxisTitles "p value" "q value"
+    |> Chart.withXAxisStyle "p value"
+    |> Chart.withYAxisStyle "q value"
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -733,7 +741,9 @@ let p2q =
     |> Array.sortBy fst
     |> Chart.Line
     |> Chart.withShape pi0Line
-    |> Chart.withAxisTitles "p value" "q value"
+    //|> Chart.withAxisTitles "p value" "q value"
+    |> Chart.withXAxisStyle "p value"
+    |> Chart.withYAxisStyle "q value"
 
 // shows the p values distribution for an visual inspection of pi0 estimation
 let pValueDistribution =
@@ -745,7 +755,9 @@ let pValueDistribution =
     |> Array.map (fun (k,c) -> k,float c / frequencyBins / m) 
     |> Chart.StackedColumn 
     |> Chart.withTraceName "p values"
-    |> Chart.withAxisTitles "p value" "frequency density"
+    //|> Chart.withAxisTitles "p value" "frequency density"
+    |> Chart.withXAxisStyle "p value"
+    |> Chart.withYAxisStyle "frequency density"
     |> Chart.withShape pi0Line
 
 // shows pi0 estimation in relation to lambda
@@ -760,7 +772,9 @@ let pi0Estimation =
         lambda, num/den
         )
     |> Chart.Point
-    |> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0(\lambda)$"
+    //|> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0(\lambda)$"
+    |> Chart.withXAxisStyle "$\lambda$"
+    |> Chart.withYAxisStyle "$\hat \pi_0(\lambda)$"
     |> Chart.withMathTex(true)
 
 

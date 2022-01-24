@@ -14,7 +14,7 @@ index: 0
 #r "nuget: Deedle, 2.5.0"
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.Json, 13.0.1"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: FSharp.Data, 4.2.7"
 
 (***condition:ipynb***)
@@ -22,7 +22,7 @@ index: 0
 #r "nuget: Deedle, 2.5.0"
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.Json, 13.0.1"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data, 4.2.7"
 #endif // IPYNB
@@ -46,7 +46,7 @@ FsLab is a meant to be a project incubation space and can be thought of as a saf
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```

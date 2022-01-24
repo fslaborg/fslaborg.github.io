@@ -15,7 +15,7 @@ index: 5
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.Json, 13.0.1"
 #r "nuget: DynamicObj, 0.2.0"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: FSharp.Data, 4.2.7"
 
 (***condition:ipynb***)
@@ -24,7 +24,7 @@ index: 5
 #r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.Json, 13.0.1"
 #r "nuget: DynamicObj, 0.2.0"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data, 4.2.7"
 #endif // IPYNB
@@ -66,7 +66,7 @@ at least as extreme as you observed (in the comparison) by chance. Low p values 
 #r "nuget: FSharp.Data"
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats, 0.4.2"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 open FSharp.Data
 open Deedle

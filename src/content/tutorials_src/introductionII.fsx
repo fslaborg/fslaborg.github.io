@@ -40,8 +40,8 @@ index: 2
 // References the latest stable package
 #r "nuget: FSharp.Stats"
 // References a sepcific package version
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
+#r "nuget: Plotly.NET.Interactive, 2.0.0-preview.16"
 (**
 * Alternatively, .dll files can be referenced directly with the following syntax:
 *)

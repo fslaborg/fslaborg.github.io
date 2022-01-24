@@ -179,7 +179,7 @@ The algorithm searches the point where this switch from one distribution to the 
 
 (*** do-not-eval ***)
 // Calculate the critical threshold with an accuracy of 0.01
-let thr,_ = Testing.RMT.compute 0.9 0.01 0.05 correlationNetwork
+let threshold,_ = Testing.RMT.compute 0.9 0.01 0.05 correlationNetwork
 
 (***hide***)
 let thr = 0.8203125
