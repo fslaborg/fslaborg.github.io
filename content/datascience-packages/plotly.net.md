@@ -1,6 +1,6 @@
 ---
 package-name: Plotly.NET
-package-logo: https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.6/icon
+package-logo: https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.16/icon
 package-nuget-link: https://www.nuget.org/packages/Plotly.NET/
 package-github-link: https://www.github.com/plotly/Plotly.NET
 package-documentation-link: https://plotly.github.io/Plotly.NET/
@@ -26,8 +26,8 @@ It can be used to create plotly.js charts in the following environments:
 here is a basic example snippet that renders a simple point chart, either as html page or static image:
 
 ```fsharp
-#r "nuget: Plotly.NET, 2.0.0-preview.6"
-#r "nuget: Plotly.NET.ImageExport, 2.0.0-preview.6"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
+#r "nuget: Plotly.NET.ImageExport, 2.0.0-preview.16"
 
 open Plotly.NET
 
