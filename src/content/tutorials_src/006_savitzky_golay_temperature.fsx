@@ -11,16 +11,16 @@ index: 4
 *)
 
 (***condition:prepare***)
-#r "nuget: Fsharp.Data"
-#r "nuget: FSharp.Stats"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: FSharp.Data, 4.2.7"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 
 (***condition:ipynb***)
 #if IPYNB
-#r "nuget: FSharp.Data"
-#r "nuget: FSharp.Stats"
+#r "nuget: FSharp.Data, 4.2.7"
+#r "nuget: FSharp.Stats, 0.4.3"
 #r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #endif // IPYNB
 
@@ -58,7 +58,7 @@ The image shows the moving window for polynomial regression used in the Savitzky
 #r "nuget: FSharp.Stats"
 // third party .net packages 
 #r "nuget: FSharp.Data"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 ```
 

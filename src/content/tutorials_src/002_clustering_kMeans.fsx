@@ -11,20 +11,20 @@ index: 1
 *)
 
 (***condition:prepare***)
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
-#r "nuget: FSharp.Data"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Newtonsoft.Json, 13.0.1"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
+#r "nuget: FSharp.Data, 4.2.7"
 
 (***condition:ipynb***)
 #if IPYNB
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Newtonsoft.Json, 13.0.1"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
-#r "nuget: FSharp.Data"
+#r "nuget: FSharp.Data, 4.2.7"
 #endif // IPYNB
 
 (**
@@ -72,7 +72,7 @@ For demonstration of k-means clustering, the classic iris data set is used, whic
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
@@ -115,7 +115,7 @@ let labels =
     |> Seq.mapi (fun i s -> sprintf "%s_%i" s i)
 
 let dataChart = 
-    Chart.Heatmap(data,ColNames=colNames,RowNames=labels)
+    Chart.Heatmap(data,colNames=colNames,rowNames=labels)
     // required to fit the species identifier on the left side of the heatmap
     |> Chart.withMarginSize(Left=100.)
     |> Chart.withTitle "raw iris data"
@@ -209,7 +209,7 @@ let clusterChart =
     |> Seq.sortBy (fun (clusterIndex,label,dataPoint) -> clusterIndex)
     |> Seq.unzip3
     |> fun (_,labels,d) -> 
-        Chart.Heatmap(d,ColNames=colNames,RowNames=labels)
+        Chart.Heatmap(d,colNames=colNames,rowNames=labels)
         // required to fit the species identifier on the left side of the heatmap
         |> Chart.withMarginSize(Left=100.)
         |> Chart.withTitle "clustered iris data (k-means clustering)"
@@ -244,7 +244,7 @@ let clusterChart3D =
             let clusterName = sprintf "cluster %i" (Seq.head clusterIndex)
             //for 3 dimensional representation isolate sepal length, petal length, and petal width
             let truncData = data |> Seq.map (fun x -> x.[0],x.[2],x.[3]) 
-            Chart.Scatter3d(truncData,mode=StyleParam.Mode.Markers,Name = clusterName,Labels=label)
+            Chart.Scatter3D(truncData,mode=StyleParam.Mode.Markers,Name = clusterName,MultiText=label)
         )
     |> Chart.combine
     |> Chart.withTitle "isolated coordinates of clustered iris data (k-means clustering)"

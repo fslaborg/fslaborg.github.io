@@ -11,20 +11,20 @@ index: 2
 *)
 
 (***condition:prepare***)
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
-#r "nuget: FSharp.Data"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Newtonsoft.Json, 13.0.1"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
+#r "nuget: FSharp.Data, 4.2.7"
 
 (***condition:ipynb***)
 #if IPYNB
-#r "nuget: Deedle"
-#r "nuget: FSharp.Stats"
-#r "nuget: Newtonsoft.JSON"
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Deedle, 2.5.0"
+#r "nuget: FSharp.Stats, 0.4.3"
+#r "nuget: Newtonsoft.Json, 13.0.1"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
-#r "nuget: FSharp.Data"
+#r "nuget: FSharp.Data, 4.2.7"
 #endif // IPYNB
 
 
@@ -90,7 +90,7 @@ For demonstration of hierarchical clustering, the classic iris data set is used,
 #r "nuget: Deedle"
 #r "nuget: FSharp.Stats"
 // third party .net packages 
-#r "nuget: Plotly.NET, 2.0.0-preview.12"
+#r "nuget: Plotly.NET, 2.0.0-preview.16"
 #r "nuget: Plotly.NET.Interactive, 2.0.0-preview.12"
 #r "nuget: FSharp.Data"
 ```
@@ -136,7 +136,7 @@ let labels =
     |> Array.ofSeq
 
 let dataChart = 
-    Chart.Heatmap(data,ColNames=colNames,RowNames=labels)
+    Chart.Heatmap(data,colNames=colNames,rowNames=labels)
     // required to fit the species identifier on the left side of the heatmap
     |> Chart.withMarginSize(Left=100.)
     |> Chart.withTitle "raw iris data"
@@ -248,7 +248,7 @@ let hClusteredDataHeatmap =
     let (hlable,hdata) =
         dataSortedByClustering
         |> Seq.unzip
-    Chart.Heatmap(hdata,ColNames=colNames,RowNames=hlable)
+    Chart.Heatmap(hdata,colNames=colNames,rowNames=hlable)
     // required to fit the species identifier on the left side of the heatmap
     |> Chart.withMarginSize(Left=100.)
     |> Chart.withTitle "Clustered iris data (hierarchical clustering)"
