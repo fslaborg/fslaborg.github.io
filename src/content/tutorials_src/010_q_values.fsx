@@ -31,16 +31,7 @@ open Plotly.NET
 open Plotly.NET.StyleParam
 open Plotly.NET.LayoutObjects
 
-// Extension of chart module for more automated chart styling
-module Chart = 
-    let myAxis name = 
-        LinearAxis.init(Title=Title.init name,Mirror=StyleParam.Mirror.All,Ticks=StyleParam.TickOptions.Inside,ShowGrid=false,ShowLine=true)
-        
-    let withAxisTitles x y chart = 
-        chart 
-        |> Chart.withTemplate ChartTemplates.lightMirrored
-        |> Chart.withXAxis (myAxis x) 
-        |> Chart.withYAxis (myAxis y)
+
 (**
 [![Binder]({{root}}images/badge-binder.svg)](https://mybinder.org/v2/gh/fslaborg/fslaborg.github.io/gh-pages?filepath=content/tutorials/{{fsdocs-source-basename}}.ipynb)&emsp;
 [![Script]({{root}}images/badge-script.svg)]({{root}}content/tutorials/{{fsdocs-source-basename}}.fsx)&emsp;
@@ -64,11 +55,6 @@ _TLDR:_ A q value defines the proportion of false positives there are within all
 - [FAQ](#FAQ)
 - [References](#References)
 
-*)
-
-
-
-(**
 ## Referencing packages
 
 ```fsharp
@@ -77,44 +63,35 @@ _TLDR:_ A q value defines the proportion of false positives there are within all
 #r "nuget: FSharp.Stats, 0.4.3"          //required for all calculations
 #r "nuget: FSharp.Data, 4.2.7"           //required to read the pvalue set
 
+open FSharp.Data
 open Plotly.NET
 open Plotly.NET.StyleParam
 open Plotly.NET.LayoutObjects
-
-// Extension of chart module for more automated chart styling
-module Chart = 
-    let myAxis name = LinearAxis.init(Title=Title.init name,Mirror=StyleParam.Mirror.All,Ticks=StyleParam.TickOptions.Inside,ShowGrid=false,ShowLine=true)
-    let withAxisTitles x y chart = 
-        chart 
-        |> Chart.withTemplate ChartTemplates.lightMirrored
-        //|> Chart.withXAxis (myAxis x) 
-        //|> Chart.withYAxis (myAxis y)
-        |> Chart.withXAxisStyle x
-        |> Chart.withYAxisStyle y
 
 ```
 
 ## Introduction
 
-<b>High throughput techniques</b> like microarrays with its successor RNA-Seq and mass spectrometry proteomics lead to an huge data amount.
-Thousands of features (e.g. transcripts or proteins) are measured simultaneously. <b>Differential expression analysis</b> aims to identify features, that change significantly
+**High throughput techniques** like microarrays with its successor RNA-Seq and mass spectrometry proteomics lead to an huge data amount.
+Thousands of features (e.g. transcripts or proteins) are measured simultaneously. **Differential expression analysis** aims to identify features, that change significantly
 between two conditions. A common experimental setup is the analysis of which genes are over- or underexpressed between e.g. a wild type and a mutant.
 
-Hypothesis tests aim to identify differences between two or more samples. The most common statistical test is the <b>t test</b> that tests a difference of means. Hypothesis tests report 
+Hypothesis tests aim to identify differences between two or more samples. The most common statistical test is the **t test** that tests a difference of means. Hypothesis tests report 
 a p value, that correspond the probability of obtaining results at least as extreme as the observed results, assuming that the null hypothesis is correct. In other words:
 
 _<center>If there is no effect (no mean difference), a p value of 0.05 indicates that in 5 % of the tests a false positive is reported.</center>_
 
-<hr>
-
-Consider two population distributions that follow a normal distribution. Both have the <b>same</b> mean and standard deviation.
+Consider two population distributions that follow a normal distribution. Both have the **same** mean and standard deviation.
 *)
 
 
 
 open FSharpAux
 open FSharp.Stats
-
+open FSharp.Data
+open Plotly.NET
+open Plotly.NET.StyleParam
+open Plotly.NET.LayoutObjects
 
 let distributionA = Distributions.Continuous.normal 10.0 1.0
 let distributionB = Distributions.Continuous.normal 10.0 1.0
@@ -125,9 +102,9 @@ let distributionChartAB =
         Chart.Area([5. .. 0.01 .. 15.] |> List.map (fun x -> x,distributionB.PDF x),"distB")
     ]
     |> Chart.combine
-    |> Chart.withAxisTitles "variable X" "relative count"
-    //|> Chart.withXAxisStyle "variable X"
-    //|> Chart.withYAxisStyle "relative count"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
+    |> Chart.withXAxisStyle "variable X"
+    |> Chart.withYAxisStyle "relative count"
     |> Chart.withSize (900.,600.)
     |> Chart.withTitle "null hypothesis"
 
@@ -141,7 +118,7 @@ distributionChartAB |> GenericChart.toChartHTML
 </center>
 
 Samples with sample size 5 are randomly drawn from both population distributions.
-Both samples are tested <b>if a mean difference exist</b> using a two sample t test where equal variances of the underlying population distribution are assumed.
+Both samples are tested **if a mean difference exist** using a two sample t test where equal variances of the underlying population distribution are assumed.
 
 *)
 
@@ -158,20 +135,19 @@ pValue
 (***include-it***)
 
 (**
-10,000 tests are performed, each with new randomly drawn samples. This corresponds to an experiment in which <b>none of the features changed</b> 
+
+10,000 tests are performed, each with new randomly drawn samples. This corresponds to an experiment in which **none of the features changed** 
 Note, that the mean intensities are arbitrary and must not be the same for all features! In the presented case all feature intensities are in average 10.
 The same simulation can be performed with pairwise comparisons from distributions that differ for each feature, but are the same within the feature.
-<b>The resulting p values are uniformly distributed between 0 and 1</b>
+**The resulting p values are uniformly distributed between 0 and 1**
 
-<br>
 
 <center><img style="max-width:50%" src="../../images/qvalue_01.svg"></img></center>
 
 _Fig 1: p value distribution of the null hypothesis._
-<hr>
-<br>
 
 *)
+
 (***hide***)
 let nullDist = 
     Array.init 10000 (fun x -> 
@@ -188,7 +164,7 @@ let nullDistributionChart =
     |> Array.map (fun (k,c) -> k,float c) 
     |> Chart.StackedColumn 
     |> Chart.withTraceName "alt"
-    //|> Chart.withAxisTitles "pvalue" "frequency"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "pvalue"
     |> Chart.withYAxisStyle "frequency"
 
@@ -198,9 +174,9 @@ let thresholdLine =
 (**
 
 Samples are called significantly different, if their p value is below a certain significance threshold ($\alpha$ level). While "the lower the better", a common threshold
-is a p value of 0.05 or 0.01. In the presented case in average $10,000 * 0.05 = 500$ tests are <b>significant (red box), even though the populations do not differ</b>. They are called <b>false 
-positives (FP)</b>. Now lets repeat the same experiment, but this time sample 70% of the time from null features (no difference) and <b>add 30% samples of truly 
-differing</b> distributions. Therefore a third populations is generated, that differ in mean, but has an equal standard deviation:
+is a p value of 0.05 or 0.01. In the presented case in average $10,000 * 0.05 = 500$ tests are **significant (red box), even though the populations do not differ**. They are called **false 
+positives (FP)**. Now lets repeat the same experiment, but this time sample 70% of the time from null features (no difference) and **add 30% samples of truly 
+differing** distributions. Therefore a third populations is generated, that differ in mean, but has an equal standard deviation:
 
 *)
 
@@ -213,7 +189,7 @@ let distributionChartAC =
         Chart.Area([5. .. 0.01 .. 15.] |> List.map (fun x -> x,distributionC.PDF x),"distC")
     ]
     |> Chart.combine
-    //|> Chart.withAxisTitles  "variable X" "relative count"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "variable X"
     |> Chart.withYAxisStyle "relative count"
     |> Chart.withSize (1000.,600.)
@@ -229,15 +205,15 @@ _Fig 2: p value distribution of the alternative hypothesis. Blue coloring indica
 Orange coloring indicate p values deriving from distribution A and C (truly differing)._
 
 
-The pvalue distribution of the tests resulting from truly differing populations are <b>right skewed</b>, while the null tests again show a homogeneous distribution between 0 and 1. 
+The pvalue distribution of the tests resulting from truly differing populations are **right skewed**, while the null tests again show a homogeneous distribution between 0 and 1. 
 Many, but not all of the tests that come from the truly differing populations are below 0.05, and therefore would be reported as significant.
 In average 350 null features would be reported as significant even though they derive from null features (blue bars, 10,000 x 0.7 x 0.05 = 350).
 
 
 ##The multiple testing problem
 
-The hypothesis testing framework with the p value definition given above was <b>developed for performing just one test. If many tests are performed, like in modern high throughput studies, the probability to obtain a 
-false positive result increases.</b> The probability of at least one false positive is called Familywise error rate (FWER) and can be determined by $FWER=1-(1-\alpha)^m$ where 
+The hypothesis testing framework with the p value definition given above was **developed for performing just one test. If many tests are performed, like in modern high throughput studies, the probability to obtain a 
+false positive result increases.** The probability of at least one false positive is called Familywise error rate (FWER) and can be determined by $FWER=1-(1-\alpha)^m$ where 
 $\alpha$ corresponds to the significance threshold (here 0.05) and $m$ is the number of performed tests.
 
 *)
@@ -253,7 +229,7 @@ let fwer =
         x,(1. - (1. - 0.05)**(float x))
         )
     |> Chart.Point
-    //|> Chart.withAxisTitles "#tests" "p(at least one FP)" 
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "#tests"
     |> Chart.withYAxisStyle("p(at least one FP)",MinMax=(0.,1.))
     |> Chart.withShape bonferroniLine
@@ -291,22 +267,16 @@ FWER should be chosen if the costs of follow up studies to tests the candidates 
 
 A more reasonable measure of significance with a simple interpretation is the so called false discovery rate (FDR). **It describes the rate of expected false positives within the 
 overall reported significant features.** The goal is to identify as many sig. features as possible while incurring a relatively low proportion of false positives.
-Consequently a set of reported significant features together with the <b>FDR describes the confidence of this set</b>, without the requirement to 
+Consequently a set of reported significant features together with the **FDR describes the confidence of this set**, without the requirement to 
 somehow incorporate the uncertainty that is introduced by the total number of tests performed. In the simulated case of 7,000 null tests and 3,000 tests resulting from truly 
 differing distributions above, the FDR can be calculated exactly. Therefore at e.g. a p value of 0.05 the number of false positives (blue in red box) are divided by the number 
 of significant reported tests (false positives + true positives). 
 
 
-
-
-<br>
-<hr>
-
 <center><img style="max-width:75%" src="../../images/qvalue_03.svg"></img></center>
 
 _Fig 4: p value distribution of the alternative hypothesis._
-<hr>
-<br>
+
 
 Given the conditions described in the first chapter, the FDR of this experiment with a p value threshold of 0.05 is 0.173. Out of the 2019 reported significant comparisons, in average 350 
 are expected to be false positives, which gives an straight forward interpretation of the data confidence. In real-world experiments the proportion of null tests and tests 
@@ -315,22 +285,12 @@ the average null frequency, a proportion of FP and TP can be determined and the 
 
 
 
-<br>
+
 
 
 <center><img style="max-width:75%" src="../../images/qvalue_04.svg"></img></center>
 
 _Fig 5: FDR calculation on simulated data._
-
-<br>
-
-*)
-
-
-
-(**
-
-
 
 ###q value
 
@@ -347,8 +307,8 @@ positives, a $\pi_0$ of 1 is too conservative, since there definitely are true p
 
 A better estimation of $\pi_0$ is given in the following:
 
-<b>True positives are assumed to be right skewed while null tests are distributed equally between 0 and 1</b>. Consequently the right flat region of the p value histogram tends to correspond 
-to the true frequency of null comparisons (Fig 5). As <b>real world example</b> 9856 genes were measured in triplicates under two conditions (control and treatment). The p value distribution of two 
+**True positives are assumed to be right skewed while null tests are distributed equally between 0 and 1**. Consequently the right flat region of the p value histogram tends to correspond 
+to the true frequency of null comparisons (Fig 5). As **real world example** 9856 genes were measured in triplicates under two conditions (control and treatment). The p value distribution of two 
 sample t tests looks as follows:
 
 
@@ -383,7 +343,7 @@ let exampleDistribution =
         |> Array.map (fun (k,c) -> k,float c / (m * 0.025))
         |> Chart.Column
         |> Chart.withTraceName "density"
-        //|> Chart.withAxisTitles "p value" "density"
+        |> Chart.withTemplate ChartTemplates.lightMirrored
         |> Chart.withXAxisStyle "p value"
         |> Chart.withYAxisStyle "density"
         |> Chart.withShapes [nullLine;empLine]
@@ -394,7 +354,7 @@ let exampleDistribution =
         |> Array.map (fun (k,c) -> k,float c)
         |> Chart.Column
         |> Chart.withTraceName "gene count"
-        //|> Chart.withAxisTitles "p value" "gene count"
+        |> Chart.withTemplate ChartTemplates.lightMirrored
         |> Chart.withXAxisStyle "p value"
         |> Chart.withYAxisStyle "gene count"
         ]
@@ -419,10 +379,6 @@ exampleDistribution |> GenericChart.toChartHTML
 _Fig 6: p value distributions of real world example. The frequency is given on the right, its density on the left. The black dashed line indicates the distribution, if all features
 were null. The red dash-dotted line indicates the visual estimated pi0._
 
-<br>
-<hr>
-
-
 
 By performing t tests for all comparisons 3743 (38 %) of the genes lead to a pvalue lower than 0.05.
 By eye, you would estimate $\pi_0$ as 0.4, indicating, only a small fraction of the genes are unaltered (null). After q value calculations, you would filter for a specific FDR (e.g. 0.05) and 
@@ -437,7 +393,6 @@ FDR(p)  = FP(p) / D(p)
 ```
 
 FDR(0.04613) = 0.4995 
-<br>
 
 
 *)
@@ -480,7 +435,7 @@ let p2qValeChart =
     [qvaluesNotSmoothed;qvaluesSmoothed]
     |> Chart.combine
     |> Chart.withYAxisStyle("",MinMax=(0.,1.))
-    //|> Chart.withAxisTitles "p value" "q value"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "p value"
     |> Chart.withYAxisStyle "q value"
     |> Chart.withShape empLine
@@ -501,7 +456,6 @@ p2qValeChart |> GenericChart.toChartHTML
 </center>
 
 _Fig 7: FDR calculation on experiment data. Please zoom into the very first part of the curve to inspect the monotonicity._
-<hr>
 
 
 
@@ -529,7 +483,7 @@ let pi0EstChart =
     |> Chart.Point
     |> Chart.withYAxisStyle("",MinMax=(0.,1.))
     |> Chart.withXAxisStyle("",MinMax=(0.,1.))
-    //|> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0(\lambda)$"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "$\lambda$"
     |> Chart.withYAxisStyle "$\hat \pi_0(\lambda)$"
     |> Chart.withMathTex(true)
@@ -559,23 +513,19 @@ pi0EstChart |> GenericChart.toChartHTML
 </center>
 
 _Fig 8: pi0 estimation._
-<hr>
 
-The resulting diagram shows, that with increasing $\lambda$ its function value $\hat \pi_0(\lambda)$ tends to $\pi_0$. The calculation <b>relates the actual proportion of tests greater than $\lambda$ to the proportion of $\lambda$ range the corresponding p values are in</b>.
-In Storey & Tibshirani 2003 this curve is fitted with a <b>cubic spline</b>. A weighting of the knots by $(1 - \lambda)$ is recommended 
+The resulting diagram shows, that with increasing $\lambda$ its function value $\hat \pi_0(\lambda)$ tends to $\pi_0$. The calculation **relates the actual proportion of tests greater than $\lambda$ to the proportion of $\lambda$ range the corresponding p values are in**.
+In Storey & Tibshirani 2003 this curve is fitted with a **cubic spline**. A weighting of the knots by $(1 - \lambda)$ is recommended 
 but not specified in the final publication. Afterwards the function value at $\hat \pi_0(1)$ is defined as final estimator of $\pi_0$. This is often referred to as the _smoother method_.
 
-Another method (_bootstrap method_) (Storey et al., 2004), that does not depend on fitting is based on <b>bootstrapping</b> and was introduced in Storey et al. (2004). It is implemented in FSharp.Stats:
+Another method (_bootstrap method_) (Storey et al., 2004), that does not depend on fitting is based on **bootstrapping** and was introduced in Storey et al. (2004). It is implemented in FSharp.Stats:
 
   1. Determine the minimal $\hat \pi_0 (\lambda)$ and call it $min \hat \pi_0$ . 
 
   2. For each $\lambda$, bootstrap the p values (e.g. 100 times) and calculate the mean squared error (MSE) from the difference of resulting $\hat \pi_0^b$ to $min  \hat \pi_0$. The minimal MSE indicates the best $\lambda$. With $\lambda$ 
-defined, $\pi_0$ can be determined. <b>Note: When bootstrapping an data set of size n, n elements are drawn with replacement.</b>
-
-
+defined, $\pi_0$ can be determined. **Note: When bootstrapping an data set of size n, n elements are drawn with replacement.**
 
 *)
-
 
 (***hide***)
 let getpi0Bootstrap (lambda:float[]) (pValues:float[]) =
@@ -612,42 +562,30 @@ let bootstrappedPi0 =
     |> Array.map (fun (l,x) -> 
         Chart.BoxPlot(x=Array.init x.Length (fun _ -> l),y=x,Fillcolor=Color.fromHex"#1F77B4",MarkerColor=Color.fromHex"#1F77B4",Name=sprintf "%.2f" l))
     |> Chart.combine
-    |> Chart.withYAxisStyle("",MinMax=(0.,1.))
-    //|> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0$"
-    |> Chart.withXAxisStyle "$\lambda$"
-    |> Chart.withYAxisStyle "$\hat \pi_0$"
-    |> Chart.withMathTex(true)
     |> Chart.withShape minpiHatShape
-    |> Chart.withConfig(
-        Config.init(
-            Responsive=true, 
-            ModeBarButtonsToAdd=[
-                ModeBarButton.DrawLine
-                ModeBarButton.DrawOpenPath
-                ModeBarButton.EraseShape
-                ]
-            )
-        )
-
+    |> Chart.withTemplate ChartTemplates.lightMirrored
+    |> Chart.withXAxisStyle "lambda"
+    |> Chart.withYAxisStyle "pi0 hat"
 
 (*** condition: ipynb ***)
 #if IPYNB
 bootstrappedPi0
 #endif // IPYNB
 
+(**<center>*)
+(***hide***)
 bootstrappedPi0 |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 (**
-
+</center>
 
 _Fig 9: Bootstrapping for pi0 estimation. The dashed line indicates the minimal pi0 from Fig. 8.
 The bootstrapped pi0 distribution that shows the least variation to the dashed line is the optimal. In the presented example it is either 0.8 or 0.85._
-<hr>
 
 For an $\lambda$, range of $\{0.0  ..  0.05  ..  0.95\}$ the bootstrapping method determines either 0.8 or 0.85 as optimal $\lambda$ and therefore $optimal  \hat \pi_0$ is either $0.3703$ or $0.3686$.
 
-The <b>automated estimation</b> of $\pi_0$ based on bootstrapping is implemented in `FSharp.Stats.Testing.MultipleTesting.Qvalues`.
+The **automated estimation** of $\pi_0$ based on bootstrapping is implemented in `FSharp.Stats.Testing.MultipleTesting.Qvalues`.
 
 *)
 open Testing.MultipleTesting
@@ -666,7 +604,7 @@ pi0Stats
 
 
 (**
-Subsequent to $\pi_0$ estimation the <b>q values can be determined</b> from a list of p values.
+Subsequent to $\pi_0$ estimation the **q values can be determined** from a list of p values.
 *)
 
 let qValues = Qvalues.ofPValues pi0Stats examplePVals
@@ -710,7 +648,7 @@ let qChart =
         Chart.Line(Array.sortBy fst (Array.zip examplePVals qvaluesRobust),Name="qValueRobust")
     ]
     |> Chart.combine
-    //|> Chart.withAxisTitles "p value" "q value"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "p value"
     |> Chart.withYAxisStyle "q value"
 
@@ -719,12 +657,15 @@ let qChart =
 qChart
 #endif // IPYNB
 
+(**<center>*)
 (***hide***)
 qChart |> GenericChart.toChartHTML
 (***include-it-raw***)
 
 
 (**
+</center>
+
 _Fig 10: Comparison of q values and robust q values, that is more conservative at low p values._
 
 
@@ -741,7 +682,7 @@ let p2q =
     |> Array.sortBy fst
     |> Chart.Line
     |> Chart.withShape pi0Line
-    //|> Chart.withAxisTitles "p value" "q value"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "p value"
     |> Chart.withYAxisStyle "q value"
 
@@ -755,7 +696,7 @@ let pValueDistribution =
     |> Array.map (fun (k,c) -> k,float c / frequencyBins / m) 
     |> Chart.StackedColumn 
     |> Chart.withTraceName "p values"
-    //|> Chart.withAxisTitles "p value" "frequency density"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "p value"
     |> Chart.withYAxisStyle "frequency density"
     |> Chart.withShape pi0Line
@@ -772,7 +713,7 @@ let pi0Estimation =
         lambda, num/den
         )
     |> Chart.Point
-    //|> Chart.withAxisTitles "$\lambda$" "$\hat \pi_0(\lambda)$"
+    |> Chart.withTemplate ChartTemplates.lightMirrored
     |> Chart.withXAxisStyle "$\lambda$"
     |> Chart.withYAxisStyle "$\hat \pi_0(\lambda)$"
     |> Chart.withMathTex(true)
