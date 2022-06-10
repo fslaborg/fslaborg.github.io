@@ -18,13 +18,13 @@ This [website](https://fslab.org/) demonstrates the aims of the fslab organisati
 
 The [packages site](https://fslab.org/packages.html) is used to aggregate fslab-endorsed data science packages in one place. 
 
-The main goal of fslab is to streamline the datascience environment of F#. 
+The main goal of fslab is to streamline the data science environment of F#. 
 
-In a first step we want to collect and foster open source datascience packages and create a save haven for F# open source maintainers and developers
+In a first step we want to collect and foster open source data science packages and create a save haven for F# open source maintainers and developers.
 
 We want to encourage interaction between these libraries to move forward together, 
 as well as prevent fslab from becoming just an address to dump a project url for easy promotion. Therefore, while we don't want to set up strict requirements - especially in this critical first phase of fslab - 
-we kindly ask you to meet at least **one of the following requirements** are with your package:
+we kindly ask you to meet at least **one of the following requirements** with your package:
 
 - 1. Additionally to the package documentation itself, **tutorials and guides** on how to get started with and interact with other fslab packages will be included at the time of joining the list. See the [next chapter](#add-a-tutorial-guide-or-blogpost) on how to do that.
 
@@ -53,7 +53,7 @@ To add a package to the endorsed list, follow these steps:
     ---
     ```
 
-4. below the frontmatter, add any kind of markdown content that will be rendered as an expandable `Read more` section. You can use the full markdown goodness here, and code snippets indicated as fsharp will get some syntax highlighting.
+4. Below the frontmatter, add any kind of markdown content that will be rendered as an expandable `Read more` section. You can use the full markdown goodness here, and code snippets indicated as fsharp will get some syntax highlighting.
 
 5. File a PR referencing the issue you created in step 1.
 
@@ -65,7 +65,7 @@ The [tutorials page](https://fslab.org/tutorials.html) contains links to a colle
     Introductory articles on F#, assuming no prior knowledge in programming and F#/.NET. There should also be a link collection to other high quality sources on those topics.
 
 - `datascience`:
-    Introduction to datascience in general and using F# for it specifically. Beginner and intermediate content on how to perform common datascience tasks with fslab-endorsed packages.
+    Introduction to data science in general and using F# for it specifically. Beginner and intermediate content on how to perform common data science tasks with fslab-endorsed packages.
 
 - `advanced`
     Deep dives on advanced topics, performing complex tasks, insights on how packages perform together, etc. More of a blog-post-style content.
@@ -109,15 +109,15 @@ To add tutorial content, follow these steps:
 
 ### Prerequisites
 
-- currently, .NET core 3.1.XXX is used, will be upgraded to .net5 when tools are ready
-- you need to install [Sass(command line)](https://sass-lang.com/install) to compile the .scss styles to the actual stylesheet
+- Currently, .NET core 3.1.XXX is used, will be upgraded to .net6 when tools are ready
+- You need to install [Sass(command line)](https://sass-lang.com/install) to compile the .scss styles to the actual stylesheet
 
 To develop the project in watcher mode, go to `/src` and run:
 
 - `dotnet tool restore`
 - `dotnet fornax watch`
 
-This will run a webserver that serves the compiled static page(s) on localhost:8080
+This will run a webserver that serves the compiled static page(s) on `localhost:8080`
 
 ### Technology used
 
