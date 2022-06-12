@@ -55,22 +55,19 @@ pre[class*=language-]::selection {
 pre[class*=language-]::-moz-selection, pre[class*=language-] ::-moz-selection,
 code[class*=language-]::-moz-selection, code[class*=language-] ::-moz-selection {
   text-shadow: none;
-  background: rgba(237, 237, 237, 0.15);
-  /* #EDEDED */
+  background: hsla(0deg, 0%, 93%, 0.15); /* #EDEDED */
 }
 
 pre[class*=language-]::selection, pre[class*=language-] ::selection,
 code[class*=language-]::selection, code[class*=language-] ::selection {
   text-shadow: none;
-  background: rgba(237, 237, 237, 0.15);
-  /* #EDEDED */
+  background: hsla(0deg, 0%, 93%, 0.15); /* #EDEDED */
 }
 
 /* Inline code */
 :not(pre) > code[class*=language-] {
   border-radius: 0.3em;
-  border: 0.13em solid #545454;
-  /* #545454 */
+  border: 0.13em solid hsl(0deg, 0%, 33%); /* #545454 */
   box-shadow: 1px 1px 0.3em -0.1em black inset;
   padding: 0.15em 0.2em 0.05em;
   white-space: normal;
@@ -80,8 +77,7 @@ code[class*=language-]::selection, code[class*=language-] ::selection {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #787878;
-  /* #777777 */
+  color: hsl(0deg, 0%, 47%); /* #777777 */
 }
 
 .token.punctuation {
@@ -96,8 +92,7 @@ code[class*=language-]::selection, code[class*=language-] ::selection {
 .token.boolean,
 .token.number,
 .token.deleted {
-  color: #cf694a;
-  /* #CF6A4C */
+  color: hsl(14deg, 58%, 55%); /* #CF6A4C */
   background-color: initial;
   display: initial;
   font-size: initial;
@@ -112,8 +107,7 @@ code[class*=language-]::selection, code[class*=language-] ::selection {
 .token.constant,
 .token.symbol,
 .token.builtin {
-  color: #f9ee9a;
-  /* #F9EE98 */
+  color: hsl(53deg, 89%, 79%); /* #F9EE98 */
 }
 
 .token.attr-name,
@@ -127,19 +121,16 @@ code[class*=language-]::selection, code[class*=language-] ::selection {
 .style .token.string,
 .token.variable,
 .token.inserted {
-  color: #919e6b;
-  /* #8F9D6A */
+  color: hsl(76deg, 21%, 52%); /* #8F9D6A */
 }
 
 .token.atrule {
-  color: #7386a5;
-  /* #7587A6 */
+  color: hsl(218deg, 22%, 55%); /* #7587A6 */
 }
 
 .token.regex,
 .token.important {
-  color: #e9c163;
-  /* #E9C062 */
+  color: hsl(42deg, 75%, 65%); /* #E9C062 */
 }
 
 .token.important,
@@ -164,8 +155,7 @@ pre[data-line] {
 .language-markup .token.tag,
 .language-markup .token.attr-name,
 .language-markup .token.punctuation {
-  color: #ad895c;
-  /* #AC885B */
+  color: hsl(33deg, 33%, 52%); /* #AC885B */
 }
 
 /* Make the tokens sit above the line highlight so the colours don't look faded. */
@@ -175,18 +165,13 @@ pre[data-line] {
 }
 
 .line-highlight {
-  background: rgba(84, 84, 84, 0.25);
-  /* #545454 */
-  background: linear-gradient(to right, rgba(84, 84, 84, 0.1) 70%, rgba(84, 84, 84, 0));
-  /* #545454 */
-  border-bottom: 1px dashed #545454;
-  /* #545454 */
-  border-top: 1px dashed #545454;
-  /* #545454 */
+  background: hsla(0deg, 0%, 33%, 0.25); /* #545454 */
+  background: linear-gradient(to right, hsla(0deg, 0%, 33%, 0.1) 70%, hsla(0deg, 0%, 33%, 0)); /* #545454 */
+  border-bottom: 1px dashed hsl(0deg, 0%, 33%); /* #545454 */
+  border-top: 1px dashed hsl(0deg, 0%, 33%); /* #545454 */
   left: 0;
   line-height: inherit;
-  margin-top: 0.75em;
-  /* Same as .prism’s padding-top */
+  margin-top: 0.75em; /* Same as .prism’s padding-top */
   padding: inherit 0;
   pointer-events: none;
   position: absolute;
@@ -197,12 +182,10 @@ pre[data-line] {
 
 .line-highlight:before,
 .line-highlight[data-end]:after {
-  background-color: #8794a6;
-  /* #8794A6 */
+  background-color: hsl(215deg, 15%, 59%); /* #8794A6 */
   border-radius: 999px;
   box-shadow: 0 1px white;
-  color: #f5f2f0;
-  /* #F5F2F0 */
+  color: hsl(24deg, 20%, 95%); /* #F5F2F0 */
   content: attr(data-start);
   font: bold 65%/1.5 sans-serif;
   left: 0.6em;
@@ -221,4 +204,4 @@ pre[data-line] {
   top: auto;
 }
 
-/*# sourceMappingURL=tmpHVcayr.tmp.map */
+/*# sourceMappingURL=tmpuMBNjW.tmp.map */
