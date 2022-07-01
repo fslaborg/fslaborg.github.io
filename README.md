@@ -109,7 +109,7 @@ To add tutorial content, follow these steps:
 
 ### Prerequisites
 
-- currently, .NET core 3.1.XXX is used, will be upgraded to .net5 when tools are ready
+- currently, .NET core 5.0.XXX is used, will be upgraded to .net6 when tools are ready
 - you need to install [Sass(command line)](https://sass-lang.com/install) to compile the .scss styles to the actual stylesheet
 
 To develop the project in watcher mode, go to `/src` and run:
