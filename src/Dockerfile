@@ -1,7 +1,5 @@
 FROM jupyter/base-notebook:latest
 
-# Install .NET CLI dependencies
-
 ARG NB_USER=fsdocs-user
 ARG NB_UID=1000
 ENV USER ${NB_USER}
@@ -53,11 +51,9 @@ RUN dotnet_sdk_version=5.0.101 \
     && dotnet help
 
 # Copy notebooks
-
 COPY ./ ${HOME}/notebooks/
 
 # Copy package sources
-
 COPY ./NuGet.config ${HOME}/nuget.config
 
 RUN chown -R ${NB_UID} ${HOME}
