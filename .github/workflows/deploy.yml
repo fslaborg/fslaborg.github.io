@@ -1,36 +1,39 @@
 name: deploy-gh-pages
 
 on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ main ]
+    branches: [ "main" ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build-and-deploy:
-    
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout
-      uses: actions/checkout@v2
-    - name: Setup .NET 3.1
+      uses: actions/checkout@v3
+
+    - name: setup-conda
+      uses: s-weigand/setup-conda@v1.1.1
+
+    - run: conda install nbconvert -y
+
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
-    - name: Setup .NET 5
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.102
-    - name: Setup node & sass
-      uses: actions/setup-node@v2
-      with:
-        node-version: '12'
-    - name: install sass
-      run: npm install -g sass
-    - name: Restore tools
-      run: dotnet tool restore
+        dotnet-version: 6.x.x
+
+    - run: dotnet tool restore
+
     - name: Build
       working-directory: ./src
       run: dotnet fornax build
+
     - name: deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
