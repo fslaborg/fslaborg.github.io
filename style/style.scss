@@ -1,0 +1,510 @@
+﻿@charset "utf-8";
+@import "./colors.scss";
+@import "./prism.scss";
+
+
+//bulma extensions
+
+.is-active-link-darkmagenta {
+    background-color: $fslabDarkMagenta !important;
+    color: $colorWhite !important;
+    font-weight: bold;
+}
+
+.is-active-link-magenta {
+    @extend.is-active-link-darkmagenta;
+    background-color: $fslabMagenta !important;
+}
+
+.is-active-link-lightmagenta {
+    @extend.is-active-link-darkmagenta;
+    color: $fslabDarkMagenta !important;
+    background-color: $fslabLightMagenta !important;
+}
+
+.image-scroll-container {
+    max-width: 50%;
+    margin:auto;
+    border: 1px solid #2D3E50;
+}
+
+.hero-body {
+    @media only screen and (max-width: 1024px) {
+        padding:0;
+    }
+}
+
+.media {
+    align-items: center !important;
+}
+
+.media-content{
+    overflow: unset;
+}
+
+.main-title {
+    font-size: 5rem;
+    @media only screen and (max-width: 1024px) {
+        font-size: 3rem;
+    }
+}
+
+// a.navbar-item:hover {
+//     background-color: lighten($fslabDarkMagenta,);
+// }
+
+// install sass (https://sass-lang.com/)
+// powershell as admin: 'npm install -g sass'
+// go to css folder and 'sass watch style.scss:style.css' to live convert scss file to css onChange.
+// might be needed to give exception to computer 'set-executionpolicy remotesigned'
+
+
+.content-table{
+    margin: 0 auto;
+    background-color: $colorWhite;
+}
+
+.content-table td, .content-table th {
+    vertical-align: middle;
+}
+
+.landing-page-link {
+    background-color: $fslabAquamarine;
+    color: $colorWhite;
+    border-color: transparent;
+}
+
+.landing-page-link:hover {
+    color: $fslabAquamarine;
+    background-color: $colorWhite;
+}
+
+.tutorial-link {
+    color: $fslabDarkMagenta;
+    border-color: $fslabDarkMagenta;
+}
+
+.tutorial-link:hover {
+    background-color: $fslabAquamarine;
+    color: $colorWhite;
+}
+
+#logo-square {
+    border: 2px solid $colorWhite;
+}
+
+.is-white {
+    color: $colorWhite !important;
+}
+
+.is-magenta {
+    color: $fslabMagenta
+}
+.is-lightmagenta {
+    color: $fslabLightMagenta
+}
+.is-darkmagenta {
+    color: $fslabDarkMagenta
+}
+.is-sapphire {
+    color: $fslabSapphire
+}
+.is-aquamarine {
+    color: $fslabAquamarine
+}
+
+.myNavbar {
+    font-size: 0.9rem
+}
+.smooth-hover {
+    transition: background-color 0.2s, color 0.2s;
+}
+
+@mixin has-bg($fillPercentage,$bg-color1,$bg-color2) {
+    @if ($fillPercentage < 100%) {
+        // background: $bg-color1;
+        background:  linear-gradient(0deg, $bg-color1 $fillPercentage, $bg-color2 $fillPercentage);
+        color: $colorWhite;
+    } @else {
+        background-color: $bg-color1;
+        color: $colorWhite;
+    }
+
+    @media only screen and (max-width: 400px) {
+
+        @if ($fillPercentage < 100%) {
+            $newPercentage: $fillPercentage + 5%;
+            // background: $bg-color1;
+            background:  linear-gradient(0deg, $bg-color1 $newPercentage, $bg-color2 $newPercentage);
+            color: $colorWhite;
+        } @else {
+            background-color: $bg-color1;
+            color: $colorWhite;
+        }
+    }
+}
+
+.has-bg-white {
+    @include has-bg(100%,$colorWhite,$colorWhite)
+}
+
+.has-bg-magenta {
+    @include has-bg(100%,$fslabMagenta,$fslabMagenta)
+}
+.has-bg-lightmagenta {
+    @include has-bg(100%,$fslabLightMagenta,$fslabLightMagenta)
+}
+.has-bg-darkmagenta {
+    @include has-bg(100%,$fslabDarkMagenta,$fslabDarkMagenta)
+}
+.has-bg-sapphire {
+    @include has-bg(100%,$fslabSapphire,$fslabSapphire)
+}
+.has-bg-aquamarine {
+    @include has-bg(100%,$fslabAquamarine,$fslabAquamarine)
+}
+
+.has-bg-three-fourths-magenta {
+    @include has-bg(75%,$fslabMagenta,$transparent)
+}
+.has-bg-three-fourths-lightmagenta {
+    @include has-bg(75%,$fslabLightMagenta,$transparent)
+}
+.has-bg-three-fourths-darkmagenta {
+    @include has-bg(75%,$fslabDarkMagenta,$transparent)
+}
+.has-bg-three-fourths-sapphire {
+    @include has-bg(75%,$fslabSapphire,$transparent)
+}
+.has-bg-three-fourths-aquamarine {
+    @include has-bg(75%,$fslabAquamarine,$transparent)
+}
+
+.has-bg-one-fourth-magenta {
+    @include has-bg(25%,$fslabMagenta,$transparent)
+}
+.has-bg-one-fourth-lightmagenta {
+    @include has-bg(25%,$fslabLightMagenta,$transparent)
+}
+.has-bg-one-fourth-darkmagenta {
+    @include has-bg(25%,$fslabDarkMagenta,$transparent)
+}
+.has-bg-one-fourth-sapphire {
+    @include has-bg(25%,$fslabSapphire,$transparent)
+}
+.has-bg-one-fourth-aquamarine {
+    @include has-bg(25%,$fslabAquamarine,$transparent)
+}
+
+@mixin is-emphasized($color) {
+    border-bottom: 5px solid $color
+}
+.is-emphasized-darkmagenta {
+    @include is-emphasized($fslabDarkMagenta)
+}
+.is-emphasized-magenta {
+    @include is-emphasized($fslabMagenta)
+}
+.is-emphasized-lightmagenta {
+    @include is-emphasized($fslabLightMagenta)
+}
+.is-emphasized-sapphire {
+    @include is-emphasized($fslabSapphire)
+}
+.is-emphasized-aquamarine {
+    @include is-emphasized($fslabAquamarine)
+}
+
+@mixin is-strongly-emphasized($color) {
+    border-bottom: 10px solid $color
+}
+.is-strongly-emphasized-darkmagenta {
+    @include is-strongly-emphasized($fslabDarkMagenta)
+}
+.is-strongly-emphasized-magenta {
+    @include is-strongly-emphasized($fslabMagenta)
+}
+.is-strongly-emphasized-lightmagenta {
+    @include is-strongly-emphasized($fslabLightMagenta)
+}
+.is-strongly-emphasized-sapphire {
+    @include is-strongly-emphasized($fslabSapphire)
+}
+.is-strongly-emphasized-aquamarine {
+    @include is-strongly-emphasized($fslabAquamarine)
+}
+
+// set font
+html, body {
+    font-family: "Nunito Sans";
+    line-height: 1.5;
+    background: $colorWhite;
+    /*    @media only screen and (max-width: 3000px) {
+        font-size: 40px;
+    }
+
+    @media only screen and (max-width: 2560px) {
+        font-size: 32px;
+    }
+
+    @media only screen and (max-width: 2200px) {
+        font-size: 22px;
+    }
+
+    @media only screen and (max-width: 1500px) {
+        font-size: 19px;
+    }
+
+    @media only screen and (max-width: 1500px) {
+        font-size: 18px;
+    }
+
+    @media only screen and (max-width: 1214px) {
+        font-size: 17px;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        font-size: 16px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 900px) {
+        font-size: 14px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        font-size: 13px;
+    }
+
+    @media only screen and (max-width: 450px) {
+        font-size: 12px;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 11px;
+    }
+
+    @media only screen and (max-width: 350px) {
+        font-size: 10px;
+    }
+
+    @media only screen and (max-width: 300px) {
+        font-size: 9px;
+    }*/
+}
+
+.footer-link {
+    color: $fslabAquamarine
+}
+
+.footer-link:hover {
+    color: $fslabMagenta
+}
+
+.button {
+    @extend .button;
+    font-family: "Nunito Sans"
+}
+
+.input {
+    @extend .input;
+    font-family: "Nunito Sans"
+}
+///
+
+.main-Container {
+    padding-bottom: 1.5rem;
+    margin: 2rem auto;
+    width: 80%;
+    /*max-width: 2000px;*/
+
+    @media only screen and (max-width: 1024px) {
+        width: 95%;
+    }
+
+    @media only screen and (max-width: 400px) {
+        margin: 10px auto;
+        padding-bottom: 10px;
+    }
+}
+
+#landing-page-hero-container.main-Container {
+    @extend .main-Container;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+// image column
+.main-ImageContainer {
+    /*padding: 1rem;*/
+    max-width: 80%;
+    min-width: 350px;
+    margin: 0.5rem auto;
+
+    @media only screen and (max-width: 1024px) {
+        max-width: 50%;
+        min-width: 250px;
+    }
+
+}
+
+strong {
+    font-weight: 600;
+}
+
+// text field
+.main-TextField {
+    padding: 1.5rem 3rem;
+    max-width: 100%;
+    //font-size: 0.9rem;
+    //font-weight: bolder;
+    margin: 1rem 2rem;
+    border-radius: 10px;
+
+    .main-text {
+        text-align: justify;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        margin: 2rem
+    }
+
+    @media only screen and (max-width: 500px) {
+        margin: 1rem 1.5rem
+    }
+}
+
+.main-text {
+    .column {
+        margin: 0 0.5rem
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .is-reverse-columns {
+        flex-direction: column-reverse;
+        display: flex;
+    }
+}
+
+/// Slider
+
+// Found problem that all slider-container have min-height 100% which looks awful
+
+.slider-container {
+    @extend .slider-container;
+    min-height: unset;
+}
+
+.slider-item {
+    @extend .slider-item;
+}
+
+.slider-navigation-previous {
+    @extend .slider-navigation-previous;
+    color: black
+}
+
+.slider-navigation-next {
+    @extend .slider-navigation-next;
+    color: black
+}
+
+.carousel {
+    @extend .carousel;
+    overflow: hidden;
+    margin: 1rem auto 1rem auto;
+
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+
+}
+
+// packages
+
+#package-header-img {
+    border: 4px solid $fslabMagenta;
+    background-color: $colorWhite;
+}
+
+#package-title-container h1 {
+    font-size: 5rem;
+    @media only screen and (max-width: 1214px){
+        font-size: 3rem;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 1.5rem;
+    }
+}
+
+#package-title-container h3 {
+    font-size: 2rem;
+    @media only screen and (max-width: 1214px){
+        font-size: 1.5rem;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 1rem;
+    }
+}
+
+.package-container {
+    margin-bottom: 2rem ;
+    border-left: 5px solid $fslabMagenta;
+}
+
+.package-container .card {
+    margin: auto;
+    border: unset;
+    border-color: unset;
+    border-radius: unset;
+    box-shadow: unset;
+}
+
+.package-container .card-content{
+    color: $fslabDarkMagenta
+}
+
+.package-container a {
+    color: $fslabMagenta;
+}
+
+.package-container code.package-reference {
+    @extend .has-bg-darkmagenta;
+    display: block;
+    padding: 1rem;
+    width: 50%;
+    @media only screen and (max-width: 768px) {
+        width:100%
+    }
+}
+
+.package-container a:hover {
+    color: $fslabDarkMagenta;
+    @extend .has-bg-one-fourth-lightmagenta;
+}
+.package-container .tags {
+    margin-top: 1rem;
+}
+.package-container .tag {
+    @extend .has-bg-lightmagenta;
+    color:$fslabDarkMagenta;
+    font-weight: bold;
+}
+
+.package-container .collapsible-trigger {
+    border-bottom: 2px solid $fslabDarkMagenta;
+}
+
+.js-plotly-plot {
+    margin: 0 auto;
+}
+
+.__________cytoscape_container {
+    margin: 0 auto;
+}

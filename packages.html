@@ -8,9 +8,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://fslab.org/style/style.css"/>
+    <script defer="true" src="https://kit.fontawesome.com/0d3e0ea7a6.js" crossOrigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fslab/fslab-styles"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-collapsible@1.0.4/dist/css/bulma-collapsible.min.css"/>
     <script defer="true" src="https://kit.fontawesome.com/0d3e0ea7a6.js" crossOrigin="anonymous"></script>
     <script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-collapsible@1.0.4/dist/js/bulma-collapsible.min.js"></script>
@@ -22,7 +21,7 @@
   <body>
     <nav class="navbar is-fixed-top">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="https://fslab.org">
           <img src="https://fslab.org/images/favicon.png" alt="Logo"/>
         </a>
         <a class="navbar-burger" data-target="navMenu" aria-label="menu" role="button" aria-expanded="false">
@@ -39,8 +38,8 @@
           <a class="navbar-item is-active-link-lightmagenta smooth-hover" href="https://fslab.org/packages.html">
             Data science packages
           </a>
-          <a class="navbar-item" href="https://fslab.org/tutorials.html">
-            Tutorials and Blogposts
+          <a class="navbar-item" href="https://fslab.org/blog">
+            Blog
           </a>
         </div>
         <div class="navbar-end">
@@ -88,179 +87,6 @@
       </div>
     </section>
     <div class="section">
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://github.com/fsprojects/FSharp.Data">
-                    FSharp.Data
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Data"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-              <span class="has-bg-magenta tag">
-                type providers
-              </span>
-              <span class="has-bg-magenta tag">
-                http
-              </span>
-            </div>
-            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Data-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
-<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/FSharp.Stats">
-                    FSharp.Stats
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              statistical testing, linear algebra, machine learning, fitting and signal processing in F#.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Stats"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                statistics
-              </span>
-              <span class="has-bg-magenta tag">
-                linear algebra
-              </span>
-              <span class="has-bg-magenta tag">
-                machine learning
-              </span>
-              <span class="has-bg-magenta tag">
-                fitting
-              </span>
-              <span class="has-bg-magenta tag">
-                signal processing
-              </span>
-            </div>
-            <a href="#FSharp.Stats-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Stats-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
-<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
-open FSharp.Stats
-
-// initialize a normal distribution with mean 25 and standard deviation 0.1
-let normalDistribution = Distributions.Continuous.normal 25. 0.1
-
-// draw independently 30 times from the given distribution 
-let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
-
-let mean = Seq.mean sample
-let stDev = Seq.stDev sample
-let cv = Seq.cv sample
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/FSharp.Stats">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/FSharp.Stats/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
       <div class="Container package-container">
         <div class="card">
           <div class="card-content">
@@ -458,94 +284,77 @@ R.plot(R.Nile)
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.16/icon"/>
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
                 </figure>
               </div>
               <div class="media-content">
                 <p class="title">
-                  <a href="https://www.github.com/plotly/Plotly.NET">
-                    Plotly.NET
+                  <a href="https://github.com/fsprojects/FSharp.Data">
+                    FSharp.Data
                   </a>
                 </p>
               </div>
             </div>
             <p class="subtitle is-6">
-              Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.
+              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
             </p>
             <code class="package-reference">
-              #r "nuget: Plotly.NET"
+              #r "nuget: FSharp.Data"
             </code>
             <div class="tags">
               <span class="has-bg-magenta tag">
-                visualization
+                data access
               </span>
               <span class="has-bg-magenta tag">
-                data exploration
+                type providers
               </span>
               <span class="has-bg-magenta tag">
-                charting
+                http
               </span>
             </div>
-            <a href="#Plotly.NET-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
               Read More
               <span class="icon">
                 <i class="fas fa-angle-down"></i>
               </span>
             </a>
-            <div id="Plotly.NET-collapse" class="is-collapsible">
+            <div id="FSharp.Data-collapse" class="is-collapsible">
               <hr/>
-              <p>Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.</p>
-<p>It can be used to create plotly.js charts in the following environments:</p>
-<p><br></br></p>
-<h2>1. <strong>interactive charts in html pages</strong></h2>
-<h2>2. <strong>interactive charts in dotnet interactive notebooks via the <a href="https://www.nuget.org/packages/Plotly.NET.Interactive/">Plotly.NET.Interactive</a> package</strong></h2>
-<h2>3. <strong>static chart images via <a href="https://www.nuget.org/packages/Plotly.NET.ImageExport/">Plotly.NET.ImageExport</a> package (see more <a href="https://plotly.net/0_1_image-export.html">here</a>)</strong></h2>
-<p><br></br></p>
-<p>here is a basic example snippet that renders a simple point chart, either as html page or static image:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: Plotly.NET, 2.0.0-preview.16&quot;
-#r &quot;nuget: Plotly.NET.ImageExport, 2.0.0-preview.16&quot;
+              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
+<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
 
-open Plotly.NET
+open FSharp.Data
+open Deedle
 
-let myChart = 
-    Chart.Point(
-        [
-            (1.,2.)
-            (2.,3.)
-            (3.,4.)
-            (5.,2.)
-        ]
-    )
-    |&gt; Chart.withTitle &quot;Hello from Plotly.NET!&quot;
-    |&gt; Chart.withX_AxisStyle (&quot;X-Axis&quot;,Showline=true,Showgrid=true)
-    |&gt; Chart.withY_AxisStyle (&quot;Y-Axis&quot;,Showline=true,Showgrid=true)
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
 
-myChart |&gt; Chart.Show //display as html in browser 
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
 
-//using tatic image export
-open Plotly.NET.ImageExport
-
-myChart |&gt; Chart.savePNG(&quot;myChart&quot;,Width=600,Height=600)  //save chart as static png with 600x600 px
+df.Print()
 </code></pre>
-<p>Here is an image of the rendered chart:</p>
-<p><img src="/images/myChart.png" alt="" /></p>
 
             </div>
           </div>
           <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/plotly/Plotly.NET">
+            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
               <span class="icon">
                 <i class="fas fa-code-branch"></i>
               </span>
               Github
             </a>
-            <a class="card-footer-item" href="https://plotly.github.io/Plotly.NET/">
+            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
               <span class="icon">
                 <i class="fas fa-book"></i>
               </span>
               Docs
             </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/Plotly.NET/">
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
@@ -649,6 +458,94 @@ let myFirstStyledGraph =
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/FSharp.Stats">
+                    FSharp.Stats
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              statistical testing, linear algebra, machine learning, fitting and signal processing in F#.
+            </p>
+            <code class="package-reference">
+              #r "nuget: FSharp.Stats"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                statistics
+              </span>
+              <span class="has-bg-magenta tag">
+                linear algebra
+              </span>
+              <span class="has-bg-magenta tag">
+                machine learning
+              </span>
+              <span class="has-bg-magenta tag">
+                fitting
+              </span>
+              <span class="has-bg-magenta tag">
+                signal processing
+              </span>
+            </div>
+            <a href="#FSharp.Stats-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="FSharp.Stats-collapse" class="is-collapsible">
+              <hr/>
+              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
+<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
+open FSharp.Stats
+
+// initialize a normal distribution with mean 25 and standard deviation 0.1
+let normalDistribution = Distributions.Continuous.normal 25. 0.1
+
+// draw independently 30 times from the given distribution 
+let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
+
+let mean = Seq.mean sample
+let stDev = Seq.stDev sample
+let cv = Seq.cv sample
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/FSharp.Stats">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
                   <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
                 </figure>
               </div>
@@ -708,6 +605,108 @@ let myFirstStyledGraph =
           </div>
         </div>
       </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.16/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/plotly/Plotly.NET">
+                    Plotly.NET
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.
+            </p>
+            <code class="package-reference">
+              #r "nuget: Plotly.NET"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                visualization
+              </span>
+              <span class="has-bg-magenta tag">
+                data exploration
+              </span>
+              <span class="has-bg-magenta tag">
+                charting
+              </span>
+            </div>
+            <a href="#Plotly.NET-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="Plotly.NET-collapse" class="is-collapsible">
+              <hr/>
+              <p>Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.</p>
+<p>It can be used to create plotly.js charts in the following environments:</p>
+<p><br></br></p>
+<h2>1. <strong>interactive charts in html pages</strong></h2>
+<h2>2. <strong>interactive charts in dotnet interactive notebooks via the <a href="https://www.nuget.org/packages/Plotly.NET.Interactive/">Plotly.NET.Interactive</a> package</strong></h2>
+<h2>3. <strong>static chart images via <a href="https://www.nuget.org/packages/Plotly.NET.ImageExport/">Plotly.NET.ImageExport</a> package (see more <a href="https://plotly.net/0_1_image-export.html">here</a>)</strong></h2>
+<p><br></br></p>
+<p>here is a basic example snippet that renders a simple point chart, either as html page or static image:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: Plotly.NET, 2.0.0-preview.16&quot;
+#r &quot;nuget: Plotly.NET.ImageExport, 2.0.0-preview.16&quot;
+
+open Plotly.NET
+
+let myChart = 
+    Chart.Point(
+        [
+            (1.,2.)
+            (2.,3.)
+            (3.,4.)
+            (5.,2.)
+        ]
+    )
+    |&gt; Chart.withTitle &quot;Hello from Plotly.NET!&quot;
+    |&gt; Chart.withX_AxisStyle (&quot;X-Axis&quot;,Showline=true,Showgrid=true)
+    |&gt; Chart.withY_AxisStyle (&quot;Y-Axis&quot;,Showline=true,Showgrid=true)
+
+myChart |&gt; Chart.Show //display as html in browser 
+
+//using tatic image export
+open Plotly.NET.ImageExport
+
+myChart |&gt; Chart.savePNG(&quot;myChart&quot;,Width=600,Height=600)  //save chart as static png with 600x600 px
+</code></pre>
+<p>Here is an image of the rendered chart:</p>
+<p><img src="/images/myChart.png" alt="" /></p>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/plotly/Plotly.NET">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://plotly.github.io/Plotly.NET/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/Plotly.NET/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <footer class="footer has-bg-darkmagenta">
@@ -735,7 +734,7 @@ let myFirstStyledGraph =
                 <i class="fas fa-code-branch"></i>
               </span>
               <span>
-                <a class="footer-link" href="https://github.com/fslaborg/fslabsite">
+                <a class="footer-link" href="https://github.com/fslaborg/fslaborg.github.io">
                   website source code
                 </a>
               </span>
@@ -766,7 +765,7 @@ let myFirstStyledGraph =
                 </span>
                 <span>
                   <a class="footer-link" href="https://github.com/fslaborg?type=source">
-                    the fslab organistation on github
+                    the fslab organisation on github
                   </a>
                 </span>
               </div>
@@ -787,7 +786,7 @@ let myFirstStyledGraph =
                   <i class="fas fa-cubes"></i>
                 </span>
                 <span>
-                  <a class="footer-link" href="/packages.html">
+                  <a class="footer-link" href="https://fslab.org/packages.html">
                     endorsed packages
                   </a>
                 </span>
@@ -797,7 +796,7 @@ let myFirstStyledGraph =
                   <i class="fas fa-plus"></i>
                 </span>
                 <span>
-                  <a class="footer-link" href="https://github.com/fslaborg/fslabsite#add-a-project-to-the-packages-site">
+                  <a class="footer-link" href="https://github.com/fslaborg/fslaborg.github.io#add-a-project-to-the-packages-site">
                     add a package to the list
                   </a>
                 </span>
@@ -809,7 +808,7 @@ let myFirstStyledGraph =
                   <i class="fas fa-graduation-cap"></i>
                 </span>
                 <span>
-                  <a class="footer-link" href="/tutorials.html">
+                  <a class="footer-link" href="https://fslab.org/tutorials.html">
                     tutorials and learning resources
                   </a>
                 </span>
@@ -819,7 +818,7 @@ let myFirstStyledGraph =
                   <i class="fas fa-plus"></i>
                 </span>
                 <span>
-                  <a class="footer-link" href="https://github.com/fslaborg/fslabsite#add-a-tutorial-guide-or-blogpost">
+                  <a class="footer-link" href="https://github.com/fslaborg/fslaborg.github.io#add-a-tutorial-guide-or-blogpost">
                     add tutorial content
                   </a>
                 </span>
@@ -843,11 +842,6 @@ let myFirstStyledGraph =
               <li>
                 <a href="https://fsharp.org/" class="footer-link">
                   fsharp.org
-                </a>
-              </li>
-              <li>
-                <a href="https://scisharp.github.io/SciSharp/" class="footer-link">
-                  SciSharp STACK
                 </a>
               </li>
             </ul>
