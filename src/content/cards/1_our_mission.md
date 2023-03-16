@@ -5,7 +5,7 @@ bg-color: lightmagenta
 emphasis: aquamarine
 type: secondary
 index: 1
-image: /images/mission.svg
+image: images/mission.svg
 link: /
 link-text: NONE
 ---

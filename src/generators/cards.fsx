@@ -5,7 +5,7 @@ open System
 open Html
 
 let createCardLink (card:Cardloader.MainPageCard) =
-    a [Class (sprintf "button landing-page-link is-size-4"); Href (Layout.urlPrefix + card.CardLink)] [
+    a [Class (sprintf "button landing-page-link is-size-4"); Href (Globals.prefixUrl card.CardLink)] [
         strong [] [!! card.CardLinkText]
     ]
 
@@ -52,7 +52,7 @@ let mainHero =
                     div [Class "column is-5"] [
                         div [Class "main-ImageContainer"] [
                             figure [Class "image"] [
-                                img [Src (Layout.urlPrefix + "/images/main_loop.svg")]
+                                img [Src (Globals.prefixUrl "images/main_loop.svg")]
                             ]
                         ]
                     ]
@@ -79,7 +79,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                         div [Class "column is-5"] [
                             div [Class "main-ImageContainer"] [
                                 figure [Class "image"] [
-                                    img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                                    img [Src (Globals.prefixUrl card.CardImages.[0])]
                                 ]
                             ]
                     
@@ -90,7 +90,7 @@ let renderSecondaryCard isLeft (card:Cardloader.MainPageCard) =
                         div [Class "column is-5"] [
                             div [Class "main-ImageContainer"] [
                                 figure [Class "image"] [
-                                    img [Src (Layout.urlPrefix + card.CardImages.[0])]
+                                    img [Src (Globals.prefixUrl card.CardImages.[0])]
                                 ]
                             ]
                         ]

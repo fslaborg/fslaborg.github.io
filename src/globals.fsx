@@ -1,8 +1,44 @@
-#r "_lib/Fornax.Core.dll"
+#r "nuget: Fornax.Core, 0.15.1"
+#r "nuget: FsLab.Fornax, 2.2.0"
 #r "_lib/Markdig.dll"
 
 open System.IO
 open Markdig
+
+#if WATCH
+let urlPrefix = 
+  ""
+#else
+let urlPrefix = 
+  "https://fslab.org"
+#endif
+
+/// returns a fixed urlby prefixing `urlPrefix`
+let prefixUrl url = sprintf "%s/%s" urlPrefix url
+
+/// injects websocket code necessary for hot reload on local preview via `dotnet fornax watch`
+let injectWebsocketCode (webpage:string) =
+    let websocketScript =
+        """
+        <script type="text/javascript">
+          var wsUri = "ws://localhost:8080/websocket";
+      function init()
+      {
+        websocket = new WebSocket(wsUri);
+        websocket.onclose = function(evt) { onClose(evt) };
+      }
+      function onClose(evt)
+      {
+        console.log('closing');
+        websocket.close();
+        document.location.reload();
+      }
+      window.addEventListener("load", init, false);
+      </script>
+        """
+    let head = "<head>"
+    let index = webpage.IndexOf head
+    webpage.Insert ( (index + head.Length + 1),websocketScript)
 
 module MarkdownProcessing =
 

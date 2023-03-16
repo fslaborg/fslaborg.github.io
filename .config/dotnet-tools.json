@@ -3,15 +3,9 @@
   "isRoot": true,
   "tools": {
     "fornax": {
-      "version": "0.13.1",
+      "version": "0.15.1",
       "commands": [
         "fornax"
-      ]
-    },
-    "fsharp.formatting.commandtool": {
-      "version": "11.4.4",
-      "commands": [
-        "fsdocs"
       ]
     }
   }

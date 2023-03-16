@@ -5,7 +5,7 @@ bg-color: lightmagenta
 emphasis: aquamarine
 type: secondary
 index: 4
-image: /images/interoperability.svg
+image: images/interoperability.svg
 link: /
 link-text: NONE
 ---

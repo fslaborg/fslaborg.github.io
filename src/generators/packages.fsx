@@ -67,8 +67,8 @@ let generate' (ctx : SiteContents) (_: string) =
                             if package.PackageMore.IsSome then 
                                 a [
                                     Href (sprintf "#%s-collapse" package.PackageName)
-                                    Custom("data-action","collapse")
-                                    Custom("aria-label","more")
+                                    HtmlProperties.Custom("data-action","collapse")
+                                    HtmlProperties.Custom("aria-label","more")
                                     Class "collapsible-trigger"
                                 ] [
                                     !! "Read More"
