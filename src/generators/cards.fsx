@@ -41,7 +41,7 @@ let mainHero =
                             ]
                         ]
                         div [Class "block"] [
-                            h1 [Class "title is-size-3 is-capitalized is-white is-block"] [!! "The F# community project incubation space for data science"]
+                            h1 [Class "title is-size-3 is-capitalized is-white is-block"] [!! "The community driven toolkit for datascience in f#"]
                         ]
                         div [Class "content is-white is-size-4"] [
                             div [Class "block is-white"] [
