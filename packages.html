@@ -93,282 +93,6 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/Deedle">
-                    Deedle
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              Deedle is an easy to use library for data and time series manipulation and for scientific programming.
-            </p>
-            <code class="package-reference">
-              #r "nuget: Deedle"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                dataframe
-              </span>
-              <span class="has-bg-magenta tag">
-                data exploration
-              </span>
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-            </div>
-            <a href="#Deedle-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="Deedle-collapse" class="is-collapsible">
-              <hr/>
-              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
-<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
-<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
-<p>It reads the boston housing data set csv file from an online data source and</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/Deedle">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/Deedle/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/rprovider/2.0.1-beta2/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/RProvider">
-                    RProvider
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              An F# Type Provider providing strongly typed access to the R statistical language. The type provider automatically discovers available R packages and makes them easily accessible from F#, so you can easily call powerful packages and visualization libraries from code running on the .NET platform.
-            </p>
-            <code class="package-reference">
-              #r "nuget: RProvider"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                R
-              </span>
-              <span class="has-bg-magenta tag">
-                interop
-              </span>
-              <span class="has-bg-magenta tag">
-                type provider
-              </span>
-              <span class="has-bg-magenta tag">
-                visualisation
-              </span>
-              <span class="has-bg-magenta tag">
-                statistics
-              </span>
-            </div>
-            <a href="#RProvider-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="RProvider-collapse" class="is-collapsible">
-              <hr/>
-              <p>The R Provider discovers R packages that are available in your R installation and makes
-them available as .NET namespaces underneath the parent namespace RProvider. For example,
-the stats package is available as RProvider.stats. If you open the namespaces you want to
-use, functions and values will be available as R.name.</p>
-<p>There are three requirements to be set up on your system:</p>
-<ul>
-<li>dotnet SDK 5.0 or greater; and</li>
-<li>R statistical language. <em>Note: on Windows, there is currently a bug in R preventing us from supporting R versions greater than 4.0.2.</em></li>
-<li>R_HOME environment variable set to the R home directory. This can usually be identified by running the command 'R RHOME'.</li>
-</ul>
-<p>Below is a simple script example that demonstrates using R statistical functions,
-and using R graphics functions to create charts:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: RProvider,2.0.1&quot;
-
-open RProvider
-open RProvider.graphics
-open RProvider.grDevices
-open RProvider.datasets
-
-// use R to calculate the mean of a list
-R.mean([1;2;3;4])
-
-// Calculate sin using the R 'sin' function
-// (converting results to 'float') and plot it
-[ for x in 0.0 .. 0.1 .. 3.14 -&gt; 
-    R.sin(x).GetValue&lt;float&gt;() ]
-|&gt; R.plot
-
-// Plot the data from the standard 'Nile' data set
-R.plot(R.Nile)
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/RProvider">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/RProvider/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/RProvider/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://github.com/fsprojects/FSharp.Data">
-                    FSharp.Data
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Data"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-              <span class="has-bg-magenta tag">
-                type providers
-              </span>
-              <span class="has-bg-magenta tag">
-                http
-              </span>
-            </div>
-            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Data-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
-<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
                   <img src="https://api.nuget.org/v3-flatcontainer/cyjs.net/0.0.3/icon"/>
                 </figure>
               </div>
@@ -699,6 +423,282 @@ myChart |&gt; Chart.savePNG(&quot;myChart&quot;,Width=600,Height=600)  //save ch
               Docs
             </a>
             <a class="card-footer-item" href="https://www.nuget.org/packages/Plotly.NET/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/rprovider/2.0.1-beta2/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/RProvider">
+                    RProvider
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              An F# Type Provider providing strongly typed access to the R statistical language. The type provider automatically discovers available R packages and makes them easily accessible from F#, so you can easily call powerful packages and visualization libraries from code running on the .NET platform.
+            </p>
+            <code class="package-reference">
+              #r "nuget: RProvider"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                R
+              </span>
+              <span class="has-bg-magenta tag">
+                interop
+              </span>
+              <span class="has-bg-magenta tag">
+                type provider
+              </span>
+              <span class="has-bg-magenta tag">
+                visualisation
+              </span>
+              <span class="has-bg-magenta tag">
+                statistics
+              </span>
+            </div>
+            <a href="#RProvider-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="RProvider-collapse" class="is-collapsible">
+              <hr/>
+              <p>The R Provider discovers R packages that are available in your R installation and makes
+them available as .NET namespaces underneath the parent namespace RProvider. For example,
+the stats package is available as RProvider.stats. If you open the namespaces you want to
+use, functions and values will be available as R.name.</p>
+<p>There are three requirements to be set up on your system:</p>
+<ul>
+<li>dotnet SDK 5.0 or greater; and</li>
+<li>R statistical language. <em>Note: on Windows, there is currently a bug in R preventing us from supporting R versions greater than 4.0.2.</em></li>
+<li>R_HOME environment variable set to the R home directory. This can usually be identified by running the command 'R RHOME'.</li>
+</ul>
+<p>Below is a simple script example that demonstrates using R statistical functions,
+and using R graphics functions to create charts:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: RProvider,2.0.1&quot;
+
+open RProvider
+open RProvider.graphics
+open RProvider.grDevices
+open RProvider.datasets
+
+// use R to calculate the mean of a list
+R.mean([1;2;3;4])
+
+// Calculate sin using the R 'sin' function
+// (converting results to 'float') and plot it
+[ for x in 0.0 .. 0.1 .. 3.14 -&gt; 
+    R.sin(x).GetValue&lt;float&gt;() ]
+|&gt; R.plot
+
+// Plot the data from the standard 'Nile' data set
+R.plot(R.Nile)
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/RProvider">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/RProvider/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/RProvider/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/Deedle">
+                    Deedle
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Deedle is an easy to use library for data and time series manipulation and for scientific programming.
+            </p>
+            <code class="package-reference">
+              #r "nuget: Deedle"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                dataframe
+              </span>
+              <span class="has-bg-magenta tag">
+                data exploration
+              </span>
+              <span class="has-bg-magenta tag">
+                data access
+              </span>
+            </div>
+            <a href="#Deedle-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="Deedle-collapse" class="is-collapsible">
+              <hr/>
+              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
+<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
+<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
+<p>It reads the boston housing data set csv file from an online data source and</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/Deedle">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/Deedle/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://github.com/fsprojects/FSharp.Data">
+                    FSharp.Data
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
+            </p>
+            <code class="package-reference">
+              #r "nuget: FSharp.Data"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                data access
+              </span>
+              <span class="has-bg-magenta tag">
+                type providers
+              </span>
+              <span class="has-bg-magenta tag">
+                http
+              </span>
+            </div>
+            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="FSharp.Data-collapse" class="is-collapsible">
+              <hr/>
+              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
+<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
