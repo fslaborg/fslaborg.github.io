@@ -33,6 +33,7 @@ let generate' (ctx : SiteContents) (_: string) =
                         !!"Want to add a package to the curated list?"
                         a [] [
                             !!"File a PR"
+                            Href ("https://github.com/fslaborg/fslaborg.github.io/tree/main/src/content/datascience-packages")
                             span [Class "icon"] [i [Class "fa fa-code-branch"] []]
                         ]
                     ]
