@@ -1,0 +1,33 @@
+// 1. Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+
+// 2. Set your own initial variables
+html[data-theme="dark"] {
+    --scheme-main: black;
+    --scheme-invert: white;
+    --text: white;
+    --text-light: hsl(0, 0%, 96%);
+    --text-strong: white;
+    --code-background: black;
+}
+html[data-theme="light"] {
+    --scheme-main: white;
+    --scheme-invert: black;
+    --text: black;
+    --text-light: hsl(0, 0%, 14%);
+    --text-strong: black;
+    --code-background: white;
+}
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$scheme-main: var(--scheme-main);
+$scheme-invert: var(--scheme-invert);
+$text: var(--text);
+$text-light: var(--text-light);
+$text-strong: var(--text-strong);
+$code-background: var(--code-background);
+
+// 6. Import the rest of Bulma
+@import "../../node_modules/bulma/bulma.sass";
