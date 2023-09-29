@@ -2,10 +2,16 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "fornax": {
-      "version": "0.15.1",
+    "fable": {
+      "version": "4.0.1",
       "commands": [
-        "fornax"
+        "fable"
+      ]
+    },
+    "femto": {
+      "version": "0.17.1",
+      "commands": [
+        "femto"
       ]
     }
   }
