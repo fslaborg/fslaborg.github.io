@@ -4,26 +4,47 @@ open Feliz
 open Feliz.Router
 open Feliz.Bulma
 
+[<AutoOpen>]
+module Aux =
+    let log x= Browser.Dom.console.log(x)
+
 module ThemeSwitch =
+
+    open Fable.Core.JsInterop
 
     let getDataTheme() =
         Browser.Dom.document.documentElement.getAttribute("data-theme")
+
+    let setDataTheme(theme: string) =
+        Browser.Dom.document.documentElement.setAttribute("data-theme", theme.ToLower() )
+    let getDefault() =
+        let m : bool = Browser.Dom.window?matchMedia("(prefers-color-scheme: dark)")?matches
+        // Browser.Dom.console.log(m)
+        m
 
     type DataTheme =
     | Dark 
     | Light
         static member ofString (str: string) =
-            if isNull str then Light
-            else
-                match str.ToLower() with
-                | "dark" -> Dark
-                | "light" | _ -> Light
+            match str.ToLower() with
+            | "dark" -> Dark
+            | "light" | _ -> Light
         member this.setOppositeTheme(setter: DataTheme -> unit) =
-            let prev = getDataTheme()
-            Browser.Dom.console.log(prev)
             let next = if this = Dark then Light else Dark
-            Browser.Dom.document.documentElement.setAttribute("data-theme", (string next).ToLower() )
+            string next |> setDataTheme
             setter next
+
+        static member getDefault() =
+            let isDark = getDefault()
+            if isDark then Dark else Light
+
+        static member GET() =
+            let dtStr = getDataTheme()
+            if isNull dtStr then
+                DataTheme.getDefault()
+            else
+                let dt: DataTheme = DataTheme.ofString dtStr
+                dt
 
         member this.isDark = this = Dark
 
@@ -31,9 +52,10 @@ module ThemeSwitch =
         Theme: DataTheme
     } with
         static member init() = 
-            let dt = getDataTheme()
+            let dt = DataTheme.GET()
+            setDataTheme (string dt)
             Browser.Dom.console.log("[DATA-THEME]", dt)
-            { Theme = DataTheme.ofString dt }
+            { Theme = dt }
 
     let button() = 
         let state, update = React.useState(State.init)
