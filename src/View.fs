@@ -5,6 +5,17 @@ open Feliz.Router
 open Feliz.Bulma
 
 type View =
+
+    /// <summary>
+    /// This function wraps subpages into a wrapper with common components, such as
+    /// Navbar and footer.
+    /// </summary>
+    static member View(body : ReactElement) =
+        Html.div [
+            Component.Navbar.Main()
+            body
+            Component.Footer.Main()
+        ]
     /// <summary>
     /// A React component that uses Feliz.Router
     /// to determine what to show based on the current URL
@@ -15,8 +26,16 @@ type View =
         React.router [
             router.onUrlChanged (Page.fromUrl >> updatePage)
             router.children [
-                match currentPage with
-                | Page.Main -> Html.h1 "Index"
-                | Page.NotFound -> Html.h1 "Not found"
+                View.View (
+                    match currentPage with
+                    | Page.Main -> 
+                        Html.section [
+                            Bulma.button.button [
+                                prop.className "is-primaryd"
+                                prop.text "Hello"
+                            ]
+                        ]
+                    | Page.NotFound -> Html.h1 "Not found"
+                )
             ]
         ]

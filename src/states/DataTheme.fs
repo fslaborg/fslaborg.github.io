@@ -1,5 +1,6 @@
 module rec State.DataTheme
 
+open Feliz
 open Fable.Core.JsInterop
 
 [<RequireQualifiedAccess>]
@@ -65,3 +66,12 @@ type DataTheme =
         | Some dt, _ -> dt // this value is set by website but does not reflect actual styling directly
         | _, _ -> BrowserSetting.getDefault() // if all fails we check for the browser setting
     member this.isDark = this = Dark
+
+    member this.toIcon : ReactElement =
+        let c = 
+            match this with
+            | Light -> "fa-regular fa-sun"
+            | Dark -> "fa-solid fa-moon"
+        Html.i [
+            prop.className (sprintf "%s fa-xl" c)
+        ]
