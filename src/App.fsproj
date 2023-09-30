@@ -15,6 +15,7 @@
     <Compile Include="components/Component.Navbar.fs" />
     <Compile Include="components/Component.Footer.fs" />
     <Compile Include="components/Component.ThemeSwitch.fs" />
+    <Compile Include="pages/Main.fs" />
     <None Include="index.html" />
     <Compile Include="View.fs" />
     <Compile Include="Main.fs" />

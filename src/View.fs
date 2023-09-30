@@ -14,7 +14,6 @@ type View =
         Html.div [
             Component.Navbar.Main()
             body
-            Component.Sponsors.Main()
             Component.Footer.Main()
         ]
     /// <summary>
@@ -29,13 +28,7 @@ type View =
             router.children [
                 View.View (
                     match currentPage with
-                    | Page.Main -> 
-                        Html.section [
-                            Bulma.button.button [
-                                prop.className "is-primaryd"
-                                prop.text "Hello"
-                            ]
-                        ]
+                    | Page.Main -> Pages.Main.Main()
                     | Page.DataSciencePackages -> Html.h1 "Welcome! you found our awesome collection of data packages."
                     | Page.NotFound | _ -> Html.h1 "Not found"
                 )

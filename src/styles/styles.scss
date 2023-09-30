@@ -60,3 +60,15 @@ html {
 .hero {
     max-height: calc(100vh - 3.25rem)
 }
+
+.is-stronger {
+    text-decoration: underline;
+    text-decoration-color: $fslabDarkMagenta;
+    text-decoration-thickness: .5rem;
+    font-weight: bold;
+}
+
+.is-rounded {
+    border: 1px solid white;
+    border-radius: 9999px;
+}

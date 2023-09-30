@@ -35,11 +35,12 @@ open Feliz.Router
 let private getActivePage() =
     Router.currentUrl() |> Page.fromUrl
 
-
 let private pageLink(page:Routing.Page) =
     Bulma.navbarItem.a [
         let activePage = getActivePage()
-        if (page = activePage) then Bulma.navbarItem.isActive
+        if (page = activePage) then 
+            Bulma.color.hasTextWhite
+            Bulma.color.hasBackgroundPrimary
         prop.href <| page.toUrl()
         prop.text page.PageName
     ]
@@ -69,8 +70,8 @@ let private navbarMenu(isActive:bool) =
 let Main() =
     let state, update = React.useState(false)
     Bulma.navbar [
-        Bulma.color.isPrimary
-        Bulma.navbar.hasShadow
+        Bulma.color.isWhite
+        // Bulma.navbar.hasShadow
         Bulma.navbar.isFixedTop
         prop.children [
             navbarBrand(state, update)
