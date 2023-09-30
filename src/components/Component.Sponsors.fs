@@ -34,7 +34,7 @@ let private memberContainer(preMembers: Member list) =
         |> Seq.distinctBy (fun x -> x.Profile)
         |> Seq.sortByDescending (fun x -> x.TotalAmountDonated)
     Html.div [
-        prop.style [style.display.flex]
+        prop.style [style.display.flex; style.justifyContent.center]
         prop.children [
             for mem in members do
                 memberElement mem

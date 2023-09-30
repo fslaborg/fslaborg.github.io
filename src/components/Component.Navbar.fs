@@ -47,6 +47,8 @@ let private pageLink(page:Routing.Page) =
 let private navbarStart() = 
     Bulma.navbarStart.div [
         pageLink Page.Main
+        pageLink Page.DataSciencePackages
+        pageLink Page.Blog
     ]
 
 let private navbarEnd() = 

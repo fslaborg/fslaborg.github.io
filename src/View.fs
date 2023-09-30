@@ -36,7 +36,8 @@ type View =
                                 prop.text "Hello"
                             ]
                         ]
-                    | Page.NotFound -> Html.h1 "Not found"
+                    | Page.DataSciencePackages -> Html.h1 "Welcome! you found our awesome collection of data packages."
+                    | Page.NotFound | _ -> Html.h1 "Not found"
                 )
             ]
         ]

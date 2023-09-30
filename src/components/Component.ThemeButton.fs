@@ -8,8 +8,10 @@ type private State = {
     Theme: DataTheme
 } with 
     static member init() = 
+        let dt = DataTheme.GET()
+        DataTheme.SET dt
         {
-            Theme = DataTheme.GET()
+            Theme = dt
         }
 
 [<ReactComponent>]

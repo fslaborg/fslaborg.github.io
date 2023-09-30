@@ -53,6 +53,10 @@ $colors: map-merge($colors, $addColors);
 // 6. Import the rest of Bulma
 @import "../../node_modules/bulma/bulma.sass";
 
+html {
+    overflow-y: auto;
+}
+
 .hero {
     max-height: calc(100vh - 3.25rem)
 }
