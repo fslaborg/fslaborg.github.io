@@ -1,16 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-    </PropertyGroup>
-    <ItemGroup>
-        <None Include="index.html" />
-        <Compile Include="Extensions.fs" />
-        <Compile Include="Components.fs" />
-        <Compile Include="Main.fs" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="Feliz" Version="2.6.0" />
-        <PackageReference Include="Feliz.Bulma" Version="3.0.0" />
-        <PackageReference Include="Feliz.Router" Version="4.0.0" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="State.DataTheme.fs" />
+    <Compile Include="components\Component.ThemeSwitch.fs" />
+    <Compile Include="FableAux.fs" />
+    <None Include="index.html" />
+    <Compile Include="Extensions.fs" />
+    <Compile Include="Components.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Feliz" Version="2.6.0" />
+    <PackageReference Include="Feliz.Bulma" Version="3.0.0" />
+    <PackageReference Include="Feliz.Router" Version="4.0.0" />
+    <PackageReference Include="Fable.SimpleJson" Version="3.24.0" />
+  </ItemGroup>
 </Project>
