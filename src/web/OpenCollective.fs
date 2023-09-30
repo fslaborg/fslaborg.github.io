@@ -54,13 +54,14 @@ module Member =
 module Memberlist = 
     let decoder:string -> JsonValue -> Result<list<Member>,DecoderError> = 
         Decode.list Member.decoder
-
-let getRequest (url:string) = 
-    Http.RequestString(url, httpMethod = "GET")
     
-let getSponsors (url:string) = 
-    let req = Http.RequestString(url, httpMethod = "GET")
-    let sponsors = Decode.fromString Memberlist.decoder req
-    sponsors
+let getSponsors (callback) = 
+    let url = Literals.Urls.ApiEndpoints.OpenCollective
+    let innerCallback (json: string) = 
+        let r = Decode.fromString Memberlist.decoder json 
+        match r with
+        | Ok r -> callback r
+        | Error e -> failwith e
+    Helper.get(url, innerCallback)
 
 

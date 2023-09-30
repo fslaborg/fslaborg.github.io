@@ -14,6 +14,7 @@ type View =
         Html.div [
             Component.Navbar.Main()
             body
+            Component.Sponsors.Main()
             Component.Footer.Main()
         ]
     /// <summary>

@@ -3,12 +3,14 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="web/opencollection.fs" />
     <Compile Include="Extensions.fs" />
     <Compile Include="FableAux.fs" />
     <Compile Include="states/Routing.fs" />
     <Compile Include="states/DataTheme.fs" />
     <Compile Include="Literals.fs" />
+    <Compile Include="web/Helper.fs" />
+    <Compile Include="web/OpenCollective.fs" />
+    <Compile Include="components\Component.Sponsors.fs" />
     <Compile Include="components/Component.ThemeButton.fs" />
     <Compile Include="components/Component.Navbar.fs" />
     <Compile Include="components/Component.Footer.fs" />
@@ -18,9 +20,11 @@
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Fable.Fetch" Version="2.6.0" />
     <PackageReference Include="Feliz" Version="2.6.0" />
     <PackageReference Include="Feliz.Bulma" Version="3.0.0" />
     <PackageReference Include="Feliz.Router" Version="4.0.0" />
     <PackageReference Include="Fable.SimpleJson" Version="3.24.0" />
+    <PackageReference Include="Thoth.Json" Version="10.2.0" />
   </ItemGroup>
 </Project>
