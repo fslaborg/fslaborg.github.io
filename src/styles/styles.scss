@@ -2,6 +2,12 @@
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 @import "../../node_modules/bulma/sass/utilities/functions";
 
+$fslabDarkMagenta: #3D1244;
+$fslabMagenta: #A00975;
+$fslabLightMagenta: #F99BDE;
+$fslabSapphire: #19657B;
+$fslabAquamarine: #438AFE;
+
 // 2. Set your own initial variables
 html[data-theme="dark"] {
     --scheme-main: black;
@@ -20,6 +26,10 @@ html[data-theme="light"] {
     --code-background: white;
 }
 
+$primary: $fslabMagenta;
+$link: $fslabSapphire;
+$info: $fslabAquamarine;
+
 // 3. Set the derived variables
 // Use the new pink as the primary color
 $scheme-main: var(--scheme-main);
@@ -28,6 +38,17 @@ $text: var(--text);
 $text-light: var(--text-light);
 $text-strong: var(--text-strong);
 $code-background: var(--code-background);
+
+// 4. set up custom color
+$primaryd: $fslabDarkMagenta;
+$primaryd-invert: findColorInvert($primaryd);
+
+// 5. Add new color variables to the color map.
+@import "../../node_modules/bulma/sass/utilities/derived-variables";
+$addColors: (
+    "primaryd":($primaryd, $primaryd-invert)
+);
+$colors: map-merge($colors, $addColors);
 
 // 6. Import the rest of Bulma
 @import "../../node_modules/bulma/bulma.sass";

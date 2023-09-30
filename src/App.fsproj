@@ -3,12 +3,13 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="State.DataTheme.fs" />
+    <Compile Include="states/Routing.fs" />
+    <Compile Include="states\DataTheme.fs" />
     <Compile Include="components\Component.ThemeSwitch.fs" />
     <Compile Include="FableAux.fs" />
     <None Include="index.html" />
     <Compile Include="Extensions.fs" />
-    <Compile Include="Components.fs" />
+    <Compile Include="View.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
