@@ -3,6 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="web/opencollection.fs" />
     <Compile Include="Extensions.fs" />
     <Compile Include="FableAux.fs" />
     <Compile Include="states/Routing.fs" />
