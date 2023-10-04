@@ -70,7 +70,7 @@ let private navbarMenu(isActive:bool) =
 let Main() =
     let state, update = React.useState(false)
     Bulma.navbar [
-        Bulma.color.isWhite
+        // Bulma.color.isWhite
         // Bulma.navbar.hasShadow
         Bulma.navbar.isFixedTop
         prop.children [

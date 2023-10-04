@@ -16,6 +16,8 @@ html[data-theme="dark"] {
     --text-light: hsl(0, 0%, 96%);
     --text-strong: white;
     --code-background: black;
+    --fs-background: #252529;
+    --fs-foreground: #1e1e20;
 }
 html[data-theme="light"] {
     --scheme-main: white;
@@ -24,6 +26,8 @@ html[data-theme="light"] {
     --text-light: hsl(0, 0%, 14%);
     --text-strong: black;
     --code-background: white;
+    --fs-background: #f6f6f7;
+    --fs-foreground: #e3e3e5;
 }
 
 $primary: $fslabMagenta;
@@ -62,13 +66,58 @@ html {
 }
 
 .is-stronger {
-    text-decoration: underline;
-    text-decoration-color: $fslabDarkMagenta;
-    text-decoration-thickness: .5rem;
-    font-weight: bold;
+    border-bottom: 8px solid $fslabDarkMagenta;
+    font-size: 5rem;
 }
 
 .is-rounded {
     border: 1px solid white;
     border-radius: 9999px;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    align-items: flex-start;
+}
+.row-container:not(:last-child) { 
+    margin-bottom: 1rem;
+}
+
+.content .row-container figure {
+    margin: unset;
+}
+
+.row-container *:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.content-tile {
+    text-align: justify;
+    background-color: var(--fs-background);
+    -webkit-box-shadow: 5px 5px 0px 0px $fslabMagenta; 
+    box-shadow: 5px 5px 0px 0px $fslabMagenta;
+}
+
+.content-tile .tile-icon { 
+    background-color: #e3e3e5;
+    border-radius: 5px;
+    min-height: 64px;
+    min-width: 64px;
+    padding: .25rem
+}
+
+.content-tile h1,
+.content-tile h2,
+.content-tile h3,
+.content-tile h4,
+.content-tile h5,
+.content-tile h6 {
+    text-align: left;
 }

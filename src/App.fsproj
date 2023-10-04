@@ -10,6 +10,7 @@
     <Compile Include="Literals.fs" />
     <Compile Include="web/Helper.fs" />
     <Compile Include="web/OpenCollective.fs" />
+    <Compile Include="components/Component.ContentHelper.fs" />
     <Compile Include="components\Component.Sponsors.fs" />
     <Compile Include="components/Component.ThemeButton.fs" />
     <Compile Include="components/Component.Navbar.fs" />
