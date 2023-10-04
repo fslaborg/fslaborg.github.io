@@ -12,16 +12,16 @@
     <Compile Include="web/OpenCollective.fs" />
     <Compile Include="components/Component.ContentHelper.fs" />
     <Compile Include="components\Component.Sponsors.fs" />
-    <Compile Include="components/Component.ThemeButton.fs" />
+    <Compile Include="components\Component.ThemeButton.fs" />
     <Compile Include="components/Component.Navbar.fs" />
     <Compile Include="components/Component.Footer.fs" />
-    <Compile Include="components/Component.ThemeSwitch.fs" />
     <Compile Include="pages/Main.fs" />
     <None Include="index.html" />
     <Compile Include="View.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="7.0.400" />
     <PackageReference Include="Fable.Fetch" Version="2.6.0" />
     <PackageReference Include="Feliz" Version="2.6.0" />
     <PackageReference Include="Feliz.Bulma" Version="3.0.0" />

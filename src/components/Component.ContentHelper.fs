@@ -33,16 +33,18 @@ let bannerContainer (children: ReactElement list) =
 
 let tileContainer (children: ReactElement list) =
     Bulma.section [
-        Bulma.columns [
-            Bulma.columns.isCentered
-            Bulma.columns.isMultiline
-            prop.children [
-                for c in children do
-                    Bulma.column [
-                        Bulma.column.isOneThirdFullHd
-                        Bulma.column.isHalf
-                        prop.children c
-                    ]
+        Bulma.container [
+            Bulma.columns [
+                Bulma.columns.isCentered
+                Bulma.columns.isMultiline
+                prop.children [
+                    for c in children do
+                        Bulma.column [
+                            Bulma.column.isOneThirdFullHd
+                            Bulma.column.isHalf
+                            prop.children c
+                        ]
+                ]
             ]
         ]
     ]

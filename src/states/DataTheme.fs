@@ -70,7 +70,7 @@ type DataTheme =
     member this.toIcon : ReactElement =
         let c = 
             match this with
-            | Light -> "fa-regular fa-sun"
+            | Light -> "fa-solid fa-lightbulb"
             | Dark -> "fa-solid fa-moon"
         Html.i [
             prop.className (sprintf "%s fa-xl" c)

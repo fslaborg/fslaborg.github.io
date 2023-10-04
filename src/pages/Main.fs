@@ -17,10 +17,10 @@ let private mainBanner() =
                 ]
                 Html.div [
                     prop.className "is-stronger"
-                    prop.text "FsLab"
+                    prop.text Literals.Branding.Title
                 ]
             ]
-            Bulma.title.h3 "The Community Driven Toolkit For Datascience In F#"
+            Bulma.title.h3 Literals.Branding.Slogan
             Bulma.title.h5 [
                 prop.text "Perform the whole data science cycle in F#!"
             ] 
@@ -49,9 +49,8 @@ module FsLabTiles =
 
     let tileLinkButton(url: string, text: string) =
         Bulma.button.a [
-            Bulma.color.isInfo
+            Bulma.color.isLink
             Bulma.button.isLarge
-            prop.style [style.float'.right]
             prop.href url
             prop.text text
         ]
@@ -60,7 +59,7 @@ module FsLabTiles =
         Bulma.image [
             prop.className "tile-icon"
             Bulma.image.is64x64
-            prop.style [style.custom("margin-left", "auto")]
+            prop.style [style.custom("marginLeft", "auto")]
             prop.children [ Html.img [prop.src iconSrc] ]
         ]
 
@@ -74,9 +73,9 @@ module FsLabTiles =
             Html.div [
                 Html.span "We strive to provide exceptional tools for conducting data science in F#. "
                 Html.span "Therefore, we develop and curate the "
-                Html.a [ prop.href Literals.Urls.FsLabGitHub_Organisation; prop.target "_blank";  prop.text "FsLab stack"]
+                Html.a [ prop.href Literals.Urls.GitHub.FsLabOrganisation; prop.target "_blank";  prop.text "FsLab stack"]
                 Html.span " - a collection of mature, high-quality packages that form a cohesive one-stop solution. Think "
-                Html.a [ prop.href Literals.Urls.ExternalUrls.Tidyverse; prop.target "_blank";  prop.text "tidyverse"]
+                Html.a [ prop.href Literals.Urls.External.Tidyverse; prop.target "_blank";  prop.text "tidyverse"]
                 Html.span " for F#/.NET."
             ]
             Html.h3 "Fostering an F# Data Science Community"
@@ -121,9 +120,9 @@ module FsLabTiles =
             Html.p "With Fslab you are part of an amazing .NET Open-Source ecosystem for data science, machine learning and AI. We recommend always using the best tools for your analytic problem at hand. Therefore, FsLab endorses partner projects from the ecosystem."
             Html.p [
                 Html.span "Visit "
-                Html.a [ prop.href Literals.Urls.ExternalUrls.MLDotNet; prop.target "_blank";  prop.text "ML.NET"]
+                Html.a [ prop.href Literals.Urls.External.MLDotNet; prop.target "_blank";  prop.text "ML.NET"]
                 Html.span ", an open source and cross-platform machine learning framework, and "
-                Html.a [ prop.href Literals.Urls.ExternalUrls.SciSharp; prop.target "_blank";  prop.text "SciSharp STACK"]
+                Html.a [ prop.href Literals.Urls.External.SciSharp; prop.target "_blank";  prop.text "SciSharp STACK"]
                 Html.span " which brings all major machine learning frameworks from Python to .NET ecosystem."
             ]
             Html.p "Make friends with other communities and projects and give yourself maximum flexibility for the future."

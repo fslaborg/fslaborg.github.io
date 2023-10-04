@@ -16,7 +16,8 @@ let private icon =
 let private navbarBrand(isActive: bool, update: bool -> unit) = 
     Bulma.navbarBrand.div [
         Bulma.navbarItem.a [
-            icon
+            prop.title (Literals.Branding.Title)
+            prop.children [icon]
         ]
         Bulma.navbarBurger [
             prop.ariaLabel "menu"

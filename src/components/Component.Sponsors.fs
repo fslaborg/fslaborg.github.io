@@ -34,7 +34,7 @@ let private memberContainer(preMembers: Member list) =
         |> Seq.distinctBy (fun x -> x.Profile)
         |> Seq.sortByDescending (fun x -> x.TotalAmountDonated)
     Html.div [
-        prop.style [style.display.flex; style.justifyContent.center]
+        prop.style [style.display.flex; style.justifyContent.center; style.flexWrap.wrap]
         prop.children [
             for mem in members do
                 memberElement mem
@@ -45,18 +45,16 @@ let private memberContainer(preMembers: Member list) =
 let Main() =
     let state, update = React.useState(State.init) 
     getSponsors(fun members -> update {state with Members = members}) |> Promise.start 
-    Html.div [
-        Bulma.hero [
-            Bulma.heroBody [
-                Bulma.title.h1 "FsLab sponsors"
-                // Bulma.button.a [
-                //     prop.className "m-2"
-                //     prop.text "Become a sponsor!"
-                // ]
-                if state.Members.IsEmpty then
-                    Html.div "... loading"
-                else
-                    memberContainer state.Members
-            ]
+    Bulma.section [
+        Bulma.container [
+            Bulma.title.h1 "FsLab sponsors"
+            // Bulma.button.a [
+            //     prop.className "m-2"
+            //     prop.text "Become a sponsor!"
+            // ]
+            if state.Members.IsEmpty then
+                Html.div "... loading"
+            else
+                memberContainer state.Members
         ]
     ]
