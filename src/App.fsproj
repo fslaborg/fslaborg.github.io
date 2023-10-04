@@ -13,6 +13,7 @@
     <Compile Include="components/Component.ContentHelper.fs" />
     <Compile Include="components\Component.Sponsors.fs" />
     <Compile Include="components\Component.ThemeButton.fs" />
+    <Compile Include="components/DataSciencePackageCard.fs" />
     <Compile Include="components/Component.Navbar.fs" />
     <Compile Include="components/Component.Footer.fs" />
     <Compile Include="pages/Main.fs" />

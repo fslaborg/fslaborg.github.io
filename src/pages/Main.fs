@@ -5,7 +5,7 @@ open Feliz.Bulma
 
 open Component.ContentHelpers
 
-let private mainBanner() =
+let private banner() =
     let logoTitles =
         Bulma.content [
             rowField [
@@ -37,7 +37,7 @@ let private mainBanner() =
         schema
     ]
 
-module FsLabTiles =
+module private FsLabTiles =
 
     let private tileBuilder (content: ReactElement list) = 
         Bulma.box [
@@ -128,7 +128,7 @@ module FsLabTiles =
             Html.p "Make friends with other communities and projects and give yourself maximum flexibility for the future."
         ]
 
-let infoTiles() = 
+let private infoTiles() = 
     tileContainer [ 
         FsLabTiles.ourMission()
         FsLabTiles.dataSciencePackages()
@@ -138,7 +138,7 @@ let infoTiles() =
 
 let Main() =
     Html.div [
-        mainBanner()
+        banner()
         infoTiles()
         Component.Sponsors.Main()
     ]

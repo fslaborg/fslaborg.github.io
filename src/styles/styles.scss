@@ -42,6 +42,7 @@ $text: var(--text);
 $text-light: var(--text-light);
 $text-strong: var(--text-strong);
 $code-background: var(--code-background);
+$content-blockquote-background-color: var(--fs-background);
 
 // 4. set up custom color
 $primaryd: $fslabDarkMagenta;
@@ -59,6 +60,27 @@ $colors: map-merge($colors, $addColors);
 
 // 6. Import the rest of Bulma
 @import "../../node_modules/bulma/bulma.sass";
+
+// prism js fix
+pre code .number {
+    background-color: unset;
+    border-radius: unset;
+    display: unset;
+    font-size: unset;
+    height: unset;
+    min-width: unset;
+    margin-right: unset;
+    justify-content: unset;
+    align-items: unset;
+    padding: unset
+}
+
+a:not(.navbar-item) {
+    color: $fslabAquamarine !important;
+    &:not(.navbar-item):hover {
+        color: lighten($fslabAquamarine,10%) !important
+    } 
+}
 
 html {
     overflow-y: auto;
@@ -124,3 +146,12 @@ html {
 .content-tile h6 {
     text-align: left;
 }
+
+.datascience-package-card {
+    border: 1px solid var(--scheme-invert);  
+    border-left: 5px solid $fslabMagenta;
+    border-radius: 0px 10px 10px 0px; 
+    background-color: var(--scheme-main);
+    max-width: 800px;
+}
+

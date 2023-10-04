@@ -10,10 +10,71 @@ module [<RequireQualifiedAccess>] Images =
     let Interoperability = Extensions.StaticFile.import("./img/interoperability.svg")
     let DefaultUserImage = Extensions.StaticFile.import ("./img/defaultUser-64x64.png")
 
+module DataSciencePackages =
+    type DataSciencePackagesUrls = {
+        GitHub: string
+        Docs: string
+        Nuget: string
+        Logo: string
+    } with
+        static member create (github, docs, nuget, logo) = {
+            GitHub  = github
+            Docs    = docs
+            Nuget   = nuget
+            Logo    = logo
+        }
+    let FSharpStats_URLS = DataSciencePackagesUrls.create(
+        @"https://www.github.com/fslaborg/FSharp.Stats", 
+        @"https://fslab.org/FSharp.Stats/", 
+        @"https://www.nuget.org/packages/FSharp.Stats/",
+        @"https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"
+    )
+
+    let CyjsNET_URLS = DataSciencePackagesUrls.create(
+        @"https://www.github.com/fslaborg/Cyjs.NET", 
+        @"https://fslab.org/Cyjs.NET", 
+        @"https://www.nuget.org/packages/Cyjs.NET",
+        @"https://api.nuget.org/v3-flatcontainer/cyjs.net/0.0.3/icon"
+    )
+
+    let flips_URLS = DataSciencePackagesUrls.create(
+        @"https://www.github.com/fslaborg/flips",
+        @"https://flipslibrary.com/#/",
+        @"https://www.nuget.org/packages/flips/",
+        @"https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"
+    )
+
+    let PlotlyNET_URLS = DataSciencePackagesUrls.create(
+        @"https://www.github.com/plotly/Plotly.NET",
+        @"https://plotly.github.io/Plotly.NET/",
+        @"https://www.nuget.org/packages/Plotly.NET/",
+        @"https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.16/icon"
+    )
+
+    let RProvider_URLS = DataSciencePackagesUrls.create(
+        @"https://www.github.com/fslaborg/RProvider",
+        @"https://fslab.org/RProvider/",
+        @"https://www.nuget.org/packages/RProvider/",
+        @"https://api.nuget.org/v3-flatcontainer/rprovider/2.0.1-beta2/icon"
+    )
+
+    let Deedle_URLS = DataSciencePackagesUrls.create(
+        @"https://www.github.com/fslaborg/Deedle",
+        @"https://fslab.org/Deedle/",
+        @"https://www.nuget.org/packages/Deedle/",
+        @"https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"
+    )
+
+    let FSharpData_URLS = DataSciencePackagesUrls.create(
+        @"https://github.com/fsprojects/FSharp.Data",
+        @"https://fsprojects.github.io/FSharp.Data/",
+        @"https://www.nuget.org/packages/FSharp.Data",
+        @"https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"
+    )
+
 module [<RequireQualifiedAccess>] Urls =
 
     module GitHub =
-
         let FsLabOrganisation = @"https://github.com/fslaborg"
         let SourceCode = @"https://github.com/fslaborg/fslaborg.github.io"
         let Contributors = @"https://github.com/orgs/fslaborg/people"
