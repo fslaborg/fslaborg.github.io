@@ -30,11 +30,11 @@ module DataSciencePackages =
         @"https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"
     )
 
-    let CyjsNET_URLS = DataSciencePackagesUrls.create(
-        @"https://www.github.com/fslaborg/Cyjs.NET", 
-        @"https://fslab.org/Cyjs.NET", 
-        @"https://www.nuget.org/packages/Cyjs.NET",
-        @"https://api.nuget.org/v3-flatcontainer/cyjs.net/0.0.3/icon"
+    let CytoscapeNET_URLS = DataSciencePackagesUrls.create(
+        @"https://github.com/fslaborg/Cytoscape.NET", 
+        @"https://fslab.org/Cytoscape.NET/", 
+        @"https://www.nuget.org/packages/Cytoscape.NET/",
+        @"https://api.nuget.org/v3-flatcontainer/cytoscape.net/0.2.0/icon"
     )
 
     let flips_URLS = DataSciencePackagesUrls.create(

@@ -153,5 +153,19 @@ html {
     border-radius: 0px 10px 10px 0px; 
     background-color: var(--scheme-main);
     max-width: 800px;
+    position: relative;
+
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     top: 0px;
+    //     left: 0px;
+    //     right: -10px;
+    //     bottom: -10px;
+    //     background: $fslabLightMagenta; 
+    //     filter: blur(1rem);
+    //     border-radius: 10px; // Adjust to match the outer border radius
+    //     z-index: -1;
+    // }
 }
 

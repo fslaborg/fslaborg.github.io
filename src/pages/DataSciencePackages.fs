@@ -78,13 +78,13 @@ let cv = Seq.cv sample"""
             content
         ) 
 
-    let CyjsNET() =
+    let CytoscapeNET() =
         let content = Bulma.content [
             Html.p "This package provides a light-weighted layer on top of the famous Cytoscape.js library. It brings all the graph visualization capabilities directly into .NET."
             Html.p "Here is a small snippet that creates a basic styled graph:"
-            fsharpCodeBlock """#r "nuget: Cyjs.NET"
+            fsharpCodeBlock """#r "nuget: Cytoscape.NET"
 
-open Cyjs.NET
+open Cytoscape.NET
 open Elements
 
 let myFirstStyledGraph =     
@@ -103,7 +103,7 @@ let myFirstStyledGraph =
     |> CyGraph.withSize(800, 400)  
     |> CyGraph.show // displays the graph in a browser"""
         ]
-        Component.DataSciencePackageCard.Main("Cyjs.NET",".NET interface for Cytoscape.js written in F# for graph visualization.",Literals.DataSciencePackages.CyjsNET_URLS,content)
+        Component.DataSciencePackageCard.Main("Cytoscape.NET",".NET interface for Cytoscape.js written in F# for graph visualization.",Literals.DataSciencePackages.CytoscapeNET_URLS,content)
 
     let flips() =
         let content = Bulma.content [
@@ -267,11 +267,10 @@ df.Print()"""
 
 let Main() =
     Html.div [
-        prop.style [style.backgroundColor "var(--scheme-main)"]
         prop.children [
             banner()
             Bulma.container [
-                FsCards.CyjsNET()
+                FsCards.CytoscapeNET()
                 FsCards.FSharpStats()
                 FsCards.flips()
                 FsCards.PlotlyNet()
