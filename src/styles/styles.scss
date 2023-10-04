@@ -75,9 +75,9 @@ pre code .number {
     padding: unset
 }
 
-a:not(.navbar-item) {
+a:not(.navbar-item, .button) {
     color: $fslabAquamarine !important;
-    &:not(.navbar-item):hover {
+    &:not(.navbar-item, .button):hover {
         color: lighten($fslabAquamarine,10%) !important
     } 
 }
