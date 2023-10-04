@@ -46,11 +46,14 @@ $code-background: var(--code-background);
 // 4. set up custom color
 $primaryd: $fslabDarkMagenta;
 $primaryd-invert: findColorInvert($primaryd);
+$primaryl: $fslabLightMagenta;
+$primaryl-invert: findColorInvert($fslabLightMagenta);
 
 // 5. Add new color variables to the color map.
 @import "../../node_modules/bulma/sass/utilities/derived-variables";
 $addColors: (
-    "primaryd":($primaryd, $primaryd-invert)
+    "primaryd":($primaryd, $primaryd-invert),
+    "primaryl":($primaryl, $primaryl-invert)
 );
 $colors: map-merge($colors, $addColors);
 

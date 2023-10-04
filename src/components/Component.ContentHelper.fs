@@ -15,10 +15,10 @@ let imageContainer (image: ReactElement) =
         prop.children image
     ]
 
-let bannerContainer (children: ReactElement list) =
+let bannerContainer (bulmaColor: string) (children: ReactElement list) =
     Bulma.hero [
         Bulma.hero.isMedium
-        Bulma.color.isPrimary
+        prop.classes [ sprintf "is-%s" bulmaColor]
         prop.children [
             Bulma.heroBody [
                 Bulma.container [

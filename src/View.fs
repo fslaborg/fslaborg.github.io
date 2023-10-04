@@ -29,7 +29,7 @@ type View =
                 View.View (
                     match currentPage with
                     | Page.Main -> Pages.Main.Main()
-                    | Page.DataSciencePackages -> Html.h1 "Welcome! you found our awesome collection of data packages."
+                    | Page.DataSciencePackages -> Pages.DataSciencePackages.Main()
                     | Page.NotFound | _ -> Html.h1 "Not found"
                 )
             ]

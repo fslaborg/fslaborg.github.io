@@ -32,7 +32,7 @@ let private mainBanner() =
                     prop.src Literals.Images.MainLoop
                 ]
             ]
-    bannerContainer [
+    bannerContainer "primary" [
         logoTitles
         schema
     ]
