@@ -93,6 +93,256 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/sqlprovider/1.3.11/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://github.com/fsprojects/SQLProvider">
+                    SQLProvider
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              An F# Type Provider providing strongly typed access to an SQL database. The type provider automatically discovers available database schema, tables, columns, rows and makes returning data easily accessible from F#.
+            </p>
+            <code class="package-reference">
+              #r "nuget: SQLProvider"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                sql
+              </span>
+              <span class="has-bg-magenta tag">
+                database
+              </span>
+              <span class="has-bg-magenta tag">
+                type provider
+              </span>
+            </div>
+            <a href="#SQLProvider-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="SQLProvider-collapse" class="is-collapsible">
+              <hr/>
+              <p>The SQLProvider will help you work with databases, but there are some requirements to be set up on your system:
+SQLProvider will need database drivers set up according to your current environment</p>
+<p>Below is a simple script example that demonstrates using SQLProvider:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: Microsoft.Data.SqlClient&quot;
+#r &quot;nuget: SQLProvider&quot;
+
+open FSharp.Data.Sql
+open FSharp.Data.Sql.Common
+
+[&lt;Literal&gt;]
+let databaseType = DatabaseProviderTypes.MSSQLSERVER // POSTGRESQL, MYSQL, ...
+[&lt;Literal&gt;]
+let compileTimeConnectionString = &quot;Data Source=localhost;Initial Catalog=HR; Integrated Security=True&quot;
+
+// create a type alias with the connection string and database vendor settings
+type Sql = SqlDataProvider&lt; 
+              ConnectionString = compileTimeConnectionString,
+              DatabaseVendor = databaseType,
+              //ResolutionPath = @&quot;c:\\myDatabaseDrivers\&quot;, // if you use other DatabaseProviderType, you need to set this
+              UseOptionTypes = Common.NullableColumnType.VALUE_OPTION
+              &gt;
+
+let runtimeConnectionString = compileTimeConnectionString
+let dbContext = Sql.GetDataContext runtimeConnectionString 
+
+let data =
+   query { 
+       for d in dbContext.Dbo.Countries do
+       where (d.CountryName.IsSome)
+       select d.CountryName.Value
+   }  |&gt; Seq.toList
+
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://github.com/fsprojects/SQLProvider">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fsprojects.github.io/SQLProvider/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/SQLProvider/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://github.com/fsprojects/FSharp.Data">
+                    FSharp.Data
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
+            </p>
+            <code class="package-reference">
+              #r "nuget: FSharp.Data"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                data access
+              </span>
+              <span class="has-bg-magenta tag">
+                type providers
+              </span>
+              <span class="has-bg-magenta tag">
+                http
+              </span>
+            </div>
+            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="FSharp.Data-collapse" class="is-collapsible">
+              <hr/>
+              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
+<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/flips">
+                    flips
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Fsharp LInear Programming System.
+            </p>
+            <code class="package-reference">
+              #r "nuget: flips"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                optimization
+              </span>
+              <span class="has-bg-magenta tag">
+                linear programming
+              </span>
+            </div>
+            <a href="#flips-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="flips-collapse" class="is-collapsible">
+              <hr/>
+              <p>Flips is an F# library for modeling and solving Linear Programming (LP) and Mixed-Integer Programming (MIP) problems. It is inspired by the work of the PuLP library for Python and the excellent Gurobi Python library. It builds on the work of the outstanding <a href="https://github.com/google/or-tools">Google OR-Tools library</a> and the <a href="https://optano.com/en/modeling/">OPTANO</a> library .</p>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/flips">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://flipslibrary.com/#/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/flips/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
                   <img src="https://api.nuget.org/v3-flatcontainer/cyjs.net/0.0.3/icon"/>
                 </figure>
               </div>
@@ -168,159 +418,6 @@ let myFirstStyledGraph =
               Docs
             </a>
             <a class="card-footer-item" href="https://www.nuget.org/packages/Cyjs.NET">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/FSharp.Stats">
-                    FSharp.Stats
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              statistical testing, linear algebra, machine learning, fitting and signal processing in F#.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Stats"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                statistics
-              </span>
-              <span class="has-bg-magenta tag">
-                linear algebra
-              </span>
-              <span class="has-bg-magenta tag">
-                machine learning
-              </span>
-              <span class="has-bg-magenta tag">
-                fitting
-              </span>
-              <span class="has-bg-magenta tag">
-                signal processing
-              </span>
-            </div>
-            <a href="#FSharp.Stats-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Stats-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
-<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
-open FSharp.Stats
-
-// initialize a normal distribution with mean 25 and standard deviation 0.1
-let normalDistribution = Distributions.Continuous.normal 25. 0.1
-
-// draw independently 30 times from the given distribution 
-let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
-
-let mean = Seq.mean sample
-let stDev = Seq.stDev sample
-let cv = Seq.cv sample
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/FSharp.Stats">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/FSharp.Stats/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/flips">
-                    flips
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              Fsharp LInear Programming System.
-            </p>
-            <code class="package-reference">
-              #r "nuget: flips"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                optimization
-              </span>
-              <span class="has-bg-magenta tag">
-                linear programming
-              </span>
-            </div>
-            <a href="#flips-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="flips-collapse" class="is-collapsible">
-              <hr/>
-              <p>Flips is an F# library for modeling and solving Linear Programming (LP) and Mixed-Integer Programming (MIP) problems. It is inspired by the work of the PuLP library for Python and the excellent Gurobi Python library. It builds on the work of the outstanding <a href="https://github.com/google/or-tools">Google OR-Tools library</a> and the <a href="https://optano.com/en/modeling/">OPTANO</a> library .</p>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/flips">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://flipslibrary.com/#/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/flips/">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
@@ -541,6 +638,94 @@ R.plot(R.Nile)
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/FSharp.Stats">
+                    FSharp.Stats
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              statistical testing, linear algebra, machine learning, fitting and signal processing in F#.
+            </p>
+            <code class="package-reference">
+              #r "nuget: FSharp.Stats"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                statistics
+              </span>
+              <span class="has-bg-magenta tag">
+                linear algebra
+              </span>
+              <span class="has-bg-magenta tag">
+                machine learning
+              </span>
+              <span class="has-bg-magenta tag">
+                fitting
+              </span>
+              <span class="has-bg-magenta tag">
+                signal processing
+              </span>
+            </div>
+            <a href="#FSharp.Stats-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="FSharp.Stats-collapse" class="is-collapsible">
+              <hr/>
+              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
+<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
+open FSharp.Stats
+
+// initialize a normal distribution with mean 25 and standard deviation 0.1
+let normalDistribution = Distributions.Continuous.normal 25. 0.1
+
+// draw independently 30 times from the given distribution 
+let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
+
+let mean = Seq.mean sample
+let stDev = Seq.stDev sample
+let cv = Seq.cv sample
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/FSharp.Stats">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
                   <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
                 </figure>
               </div>
@@ -614,91 +799,6 @@ df.Print()
               Docs
             </a>
             <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.data/4.1.1/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://github.com/fsprojects/FSharp.Data">
-                    FSharp.Data
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              The FSharp.Data package contains type providers and utilities to access common data formats (CSV, HTML, JSON and XML in your F# applications and scripts. It also contains  helpers for parsing CSV, HTML and JSON files and for sending HTTP requests.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Data"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-              <span class="has-bg-magenta tag">
-                type providers
-              </span>
-              <span class="has-bg-magenta tag">
-                http
-              </span>
-            </div>
-            <a href="#FSharp.Data-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Data-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Data is a multipurpose project for data access from many different file formats. Most of this is done via type providers.</p>
-<p>We recommend using the <code>Http</code> module provided by FSharp.data to download data sources via Http and then convert them to deedle data frames via <code>Frame.ReadCsvString</code>:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://github.com/fsprojects/FSharp.Data">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fsprojects.github.io/FSharp.Data/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Data">
               <span class="icon">
                 <i class="fas fa-cubes"></i>
               </span>
