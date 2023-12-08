@@ -1,0 +1,171 @@
+// 1. Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+
+$fslabDarkMagenta: #3D1244;
+$fslabMagenta: #A00975;
+$fslabLightMagenta: #F99BDE;
+$fslabSapphire: #19657B;
+$fslabAquamarine: #438AFE;
+
+// 2. Set your own initial variables
+html[data-theme="dark"] {
+    --scheme-main: black;
+    --scheme-invert: white;
+    --text: white;
+    --text-light: hsl(0, 0%, 96%);
+    --text-strong: white;
+    --code-background: black;
+    --fs-background: #252529;
+    --fs-foreground: #1e1e20;
+}
+html[data-theme="light"] {
+    --scheme-main: white;
+    --scheme-invert: black;
+    --text: black;
+    --text-light: hsl(0, 0%, 14%);
+    --text-strong: black;
+    --code-background: white;
+    --fs-background: #f6f6f7;
+    --fs-foreground: #e3e3e5;
+}
+
+$primary: $fslabMagenta;
+$link: $fslabAquamarine;
+$info: $fslabSapphire;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$scheme-main: var(--scheme-main);
+$scheme-invert: var(--scheme-invert);
+$text: var(--text);
+$text-light: var(--text-light);
+$text-strong: var(--text-strong);
+$code-background: var(--code-background);
+$content-blockquote-background-color: var(--fs-background);
+
+// 4. set up custom color
+$primaryd: $fslabDarkMagenta;
+$primaryd-invert: findColorInvert($primaryd);
+$primaryl: $fslabLightMagenta;
+$primaryl-invert: findColorInvert($fslabLightMagenta);
+
+// 5. Add new color variables to the color map.
+@import "../../node_modules/bulma/sass/utilities/derived-variables";
+$addColors: (
+    "primaryd":($primaryd, $primaryd-invert),
+    "primaryl":($primaryl, $primaryl-invert)
+);
+$colors: map-merge($colors, $addColors);
+
+// 6. Import the rest of Bulma
+@import "../../node_modules/bulma/bulma.sass";
+
+// prism js fix
+pre code .number {
+    background-color: unset;
+    border-radius: unset;
+    display: unset;
+    font-size: unset;
+    height: unset;
+    min-width: unset;
+    margin-right: unset;
+    justify-content: unset;
+    align-items: unset;
+    padding: unset
+}
+
+a:not(.navbar-item, .button) {
+    color: $fslabAquamarine !important;
+    &:not(.navbar-item, .button):hover {
+        color: lighten($fslabAquamarine,10%) !important
+    } 
+}
+
+html {
+    overflow-y: auto;
+}
+
+.hero {
+    max-height: calc(100vh - 3.25rem)
+}
+
+.is-stronger {
+    border-bottom: 8px solid $fslabDarkMagenta;
+    font-size: 5rem;
+}
+
+.is-rounded {
+    border: 1px solid white;
+    border-radius: 9999px;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    align-items: flex-start;
+}
+.row-container:not(:last-child) { 
+    margin-bottom: 1rem;
+}
+
+.content .row-container figure {
+    margin: unset;
+}
+
+.row-container *:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.content-tile {
+    text-align: justify;
+    background-color: var(--fs-background);
+    -webkit-box-shadow: 5px 5px 0px 0px $fslabMagenta; 
+    box-shadow: 5px 5px 0px 0px $fslabMagenta;
+}
+
+.content-tile .tile-icon { 
+    background-color: #e3e3e5;
+    border-radius: 5px;
+    min-height: 64px;
+    min-width: 64px;
+    padding: .25rem
+}
+
+.content-tile h1,
+.content-tile h2,
+.content-tile h3,
+.content-tile h4,
+.content-tile h5,
+.content-tile h6 {
+    text-align: left;
+}
+
+.datascience-package-card {
+    border: 1px solid var(--scheme-invert);  
+    border-left: 5px solid $fslabMagenta;
+    border-radius: 0px 10px 10px 0px; 
+    background-color: var(--scheme-main);
+    max-width: 800px;
+    position: relative;
+
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     top: 0px;
+    //     left: 0px;
+    //     right: -10px;
+    //     bottom: -10px;
+    //     background: $fslabLightMagenta; 
+    //     filter: blur(1rem);
+    //     border-radius: 10px; // Adjust to match the outer border radius
+    //     z-index: -1;
+    // }
+}
+
