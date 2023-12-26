@@ -6,9 +6,10 @@ This [website](https://fslab.org/) demonstrates the aims of the fslab organisati
 
 <!-- TOC -->
 
-- [Add a project to the packages site](#add-a-project-to-the-packages-site)
-- [Add a tutorial, guide, or blogpost](#add-a-tutorial-guide-or-blogpost)
-- [Develop](#develop)
+- [fslab website](#fslab-website)
+  - [Add a project to the packages site](#add-a-project-to-the-packages-site)
+  - [Add a tutorial, guide, or blogpost](#add-a-tutorial-guide-or-blogpost)
+  - [Develop](#develop)
     - [Prerequisites](#prerequisites)
     - [Technology used](#technology-used)
 
@@ -59,51 +60,7 @@ To add a package to the endorsed list, follow these steps:
 
 ## Add a tutorial, guide, or blogpost
 
-The [tutorials page](https://fslab.org/tutorials.html) contains links to a collection of tutorials in the following categories:
-
-- `fsharp`:
-    Introductory articles on F#, assuming no prior knowledge in programming and F#/.NET. There should also be a link collection to other high quality sources on those topics.
-
-- `datascience`:
-    Introduction to datascience in general and using F# for it specifically. Beginner and intermediate content on how to perform common datascience tasks with fslab-endorsed packages.
-
-- `advanced`
-    Deep dives on advanced topics, performing complex tasks, insights on how packages perform together, etc. More of a blog-post-style content.
-
-To add tutorial content, follow these steps:
-
-1. Create new [add-tutorial issue](https://github.com/fslaborg/fslaborg.github.io/issues/new/choose) by filling the issue template
-
-2. In the `./src/content/tutorials_src` folder, create a new  `<YOUR_CONTENT>.fsx` file. Markdown articles will soon be supported as well.
-
-3. Add the following frontmatter (starting on the very first line). Replace the `<>` placeholders with the actual correct information about your content:
-
-    ```fsharp
-    (***hide***)
-
-    (*
-    #frontmatter
-    ---
-    title: <YOUR TITLE HERE>
-    category: <fsharp, datascience, or advanced>
-    authors: <comma-separated list of authors>
-    index: 0
-    ---
-    *)
-    ```
-
-4. Below the frontmatter, add the content of your article. If you are new to FSharp.Formatting, check the [docs there](http://fsprojects.github.io/FSharp.Formatting/) and also the documentation of the [fslab documentation template](https://fslab.org/docs-template/).
-
-5. To get a preview of how your page will look like, in `./src` run the following command(s): 
-
-    ```shell
-    dotnet tool restore
-    dotnet fornax watch
-    ```
-
-    And navigate to the tutorials page on `http://localhost:8080`.
-
-6. File a PR referencing the issue you created in step 1.
+please refer to the FsLab [blog](https://github.com/fslaborg/blog?tab=readme-ov-file#add-content) repository
 
 ## Develop
 
@@ -122,6 +79,5 @@ This will run a webserver that serves the compiled static page(s) on localhost:8
 ### Technology used
 
 - [Fornax](https://github.com/ionide/Fornax) a F# scriptable static webpage generator
-- [FSharp.Formatting](https://github.com/fsprojects/FSharp.Formatting) for rendering of literate F# tutorials
 - [Markdig](https://github.com/lunet-io/markdig), a markdown processor for .Net
 - [Sass](https://sass-lang.com), a CSS extension language
