@@ -93,6 +93,541 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/FSharp.Stats">
+                    FSharp.Stats
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              statistical testing, linear algebra, machine learning, fitting and signal processing in F#.
+            </p>
+            <code class="package-reference">
+              #r "nuget: FSharp.Stats"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                statistics
+              </span>
+              <span class="has-bg-magenta tag">
+                linear algebra
+              </span>
+              <span class="has-bg-magenta tag">
+                machine learning
+              </span>
+              <span class="has-bg-magenta tag">
+                fitting
+              </span>
+              <span class="has-bg-magenta tag">
+                signal processing
+              </span>
+            </div>
+            <a href="#FSharp.Stats-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="FSharp.Stats-collapse" class="is-collapsible">
+              <hr/>
+              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
+<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
+open FSharp.Stats
+
+// initialize a normal distribution with mean 25 and standard deviation 0.1
+let normalDistribution = Distributions.Continuous.normal 25. 0.1
+
+// draw independently 30 times from the given distribution 
+let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
+
+let mean = Seq.mean sample
+let stDev = Seq.stDev sample
+let cv = Seq.cv sample
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/FSharp.Stats">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/cyjs.net/0.0.3/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/Cyjs.NET">
+                    Cyjs.NET
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              .NET interface for Cytoscape.js written in F# for graph visualization.
+            </p>
+            <code class="package-reference">
+              #r "nuget: Cyjs.NET"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                cytoscape
+              </span>
+              <span class="has-bg-magenta tag">
+                graph visualization
+              </span>
+            </div>
+            <a href="#Cyjs.NET-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="Cyjs.NET-collapse" class="is-collapsible">
+              <hr/>
+              <p>This package provides a light-weighted layer on top of the famous Cytoscape.js library. It brings all the graph visualization capabilities directly into .NET.</p>
+<p>Here is a small snippet that creates a basic styled graph:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: Cyjs.NET&quot;
+
+open Cyjs.NET
+open Elements
+
+let myFirstStyledGraph =     
+    CyGraph.initEmpty ()
+    |&gt; CyGraph.withElements [
+            node &quot;n1&quot; [ CyParam.label &quot;FsLab&quot;  ]
+            node &quot;n2&quot; [ CyParam.label &quot;ML&quot; ]
+ 
+            edge  &quot;e1&quot; &quot;n1&quot; &quot;n2&quot; []
+        ]
+    |&gt; CyGraph.withStyle &quot;node&quot;     
+            [
+                CyParam.content =. CyParam.label
+                CyParam.color &quot;#A00975&quot;
+            ]
+    |&gt; CyGraph.withSize(800, 400)  
+    |&gt; CyGraph.show // displays the graph in a browser
+</code></pre>
+<p>Here is an image of the rendered graph:</p>
+<p><img src="/images/cygraph.png" alt="" /></p>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/Cyjs.NET">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/Cyjs.NET/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/Cyjs.NET">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/flips">
+                    flips
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Fsharp LInear Programming System.
+            </p>
+            <code class="package-reference">
+              #r "nuget: flips"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                optimization
+              </span>
+              <span class="has-bg-magenta tag">
+                linear programming
+              </span>
+            </div>
+            <a href="#flips-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="flips-collapse" class="is-collapsible">
+              <hr/>
+              <p>Flips is an F# library for modeling and solving Linear Programming (LP) and Mixed-Integer Programming (MIP) problems. It is inspired by the work of the PuLP library for Python and the excellent Gurobi Python library. It builds on the work of the outstanding <a href="https://github.com/google/or-tools">Google OR-Tools library</a> and the <a href="https://optano.com/en/modeling/">OPTANO</a> library .</p>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/flips">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://flipslibrary.com/#/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/flips/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.16/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/plotly/Plotly.NET">
+                    Plotly.NET
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.
+            </p>
+            <code class="package-reference">
+              #r "nuget: Plotly.NET"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                visualization
+              </span>
+              <span class="has-bg-magenta tag">
+                data exploration
+              </span>
+              <span class="has-bg-magenta tag">
+                charting
+              </span>
+            </div>
+            <a href="#Plotly.NET-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="Plotly.NET-collapse" class="is-collapsible">
+              <hr/>
+              <p>Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.</p>
+<p>It can be used to create plotly.js charts in the following environments:</p>
+<p><br></br></p>
+<h2>1. <strong>interactive charts in html pages</strong></h2>
+<h2>2. <strong>interactive charts in dotnet interactive notebooks via the <a href="https://www.nuget.org/packages/Plotly.NET.Interactive/">Plotly.NET.Interactive</a> package</strong></h2>
+<h2>3. <strong>static chart images via <a href="https://www.nuget.org/packages/Plotly.NET.ImageExport/">Plotly.NET.ImageExport</a> package (see more <a href="https://plotly.net/0_1_image-export.html">here</a>)</strong></h2>
+<p><br></br></p>
+<p>here is a basic example snippet that renders a simple point chart, either as html page or static image:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: Plotly.NET, 2.0.0-preview.16&quot;
+#r &quot;nuget: Plotly.NET.ImageExport, 2.0.0-preview.16&quot;
+
+open Plotly.NET
+
+let myChart = 
+    Chart.Point(
+        [
+            (1.,2.)
+            (2.,3.)
+            (3.,4.)
+            (5.,2.)
+        ]
+    )
+    |&gt; Chart.withTitle &quot;Hello from Plotly.NET!&quot;
+    |&gt; Chart.withX_AxisStyle (&quot;X-Axis&quot;,Showline=true,Showgrid=true)
+    |&gt; Chart.withY_AxisStyle (&quot;Y-Axis&quot;,Showline=true,Showgrid=true)
+
+myChart |&gt; Chart.Show //display as html in browser 
+
+//using tatic image export
+open Plotly.NET.ImageExport
+
+myChart |&gt; Chart.savePNG(&quot;myChart&quot;,Width=600,Height=600)  //save chart as static png with 600x600 px
+</code></pre>
+<p>Here is an image of the rendered chart:</p>
+<p><img src="/images/myChart.png" alt="" /></p>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/plotly/Plotly.NET">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://plotly.github.io/Plotly.NET/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/Plotly.NET/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/Deedle">
+                    Deedle
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              Deedle is an easy to use library for data and time series manipulation and for scientific programming.
+            </p>
+            <code class="package-reference">
+              #r "nuget: Deedle"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                dataframe
+              </span>
+              <span class="has-bg-magenta tag">
+                data exploration
+              </span>
+              <span class="has-bg-magenta tag">
+                data access
+              </span>
+            </div>
+            <a href="#Deedle-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="Deedle-collapse" class="is-collapsible">
+              <hr/>
+              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
+<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
+<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
+<p>It reads the boston housing data set csv file from an online data source and</p>
+<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
+#r &quot;nuget: Deedle&quot;
+
+open FSharp.Data
+open Deedle
+
+let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
+
+// get a frame containing the values of houses at the charles river only
+let df = 
+    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
+    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
+    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
+
+df.Print()
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/Deedle">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/Deedle/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://api.nuget.org/v3-flatcontainer/rprovider/2.0.1-beta2/icon"/>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title">
+                  <a href="https://www.github.com/fslaborg/RProvider">
+                    RProvider
+                  </a>
+                </p>
+              </div>
+            </div>
+            <p class="subtitle is-6">
+              An F# Type Provider providing strongly typed access to the R statistical language. The type provider automatically discovers available R packages and makes them easily accessible from F#, so you can easily call powerful packages and visualization libraries from code running on the .NET platform.
+            </p>
+            <code class="package-reference">
+              #r "nuget: RProvider"
+            </code>
+            <div class="tags">
+              <span class="has-bg-magenta tag">
+                R
+              </span>
+              <span class="has-bg-magenta tag">
+                interop
+              </span>
+              <span class="has-bg-magenta tag">
+                type provider
+              </span>
+              <span class="has-bg-magenta tag">
+                visualisation
+              </span>
+              <span class="has-bg-magenta tag">
+                statistics
+              </span>
+            </div>
+            <a href="#RProvider-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
+              Read More
+              <span class="icon">
+                <i class="fas fa-angle-down"></i>
+              </span>
+            </a>
+            <div id="RProvider-collapse" class="is-collapsible">
+              <hr/>
+              <p>The R Provider discovers R packages that are available in your R installation and makes
+them available as .NET namespaces underneath the parent namespace RProvider. For example,
+the stats package is available as RProvider.stats. If you open the namespaces you want to
+use, functions and values will be available as R.name.</p>
+<p>There are three requirements to be set up on your system:</p>
+<ul>
+<li>dotnet SDK 5.0 or greater; and</li>
+<li>R statistical language. <em>Note: on Windows, there is currently a bug in R preventing us from supporting R versions greater than 4.0.2.</em></li>
+<li>R_HOME environment variable set to the R home directory. This can usually be identified by running the command 'R RHOME'.</li>
+</ul>
+<p>Below is a simple script example that demonstrates using R statistical functions,
+and using R graphics functions to create charts:</p>
+<pre><code class="language-fsharp">#r &quot;nuget: RProvider,2.0.1&quot;
+
+open RProvider
+open RProvider.graphics
+open RProvider.grDevices
+open RProvider.datasets
+
+// use R to calculate the mean of a list
+R.mean([1;2;3;4])
+
+// Calculate sin using the R 'sin' function
+// (converting results to 'float') and plot it
+[ for x in 0.0 .. 0.1 .. 3.14 -&gt; 
+    R.sin(x).GetValue&lt;float&gt;() ]
+|&gt; R.plot
+
+// Plot the data from the standard 'Nile' data set
+R.plot(R.Nile)
+</code></pre>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" href="https://www.github.com/fslaborg/RProvider">
+              <span class="icon">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              Github
+            </a>
+            <a class="card-footer-item" href="https://fslab.org/RProvider/">
+              <span class="icon">
+                <i class="fas fa-book"></i>
+              </span>
+              Docs
+            </a>
+            <a class="card-footer-item" href="https://www.nuget.org/packages/RProvider/">
+              <span class="icon">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Nuget
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="Container package-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
                   <img src="https://api.nuget.org/v3-flatcontainer/sqlprovider/1.3.11/icon"/>
                 </figure>
               </div>
@@ -272,541 +807,6 @@ df.Print()
           </div>
         </div>
       </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/flips/2.4.4/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/flips">
-                    flips
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              Fsharp LInear Programming System.
-            </p>
-            <code class="package-reference">
-              #r "nuget: flips"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                optimization
-              </span>
-              <span class="has-bg-magenta tag">
-                linear programming
-              </span>
-            </div>
-            <a href="#flips-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="flips-collapse" class="is-collapsible">
-              <hr/>
-              <p>Flips is an F# library for modeling and solving Linear Programming (LP) and Mixed-Integer Programming (MIP) problems. It is inspired by the work of the PuLP library for Python and the excellent Gurobi Python library. It builds on the work of the outstanding <a href="https://github.com/google/or-tools">Google OR-Tools library</a> and the <a href="https://optano.com/en/modeling/">OPTANO</a> library .</p>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/flips">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://flipslibrary.com/#/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/flips/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/cyjs.net/0.0.3/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/Cyjs.NET">
-                    Cyjs.NET
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              .NET interface for Cytoscape.js written in F# for graph visualization.
-            </p>
-            <code class="package-reference">
-              #r "nuget: Cyjs.NET"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                cytoscape
-              </span>
-              <span class="has-bg-magenta tag">
-                graph visualization
-              </span>
-            </div>
-            <a href="#Cyjs.NET-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="Cyjs.NET-collapse" class="is-collapsible">
-              <hr/>
-              <p>This package provides a light-weighted layer on top of the famous Cytoscape.js library. It brings all the graph visualization capabilities directly into .NET.</p>
-<p>Here is a small snippet that creates a basic styled graph:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: Cyjs.NET&quot;
-
-open Cyjs.NET
-open Elements
-
-let myFirstStyledGraph =     
-    CyGraph.initEmpty ()
-    |&gt; CyGraph.withElements [
-            node &quot;n1&quot; [ CyParam.label &quot;FsLab&quot;  ]
-            node &quot;n2&quot; [ CyParam.label &quot;ML&quot; ]
- 
-            edge  &quot;e1&quot; &quot;n1&quot; &quot;n2&quot; []
-        ]
-    |&gt; CyGraph.withStyle &quot;node&quot;     
-            [
-                CyParam.content =. CyParam.label
-                CyParam.color &quot;#A00975&quot;
-            ]
-    |&gt; CyGraph.withSize(800, 400)  
-    |&gt; CyGraph.show // displays the graph in a browser
-</code></pre>
-<p>Here is an image of the rendered graph:</p>
-<p><img src="/images/cygraph.png" alt="" /></p>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/Cyjs.NET">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/Cyjs.NET/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/Cyjs.NET">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/plotly.net/2.0.0-preview.16/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/plotly/Plotly.NET">
-                    Plotly.NET
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.
-            </p>
-            <code class="package-reference">
-              #r "nuget: Plotly.NET"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                visualization
-              </span>
-              <span class="has-bg-magenta tag">
-                data exploration
-              </span>
-              <span class="has-bg-magenta tag">
-                charting
-              </span>
-            </div>
-            <a href="#Plotly.NET-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="Plotly.NET-collapse" class="is-collapsible">
-              <hr/>
-              <p>Plotly.NET provides functions for generating and rendering plotly.js charts in .NET programming languages 📈🚀.</p>
-<p>It can be used to create plotly.js charts in the following environments:</p>
-<p><br></br></p>
-<h2>1. <strong>interactive charts in html pages</strong></h2>
-<h2>2. <strong>interactive charts in dotnet interactive notebooks via the <a href="https://www.nuget.org/packages/Plotly.NET.Interactive/">Plotly.NET.Interactive</a> package</strong></h2>
-<h2>3. <strong>static chart images via <a href="https://www.nuget.org/packages/Plotly.NET.ImageExport/">Plotly.NET.ImageExport</a> package (see more <a href="https://plotly.net/0_1_image-export.html">here</a>)</strong></h2>
-<p><br></br></p>
-<p>here is a basic example snippet that renders a simple point chart, either as html page or static image:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: Plotly.NET, 2.0.0-preview.16&quot;
-#r &quot;nuget: Plotly.NET.ImageExport, 2.0.0-preview.16&quot;
-
-open Plotly.NET
-
-let myChart = 
-    Chart.Point(
-        [
-            (1.,2.)
-            (2.,3.)
-            (3.,4.)
-            (5.,2.)
-        ]
-    )
-    |&gt; Chart.withTitle &quot;Hello from Plotly.NET!&quot;
-    |&gt; Chart.withX_AxisStyle (&quot;X-Axis&quot;,Showline=true,Showgrid=true)
-    |&gt; Chart.withY_AxisStyle (&quot;Y-Axis&quot;,Showline=true,Showgrid=true)
-
-myChart |&gt; Chart.Show //display as html in browser 
-
-//using tatic image export
-open Plotly.NET.ImageExport
-
-myChart |&gt; Chart.savePNG(&quot;myChart&quot;,Width=600,Height=600)  //save chart as static png with 600x600 px
-</code></pre>
-<p>Here is an image of the rendered chart:</p>
-<p><img src="/images/myChart.png" alt="" /></p>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/plotly/Plotly.NET">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://plotly.github.io/Plotly.NET/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/Plotly.NET/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/rprovider/2.0.1-beta2/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/RProvider">
-                    RProvider
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              An F# Type Provider providing strongly typed access to the R statistical language. The type provider automatically discovers available R packages and makes them easily accessible from F#, so you can easily call powerful packages and visualization libraries from code running on the .NET platform.
-            </p>
-            <code class="package-reference">
-              #r "nuget: RProvider"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                R
-              </span>
-              <span class="has-bg-magenta tag">
-                interop
-              </span>
-              <span class="has-bg-magenta tag">
-                type provider
-              </span>
-              <span class="has-bg-magenta tag">
-                visualisation
-              </span>
-              <span class="has-bg-magenta tag">
-                statistics
-              </span>
-            </div>
-            <a href="#RProvider-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="RProvider-collapse" class="is-collapsible">
-              <hr/>
-              <p>The R Provider discovers R packages that are available in your R installation and makes
-them available as .NET namespaces underneath the parent namespace RProvider. For example,
-the stats package is available as RProvider.stats. If you open the namespaces you want to
-use, functions and values will be available as R.name.</p>
-<p>There are three requirements to be set up on your system:</p>
-<ul>
-<li>dotnet SDK 5.0 or greater; and</li>
-<li>R statistical language. <em>Note: on Windows, there is currently a bug in R preventing us from supporting R versions greater than 4.0.2.</em></li>
-<li>R_HOME environment variable set to the R home directory. This can usually be identified by running the command 'R RHOME'.</li>
-</ul>
-<p>Below is a simple script example that demonstrates using R statistical functions,
-and using R graphics functions to create charts:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: RProvider,2.0.1&quot;
-
-open RProvider
-open RProvider.graphics
-open RProvider.grDevices
-open RProvider.datasets
-
-// use R to calculate the mean of a list
-R.mean([1;2;3;4])
-
-// Calculate sin using the R 'sin' function
-// (converting results to 'float') and plot it
-[ for x in 0.0 .. 0.1 .. 3.14 -&gt; 
-    R.sin(x).GetValue&lt;float&gt;() ]
-|&gt; R.plot
-
-// Plot the data from the standard 'Nile' data set
-R.plot(R.Nile)
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/RProvider">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/RProvider/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/RProvider/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/fsharp.stats.msf/0.3.0-beta/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/FSharp.Stats">
-                    FSharp.Stats
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              statistical testing, linear algebra, machine learning, fitting and signal processing in F#.
-            </p>
-            <code class="package-reference">
-              #r "nuget: FSharp.Stats"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                statistics
-              </span>
-              <span class="has-bg-magenta tag">
-                linear algebra
-              </span>
-              <span class="has-bg-magenta tag">
-                machine learning
-              </span>
-              <span class="has-bg-magenta tag">
-                fitting
-              </span>
-              <span class="has-bg-magenta tag">
-                signal processing
-              </span>
-            </div>
-            <a href="#FSharp.Stats-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="FSharp.Stats-collapse" class="is-collapsible">
-              <hr/>
-              <p>FSharp.Stats is a multipurpose project for statistical testing, linear algebra, machine learning, fitting and signal processing.</p>
-<p>Here is a simple basic example for getting general statistics of a sequence of numbers sampled from a normal distribution:</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Stats&quot;
-open FSharp.Stats
-
-// initialize a normal distribution with mean 25 and standard deviation 0.1
-let normalDistribution = Distributions.Continuous.normal 25. 0.1
-
-// draw independently 30 times from the given distribution 
-let sample = Array.init 30 (fun _ -&gt; normalDistribution.Sample())
-
-let mean = Seq.mean sample
-let stDev = Seq.stDev sample
-let cv = Seq.cv sample
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/FSharp.Stats">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/FSharp.Stats/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/FSharp.Stats/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="Container package-container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://api.nuget.org/v3-flatcontainer/deedle/2.3.0/icon"/>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title">
-                  <a href="https://www.github.com/fslaborg/Deedle">
-                    Deedle
-                  </a>
-                </p>
-              </div>
-            </div>
-            <p class="subtitle is-6">
-              Deedle is an easy to use library for data and time series manipulation and for scientific programming.
-            </p>
-            <code class="package-reference">
-              #r "nuget: Deedle"
-            </code>
-            <div class="tags">
-              <span class="has-bg-magenta tag">
-                dataframe
-              </span>
-              <span class="has-bg-magenta tag">
-                data exploration
-              </span>
-              <span class="has-bg-magenta tag">
-                data access
-              </span>
-            </div>
-            <a href="#Deedle-collapse" data-action="collapse" aria-label="more" class="collapsible-trigger">
-              Read More
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
-            </a>
-            <div id="Deedle-collapse" class="is-collapsible">
-              <hr/>
-              <p>Deedle implements efficient and robust frame and series data structures for accessing and manipulating structured data.</p>
-<p>It supports handling of missing values, aggregations, grouping, joining, statistical functions and more. For frames and series with ordered indices (such as time series), automatic alignment is also available.</p>
-<p>Here is a short snippet on how to read and manipulate an online data source (HTTP requests are done with <a href="https://github.com/fsprojects/FSharp.Data/">FSharp.Data</a>).</p>
-<p>It reads the boston housing data set csv file from an online data source and</p>
-<pre><code class="language-fsharp">#r &quot;nuget: FSharp.Data&quot;
-#r &quot;nuget: Deedle&quot;
-
-open FSharp.Data
-open Deedle
-
-let rawData = Http.RequestString @&quot;https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt&quot;
-
-// get a frame containing the values of houses at the charles river only
-let df = 
-    Frame.ReadCsvString(rawData, separators=&quot;\t&quot;)
-    |&gt; Frame.sliceCols [&quot;MedianHomeValue&quot;; &quot;CharlesRiver&quot;]
-    |&gt; Frame.filterRowValues (fun s -&gt; s.GetAs&lt;bool&gt;(&quot;CharlesRiver&quot;))
-
-df.Print()
-</code></pre>
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="card-footer-item" href="https://www.github.com/fslaborg/Deedle">
-              <span class="icon">
-                <i class="fas fa-code-branch"></i>
-              </span>
-              Github
-            </a>
-            <a class="card-footer-item" href="https://fslab.org/Deedle/">
-              <span class="icon">
-                <i class="fas fa-book"></i>
-              </span>
-              Docs
-            </a>
-            <a class="card-footer-item" href="https://www.nuget.org/packages/Deedle/">
-              <span class="icon">
-                <i class="fas fa-cubes"></i>
-              </span>
-              Nuget
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
   <footer class="footer has-bg-darkmagenta">
@@ -845,7 +845,7 @@ df.Print()
               </span>
               <span>
                 <a class="footer-link" href="https://github.com/orgs/fslaborg/people">
-                  fslab contributors
+                  FsLab contributors
                 </a>
               </span>
             </div>
@@ -865,7 +865,7 @@ df.Print()
                 </span>
                 <span>
                   <a class="footer-link" href="https://github.com/fslaborg?type=source">
-                    the fslab organisation on github
+                    the FsLab organisation on github
                   </a>
                 </span>
               </div>
@@ -875,7 +875,7 @@ df.Print()
                 </span>
                 <span>
                   <a class="footer-link" href="https://twitter.com/fslaborg">
-                    fslab on twitter
+                    FsLab on twitter
                   </a>
                 </span>
               </div>
@@ -908,8 +908,8 @@ df.Print()
                   <i class="fas fa-graduation-cap"></i>
                 </span>
                 <span>
-                  <a class="footer-link" href="https://fslab.org/tutorials.html">
-                    tutorials and learning resources
+                  <a class="footer-link" href="https://fslab.org/blog">
+                    blog
                   </a>
                 </span>
               </div>
@@ -918,8 +918,8 @@ df.Print()
                   <i class="fas fa-plus"></i>
                 </span>
                 <span>
-                  <a class="footer-link" href="https://github.com/fslaborg/fslaborg.github.io#add-a-tutorial-guide-or-blogpost">
-                    add tutorial content
+                  <a class="footer-link" href="https://github.com/fslaborg/blog?tab=readme-ov-file#add-content">
+                    start posting on the FsLab blog
                   </a>
                 </span>
               </div>
